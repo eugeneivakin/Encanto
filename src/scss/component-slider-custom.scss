@@ -1,0 +1,45 @@
+@use "mixins/media" as *;
+
+.section-featured-collection {
+  --grid-mobile-horizontal-spacing: 50px;
+
+  .collection .slider--tablet.product-grid {
+    @media screen and (min-width: 750px) and (max-width: 989px) {
+      scroll-padding-left: 5rem;
+    }
+  }
+
+  .grid {
+    @include sm {
+      --grid-desktop-horizontal-spacing: 20px;
+      --grid-desktop-vertical-spacing: 20px;
+    }
+  }
+
+  .slider--tablet.grid--peek.grid--1-col-tablet-down .grid__item,
+  .slider--mobile.grid--peek.grid--1-col-tablet-down .grid__item {
+    @include xs-max {
+      width: calc(50% - var(--grid-mobile-horizontal-spacing) - 3rem);
+    }
+
+    @media screen and (min-width: 750px) and (max-width: 989px) {
+      width: calc(33.3333% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
+    }
+  }
+
+  .slider--tablet.grid--peek .grid__item:first-of-type {
+    @media screen and (min-width: 750px) and (max-width: 989px) {
+      margin-left: 5rem;
+    }
+  }
+
+  .slider--desktop {
+    --desktop-margin-left-first-item: 5rem;
+  }
+
+  // .slider--desktop.grid--peek.grid--4-col-desktop .grid__item {
+  //   @include md {
+  //     width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+  //   }
+  // }
+}

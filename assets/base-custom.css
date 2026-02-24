@@ -1,0 +1,16 @@
+.header__active-menu-item,
+.header__menu-item:hover span {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  background: rgb(var(--color-button-text));
+  color: rgba(var(--color-button), var(--alpha-button-background));
+}
+
+.button:not([disabled]):hover::after, .shopify-challenge__button:hover::after, .customer button:hover::after, .shopify-payment-button__button--unbranded:hover::after {
+  --color-button: var(--color-button-text);
+}
