@@ -1,0 +1,1443 @@
+<div
+  id="bestsellers-{{ section.id }}"
+  class="bestsellers-slider-wrapper {% if section.settings.custom_classes %}{{ section.settings.custom_classes }}{% endif %}"
+>
+  <section class="dame-bestsellers-section">
+    <div class="page-width dame-bestsellers-header">
+      <div class="dame-bestsellers-header-content">
+        {% if section.settings.section_title != blank %}
+          <h2 class="dame-bestsellers-title">{{ section.settings.section_title }}</h2>
+        {% endif %}
+
+        <div class="dame-header-actions">
+          {% if section.settings.show_navigation_arrows %}
+            <div class="dame-slider-nav-buttons">
+              <button class="dame-slider-arrow dame-slider-prev" aria-label="Previous slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="dame-slider-arrow dame-slider-next" aria-label="Next slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_view_all and section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_url }}" class="dame-see-all-btn">
+              {{ section.settings.button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if section.settings.section_subtitle != blank %}
+        <p class="dame-bestsellers-subtitle">{{ section.settings.section_subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+
+      {% if collection.products.size > 0 %}
+        <div class="page-width dame-slider-container">
+          <div class="dame-products-slider" id="productsSlider-{{ section.id }}">
+            {% for product in collection.products limit: section.settings.products_to_show %}
+              <div class="dame-product-card">
+                <a href="{{ product.url }}" class="dame-product-image-link">
+                  <div class="dame-product-image">
+                    {% if product.featured_image %}
+                      {{
+                        product.featured_image
+                        | image_url: width: 600
+                        | image_tag: loading: 'lazy', class: 'dame-product-img', alt: product.featured_image.alt
+                        | escape
+                      }}
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'dame-product-placeholder' }}
+                    {% endif %}
+                    {% if product.compare_at_price > product.price %}
+                      {% assign discount = product.compare_at_price
+                        | minus: product.price
+                        | times: 100
+                        | divided_by: product.compare_at_price
+                      %}
+                      <span class="dame-discount-badge-overlay">-{{ discount }}% OFF</span>
+                    {% endif %}
+                  </div>
+                </a>
+
+                <div class="dame-product-info">
+                  <div class="dame-product-rating">
+                    <span class="dame-product-stars">★★★★★</span>
+                    <span class="dame-product-reviews">100+ reviews</span>
+                  </div>
+
+                  <h3 class="dame-product-name">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h3>
+
+                  {% if product.has_only_default_variant == false %}
+                    <div class="dame-product-options">
+                      {% for option in product.options_with_values %}
+                        {% if option.name == 'Color' or option.name == 'Цвет' %}
+                          <div class="dame-color-swatches">
+                            {% for value in option.values %}
+                              <span
+                                class="dame-color-swatch"
+                                style="background-color: {{ value | handle }};"
+                                title="{{ value }}"
+                              ></span>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if product.available == false %}
+                    <button class="button" disabled>
+                      {{ section.settings.sold_out_text | default: 'SOLD OUT' }} | {{ product.price | money }}
+                    </button>
+                  {% else %}
+                    <button
+                      class="button"
+                      data-product-id="{{ product.id }}"
+                      onclick="window.location.href='{{ product.url }}'"
+                    >
+                      {{ section.settings.add_to_cart_text | default: 'ADD TO CART' }} | {{ product.price | money }}
+                    </button>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          {% if section.settings.show_progress_bar %}
+            <div class="dame-slider-progress">
+              <div class="dame-slider-progress-bar"></div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </section>
+</div>
+
+<style>
+  :root {
+    --dame-bestsellers-max-width: {{ section.settings.max_width }};
+    --dame-bestsellers-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --dame-bestsellers-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --dame-bestsellers-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --dame-bestsellers-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --dame-bestsellers-padding-left-desktop: {{ section.settings.padding_left_desktop }}px;
+    --dame-bestsellers-padding-right-desktop: {{ section.settings.padding_right_desktop }}px;
+    --dame-bestsellers-padding-left-mobile: {{ section.settings.padding_left_mobile }}px;
+    --dame-bestsellers-padding-right-mobile: {{ section.settings.padding_right_mobile }}px;
+    --dame-bestsellers-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --dame-bestsellers-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --dame-bestsellers-title-color: {{ section.settings.title_color }};
+    --dame-bestsellers-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --dame-bestsellers-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --dame-bestsellers-subtitle-color: {{ section.settings.subtitle_color }};
+    --dame-bestsellers-card-bg: {{ section.settings.card_bg_color }};
+    --dame-bestsellers-product-name-color: {{ section.settings.product_name_color }};
+    --dame-bestsellers-product-name-size-desktop: {{ section.settings.product_name_size_desktop }}px;
+    --dame-bestsellers-product-name-size-mobile: {{ section.settings.product_name_size_mobile }}px;
+    --dame-bestsellers-button-bg: {{ section.settings.button_bg_color }};
+    --dame-bestsellers-button-text-color: {{ section.settings.button_text_color }};
+    --dame-bestsellers-progress-bar-color: {{ section.settings.progress_bar_color }};
+  }
+
+  .bestsellers-slider-wrapper {
+    background-color: {{ section.settings.section_background_color }};
+    padding-top: var(--dame-bestsellers-padding-top-desktop);
+    padding-bottom: var(--dame-bestsellers-padding-bottom-desktop);
+  }
+
+  @media screen and (max-width: 749px) {
+    .bestsellers-slider-wrapper {
+      padding-top: var(--dame-bestsellers-padding-top-mobile);
+      padding-bottom: var(--dame-bestsellers-padding-bottom-mobile);
+    }
+  }
+</style>
+
+<style>
+  #bestsellers-{{ section.id }} .dame-bestsellers-section {
+    width: 100%;
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-header {
+    max-width: none;
+    margin-bottom: {{ section.settings.header_margin_bottom }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #bestsellers-{{ section.id }} .dame-bestsellers-header {
+      padding-left: max(var(--dame-bestsellers-padding-left-mobile), 16px);
+      padding-right: max(var(--dame-bestsellers-padding-right-mobile), 16px);
+    }
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-title {
+    font-size: var(--dame-bestsellers-title-size-desktop);
+    color: var(--dame-bestsellers-title-color);
+    font-weight: {{ section.settings.title_font_weight }};
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .dame-bestsellers-title p {
+    margin: 0;
+  }
+
+  #bestsellers-{{ section.id }} .dame-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-nav-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-see-all-btn {
+    padding: 12px 30px;
+    background-color: {{ section.settings.see_all_bg_color }};
+    color: {{ section.settings.see_all_text_color }};
+    border: 1px solid {{ section.settings.see_all_border_color }};
+    border-radius: 25px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  #bestsellers-{{ section.id }} .dame-see-all-btn:hover {
+    background-color: {{ section.settings.see_all_hover_bg_color }};
+    color: {{ section.settings.see_all_hover_text_color }};
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-subtitle {
+    font-size: var(--dame-bestsellers-subtitle-size-desktop);
+    color: var(--dame-bestsellers-subtitle-color);
+    margin: 0;
+    font-weight: {{ section.settings.subtitle_font_weight }};
+    letter-spacing: 0.2px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-container {
+    max-width: none;
+    position: relative;
+    overflow: visible;
+  }
+
+  #bestsellers-{{ section.id }} .dame-products-slider {
+    display: flex;
+    gap: {{ section.settings.products_gap }}px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #bestsellers-{{ section.id }} .dame-products-slider {
+      padding-left: max(var(--dame-bestsellers-padding-left-mobile), 16px);
+      padding-right: max(var(--dame-bestsellers-padding-right-mobile), 16px);
+    }
+  }
+
+  #bestsellers-{{ section.id }} .dame-products-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-card {
+    flex: 0 0 {{ section.settings.card_width }}px;
+    position: relative;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-badges {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  #bestsellers-{{ section.id }} .dame-badge {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #bestsellers-{{ section.id }} .dame-badge-sold-out {
+    background-color: {{ section.settings.badge_sold_out_bg }};
+    color: {{ section.settings.badge_sold_out_color }};
+  }
+
+  #bestsellers-{{ section.id }} .dame-badge-bestseller {
+    background-color: {{ section.settings.badge_bestseller_bg }};
+    color: {{ section.settings.badge_bestseller_color }};
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-options {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-dot.active {
+    border-color: {{ section.settings.color_dot_active_border }};
+    box-shadow: 0 0 0 2px white, 0 0 0 4px {{ section.settings.color_dot_active_border }};
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-image-link {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--media-radius);
+    /* border-radius: {{ section.settings.image_border_radius | default: 16 }}px; */
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-image {
+    width: 100%;
+    height: {{ section.settings.product_image_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-img,
+  #bestsellers-{{ section.id }} .dame-product-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-image-link:hover .dame-product-img {
+    transform: scale(1.05);
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-stars {
+    color: {{ section.settings.stars_color | default: "#FFD700" }};
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-reviews {
+    font-size: 12px;
+    color: {{ section.settings.reviews_text_color | default: "#666666" }};
+    font-weight: 400;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-name {
+    font-size: var(--dame-bestsellers-product-name-size-desktop);
+    margin: 0;
+    font-weight: {{ section.settings.product_name_font_weight }};
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-name a {
+    color: var(--dame-bestsellers-product-name-color);
+    text-decoration: none;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-name a:hover {
+    opacity: 0.8;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  #bestsellers-{{ section.id }} .dame-price-current {
+    color: var(--dame-bestsellers-product-name-color);
+  }
+
+  #bestsellers-{{ section.id }} .dame-price-sale {
+    color: {{ section.settings.sale_price_color | default: "#D32F2F" }};
+  }
+
+  #bestsellers-{{ section.id }} .dame-price-original {
+    text-decoration: line-through;
+    color: #999999;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  #bestsellers-{{ section.id }} .dame-discount-badge-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: {{ section.settings.discount_badge_bg | default: "#FF4444" }};
+    color: {{ section.settings.discount_badge_color | default: "#ffffff" }};
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-product-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-swatches {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #E0E0E0;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  #bestsellers-{{ section.id }} .dame-color-swatch:hover {
+    border-color: #333333;
+    transform: scale(1.1);
+  }
+
+  /* #bestsellers-{{ section.id }} .dame-product-button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: {{ section.settings.product_button_border_radius | default: 8 }}px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  } */
+
+  /* #bestsellers-{{ section.id }} .dame-btn-add-to-cart {
+    background-color: var(--dame-bestsellers-button-bg);
+    color: var(--dame-bestsellers-button-text-color);
+  } */
+
+  /* #bestsellers-{{ section.id }} .dame-btn-add-to-cart:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  } */
+
+  /* #bestsellers-{{ section.id }} .dame-btn-sold-out {
+    background-color: {{ section.settings.sold_out_button_bg }};
+    color: {{ section.settings.sold_out_button_color }};
+    cursor: not-allowed;
+  } */
+
+  #bestsellers-{{ section.id }} .dame-product-price {
+    margin-top: 5px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  #bestsellers-{{ section.id }} .dame-price-original {
+    text-decoration: line-through;
+    color: {{ section.settings.price_original_color }};
+    font-size: 14px;
+    margin-right: 8px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-price-sale {
+    color: {{ section.settings.price_sale_color }};
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-discount-badge {
+    display: inline-block;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-progress {
+    width: calc(100% - max(var(--dame-bestsellers-padding-left-desktop), 20px) - max(var(--dame-bestsellers-padding-right-desktop), 20px));
+    height: 6px;
+    background-color: {{ section.settings.progress_bg_color | default: "#E8E8E8" }};
+    margin-top: 30px;
+    margin-left: max(var(--dame-bestsellers-padding-left-desktop), 20px);
+    margin-right: max(var(--dame-bestsellers-padding-right-desktop), 20px);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 749px) {
+    #bestsellers-{{ section.id }} .dame-slider-progress {
+      width: calc(100% - max(var(--dame-bestsellers-padding-left-mobile), 16px) - max(var(--dame-bestsellers-padding-right-mobile), 16px));
+      margin-left: max(var(--dame-bestsellers-padding-left-mobile), 16px);
+      margin-right: max(var(--dame-bestsellers-padding-right-mobile), 16px);
+    }
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-progress-bar {
+    display: block;
+    height: 100%;
+    background-color: {{ section.settings.progress_bar_color }};
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-arrow {
+    background: {{ section.settings.arrow_bg_color | default: "#F5F5F5" }};
+    border: 1px solid {{ section.settings.arrow_border_color | default: "#E0E0E0" }};
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: {{ section.settings.arrow_color | default: "#333333" }};
+    flex-shrink: 0;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-arrow:hover {
+    background: {{ section.settings.arrow_hover_bg_color | default: "#E0E0E0" }};
+    border-color: {{ section.settings.arrow_hover_border_color | default: "#CCCCCC" }};
+    transform: scale(1.05);
+    color: #ffffff;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-arrow:hover svg {
+    color: #ffffff;
+  }
+
+  #bestsellers-{{ section.id }} .dame-slider-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 749px) {
+    #bestsellers-{{ section.id }} .dame-bestsellers-title {
+      font-size: var(--dame-bestsellers-title-size-mobile);
+    }
+
+    #bestsellers-{{ section.id }} .dame-bestsellers-subtitle {
+      font-size: var(--dame-bestsellers-subtitle-size-mobile);
+    }
+
+    #bestsellers-{{ section.id }} .dame-bestsellers-header-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #bestsellers-{{ section.id }} .dame-header-actions {
+      margin-left: 0;
+      justify-content: flex-start;
+      gap: 0;
+      width: 100%;
+    }
+
+    #bestsellers-{{ section.id }} .dame-product-card {
+      flex: 0 0 {{ section.settings.card_width_mobile }}px;
+      padding: {{ section.settings.card_padding_mobile }}px;
+    }
+
+    #bestsellers-{{ section.id }} .dame-product-image {
+      height: {{ section.settings.product_image_height_mobile }}px;
+    }
+
+    #bestsellers-{{ section.id }} .dame-product-name {
+      font-size: var(--dame-bestsellers-product-name-size-mobile);
+    }
+
+    #bestsellers-{{ section.id }} .dame-slider-arrow {
+      display: none;
+    }
+  }
+
+  /* Bold word animation */
+  {% if section.settings.animate_bold_words %}
+  #bestsellers-{{ section.id }} .dame-bestsellers-title strong,
+  #bestsellers-{{ section.id }} .dame-bestsellers-title b {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    font-weight: normal;
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-title.animate-words strong,
+  #bestsellers-{{ section.id }} .dame-bestsellers-title.animate-words b {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SVG hand-drawn underline */
+  #bestsellers-{{ section.id }} .bold-word-svg {
+    position: absolute;
+    left: -5%;
+    bottom: -10%;
+    width: 110%;
+    height: 25%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: -1;
+  }
+
+  #bestsellers-{{ section.id }} .bold-word-svg path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: none;
+  }
+
+  #bestsellers-{{ section.id }} .dame-bestsellers-title.animate-words .bold-word-svg path {
+    animation: draw-scribble 1.2s ease-out 0.3s forwards;
+  }
+
+  @keyframes draw-scribble {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  {% endif %}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('productsSlider-{{ section.id }}');
+    if (!slider) return;
+
+    const section = document.getElementById('bestsellers-{{ section.id }}');
+    const progressBar = slider.closest('.dame-slider-container')?.querySelector('.dame-slider-progress-bar');
+    const prevBtn = section?.querySelector('.dame-slider-prev');
+    const nextBtn = section?.querySelector('.dame-slider-next');
+
+    function updateProgressBar() {
+      if (!progressBar) return;
+      const scrollLeft = slider.scrollLeft;
+      const scrollWidth = slider.scrollWidth - slider.clientWidth;
+      const scrollPercentage = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+      progressBar.style.width = scrollPercentage + '%';
+    }
+
+    slider.addEventListener('scroll', updateProgressBar);
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        const cardWidth = slider.querySelector('.dame-product-card')?.offsetWidth || 300;
+        slider.scrollBy({ left: -(cardWidth + {{ section.settings.products_gap }}), behavior: 'smooth' });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const cardWidth = slider.querySelector('.dame-product-card')?.offsetWidth || 300;
+        slider.scrollBy({ left: cardWidth + {{ section.settings.products_gap }}, behavior: 'smooth' });
+      });
+    }
+
+    // Initial update and re-update after images load
+    setTimeout(() => {
+      updateProgressBar();
+    }, 100);
+
+    // Update on window resize
+    window.addEventListener('resize', updateProgressBar);
+  });
+</script>
+
+{% if section.settings.animate_bold_words %}
+  <script>
+    (function () {
+      const titleElement = document.querySelector('#bestsellers-{{ section.id }} .dame-bestsellers-title');
+
+      if (!titleElement) return;
+
+      // Find all bold words (strong or b tags)
+      const boldWords = titleElement.querySelectorAll('strong, b');
+
+      if (!boldWords.length) return;
+
+      // Inject SVG scribble into each bold word
+      boldWords.forEach(function (boldElement) {
+        // Make sure the bold element has position: relative for the SVG
+        boldElement.style.position = 'relative';
+        boldElement.style.display = 'inline-block';
+
+        // Create SVG element
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'bold-word-svg');
+        svg.setAttribute('viewBox', '0 0 100 10');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('preserveAspectRatio', 'none');
+
+        // Create path element with hand-drawn wavy underline
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('stroke-linejoin', 'round');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('pathLength', '1');
+        path.setAttribute('d', 'M2,6 C15,3 25,7 40,5 C55,3 70,8 85,5 C92,3 97,5 98,6');
+
+        svg.appendChild(path);
+        boldElement.appendChild(svg);
+      });
+
+      // IntersectionObserver to detect when section enters viewport
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            titleElement.classList.add('animate-words');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      observer.observe(titleElement);
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Bestsellers Slider",
+  "tag": "section",
+  "class": "section-bestsellers-dame",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section Max Width",
+      "default": "1400px",
+      "info": "Example: 1400px or 100%"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS Classes",
+      "info": "Add custom classes separated by spaces"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Desktop",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Mobile",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "label": "Products To Show",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "richtext",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "<p>Our Bestsellers</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "animate_bold_words",
+      "label": "Animate Bold Words in Title",
+      "default": true,
+      "info": "Apply animation to bold words when section scrolls into view"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Desktop",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Mobile",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "richtext",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "<p>Community favorites for pleasure and play.</p>"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Desktop",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font_weight",
+      "label": "Subtitle Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Header Margin Bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "View All Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SEE ALL →"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "see_all_bg_color",
+      "label": "Button Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "see_all_text_color",
+      "label": "Button Text Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "see_all_border_color",
+      "label": "Button Border Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "see_all_hover_bg_color",
+      "label": "Button Hover Background",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "see_all_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 200,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width Desktop",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "min": 200,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width Mobile",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "products_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Products",
+      "default": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show Progress Bar",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "progress_bar_color",
+      "label": "Progress Bar Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_bg_color",
+      "label": "Arrow Hover Background",
+      "default": "#0000FF"
+    },
+    {
+      "type": "header",
+      "content": "Product Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Padding Desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "min": 10,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Padding Mobile",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "product_image_height",
+      "min": 150,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Product Image Height Desktop",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "product_image_height_mobile",
+      "min": 150,
+      "max": 350,
+      "step": 10,
+      "unit": "px",
+      "label": "Product Image Height Mobile",
+      "default": 220
+    },
+    {
+      "type": "header",
+      "content": "Product Name"
+    },
+    {
+      "type": "range",
+      "id": "product_name_size_desktop",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Product Name Size Desktop",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "product_name_size_mobile",
+      "min": 14,
+      "max": 26,
+      "step": 2,
+      "unit": "px",
+      "label": "Product Name Size Mobile",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "product_name_color",
+      "label": "Product Name Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "product_name_font_weight",
+      "label": "Product Name Font Weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "header",
+      "content": "Product Details"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show Product Rating",
+      "default": true,
+      "info": "Requires product metafields for reviews"
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "reviews_text_color",
+      "label": "Reviews Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_type",
+      "label": "Show Product Type",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "category_text_color",
+      "label": "Category Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_color_swatches",
+      "label": "Show Color Swatches",
+      "default": true,
+      "info": "Requires variant metafields for color_hex"
+    },
+    {
+      "type": "color",
+      "id": "color_dot_active_border",
+      "label": "Active Color Dot Border",
+      "default": "#0000FF"
+    },
+    {
+      "type": "header",
+      "content": "Badges"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_text",
+      "label": "Sold Out Text",
+      "default": "SOLD OUT"
+    },
+    {
+      "type": "color",
+      "id": "badge_sold_out_bg",
+      "label": "Sold Out Badge Background",
+      "default": "#E8E5B8"
+    },
+    {
+      "type": "color",
+      "id": "badge_sold_out_color",
+      "label": "Sold Out Badge Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "bestseller_text",
+      "label": "Bestseller Text",
+      "default": "BESTSELLER"
+    },
+    {
+      "type": "color",
+      "id": "badge_bestseller_bg",
+      "label": "Bestseller Badge Background",
+      "default": "#B4D455"
+    },
+    {
+      "type": "color",
+      "id": "badge_bestseller_color",
+      "label": "Bestseller Badge Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Product Button"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_text",
+      "label": "Add To Cart Text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_button_bg",
+      "label": "Sold Out Button Background",
+      "default": "#B8B3E8"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_button_color",
+      "label": "Sold Out Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "product_button_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "color",
+      "id": "price_original_color",
+      "label": "Original Price Color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "price_sale_color",
+      "label": "Sale Price Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "discount_badge_bg",
+      "label": "Discount Badge Background",
+      "default": "#FF4444"
+    },
+    {
+      "type": "color",
+      "id": "discount_badge_color",
+      "label": "Discount Badge Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestsellers Slider"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+{% comment %}
+  Age gate (one-file snippet): HTML + CSS + JS
+  Insert right after <body> in layout/theme.liquid
+{% endcomment %}
+
+{% unless request.design_mode %}
+    <script>
+      (function () {
+        var KEY = "age_verified_v1";
+    
+        function getCookie(name) {
+          var m = document.cookie.match(new RegExp("(^|; )" + name.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"));
+          return m ? decodeURIComponent(m[2]) : "";
+        }
+    
+        var verified = false;
+        try { verified = localStorage.getItem(KEY) === "1"; } catch (e) {}
+        if (!verified) verified = getCookie(KEY) === "1";
+    
+        document.documentElement.classList.add(verified ? "age-verified" : "age-locked");
+      })();
+    </script>
+    
+    <style>
+      html.age-locked { overflow: hidden; }
+    
+      /* Hidden by default; shown only when html.age-locked */
+      .age-gate { display: none; }
+      html.age-locked .age-gate {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+      }
+    
+      .age-gate__backdrop {
+        position: absolute;
+        inset: 0;
+        display: block !important;
+        backdrop-filter: blur(10px);
+        background: rgba(0,0,0,.55);
+      }
+    
+      .age-gate__panel {
+        position: relative;
+        max-width: 520px;
+        margin: 10vh auto 0;
+        padding: 24px;
+        border-radius: 16px;
+        background: #624c63;
+        color: white;
+        font-family: var(--font-body-family, inherit);
+    
+        box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      }
+    
+      .age-gate__title { margin: 0 0 10px; font-size: 22px; line-height: normal; }
+      .age-gate__text { margin: 0 0 18px; line-height: 1.45;  }
+      .age-gate__title.age-gate__text{
+        font-size: 14px;
+      }
+      .age-gate__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    
+      /* Try to use theme button styles first */
+      .age-gate__actions .button { cursor: pointer; }
+    
+      /* Fallback if theme doesn’t style .button */
+      .age-gate__btn {
+        appearance: none;
+        border: 1px solid currentColor;
+        border-radius: 10px;
+        padding: 10px 14px;
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+      }
+      .main-button-years-not{
+        padding: 10px 14px;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: #ffffff;
+        color: #624c63;
+        border: 1px solid #624c63;
+      }
+      .main-button-years{
+        cursor: pointer;
+        background: #7850ca;
+        border: 1px solid #7850ca;
+        padding: 6px 12px;
+        border-radius: 15px;
+        color: #f8f8f8;
+      }
+      .age-gate__btn--primary {
+        background: rgb(var(--color-foreground, 0 0 0));
+        color: rgb(var(--color-background, 255 255 255));
+        border-color: transparent;
+      }
+      .age-gate__deny {
+        margin: 14px 0 0;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    .age-gate__deny.age-gate__title{
+        font-size: 14px;
+        font-weight: bold;
+    }   
+    </style>
+    
+    <div id="AgeGate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="AgeGateTitle">
+      <div class="age-gate__backdrop"></div>
+    
+      <div class="age-gate__panel color-scheme-1">
+        <h2 id="AgeGateTitle" class="age-gate__title">Confirm your age</h2>
+        <h2 class="age-gate__title age-gate__text">To continue, please confirm that you are 18 years of age.</h2>
+    
+        <div class="age-gate__actions">
+          <!-- If Horizon has .button styles, these will look native -->
+          <button type="button" class="main-button-years" data-agegate-accept>I am 18 years old.</button>
+          <button type="button" class="main-button-years-not" data-agegate-decline>I am not 18</button>
+    
+          <!-- Fallback (uncomment if buttons look unstyled) -->
+          {%- comment -%}
+          <button type="button" class="age-gate__btn age-gate__btn--primary" data-agegate-accept>I am 18 years old.</button>
+          <button type="button" class="age-gate__btn" data-agegate-decline>I am not 18</button>
+          {%- endcomment -%}
+        </div>
+        <p class="age-gate__deny age-gate__title" hidden>
+            Sorry, you must be 18+ to enter this website.
+        </p>
+      </div>
+    </div>
+    
+    <script>
+      (function () {
+        var KEY = "age_verified_v1";
+        var DAYS = 30;
+    
+        function setCookie(name, value, days) {
+          var maxAge = days * 24 * 60 * 60;
+          document.cookie =
+            encodeURIComponent(name) + "=" + encodeURIComponent(value) +
+            "; path=/; max-age=" + maxAge + "; samesite=lax";
+        }
+    
+        function setVerified() {
+          try { localStorage.setItem(KEY, "1"); } catch (e) {}
+          setCookie(KEY, "1", DAYS);
+    
+          document.documentElement.classList.remove("age-locked");
+          document.documentElement.classList.add("age-verified");
+        }
+    
+        function denyAccess() {
+          // Keep the site locked, show a message, optionally disable accept button
+          var gate = document.getElementById("AgeGate");
+          if (!gate) return;
+    
+          var msg = gate.querySelector(".age-gate__deny");
+          if (msg) msg.hidden = false;
+    
+          var acceptBtn = gate.querySelector("[data-agegate-accept]");
+          if (acceptBtn) acceptBtn.disabled = true;
+        }
+    
+        document.addEventListener("click", function (e) {
+          var accept = e.target.closest("[data-agegate-accept]");
+          var decline = e.target.closest("[data-agegate-decline]");
+    
+          if (accept) {
+            e.preventDefault();
+            setVerified();
+            return;
+          }
+    
+          if (decline) {
+            e.preventDefault();
+            e.stopPropagation();
+            denyAccess();
+            return;
+          }
+        });
+      })();
+    </script>
+    
+    {% endunless %}
+    

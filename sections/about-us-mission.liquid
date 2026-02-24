@@ -1,0 +1,689 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="about-us-mission color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+
+  <div class="about-us-mission__particles">
+    <div class="particle particle--1"></div>
+    <div class="particle particle--2"></div>
+    <div class="particle particle--3"></div>
+    <div class="particle particle--4"></div>
+    <div class="particle particle--5"></div>
+    <div class="particle particle--6"></div>
+  </div>
+
+  <div class="page-width">
+    <div class="about-us-mission__grid grid grid--1-col grid--2-col-tablet grid--2-col-desktop">
+      {%- if section.settings.mission_image != blank -%}
+        <div class="about-us-mission__image-wrapper grid__item">
+          <div class="about-us-mission__image media media--{{ section.settings.image_ratio }}">
+            {% comment %} <div class="about-us-mission__image-glow"></div> {% endcomment %}
+            {{
+              section.settings.mission_image
+              | image_url: width: 1500
+              | image_tag: loading: 'lazy', class: 'about-us-mission__img', alt: section.settings.mission_image.alt | escape
+            }}
+            <div class="about-us-mission__image-overlay"></div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="about-us-mission__content grid__item">
+        {%- if section.settings.caption != blank -%}
+          <p class="about-us-mission__caption">{{ section.settings.caption | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="about-us-mission__heading inline-richtext {{ section.settings.heading_size }}">
+            <span class="heading-line">{{ section.settings.heading }}</span>
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="about-us-mission__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="about-us-mission__values">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'value' -%}
+              <div class="about-us-mission__value-item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <div class="value-item__wrapper">
+                  {%- if block.settings.icon != blank -%}
+                    <div class="about-us-mission__value-icon">
+                      <div class="icon-glow"></div>
+                      <span class="icon-content">{{ block.settings.icon }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="about-us-mission__value-title">{{ block.settings.title }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="about-us-mission__value-text rte">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .about-us-mission {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-us-mission__particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    animation: particleFloat 20s ease-in-out infinite;
+    filter: blur(1px);
+  }
+
+  .particle--1 {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+  }
+
+  .particle--2 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 2s;
+    animation-duration: 30s;
+  }
+
+  .particle--3 {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 4s;
+    animation-duration: 22s;
+  }
+
+  .particle--4 {
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 1s;
+    animation-duration: 28s;
+  }
+
+  .particle--5 {
+    width: 70px;
+    height: 70px;
+    bottom: 10%;
+    right: 5%;
+    animation-delay: 3s;
+    animation-duration: 24s;
+  }
+
+  .particle--6 {
+    width: 90px;
+    height: 90px;
+    top: 15%;
+    left: 50%;
+    animation-delay: 5s;
+    animation-duration: 26s;
+  }
+
+  @keyframes particleFloat {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(30px, -40px) scale(1.1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-20px, 30px) scale(0.9);
+      opacity: 0.4;
+    }
+    75% {
+      transform: translate(40px, 20px) scale(1.05);
+      opacity: 0.6;
+    }
+  }
+
+  .about-us-mission__grid {
+    gap: 4rem;
+    margin-bottom: 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-us-mission__image-wrapper {
+    position: relative;
+  }
+
+  .about-us-mission__image {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+
+  .about-us-mission__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-us-mission__image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .about-us-mission__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-us-mission__caption {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .about-us-mission__caption.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .about-us-mission__heading {
+    margin-bottom: 2rem;
+    overflow: visible;
+  }
+
+  .heading-line {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .heading-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+
+  .about-us-mission__text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  .about-us-mission__text.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
+
+  .about-us-mission__values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-us-mission__value-item {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .about-us-mission__value-item.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .about-us-mission__value-item[data-index="0"].visible {
+    transition-delay: 0s;
+  }
+
+  .about-us-mission__value-item[data-index="1"].visible {
+    transition-delay: 0.1s;
+  }
+
+  .about-us-mission__value-item[data-index="2"].visible {
+    transition-delay: 0.2s;
+  }
+
+  .about-us-mission__value-item[data-index="3"].visible {
+    transition-delay: 0.3s;
+  }
+
+  .about-us-mission__value-item[data-index="4"].visible {
+    transition-delay: 0.4s;
+  }
+
+  .about-us-mission__value-item[data-index="5"].visible {
+    transition-delay: 0.5s;
+  }
+
+  .value-item__wrapper {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: 2px solid transparent;
+  }
+
+  .about-us-mission__value-item:hover .value-item__wrapper {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-us-mission__value-icon {
+    font-size: 4rem;
+    margin-bottom: 1.6rem;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .icon-content {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .icon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+  }
+
+  .about-us-mission__value-item:hover .icon-glow {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  .about-us-mission__value-item:hover .icon-content {
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  .about-us-mission__value-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .about-us-mission__value-item:hover .about-us-mission__value-title {
+    background: linear-gradient(135deg, currentColor 0%, currentColor 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 2s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .about-us-mission__value-text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .about-us-mission__value-item:hover .about-us-mission__value-text {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-us-mission__grid {
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .about-us-mission__values {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .particle {
+      opacity: 0.2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+{% endstylesheet %}
+
+<script>
+  (function() {
+    const missionSection = document.querySelector('.about-us-mission');
+    if (!missionSection) return;
+
+    const imageWrapper = missionSection.querySelector('.about-us-mission__image-wrapper');
+    const caption = missionSection.querySelector('.about-us-mission__caption');
+    const heading = missionSection.querySelector('.heading-line');
+    const text = missionSection.querySelector('.about-us-mission__text');
+    const valueItems = missionSection.querySelectorAll('.about-us-mission__value-item');
+    const particles = missionSection.querySelectorAll('.particle');
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    missionSection.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      particles.forEach(function(particle, index) {
+        const speed = (index + 1) * 0.5;
+        const rect = missionSection.getBoundingClientRect();
+        const x = ((mouseX - rect.left) / rect.width - 0.5) * speed;
+        const y = ((mouseY - rect.top) / rect.height - 0.5) * speed;
+        
+        particle.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    
+    if (caption) {
+      observer.observe(caption);
+    }
+    
+    if (heading) {
+      observer.observe(heading);
+    }
+    
+    if (text) {
+      observer.observe(text);
+    }
+
+    valueItems.forEach(function(item) {
+      observer.observe(item);
+    });
+
+    valueItems.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          width: 20px;
+          height: 20px;
+          left: ${e.offsetX}px;
+          top: ${e.offsetY}px;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          animation: ripple 0.6s ease-out;
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes ripple {
+            to {
+              width: 300px;
+              height: 300px;
+              opacity: 0;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        item.style.position = 'relative';
+        item.appendChild(ripple);
+        
+        setTimeout(function() {
+          ripple.remove();
+          style.remove();
+        }, 600);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "About Us Mission",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "mission_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Our Mission"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What We Stand For"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Medium (H2)"
+        },
+        {
+          "value": "h1",
+          "label": "Large (H1)"
+        },
+        {
+          "value": "h0",
+          "label": "Largest (H0)"
+        }
+      ],
+      "default": "h1",
+      "label": "Choose Heading Level"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Our mission is to deliver exceptional products and services that enrich the lives of our customers while maintaining the highest standards of quality and integrity.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "About Us Mission Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Enter the icon name or URL for this value"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Value Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>Value description</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Mission",
+      "blocks": [
+        {
+          "type": "value"
+        },
+        {
+          "type": "value"
+        },
+        {
+          "type": "value"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

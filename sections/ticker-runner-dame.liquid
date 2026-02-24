@@ -1,0 +1,403 @@
+<div id="ticker-{{ section.id }}" class="ticker-runner-wrapper {% if section.settings.custom_classes %}{{ section.settings.custom_classes }}{% endif %}">
+  <section class="dame-ticker-section">
+    <div class="dame-ticker-wrapper">
+      <div class="dame-ticker-content">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'ticker_item' %}
+              <div class="dame-ticker-item" {{ block.shopify_attributes }}>
+                {% if block.settings.icon != blank %}
+                  <div class="dame-ticker-icon">{{ block.settings.icon }}</div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <span class="dame-ticker-text">{{ block.settings.text }}</span>
+                {% endif %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'ticker_item' %}
+              <div class="dame-ticker-item">
+                {% if block.settings.icon != blank %}
+                  <div class="dame-ticker-icon">{{ block.settings.icon }}</div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <span class="dame-ticker-text">{{ block.settings.text }}</span>
+                {% endif %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  :root {
+    --dame-ticker-max-width: {{ section.settings.max_width }};
+    --dame-ticker-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --dame-ticker-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --dame-ticker-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --dame-ticker-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --dame-ticker-text-size-desktop: {{ section.settings.text_size_desktop }}px;
+    --dame-ticker-text-size-mobile: {{ section.settings.text_size_mobile }}px;
+    --dame-ticker-text-color: {{ section.settings.text_color }};
+    --dame-ticker-icon-size-desktop: {{ section.settings.icon_size_desktop }}px;
+    --dame-ticker-icon-size-mobile: {{ section.settings.icon_size_mobile }}px;
+    --dame-ticker-item-gap: {{ section.settings.item_gap }}px;
+    --dame-ticker-animation-speed: {{ section.settings.animation_speed }}s;
+  }
+
+  .ticker-runner-wrapper {
+    background-color: {{ section.settings.section_background_color }};
+    padding-top: var(--dame-ticker-padding-top-desktop);
+    padding-bottom: var(--dame-ticker-padding-bottom-desktop);
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ticker-runner-wrapper {
+      padding-top: var(--dame-ticker-padding-top-mobile);
+      padding-bottom: var(--dame-ticker-padding-bottom-mobile);
+    }
+  }
+</style>
+
+<style>
+  #ticker-{{ section.id }} .dame-ticker-section {
+    max-width: var(--dame-ticker-max-width);
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-wrapper {
+    display: flex;
+    width: fit-content;
+    animation: dame-ticker-scroll var(--dame-ticker-animation-speed) linear infinite;
+  }
+
+  {% if section.settings.pause_on_hover %}
+    #ticker-{{ section.id }} .dame-ticker-wrapper:hover {
+      animation-play-state: paused;
+    }
+  {% endif %}
+
+  @keyframes dame-ticker-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-content {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-item {
+    display: flex;
+    align-items: center;
+    margin-right: var(--dame-ticker-item-gap);
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-icon {
+    width: var(--dame-ticker-icon-size-desktop);
+    height: var(--dame-ticker-icon-size-desktop);
+    margin-right: {{ section.settings.icon_text_gap }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #ticker-{{ section.id }} .dame-ticker-text {
+    font-size: var(--dame-ticker-text-size-desktop);
+    color: var(--dame-ticker-text-color);
+    font-weight: {{ section.settings.text_font_weight }};
+    letter-spacing: {{ section.settings.text_letter_spacing }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #ticker-{{ section.id }} .dame-ticker-icon {
+      width: var(--dame-ticker-icon-size-mobile);
+      height: var(--dame-ticker-icon-size-mobile);
+    }
+
+    #ticker-{{ section.id }} .dame-ticker-text {
+      font-size: var(--dame-ticker-text-size-mobile);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ticker Runner Dame",
+  "tag": "section",
+  "class": "section-ticker-dame",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section Max Width",
+      "default": "100%",
+      "info": "Example: 1400px or 100%"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#F4D8D8"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS Classes",
+      "info": "Add custom classes separated by spaces"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Animation Settings"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation Speed",
+      "default": 30,
+      "info": "Lower number = faster animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause On Hover",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Text Size Desktop",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Text Size Mobile",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "text_letter_spacing",
+      "min": -2,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Letter Spacing",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Icon Settings"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_desktop",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon Size Desktop",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon Size Mobile",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "icon_text_gap",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Icon And Text",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Item Spacing"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Items",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ticker_item",
+      "name": "Ticker Item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ticker Runner Dame",
+      "blocks": [
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"24\" cy=\"24\" r=\"23\" stroke=\"#0000FF\" stroke-width=\"2\"/><circle cx=\"16\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><circle cx=\"32\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><path d=\"M15 30 Q24 36 33 30\" stroke=\"#0000FF\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/></svg>",
+            "text": "User-Tested + Doctor-Approved"
+          }
+        },
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"24\" cy=\"24\" r=\"23\" stroke=\"#0000FF\" stroke-width=\"2\"/><circle cx=\"16\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><circle cx=\"32\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><path d=\"M15 30 Q24 36 33 30\" stroke=\"#0000FF\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/></svg>",
+            "text": "Discreet Shipping"
+          }
+        },
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"24\" cy=\"24\" r=\"23\" stroke=\"#0000FF\" stroke-width=\"2\"/><circle cx=\"16\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><circle cx=\"32\" cy=\"18\" r=\"3\" fill=\"#0000FF\"/><path d=\"M15 30 Q24 36 33 30\" stroke=\"#0000FF\" stroke-width=\"2\" stroke-linecap=\"round\" fill=\"none\"/></svg>",
+            "text": "3 Year Warranty"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

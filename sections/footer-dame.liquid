@@ -1,0 +1,1064 @@
+<div id="footer-{{ section.id }}" class="footer-dame-wrapper {% if section.settings.custom_classes %}{{ section.settings.custom_classes }}{% endif %}">
+  <footer class="dame-footer">
+    <div class=" page-width dame-footer-content">
+      {% if section.settings.show_newsletter %}
+        <div class="dame-newsletter-section">
+          {% if section.settings.newsletter_title != blank %}
+            <h2 class="dame-newsletter-title">{{ section.settings.newsletter_title }}</h2>
+          {% endif %}
+
+          {% form 'customer', class: 'dame-newsletter-form' %}
+            <div class="dame-newsletter-input-group">
+              <input type="email"
+                     name="contact[email]"
+                     class="dame-newsletter-input"
+                     placeholder="{{ section.settings.email_placeholder }}"
+                     required
+                     aria-label="Email address">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <span class="dame-newsletter-separator">|</span>
+              <button type="submit" class="dame-newsletter-submit">
+                {{ section.settings.submit_button_text }}
+              </button>
+            </div>
+
+            {% if form.posted_successfully? %}
+              <div class="dame-newsletter-success">
+                {{ section.settings.success_message }}
+              </div>
+            {% endif %}
+
+            {% if form.errors %}
+              <div class="dame-newsletter-error">
+                {{ form.errors.messages['email'] }}
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="dame-footer-links">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'link_column' %}
+                <div class="dame-footer-column" {{ block.shopify_attributes }}>
+                  {% if block.settings.column_title != blank %}
+                    <h6 class="dame-column-title">{{ block.settings.column_title }}</h6>
+                  {% endif %}
+
+                  {% if block.settings.links != blank %}
+                    <ul class="dame-column-links">
+                      {% assign links_array = block.settings.links | split: '||' %}
+                      {% for link_item in links_array %}
+                        {% assign link_parts = link_item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a href="{{ link_parts[1] | strip }}">{{ link_parts[0] | strip }}</a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+
+              {% when 'copyright' %}
+                <div class="dame-footer-column dame-copyright-column" {{ block.shopify_attributes }}>
+                  {% if block.settings.column_title != blank %}
+                    <h6 class="dame-column-title">{{ block.settings.column_title }}</h6>
+                  {% endif %}
+
+                  <div class="dame-footer-copyright">
+                    {% if block.settings.copyright_text != blank %}
+                      <div class="dame-copyright-text">{{ block.settings.copyright_text }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </footer>
+</div>
+
+<style>
+  :root {
+    --dame-footer-max-width: {{ section.settings.max_width }};
+    --dame-footer-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --dame-footer-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --dame-footer-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --dame-footer-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --dame-footer-padding-left-desktop: {{ section.settings.padding_left_desktop }}px;
+    --dame-footer-padding-right-desktop: {{ section.settings.padding_right_desktop }}px;
+    --dame-footer-padding-left-mobile: {{ section.settings.padding_left_mobile }}px;
+    --dame-footer-padding-right-mobile: {{ section.settings.padding_right_mobile }}px;
+    --dame-footer-newsletter-title-size-desktop: {{ section.settings.newsletter_title_size_desktop }}px;
+    --dame-footer-newsletter-title-size-mobile: {{ section.settings.newsletter_title_size_mobile }}px;
+    --dame-footer-newsletter-title-color: {{ section.settings.newsletter_title_color }};
+    --dame-footer-column-title-size: {{ section.settings.column_title_size }}px;
+    --dame-footer-column-title-color: {{ section.settings.column_title_color }};
+    --dame-footer-link-size: {{ section.settings.link_size }}px;
+    --dame-footer-link-color: {{ section.settings.link_color }};
+    --dame-footer-link-hover-color: {{ section.settings.link_hover_color }};
+  }
+
+  .footer-dame-wrapper {
+    position: relative;
+    background: {{ section.settings.section_background_gradient }};
+    padding-top: var(--dame-footer-padding-top-desktop);
+    padding-bottom: var(--dame-footer-padding-bottom-desktop);
+    {% comment %} padding-left: var(--dame-footer-padding-left-desktop);
+    padding-right: var(--dame-footer-padding-right-desktop); {% endcomment %}
+    overflow: hidden;
+  }
+
+  .footer-dame-wrapper::before {
+    content: '';
+    position: absolute;
+    width: {{ section.settings.circle_1_size }}px;
+    height: {{ section.settings.circle_1_size }}px;
+    border-radius: 50%;
+    background: {{ section.settings.circle_1_gradient }};
+    top: {{ section.settings.circle_1_top }}px;
+    left: {{ section.settings.circle_1_left }}px;
+    z-index: 0;
+  }
+
+  .footer-dame-wrapper::after {
+    content: '';
+    position: absolute;
+    width: {{ section.settings.circle_2_size }}px;
+    height: {{ section.settings.circle_2_size }}px;
+    border-radius: 50%;
+    background: {{ section.settings.circle_2_gradient }};
+    bottom: {{ section.settings.circle_2_bottom }}px;
+    right: {{ section.settings.circle_2_right }}px;
+    z-index: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .footer-dame-wrapper {
+      padding-top: var(--dame-footer-padding-top-mobile);
+      padding-bottom: var(--dame-footer-padding-bottom-mobile);
+      padding-left: var(--dame-footer-padding-left-mobile);
+      padding-right: var(--dame-footer-padding-right-mobile);
+    }
+  }
+</style>
+
+<style>
+  #footer-{{ section.id }} .dame-footer {
+    position: relative;
+    z-index: 1;
+    max-width: var(--dame-footer-max-width);
+    margin: 0 auto;
+  }
+
+  #footer-{{ section.id }} .dame-footer-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: baseline;
+    gap: 40px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-title {
+    font-size: var(--dame-footer-newsletter-title-size-desktop);
+    color: var(--dame-footer-newsletter-title-color);
+    font-weight: {{ section.settings.newsletter_title_font_weight }};
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-form {
+    position: relative;
+    max-width: 800px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: {{ section.settings.input_background_color }};
+    border: {{ section.settings.input_border_width }}px solid {{ section.settings.input_border_color }};
+    border-radius: {{ section.settings.input_border_radius }}px;
+    padding: {{ section.settings.input_padding_vertical }}px {{ section.settings.input_padding_horizontal }}px;
+    gap: 20px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: {{ section.settings.input_font_size }}px;
+    color: var(--dame-footer-newsletter-title-color);
+    font-weight: 400;
+    outline: none;
+    letter-spacing: -0.3px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-input::placeholder {
+    color: var(--dame-footer-newsletter-title-color);
+    opacity: 0.6;
+    font-style: normal;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-separator {
+    color: var(--dame-footer-newsletter-title-color);
+    opacity: 0.4;
+    font-size: {{ section.settings.input_font_size }}px;
+    line-height: 1;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-submit {
+    background: none;
+    border: none;
+    font-size: {{ section.settings.button_font_size }}px;
+    color: var(--dame-footer-newsletter-title-color);
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0.7;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-submit.has-input {
+    opacity: 1;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-submit.has-input:hover {
+    opacity: 0.7;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-success {
+    padding: 10px 0 0 0;
+    background-color: transparent;
+    color: var(--dame-footer-newsletter-title-color);
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-error {
+    padding: 15px;
+    background-color: {{ section.settings.error_bg_color }};
+    color: {{ section.settings.error_text_color }};
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  #footer-{{ section.id }} .dame-footer-links {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: {{ section.settings.columns_gap }}px;
+    padding-top: {{ section.settings.links_padding_top }}px;
+  }
+
+  #footer-{{ section.id }} .dame-footer-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #footer-{{ section.id }} .dame-column-title {
+    font-size: var(--dame-footer-column-title-size);
+    color: var(--dame-footer-column-title-color);
+    font-weight: {{ section.settings.column_title_font_weight }};
+    margin: 0 0 {{ section.settings.column_title_margin_bottom }}px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  #footer-{{ section.id }} .dame-column-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #footer-{{ section.id }} .dame-column-links li {
+    margin: 0;
+  }
+
+  #footer-{{ section.id }} .dame-column-links a {
+    font-size: var(--dame-footer-link-size);
+    color: var(--dame-footer-link-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block;
+    position: relative;
+  }
+
+  #footer-{{ section.id }} .dame-column-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--dame-footer-link-hover-color);
+    transition: width 0.3s ease-out;
+  }
+
+  #footer-{{ section.id }} .dame-column-links a:hover {
+    color: var(--dame-footer-link-hover-color);
+  }
+
+  #footer-{{ section.id }} .dame-column-links a:hover::after {
+    width: 100%;
+  }
+
+  #footer-{{ section.id }} .dame-footer-copyright {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #footer-{{ section.id }} .dame-copyright-text {
+    font-size: {{ section.settings.copyright_text_size }}px;
+    color: {{ section.settings.copyright_text_color }};
+    line-height: 1.6;
+  }
+
+  #footer-{{ section.id }} .dame-footer-dot {
+    width: {{ section.settings.dot_size }}px;
+    height: {{ section.settings.dot_size }}px;
+    background-color: {{ section.settings.dot_color }};
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  @media screen and (max-width: 989px) and (min-width: 750px) {
+    #footer-{{ section.id }} .dame-footer-links {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #footer-{{ section.id }} .dame-newsletter-section {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-title {
+      font-size: var(--dame-footer-newsletter-title-size-mobile);
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-form {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-input-group {
+      padding: {{ section.settings.input_padding_vertical }}px {{ section.settings.input_padding_horizontal | divided_by: 2 }}px;
+      gap: 15px;
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-input {
+      font-size: 16px;
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-separator {
+      font-size: 16px;
+    }
+
+    #footer-{{ section.id }} .dame-newsletter-submit {
+      font-size: 14px;
+    }
+
+    #footer-{{ section.id }} .dame-footer-links {
+      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+      gap: {{ section.settings.columns_gap_mobile }}px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterInput = document.querySelector('#footer-{{ section.id }} .dame-newsletter-input');
+    const submitButton = document.querySelector('#footer-{{ section.id }} .dame-newsletter-submit');
+
+    if (newsletterInput && submitButton) {
+      function updateButtonState() {
+        if (newsletterInput.value.trim().length > 0) {
+          submitButton.classList.add('has-input');
+        } else {
+          submitButton.classList.remove('has-input');
+        }
+      }
+
+      newsletterInput.addEventListener('input', updateButtonState);
+      updateButtonState();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Footer Dame",
+  "tag": "section",
+  "class": "section-footer-dame",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section Max Width",
+      "default": "1400px",
+      "info": "Example: 1400px or 100%"
+    },
+    {
+      "type": "text",
+      "id": "section_background_gradient",
+      "label": "Section Background Gradient",
+      "default": "linear-gradient(180deg, #FFF5F5 0%, #FFE8E0 100%)",
+      "info": "CSS gradient value"
+    },
+    {
+      "type": "header",
+      "content": "Decorative Circles"
+    },
+    {
+      "type": "range",
+      "id": "circle_1_size",
+      "min": 200,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Circle 1 Size",
+      "default": 600
+    },
+    {
+      "type": "text",
+      "id": "circle_1_gradient",
+      "label": "Circle 1 Gradient",
+      "default": "radial-gradient(circle, rgba(246, 201, 179, 0.4) 0%, transparent 70%)"
+    },
+    {
+      "type": "range",
+      "id": "circle_1_top",
+      "min": -500,
+      "max": 0,
+      "step": 10,
+      "unit": "px",
+      "label": "Circle 1 Top Position",
+      "default": -200
+    },
+    {
+      "type": "range",
+      "id": "circle_1_left",
+      "min": -500,
+      "max": 0,
+      "step": 10,
+      "unit": "px",
+      "label": "Circle 1 Left Position",
+      "default": -100
+    },
+    {
+      "type": "range",
+      "id": "circle_2_size",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Circle 2 Size",
+      "default": 800
+    },
+    {
+      "type": "text",
+      "id": "circle_2_gradient",
+      "label": "Circle 2 Gradient",
+      "default": "radial-gradient(circle, rgba(246, 201, 179, 0.3) 0%, transparent 70%)"
+    },
+    {
+      "type": "range",
+      "id": "circle_2_bottom",
+      "min": -600,
+      "max": 0,
+      "step": 10,
+      "unit": "px",
+      "label": "Circle 2 Bottom Position",
+      "default": -300
+    },
+    {
+      "type": "range",
+      "id": "circle_2_right",
+      "min": -500,
+      "max": 0,
+      "step": 10,
+      "unit": "px",
+      "label": "Circle 2 Right Position",
+      "default": -200
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS Classes",
+      "info": "Add custom classes separated by spaces"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Desktop",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Desktop",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Mobile",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Section",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "<p>Subscribe to our emails</p>"
+    },
+    {
+      "type": "range",
+      "id": "newsletter_title_size_desktop",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Desktop",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "newsletter_title_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Mobile",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "newsletter_title_color",
+      "label": "Title Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "newsletter_title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Form"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "range",
+      "id": "input_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Input Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input Border Color",
+      "default": "#624C63"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Input Border Radius",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "input_padding_vertical",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Input Padding Vertical",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "input_padding_horizontal",
+      "min": 20,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Input Padding Horizontal",
+      "default": 40
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "range",
+      "id": "input_font_size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Input Font Size",
+      "default": 34
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder_color",
+      "label": "Input Placeholder Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit Button Text",
+      "default": "Submit"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thank you for subscribing!"
+    },
+    {
+      "type": "color",
+      "id": "success_bg_color",
+      "label": "Success Message Background",
+      "default": "#D4EDDA"
+    },
+    {
+      "type": "color",
+      "id": "success_text_color",
+      "label": "Success Message Text Color",
+      "default": "#155724"
+    },
+    {
+      "type": "color",
+      "id": "error_bg_color",
+      "label": "Error Message Background",
+      "default": "#F8D7DA"
+    },
+    {
+      "type": "color",
+      "id": "error_text_color",
+      "label": "Error Message Text Color",
+      "default": "#721C24"
+    },
+    {
+      "type": "header",
+      "content": "Footer Links"
+    },
+    {
+      "type": "range",
+      "id": "links_padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Links Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Columns Desktop",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns Tablet",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns Mobile",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Columns Gap Desktop",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "columns_gap_mobile",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Columns Gap Mobile",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Column Titles"
+    },
+    {
+      "type": "range",
+      "id": "column_title_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Column Title Size",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "column_title_color",
+      "label": "Column Title Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "column_title_font_weight",
+      "label": "Column Title Font Weight",
+      "options": [
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "column_title_margin_bottom",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Column Title Margin Bottom",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Links"
+    },
+    {
+      "type": "range",
+      "id": "link_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Link Size",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link Hover Color",
+      "default": "#0000CC"
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "range",
+      "id": "copyright_text_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Copyright Text Size",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "copyright_text_color",
+      "label": "Copyright Text Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Dot Size",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#0000FF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title"
+        },
+        {
+          "type": "textarea",
+          "id": "links",
+          "label": "Links",
+          "info": "Format: Text|URL||Text|URL||Text|URL (use || to separate links)"
+        }
+      ]
+    },
+    {
+      "type": "copyright",
+      "name": "Copyright Column",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title",
+          "default": "Copyright"
+        },
+        {
+          "type": "richtext",
+          "id": "copyright_text",
+          "label": "Copyright Text",
+          "default": "<p>Dame Products, Inc<br>© 2024</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Dame",
+      "blocks": [
+        {
+          "type": "link_column",
+          "settings": {
+            "column_title": "Product",
+            "links": "Shop|/collections/all||Returns|/pages/returns||FAQs|/pages/faq||Rewards|/pages/rewards||Refer A Friend|/pages/refer"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "column_title": "About",
+            "links": "About Us|/pages/about||Contact Us|/pages/contact||Store Locator|/pages/stores||Careers|/pages/careers||Press|/pages/press"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "column_title": "Social",
+            "links": "Email|mailto:support@example.com||Facebook|https://facebook.com||Instagram|https://instagram.com||Twitter|https://twitter.com"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "column_title": "Terms",
+            "links": "Terms & Conditions|/pages/terms||Privacy Policy|/pages/privacy||Patent Info|/pages/patent"
+          }
+        },
+        {
+          "type": "copyright",
+          "settings": {
+            "column_title": "Copyright",
+            "copyright_text": "<p>Dame Products, Inc<br>© 2024</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

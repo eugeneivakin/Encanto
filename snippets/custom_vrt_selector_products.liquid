@@ -1,0 +1,41 @@
+{{ 'custom_vrt_selector-produucts.css' | asset_url | stylesheet_tag }}
+
+{%- if product.metafields.custom.color_variant_products -%}
+  {%- assign variant_products = product.metafields.custom.color_variant_products.value -%}
+  <div class="product-color-variants">
+    <p class="color-variants__label">Color:</p>
+    <div class="color-variants__swatches">
+
+      {{- product | link_to: product.url, class: 'color-swatch color-swatch--active', title: product.title -}}
+
+      {%- for variant_product in variant_products -%}
+        {%- if variant_product.url != product.url -%}
+          {%- assign is_available = false -%}
+          {%- for variant in variant_product.variants -%}
+            {%- if variant.available -%}
+              {%- assign is_available = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <a
+            href="{{ variant_product.url }}"
+            class="color-swatch{% if is_available == false %} color-swatch--soldout{% endif %}"
+            title="{{ variant_product.title }}"
+            aria-label="{{ variant_product.title }}"
+          >
+            <img
+              src="{{ variant_product.featured_image | image_url: width: 80 }}"
+              alt="{{ variant_product.title }}"
+              width="40"
+              height="40"
+            >
+            {%- if is_available == false -%}
+              <span class="color-swatch__soldout-line"></span>
+            {%- endif -%}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+{%- endif -%}

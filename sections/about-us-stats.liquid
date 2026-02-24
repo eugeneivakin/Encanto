@@ -1,0 +1,354 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="about-us-stats color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="about-us-stats__header">
+        <h2 class="about-us-stats__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+        {%- if section.settings.text != blank -%}
+          <div class="about-us-stats__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="about-us-stats__grid grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop">
+        {%- for block in section.blocks -%}
+          <div class="about-us-stats__item grid__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.number != blank -%}
+              <div class="about-us-stats__number" data-target="{{ block.settings.number }}">
+                0
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.suffix != blank -%}
+              <span class="about-us-stats__suffix">{{ block.settings.suffix }}</span>
+            {%- endif -%}
+
+            {%- if block.settings.label != blank -%}
+              <h3 class="about-us-stats__label">{{ block.settings.label }}</h3>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .about-us-stats__header {
+    text-align: center;
+    margin-bottom: 5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-us-stats__heading {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .about-us-stats__heading.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-us-stats__text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+  }
+
+  .about-us-stats__text.visible {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+
+  .about-us-stats__grid {
+    gap: 3rem;
+  }
+
+  .about-us-stats__item {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .about-us-stats__number {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .about-us-stats__suffix {
+    font-size: 4rem;
+    font-weight: 700;
+    vertical-align: top;
+  }
+
+  .about-us-stats__label {
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-us-stats__header {
+      margin-bottom: 4rem;
+    }
+
+    .about-us-stats__number {
+      font-size: 4.5rem;
+    }
+
+    .about-us-stats__suffix {
+      font-size: 3rem;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  function animateCounter(element) {
+    const target = parseInt(element.dataset.target);
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = target;
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 16);
+  }
+
+  function initCounters() {
+    const counters = document.querySelectorAll('.about-us-stats__number[data-target]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+          entry.target.classList.add('animated');
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+
+
+  function initHeaderAnimation() {
+    const statsSection = document.querySelector('.about-us-stats');
+    if (!statsSection) return;
+
+    const heading = statsSection.querySelector('.about-us-stats__heading');
+    const text = statsSection.querySelector('.about-us-stats__text');
+
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    if (heading) {
+      observer.observe(heading);
+    }
+    
+    if (text) {
+      observer.observe(text);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderAnimation);
+  } else {
+    initHeaderAnimation();
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "About Us Stats",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "By The Numbers"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Our achievements speak for themselves.</p>"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2",
+      "label": "Number of columns on mobile"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "100",
+          "info": "Enter a number (will animate on scroll)"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "info": "Optional suffix like +, %, K, etc."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Stat Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Stats",
+      "blocks": [
+        {
+          "type": "stat"
+        },
+        {
+          "type": "stat"
+        },
+        {
+          "type": "stat"
+        },
+        {
+          "type": "stat"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

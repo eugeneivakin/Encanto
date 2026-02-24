@@ -1,0 +1,37 @@
+{{ 'component-products-upsell.css' | asset_url | stylesheet_tag }}
+{{ 'component-products-upsell.css' | asset_url | stylesheet_tag }}
+
+{% assign products_to_show = block.settings.upsell_products_limit %}
+
+<div class="component-products-upsell" data-source="{{ block.settings.upsell_source }}">
+  {% unless block.settings.upsell_heading == blank %}
+    <h2 class="component-products-upsell__title">{{ block.settings.upsell_heading }}</h2>
+  {% endunless %}
+
+  {%- case block.settings.upsell_source -%}
+    {%- when 'shopify' -%}
+      <product-recommendations
+        class="component-products-upsell__grid"
+        data-url="{{ routes.product_recommendations_url }}?limit={{ products_to_show }}"
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}"
+      >
+        {% if recommendations.performed and recommendations.products_count > 0 %}
+          {% for recommendation in recommendations.products %}
+            {% if product.available %}
+              {% render 'products-upsell-card', product: recommendation %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </product-recommendations>
+    {%- when 'metafield' -%}
+      {% assign products_source = product.metafields.custom.color_variant_products.value %}
+      <div class="component-products-upsell__grid">
+        {% for product in products_source limit: products_to_show %}
+          {% if product.available %}
+            {% render 'products-upsell-card', product: product %}
+          {% endif %}
+        {% endfor %}
+      </div>
+  {%- endcase -%}
+</div>

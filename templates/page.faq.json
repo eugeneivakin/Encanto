@@ -1,0 +1,137 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collapsible_content_xQztbW": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_db9raR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How fast is delivery in Greater Vancouver?",
+            "icon": "question_mark",
+            "row_content": "<p>We offer express local delivery across Greater Vancouver.<br/><br/>Estimated delivery time is <strong>60–120 minutes</strong>, depending on location, traffic, and external conditions.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Px3bGd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer overnight delivery?",
+            "icon": "question_mark",
+            "row_content": "<p>Yes. Overnight express delivery is available in select areas.<br/><br/>Pricing depends on distance and time window and will be shown at checkout.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_LQFxnx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is your delivery discreet?",
+            "icon": "question_mark",
+            "row_content": "<p>Absolutely. All orders are delivered in <strong>plain, unmarked packaging</strong>.<br/><br/>Our couriers never disclose the contents of your order.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6NraE3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What areas do you deliver to?",
+            "icon": "question_mark",
+            "row_content": "<p>We deliver across <strong>Greater Vancouver</strong> and selected surrounding regions, including parts of the Fraser Valley and Sea-to-Sky Corridor.<br/><br/>A full list of delivery zones and pricing is available on our Delivery Policy page.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_niNbar": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I return intimate products?",
+            "icon": "question_mark",
+            "row_content": "<p>Due to hygiene and safety reasons, <strong>intimate products and sex toys are final sale</strong> and cannot be returned or exchanged unless they are defective.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_UyJXG6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I return intimate products?",
+            "icon": "question_mark",
+            "row_content": "<p>Due to hygiene and safety reasons, <strong>intimate products and sex toys are final sale</strong> and cannot be returned or exchanged unless they are defective.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GYzQUD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What if my item arrives damaged or defective?",
+            "icon": "question_mark",
+            "row_content": "<p>If you receive a defective item, please contact us within <strong>7 days of delivery</strong> with your order number and photos.<br/><br/>Approved defective items will be replaced.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6f76Bq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is my privacy protected?",
+            "icon": "question_mark",
+            "row_content": "<p>Yes. We respect your privacy at every step — from discreet packaging to secure handling of your personal information.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_TFAip7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need to confirm my age to shop?",
+            "icon": "question_mark",
+            "row_content": "<p>Yes. Our store is intended for customers <strong>18 years and older</strong>.<br/><br/>By using this website, you confirm that you meet the legal age requirement.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_db9raR",
+        "collapsible_row_Px3bGd",
+        "collapsible_row_LQFxnx",
+        "collapsible_row_6NraE3",
+        "collapsible_row_niNbar",
+        "collapsible_row_UyJXG6",
+        "collapsible_row_GYzQUD",
+        "collapsible_row_6f76Bq",
+        "collapsible_row_TFAip7"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "FAQs",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_xQztbW"
+  ]
+}

@@ -1,0 +1,31 @@
+<label class="card-product--upsell">
+  <div>
+    <span class="fake-checkbox">
+      {% render 'icon-check' %}
+      <input
+        type="checkbox"
+        name="checkbox-{{ product.id }}"
+        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      >
+    </span>
+  </div>
+  <div class="card-product__media-wrapper">
+    {% if product.selected_or_first_available_variant.featured_image != blank %}
+      {%- assign product_image = product.selected_or_first_available_variant.featured_image -%}
+    {% elsif product.featured_image != blank %}
+      {%- assign product_image = product.featured_image -%}
+    {% else %}
+      {%- assign product_image = 'product-1' | placeholder_svg_tag -%}
+    {% endif %}
+
+    <a href="{{ product.url }}">
+      {{ product_image | image_url: width: 200 | image_tag: class: 'card-product__media' }}
+    </a>
+  </div>
+  <div>
+    <h3 class="card-product__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    {% render 'price', product: product, price_class: 'price-small', show_compare_at_price: true %}
+  </div>
+</label>

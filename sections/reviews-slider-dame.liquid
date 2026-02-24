@@ -1,0 +1,975 @@
+<div id="reviews-{{ section.id }}" class="reviews-slider-wrapper {% if section.settings.custom_classes %}{{ section.settings.custom_classes }}{% endif %}">
+  <section class="dame-reviews-section">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="dame-reviews-header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="dame-reviews-title">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <div class="dame-reviews-subtitle">{{ section.settings.section_subtitle }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <slider-component class="slider-mobile-gutter">
+        <div class="dame-reviews-slider-container">
+          <div class="dame-reviews-slider slider slider--everywhere" id="Slider-{{ section.id }}" role="list">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'review' %}
+                  <div class="dame-review-card slider__slide" id="Slide-{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }} role="listitem">
+                    <div class="dame-review-content">
+                      {% if block.settings.show_stars %}
+                        <div class="dame-review-stars">
+                          {% for i in (1..block.settings.rating) %}
+                            <svg viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.99975 0L7.34678 4.14573H11.7059L8.17929 6.70793L9.52632 10.8537L5.99975 8.29146L2.47319 10.8537L3.82022 6.70793L0.293649 4.14573H4.65272L5.99975 0Z" fill="{{ section.settings.stars_color }}"/>
+                            </svg>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+
+                      {% if block.settings.review_text != blank %}
+                        <div class="dame-review-text">{{ block.settings.review_text }}</div>
+                      {% endif %}
+
+                      {% if block.settings.author_name != blank %}
+                        <p class="dame-review-author">{{ block.settings.author_name | upcase }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+
+          {% if section.settings.show_navigation %}
+            <div class="dame-reviews-navigation slider-buttons">
+              <button type="button" class="dame-nav-arrow slider-button slider-button--prev" name="previous" aria-label="Previous review">
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                </svg>
+              </button>
+              <button type="button" class="dame-nav-arrow slider-button slider-button--next" name="next" aria-label="Next review">
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                </svg>
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      </slider-component>
+    {% endif %}
+  </section>
+</div>
+
+<style>
+  :root {
+    --dame-reviews-max-width: {{ section.settings.max_width }};
+    --dame-reviews-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --dame-reviews-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --dame-reviews-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --dame-reviews-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --dame-reviews-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --dame-reviews-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --dame-reviews-title-color: {{ section.settings.title_color }};
+    --dame-reviews-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --dame-reviews-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --dame-reviews-subtitle-color: {{ section.settings.subtitle_color }};
+    --dame-reviews-text-size-desktop: {{ section.settings.review_text_size_desktop }}px;
+    --dame-reviews-text-size-mobile: {{ section.settings.review_text_size_mobile }}px;
+  }
+
+  .reviews-slider-wrapper {
+    background-color: {{ section.settings.section_background_color }};
+    padding-top: var(--dame-reviews-padding-top-desktop);
+    padding-bottom: var(--dame-reviews-padding-bottom-desktop);
+    padding-left: 0;
+    padding-right: 0;
+    overflow: visible;
+  }
+
+  @media screen and (max-width: 749px) {
+    .reviews-slider-wrapper {
+      padding-top: var(--dame-reviews-padding-top-mobile);
+      padding-bottom: var(--dame-reviews-padding-bottom-mobile);
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-header {
+    text-align: {{ section.settings.header_alignment }};
+    margin-bottom: {{ section.settings.header_margin_bottom }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-title {
+    font-size: var(--dame-reviews-title-size-desktop);
+    color: var(--dame-reviews-title-color);
+    font-weight: {{ section.settings.title_font_weight }};
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .dame-reviews-title p {
+    margin: 0;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-subtitle p {
+    font-size: var(--dame-reviews-subtitle-size-desktop);
+    color: var(--dame-reviews-subtitle-color);
+    margin: 0;
+    font-weight: {{ section.settings.subtitle_font_weight }};
+    letter-spacing: 0.2px;
+    opacity: 0.8;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-slider-container {
+    width: 100%;
+    position: relative;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-slider {
+    display: flex;
+    gap: {{ section.settings.cards_gap }}px;
+    padding: {{ section.settings.slider_padding_vertical }}px 0;
+    scroll-padding-left: {{ section.settings.slider_padding_horizontal }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-slider::after {
+    content: '';
+    width: 0;
+    padding-left: {{ section.settings.slider_padding_horizontal }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-card:first-child {
+    margin-left: {{ section.settings.slider_padding_horizontal }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-card {
+    flex: 0 0 auto;
+    width: calc((100% - (2 * {{ section.settings.cards_gap }}px)) / 3);
+    min-width: {{ section.settings.card_min_width }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-content {
+    background: {{ section.settings.card_bg_color }};
+    padding: {{ section.settings.card_padding }}px;
+    border-radius: {{ section.settings.card_border_radius }}px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    height: 100%;
+  }
+
+  #reviews-{{ section.id }} .dame-review-stars {
+    display: flex;
+    gap: {{ section.settings.stars_gap }}px;
+    margin-bottom: {{ section.settings.stars_margin_bottom }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-stars svg {
+    width: {{ section.settings.star_size }}px;
+    height: {{ section.settings.star_size }}px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-text {
+    font-size: var(--dame-reviews-text-size-desktop);
+    line-height: {{ section.settings.review_text_line_height }};
+    color: {{ section.settings.review_text_color }};
+    margin-bottom: {{ section.settings.text_margin_bottom }}px;
+    font-weight: {{ section.settings.review_text_font_weight }};
+    letter-spacing: -0.2px;
+  }
+
+  #reviews-{{ section.id }} .dame-review-author {
+    font-size: {{ section.settings.author_size }}px;
+    color: {{ section.settings.author_color }};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  #reviews-{{ section.id }} .dame-reviews-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: {{ section.settings.navigation_gap }}px;
+    padding: 20px 60px;
+  }
+
+  #reviews-{{ section.id }} .dame-nav-arrow {
+    width: {{ section.settings.arrow_size }}px;
+    height: {{ section.settings.arrow_size }}px;
+    background: {{ section.settings.arrow_bg_color }};
+    border: none;
+    cursor: pointer;
+    color: {{ section.settings.arrow_color }};
+    font-size: {{ section.settings.arrow_font_size }}px;
+    transition: transform 0.3s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #reviews-{{ section.id }} .dame-nav-arrow .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  #reviews-{{ section.id }} .dame-nav-arrow:hover {
+    transform: scale(1.2);
+    background: {{ section.settings.arrow_hover_bg_color }};
+  }
+
+  #reviews-{{ section.id }} .dame-nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: scale(1);
+  }
+
+  @media screen and (max-width: 749px) {
+    #reviews-{{ section.id }} .dame-reviews-header {
+      padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+      padding-right: {{ section.settings.slider_padding_horizontal_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-title {
+      font-size: var(--dame-reviews-title-size-mobile);
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-subtitle {
+      font-size: var(--dame-reviews-subtitle-size-mobile);
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-slider {
+      padding: {{ section.settings.slider_padding_vertical_mobile }}px 0;
+      scroll-padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-slider::after {
+      padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-review-card:first-child {
+      margin-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-review-card {
+      flex: 0 0 calc(100vw - ({{ section.settings.slider_padding_horizontal_mobile }}px * 2));
+      max-width: {{ section.settings.card_width_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-review-content {
+      padding: {{ section.settings.card_padding_mobile }}px;
+    }
+
+    #reviews-{{ section.id }} .dame-review-text {
+      font-size: var(--dame-reviews-text-size-mobile);
+    }
+  }
+</style>
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Reviews Slider Dame",
+  "tag": "section",
+  "class": "section-reviews-dame",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section Max Width",
+      "default": "1400px",
+      "info": "Example: 1400px or 100%"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#F8F8F8"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS Classes",
+      "info": "Add custom classes separated by spaces"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Desktop",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Desktop",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right Mobile",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "richtext",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "<p>What Customers Say</p>"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Desktop",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Mobile",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "richtext",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "<p>Real reviews from satisfied customers</p>"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Desktop",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font_weight",
+      "label": "Subtitle Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Header Margin Bottom",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "cards_per_view",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Card Width Percentage",
+      "default": 35,
+      "info": "33% shows 3 cards at once"
+    },
+    {
+      "type": "range",
+      "id": "card_min_width",
+      "min": 300,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Min Width",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "min": 250,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width Mobile",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Cards",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_vertical",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Slider Padding Vertical Desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_horizontal",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Slider Padding Horizontal Desktop",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_vertical_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Slider Padding Vertical Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_horizontal_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Slider Padding Horizontal Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "inactive_scale",
+      "min": 0.7,
+      "max": 1.0,
+      "step": 0.1,
+      "label": "Inactive Card Scale",
+      "default": 0.9
+    },
+    {
+      "type": "range",
+      "id": "inactive_opacity",
+      "min": 0.3,
+      "max": 1.0,
+      "step": 0.1,
+      "label": "Inactive Card Opacity",
+      "default": 0.7
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Padding Desktop",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Padding Mobile",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Stars Settings"
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars Color",
+      "default": "#0029FF"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Star Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "stars_gap",
+      "min": 2,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "label": "Gap Between Stars",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "stars_margin_bottom",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Stars Margin Bottom",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Review Text"
+    },
+    {
+      "type": "range",
+      "id": "review_text_size_desktop",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Review Text Size Desktop",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "review_text_size_mobile",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Review Text Size Mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "review_text_color",
+      "label": "Review Text Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "select",
+      "id": "review_text_font_weight",
+      "label": "Review Text Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "review_text_line_height",
+      "min": 1.2,
+      "max": 2.0,
+      "step": 0.1,
+      "label": "Review Text Line Height",
+      "default": 1.7
+    },
+    {
+      "type": "range",
+      "id": "text_margin_bottom",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Text Margin Bottom",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Author"
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Author Name Size",
+      "default": 11
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author Name Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Navigation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "navigation_gap",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Navigation Elements",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "min": 30,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Arrow Size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "arrow_font_size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Arrow Font Size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow Color",
+      "default": "#0000FF"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_bg_color",
+      "label": "Arrow Hover Background",
+      "default": "rgba(0, 0, 255, 0.1)"
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Dot Size",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "dots_gap",
+      "min": 5,
+      "max": 20,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap Between Dots",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#D0D0D0"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active Dot Color",
+      "default": "#0000FF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_stars",
+          "label": "Show Stars",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating (Stars)",
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "review_text",
+          "label": "Review Text"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews Slider Dame",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "review_text": "<p>\"I have 3 of these vibrators and I maybe want more? How much better of a review can you get! I never realized I needed more than one but I'm hooked! They aren't just for solo play either!\"</p>",
+            "author_name": "Alessandra T."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "review_text": "<p>\"This is amazing. This beautiful little device fits perfectly in your hand and the smooth texture is very pleasing to the touch.\"</p>",
+            "author_name": "Jacinta N."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "review_text": "<p>\"This toy is GREAT. I do not get off from penetration, but companied with penetration, it's the best sex I've ever had!\"</p>",
+            "author_name": "Tisha G."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
