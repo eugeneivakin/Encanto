@@ -1,0 +1,14 @@
+@use "mixins/media" as *;
+
+.section--about-us-mission {
+  .about-us-mission__values {
+    &:only-child {
+      margin-top: 0;
+    }
+  }
+
+  .about-us-mission__value-item:hover .value-item__wrapper {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+}

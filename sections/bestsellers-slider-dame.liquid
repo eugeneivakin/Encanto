@@ -89,21 +89,6 @@
                   {% if product.has_only_default_variant == false %}
                     <div class="dame-product-options">
                       {% for option in product.options_with_values %}
-                        {% comment %}
-                        {% if option.name == 'Color' or option.name == 'Цвет' %}
-                          <div class="dame-color-swatches">
-                            {% for value in option.values %}
-                              <span
-                                class="dame-color-swatch"
-                                style="background-color: {{ value | handle }};"
-                                title="{{ value }}"
-                              ></span>
-                            {% endfor %}
-                          </div>
-                        {% endif %}
-
-                        {% endcomment %}
-
                         {% if option.name == 'Color' or option.name == 'Colour' %}
                           <div class="dame-color-swatches">
                             {% render 'x-product-variant-options',
