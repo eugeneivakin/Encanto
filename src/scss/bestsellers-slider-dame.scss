@@ -1,0 +1,35 @@
+@use "mixins/media" as *;
+
+.section-bestsellers-dame {
+  .dame-product-info {
+    flex-grow: 1;
+  }
+
+  .dame-product-name {
+    + .button {
+      margin-top: auto;
+    }
+  }
+
+  .dame-color-swatches {
+    .swatch-input__input {
+      left: 0;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+    }
+
+    .swatch-input__label {
+      pointer-events: none;
+      position: relative;
+    }
+
+    .swatch {
+      background: var(--swatch--background);
+      border-radius: 100%;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

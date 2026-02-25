@@ -11,7 +11,6 @@
   "sections": {
     "image_hero_banner_xNWNbc": {
       "type": "image-hero-banner",
-      "disabled": true,
       "name": "Image Hero Banner",
       "settings": {
         "custom_classes": "",
@@ -39,6 +38,51 @@
         "content_max_width": 100,
         "content_max_width_mobile": 95,
         "text_color": "#f8f8f8"
+      }
+    },
+    "about_us_mission_Df84rG": {
+      "type": "about-us-mission",
+      "blocks": {
+        "value_aNdrjy": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Premium quality",
+            "text": "<p>Our cosmetics are of premium quality, we use high-quality products</p>"
+          }
+        },
+        "value_xUNjXR": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Eco-materials",
+            "text": "<p>Our mission is to protect the planet from excessive plastic use.</p>"
+          }
+        },
+        "value_DbaPdH": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Worldwide delivery",
+            "text": "<p>We deliver our products anywhere in the world</p>"
+          }
+        }
+      },
+      "block_order": [
+        "value_aNdrjy",
+        "value_xUNjXR",
+        "value_DbaPdH"
+      ],
+      "name": "About Us Mission",
+      "settings": {
+        "image_ratio": "adapt",
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "text": "",
+        "color_scheme": "",
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "categories_grid_dame_6KPq43": {
@@ -135,7 +179,6 @@
         "category_VjCcE7",
         "category_yFqkMn"
       ],
-      "disabled": true,
       "name": "Categories Grid Dame",
       "settings": {
         "section_background_color": "#ffffff",
@@ -180,7 +223,6 @@
     },
     "bestsellers_slider_dame_N3BKD7": {
       "type": "bestsellers-slider-dame",
-      "disabled": true,
       "name": "Bestsellers Slider",
       "settings": {
         "max_width": "1400px",
@@ -282,7 +324,6 @@
         "heading_E3intD",
         "text_gWdjLY"
       ],
-      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/IMG_0616.jpg",
@@ -298,35 +339,6 @@
         "color_scheme": "scheme-4",
         "padding_top": 40,
         "padding_bottom": 0
-      }
-    },
-    "x_featured_collection_QaEwJK": {
-      "type": "x-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "collection": "beauty-and-makeup",
-        "products_to_show": 8,
-        "title": "New Arivals",
-        "heading_size": "h0",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": true,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": "standard",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "bestsellers_slider_dame_CWbQeY": {
@@ -408,51 +420,6 @@
         "price_sale_color": "#807f83",
         "discount_badge_bg": "#ff4444",
         "discount_badge_color": "#ffffff"
-      }
-    },
-    "about_us_mission_Df84rG": {
-      "type": "about-us-mission",
-      "blocks": {
-        "value_aNdrjy": {
-          "type": "value",
-          "settings": {
-            "icon": "",
-            "title": "Premium quality",
-            "text": "<p>Our cosmetics are of premium quality, we use high-quality products</p>"
-          }
-        },
-        "value_xUNjXR": {
-          "type": "value",
-          "settings": {
-            "icon": "",
-            "title": "Eco-materials",
-            "text": "<p>Our mission is to protect the planet from excessive plastic use.</p>"
-          }
-        },
-        "value_DbaPdH": {
-          "type": "value",
-          "settings": {
-            "icon": "",
-            "title": "Worldwide delivery",
-            "text": "<p>We deliver our products anywhere in the world</p>"
-          }
-        }
-      },
-      "block_order": [
-        "value_aNdrjy",
-        "value_xUNjXR",
-        "value_DbaPdH"
-      ],
-      "name": "About Us Mission",
-      "settings": {
-        "image_ratio": "adapt",
-        "caption": "",
-        "heading": "What We Stand For",
-        "heading_size": "h1",
-        "text": "<p>Our mission is to deliver exceptional products and services that enrich the lives of our customers while maintaining the highest standards of quality.</p>",
-        "color_scheme": "",
-        "padding_top": 56,
-        "padding_bottom": 56
       }
     },
     "reviews_slider_dame_i4PDnN": {
@@ -630,12 +597,11 @@
   },
   "order": [
     "image_hero_banner_xNWNbc",
+    "about_us_mission_Df84rG",
     "categories_grid_dame_6KPq43",
     "bestsellers_slider_dame_N3BKD7",
     "image_with_text_jY3CmK",
-    "x_featured_collection_QaEwJK",
     "bestsellers_slider_dame_CWbQeY",
-    "about_us_mission_Df84rG",
     "reviews_slider_dame_i4PDnN",
     "ss_simple_faq_bmfLRg"
   ]
