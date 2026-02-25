@@ -1,1 +1,90 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","blocks":{"image_VFx4rE":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/logo.png","image_width":100,"alignment":""}},"text_8Gb9hK":{"type":"text","settings":{"heading":"<strong>About CTR Group<\/strong>","subtext":"<p>We dare to be different <br\/>and we invite you to do <br\/>the same.  We'd love you <br\/>to join us on this colourful <br\/>adventure of being you. <br\/>You are here to be yourself. <br\/>Fully and unapologetically.<\/p><p>Now, let's show to the world what we are made of!<\/p>"}},"text_86Bzeg":{"type":"text","settings":{"heading":"<strong>Quick links<\/strong>","subtext":"<p>Search<br\/>About us<br\/>Contact Us<br\/>Sale<\/p>"}},"text_EbxbpM":{"type":"text","settings":{"heading":"<strong>Shop<\/strong>","subtext":"<p>All Collections<br\/>Shadows Collections<br\/>Brush Collections<br\/><\/p>"}}},"block_order":["image_VFx4rE","text_8Gb9hK","text_86Bzeg","text_EbxbpM"],"settings":{"color_scheme":"scheme-1","newsletter_enable":true,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":false,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":24,"padding_top":36,"padding_bottom":36}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "image_VFx4rE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo.png",
+            "image_width": 100,
+            "alignment": ""
+          }
+        },
+        "text_8Gb9hK": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>About CTR Group</strong>",
+            "subtext": "<p>We dare to be different <br/>and we invite you to do <br/>the same.  We'd love you <br/>to join us on this colourful <br/>adventure of being you. <br/>You are here to be yourself. <br/>Fully and unapologetically.</p><p>Now, let's show to the world what we are made of!</p>"
+          }
+        },
+        "text_86Bzeg": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "heading": "<strong>Quick links</strong>",
+            "subtext": "<p>Search<br/>About us<br/>Contact Us<br/>Sale</p>"
+          }
+        },
+        "link_list_ErjwP3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<strong>Quick links</strong>",
+            "menu": "quick-links"
+          }
+        },
+        "text_EbxbpM": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "heading": "<strong>Shop</strong>",
+            "subtext": "<p>All Collections<br/>Shadows Collections<br/>Brush Collections<br/></p>"
+          }
+        },
+        "link_list_pMCb6B": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<strong>Shop</strong>",
+            "menu": "shop"
+          }
+        }
+      },
+      "block_order": [
+        "image_VFx4rE",
+        "text_8Gb9hK",
+        "text_86Bzeg",
+        "link_list_ErjwP3",
+        "text_EbxbpM",
+        "link_list_pMCb6B"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 24,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
