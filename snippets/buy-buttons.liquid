@@ -99,13 +99,12 @@
         </div>
       {%- endform -%}
 
-      {%- if shop.enabled_payment_types != empty -%}
-        <div class="product-payment-icons">
-          {%- for type in shop.enabled_payment_types -%}
-            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
+      <div class="product-payment-icons">
+        {%- assign payment_types = 'visa,master,paypal,american_express,apple_pay,google_pay,maestro' | split: ',' -%}
+        {%- for type in payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+        {%- endfor -%}
+      </div>
 
     </product-form>
   {%- else -%}
