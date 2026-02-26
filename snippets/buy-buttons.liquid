@@ -98,6 +98,15 @@
           {%- endif -%}
         </div>
       {%- endform -%}
+
+      {%- if shop.enabled_payment_types != empty -%}
+        <div class="product-payment-icons">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
     </product-form>
   {%- else -%}
     <div class="product-form">
