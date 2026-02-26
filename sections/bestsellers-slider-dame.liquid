@@ -1,3 +1,5 @@
+{{ 'bestsellers-slider-dame.css' | asset_url | stylesheet_tag }}
+
 <div
   id="bestsellers-{{ section.id }}"
   class="bestsellers-slider-wrapper {% if section.settings.custom_classes %}{{ section.settings.custom_classes }}{% endif %}"
@@ -26,7 +28,12 @@
           {% endif %}
 
           {% if section.settings.show_view_all and section.settings.button_text != blank %}
-            <a href="{{ section.settings.button_url }}" class="dame-see-all-btn">
+            {% if section.settings.button_url != blank %}
+              {% assign button_url = section.settings.button_url %}
+            {% else %}
+              {% assign button_url = section.settings.collection.url %}
+            {% endif %}
+            <a href="{{ button_url }}" class="dame-see-all-btn">
               {{ section.settings.button_text }}
             </a>
           {% endif %}
@@ -82,15 +89,13 @@
                   {% if product.has_only_default_variant == false %}
                     <div class="dame-product-options">
                       {% for option in product.options_with_values %}
-                        {% if option.name == 'Color' or option.name == 'Цвет' %}
+                        {% if option.name == 'Color' or option.name == 'Colour' %}
                           <div class="dame-color-swatches">
-                            {% for value in option.values %}
-                              <span
-                                class="dame-color-swatch"
-                                style="background-color: {{ value | handle }};"
-                                title="{{ value }}"
-                              ></span>
-                            {% endfor %}
+                            {% render 'x-product-variant-options',
+                              product: product,
+                              option: option,
+                              picker_type: 'swatch'
+                            %}
                           </div>
                         {% endif %}
                       {% endfor %}
@@ -172,7 +177,6 @@
   }
 
   #bestsellers-{{ section.id }} .dame-bestsellers-header {
-    max-width: none;
     margin-bottom: {{ section.settings.header_margin_bottom }}px;
   }
 
@@ -242,12 +246,6 @@
     margin: 0;
     font-weight: {{ section.settings.subtitle_font_weight }};
     letter-spacing: 0.2px;
-  }
-
-  #bestsellers-{{ section.id }} .dame-slider-container {
-    max-width: none;
-    position: relative;
-    overflow: visible;
   }
 
   #bestsellers-{{ section.id }} .dame-products-slider {
