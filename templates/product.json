@@ -166,7 +166,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/photo_52_2025-09-17_16-50-41.jpg",
-            "url": "shopify://collections/eyebrow-care",
+            "url": "shopify://collections/eyebrow",
             "hide_mobile": false
           }
         },
@@ -174,7 +174,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/W0588_2.jpg",
-            "url": "shopify://collections/eyebrow-care",
+            "url": "shopify://collections/eyebrow",
             "hide_mobile": false
           }
         },
@@ -198,7 +198,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/SnapInsta.to_622049220_18088014299026719_8807335340939288482_n_1.jpg",
-            "url": "shopify://collections/eyebrow-care",
+            "url": "shopify://collections/eyebrow",
             "hide_mobile": false
           }
         }
