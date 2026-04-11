@@ -17,121 +17,83 @@
         "padding_bottom": 28
       }
     },
-    "collapsible_content_xQztbW": {
-      "type": "collapsible-content",
+    "ss_simple_faq_bBcdwY": {
+      "type": "ss-simple-faq",
       "blocks": {
-        "collapsible_row_db9raR": {
-          "type": "collapsible_row",
+        "text_EHrTqh": {
+          "type": "text",
           "settings": {
-            "heading": "How fast is delivery in Greater Vancouver?",
-            "icon": "question_mark",
-            "row_content": "<p>We offer express local delivery across Greater Vancouver.<br/><br/>Estimated delivery time is <strong>60–120 minutes</strong>, depending on location, traffic, and external conditions.</p>",
-            "page": ""
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Yes, we provide free standard shipping on all orders over $100. For orders under $100, a small shipping fee applies, which will be shown at checkout.</p>"
           }
         },
-        "collapsible_row_Px3bGd": {
-          "type": "collapsible_row",
+        "text_8yDhxc": {
+          "type": "text",
           "settings": {
-            "heading": "Do you offer overnight delivery?",
-            "icon": "question_mark",
-            "row_content": "<p>Yes. Overnight express delivery is available in select areas.<br/><br/>Pricing depends on distance and time window and will be shown at checkout.</p>",
-            "page": ""
+            "question": "What is your refund policy?",
+            "answer": "<p>If you’re not completely satisfied with your purchase, you can return it within 14 for a full refund. Please ensure the item is unused and in its original packaging.</p>"
           }
         },
-        "collapsible_row_LQFxnx": {
-          "type": "collapsible_row",
+        "text_JBEThg": {
+          "type": "text",
           "settings": {
-            "heading": "Is your delivery discreet?",
-            "icon": "question_mark",
-            "row_content": "<p>Absolutely. All orders are delivered in <strong>plain, unmarked packaging</strong>.<br/><br/>Our couriers never disclose the contents of your order.</p>",
-            "page": ""
+            "question": "Can I exchange a product if it doesn’t fit or match my expectations?",
+            "answer": "<p>Absolutely! If a product doesn’t meet your expectations, you can exchange it for a different size, color, or item within 30 days of purchase. Simply contact our customer support team with your order number and photos of the item. We’ll arrange a prepaid return label and send your replacement as soon as we receive the original item.</p>"
           }
         },
-        "collapsible_row_6NraE3": {
-          "type": "collapsible_row",
+        "text_hXfKYR": {
+          "type": "text",
           "settings": {
-            "heading": "What areas do you deliver to?",
-            "icon": "question_mark",
-            "row_content": "<p>We deliver across <strong>Greater Vancouver</strong> and selected surrounding regions, including parts of the Fraser Valley and Sea-to-Sky Corridor.<br/><br/>A full list of delivery zones and pricing is available on our Delivery Policy page.</p>",
-            "page": ""
+            "question": "How can I contact customer support?",
+            "answer": "<p>Our customer support team is here to help! You can reach us via email at support@encantoshop.es, through our contact form on the website, or via our social media channels. We typically respond within 24 hours during business days. For urgent matters, please include ‘URGENT’ in your subject line.</p>"
           }
         },
-        "collapsible_row_niNbar": {
-          "type": "collapsible_row",
+        "text_T7JA4x": {
+          "type": "text",
           "settings": {
-            "heading": "Can I return intimate products?",
-            "icon": "question_mark",
-            "row_content": "<p>Due to hygiene and safety reasons, <strong>intimate products and sex toys are final sale</strong> and cannot be returned or exchanged unless they are defective.</p>",
-            "page": ""
+            "question": "Are your products high quality?",
+            "answer": "<p>Yes, we’re committed to offering only high-quality products. All items are carefully selected and tested before being added to our store. We work with trusted suppliers and manufacturers to ensure durability and customer satisfaction. If you’re not satisfied with the quality, we offer a full refund.</p>"
           }
         },
-        "collapsible_row_UyJXG6": {
-          "type": "collapsible_row",
+        "text_JaeeCt": {
+          "type": "text",
           "settings": {
-            "heading": "Can I return intimate products?",
-            "icon": "question_mark",
-            "row_content": "<p>Due to hygiene and safety reasons, <strong>intimate products and sex toys are final sale</strong> and cannot be returned or exchanged unless they are defective.</p>",
-            "page": ""
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery. International orders may take 10-21 business days depending on the destination. You’ll receive a tracking number via email once your order ships.</p>"
           }
         },
-        "collapsible_row_GYzQUD": {
-          "type": "collapsible_row",
+        "text_wLhcae": {
+          "type": "text",
           "settings": {
-            "heading": "What if my item arrives damaged or defective?",
-            "icon": "question_mark",
-            "row_content": "<p>If you receive a defective item, please contact us within <strong>7 days of delivery</strong> with your order number and photos.<br/><br/>Approved defective items will be replaced.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_6f76Bq": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Is my privacy protected?",
-            "icon": "question_mark",
-            "row_content": "<p>Yes. We respect your privacy at every step — from discreet packaging to secure handling of your personal information.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_TFAip7": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Do I need to confirm my age to shop?",
-            "icon": "question_mark",
-            "row_content": "<p>Yes. Our store is intended for customers <strong>18 years and older</strong>.<br/><br/>By using this website, you confirm that you meet the legal age requirement.</p>",
-            "page": ""
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and other digital payment methods. All transactions are secure and encrypted to protect your information.</p>"
           }
         }
       },
       "block_order": [
-        "collapsible_row_db9raR",
-        "collapsible_row_Px3bGd",
-        "collapsible_row_LQFxnx",
-        "collapsible_row_6NraE3",
-        "collapsible_row_niNbar",
-        "collapsible_row_UyJXG6",
-        "collapsible_row_GYzQUD",
-        "collapsible_row_6f76Bq",
-        "collapsible_row_TFAip7"
+        "text_EHrTqh",
+        "text_8yDhxc",
+        "text_JBEThg",
+        "text_hXfKYR",
+        "text_T7JA4x",
+        "text_JaeeCt",
+        "text_wLhcae"
       ],
-      "name": "t:sections.collapsible_content.presets.name",
+      "name": "SS - FAQ #1",
       "settings": {
-        "caption": "",
-        "heading": "FAQs",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "container_color_scheme": "",
-        "color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Frequently Asked Questions",
+        "icon_color": "#000000",
+        "hover_color": "#000000",
+        "question_color": "#000000",
+        "background_color": "#f5f5f5",
+        "answer_color": "#737373",
+        "answer_bg_color": "#f5f5f5",
+        "questions-font-size": 1.5
       }
     }
   },
   "order": [
     "main",
-    "collapsible_content_xQztbW"
+    "ss_simple_faq_bBcdwY"
   ]
 }

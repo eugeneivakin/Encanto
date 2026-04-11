@@ -1,0 +1,560 @@
+/* ================================================================
+   dame-product-card.css
+   Shared styles for .dame-product-card used in bestsellers slider
+   and collection grid. Section-specific overrides use CSS custom
+   properties set on the containing section element.
+   ================================================================ */
+
+/* Default custom properties */
+:root {
+  --dame-card-image-height: 300px;
+  --dame-card-image-height-mobile: 220px;
+  --dame-card-product-name-color: #111;
+  --dame-card-product-name-size: 20px;
+  --dame-card-product-name-size-mobile: 18px;
+  --dame-card-product-name-font-weight: 600;
+  --dame-card-discount-badge-bg: #FF4444;
+  --dame-card-discount-badge-color: #fff;
+  --dame-card-stars-color: #FFD700;
+  --dame-card-reviews-color: #666;
+  --dame-card-sale-price-color: #D32F2F;
+  --dame-card-original-price-color: #999;
+}
+
+/* ----------------------------------------------------------------
+   Product grid — convert to CSS Grid to enable subgrid alignment
+   ---------------------------------------------------------------- */
+.product-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr); /* mobile default */
+  grid-auto-rows: auto;
+  row-gap: 0;
+  align-items: start;
+}
+
+/* Mobile column counts (≤989px) */
+.product-grid.grid--1-col-tablet-down { grid-template-columns: 1fr; }
+.product-grid.grid--2-col-tablet-down { grid-template-columns: repeat(2, 1fr); }
+.product-grid.grid--3-col-tablet-down { grid-template-columns: repeat(3, 1fr); }
+
+/* Desktop column counts (≥990px) */
+@media screen and (min-width: 990px) {
+  .product-grid.grid--2-col-desktop { grid-template-columns: repeat(2, 1fr); }
+  .product-grid.grid--3-col-desktop { grid-template-columns: repeat(3, 1fr); }
+  .product-grid.grid--4-col-desktop { grid-template-columns: repeat(4, 1fr); }
+  .product-grid.grid--5-col-desktop { grid-template-columns: repeat(5, 1fr); }
+  .product-grid.grid--6-col-desktop { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Neutralize flex-based width calculations */
+.product-grid > .grid__item {
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Grid item: participate in subgrid across 6 rows (5 content + 1 spacer) */
+.grid__item:has(.dame-product-card) {
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+  padding-top: 10px; /* reserve space for hover translateY(-5px) lift */
+  padding-bottom: 0 !important; /* spacing now handled by .dame-card-row-spacer */
+}
+
+.grid__item .dame-product-card {
+  min-width: 0;
+}
+
+/* ----------------------------------------------------------------
+   Card base — subgrid across 6 rows
+   ---------------------------------------------------------------- */
+.dame-product-card {
+  position: relative;
+  transition: transform 0.3s;
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+}
+
+.dame-product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ----------------------------------------------------------------
+   Product image
+   ---------------------------------------------------------------- */
+.dame-product-image-link {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  /* border-radius: var(--media-radius, 8px); */
+}
+
+.dame-product-image {
+  width: 100%;
+  height: var(--dame-card-image-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.dame-product-img,
+.dame-product-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.dame-product-image-link:hover .dame-product-img {
+  transform: scale(1.05);
+}
+
+/* ----------------------------------------------------------------
+   Discount badge
+   ---------------------------------------------------------------- */
+.dame-discount-badge-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--dame-card-discount-badge-bg, #FF4444);
+  color: var(--dame-card-discount-badge-color, #fff);
+  padding: 2px 6px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.dame-discount-badge {
+  display: inline-block;
+}
+
+/* ----------------------------------------------------------------
+   Badges (sold-out, bestseller overlays)
+   ---------------------------------------------------------------- */
+.dame-product-badges {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dame-badge {
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------
+   Product info block — transparent wrapper, children go into subgrid rows
+   ---------------------------------------------------------------- */
+.dame-product-info {
+  display: contents;
+}
+
+.dame-product-card .button {
+  font-size: 13px;
+  padding: 0.6rem 1.4rem;
+  letter-spacing: 0.5px;
+  min-height: 38px;
+  line-height: 1.2;
+}
+
+/* ----------------------------------------------------------------
+   Rating / reviews
+   ---------------------------------------------------------------- */
+.dame-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dame-product-stars {
+  color: var(--dame-card-stars-color, #F6BD00);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.dame-product-stars svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dame-product-reviews {
+  font-size: 12px;
+  color: var(--dame-card-reviews-color, #666);
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+/* ----------------------------------------------------------------
+   Product name
+   ---------------------------------------------------------------- */
+.dame-product-name {
+  font-size: 15px !important;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.3px;
+  line-height: 1.45;
+}
+
+@media screen and (max-width: 749px) {
+  .dame-product-name {
+    font-size: 13px !important;
+  }
+}
+
+.dame-product-name a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--dame-card-product-name-color, #111);
+  text-decoration: none;
+}
+
+.dame-product-name a:hover {
+  opacity: 0.8;
+}
+
+/* ----------------------------------------------------------------
+   Price
+   ---------------------------------------------------------------- */
+.dame-product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.dame-price-current {
+  color: var(--dame-card-product-name-color, #111);
+}
+
+.dame-price-sale {
+  color: #111;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.dame-price-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--dame-card-discount-badge-bg, #FF4444);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.dame-price-original {
+  text-decoration: line-through;
+  color: var(--dame-card-original-price-color, #999);
+  font-size: 13px;
+  font-weight: 400;
+  margin-right: 4px;
+}
+
+/* ----------------------------------------------------------------
+   Color swatches
+   ---------------------------------------------------------------- */
+.dame-product-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dame-color-swatches {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 4px;
+  margin: -4px;
+}
+
+.dame-color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, outline 0.2s ease;
+  display: inline-block;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  /* box-shadow: inset 0 0 0 1px #fff; */
+  outline-offset: 1px;
+  outline: 1px solid transparent;
+}
+
+.dame-color-swatch:hover {
+
+  outline-color: #999;
+
+
+}
+
+.dame-color-swatch--active,
+.dame-color-swatch--active:hover {
+
+  outline-color: #111;
+
+
+}
+
+/* ----------------------------------------------------------------
+   Mobile
+   ---------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .dame-product-image {
+    height: var(--dame-card-image-height-mobile, 220px);
+  }
+
+  .dame-product-info .button {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .button {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .product-grid {
+    --grid-mobile-horizontal-spacing: 12px;
+  }
+
+  .dame-product-rating {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .dame-product-reviews {
+    flex-basis: 100%;
+  }
+
+  .dame-price-badge {
+    display: none !important;
+  }
+
+  .dame-product-image-wrapper .dame-discount-badge-overlay {
+    display: inline-flex !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Footer overrides — premium sizing
+   ---------------------------------------------------------------- */
+.list-payment .icon {
+  width: 36px;
+  height: 22px;
+}
+
+.footer-block__heading.inline-richtext {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------
+   Hover image swap
+   ---------------------------------------------------------------- */
+.dame-product-img--primary {
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.dame-product-img--hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dame-product-card.has-hover-image:hover .dame-product-img--primary {
+  opacity: 0;
+}
+
+.dame-product-card:hover .dame-product-img--hover {
+  opacity: 1;
+}
+
+/* Cancel scale on hover since we do opacity swap instead */
+.dame-product-image-link:hover .dame-product-img--primary {
+  transform: scale(1.02);
+}
+
+/* ----------------------------------------------------------------
+   Quick Buy overlay
+   ---------------------------------------------------------------- */
+.dame-quick-buy-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 16px 14px;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dame-product-card:hover .dame-quick-buy-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dame-quick-buy-btn {
+  display: inline-block;
+  background: #fff;
+  color: #111;
+  border: none;
+  padding: 11px 32px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 32px;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  line-height: 1;
+}
+
+.dame-quick-buy-btn:hover {
+  background: #111;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.dame-quick-buy-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  transform: none;
+}
+
+/* Mobile: hide Quick Buy overlay, show ATC icon button on image */
+@media screen and (max-width: 749px) {
+  .dame-quick-buy-overlay {
+    display: none;
+  }
+  .dame-atc-mobile-wrapper {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 5;
+    display: flex !important;
+    width: fit-content !important;
+  }
+  /* Unwrap modal-opener so it doesn't stretch the button */
+  .dame-atc-mobile-wrapper modal-opener {
+    display: contents;
+  }
+  .dame-atc-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    max-width: 36px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+    flex-shrink: 0;
+    background: #fff !important;
+    color: #111 !important;
+    border: 1px solid transparent !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+    outline: none !important;
+  }
+  .dame-atc-icon-btn::before,
+  .dame-atc-icon-btn::after {
+    display: none !important;
+  }
+  .dame-atc-icon-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0;
+    pointer-events: none;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .dame-atc-mobile-wrapper {
+    display: none;
+  }
+}
+
+/* Image wrapper for overlay outside <a> */
+.dame-product-image-wrapper {
+  position: relative;
+  grid-row: 1;
+  padding-bottom: 8px;
+}
+
+/* ----------------------------------------------------------------
+   Subgrid row assignments for info elements
+   ---------------------------------------------------------------- */
+.dame-product-rating  { grid-row: 2; padding-bottom: 4px; align-self: start; }
+.dame-product-name    { grid-row: 3; padding-bottom: 6px; align-self: start; }
+.dame-product-price   { grid-row: 4; padding-bottom: 6px; align-self: start; }
+.dame-product-options { grid-row: 5; align-self: start; }
+
+/* Hidden placeholder keeps review row height consistent */
+.dame-product-rating--empty { visibility: hidden; }
+
+/* Spacer row creates between-card-group gap (collection grids only) */
+.dame-card-row-spacer {
+  grid-row: 6;
+  height: var(--grid-desktop-vertical-spacing, 20px);
+}
+
+@media screen and (max-width: 749px) {
+  .dame-card-row-spacer {
+    height: var(--grid-mobile-vertical-spacing, 10px);
+  }
+}
+
+/* Hide spacer inside sliders — no between-row gap needed there */
+.dame-products-slider .dame-card-row-spacer {
+  display: none;
+}

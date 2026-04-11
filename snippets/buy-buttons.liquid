@@ -60,6 +60,52 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
+        <style>
+          .shopify-payment-button__more-options,
+          .shopify-payment-button__separator {
+            display: none !important;
+          }
+          .shopify-payment-button {
+            width: 100%;
+          }
+          .shopify-payment-button__button {
+            width: 100%;
+          }
+          .shopify-payment-button__button > button,
+          .shopify-payment-button__button > a {
+            width: 100% !important;
+            border-radius: var(--buttons-radius, 0) !important;
+          }
+          product-form .form,
+          .product-form .form {
+            width: 100%;
+          }
+          .product-form__buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .product-form__submit.button--full-width {
+            width: 100% !important;
+          }
+          .product-form__buttons {
+            max-width: 100% !important;
+          }
+          .product-payment-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+          }
+          .product-payment-icons svg {
+            height: 22px;
+            width: auto;
+          }
+        </style>
+
         <div class="product-form__buttons">
           {%- liquid
             assign check_against_inventory = true
@@ -91,6 +137,7 @@
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
+            <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
@@ -99,14 +146,40 @@
         </div>
       {%- endform -%}
 
+      {%- if show_dynamic_checkout and block.settings.show_payment_icons -%}
+        {%- assign has_icons = false -%}
+        {%- for i in (1..8) -%}
+          {%- assign icon_id = 'payment_icon_' | append: i -%}
+          {%- if block.settings[icon_id] != blank -%}
+            {%- assign has_icons = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if has_icons -%}
+          <div class="product-payment-icons">
+            {%- for i in (1..8) -%}
+              {%- assign icon_id = 'payment_icon_' | append: i -%}
+              {%- if block.settings[icon_id] != blank -%}
+                <img
+                  src="{{ block.settings[icon_id] | image_url }}"
+                  alt="{{ block.settings[icon_id].alt | default: 'Payment icon' }}"
+                  width="48"
+                  height="30"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </product-form>
+    {%- unless shop.enabled_payment_types == empty -%}
       <div class="product-payment-icons">
-        {%- assign payment_types = 'visa,master,paypal,american_express,apple_pay,google_pay,maestro' | split: ',' -%}
-        {%- for type in payment_types -%}
-          {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
         {%- endfor -%}
       </div>
-
-    </product-form>
+    {%- endunless -%}    
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">

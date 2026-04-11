@@ -252,6 +252,9 @@
     "social-media": {
       "name": "Social media",
       "settings": {
+        "share_image": {
+          "label": "Default sharing image (OG image)"
+        },
         "header": {
           "content": "Social accounts"
         },

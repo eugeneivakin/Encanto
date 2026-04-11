@@ -1330,3 +1330,21 @@ class CartPerformance {
     );
   }
 }
+
+// Quick hover shimmer fix for buttons (completes animation even if hover is brief)
+document.addEventListener('mouseover', (e) => {
+  const btn = e.target.closest('.button--primary, .button:not(.quantity__button):not([class*="swatch"]):not([class*="filter"]), .dame-see-all-btn');
+  if (btn && !btn.classList.contains('is-shimmering')) {
+    btn.classList.add('is-shimmering');
+    
+    const handler = (event) => {
+      // The property that takes the longest is 'left'
+      if (event.propertyName === 'left') {
+        btn.classList.remove('is-shimmering');
+        btn.removeEventListener('transitionend', handler);
+      }
+    };
+    
+    btn.addEventListener('transitionend', handler);
+  }
+});

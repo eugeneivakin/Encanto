@@ -10,8 +10,8 @@
     </span>
   </div>
   <div class="card-product__media-wrapper">
-    {% if product.selected_or_first_available_variant.featured_image != blank %}
-      {%- assign product_image = product.selected_or_first_available_variant.featured_image -%}
+    {% if product.images.first != blank %}
+      {%- assign product_image = product.images.first -%}
     {% elsif product.featured_image != blank %}
       {%- assign product_image = product.featured_image -%}
     {% else %}

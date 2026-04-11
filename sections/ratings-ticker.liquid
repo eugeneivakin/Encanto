@@ -1,0 +1,174 @@
+<style>
+  .ratings-ticker {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .ratings-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: ratings-scroll {{ section.settings.speed }}s linear infinite;
+  }
+
+  .ratings-ticker__track:hover {
+    animation-play-state: paused;
+  }
+
+  .ratings-ticker__items {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .ratings-ticker__item {
+    flex-shrink: 0;
+    padding: 0 60px;
+    text-align: center;
+  }
+
+  .ratings-ticker__name {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 400;
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+
+  .ratings-ticker__rating {
+    font-size: 14px;
+    margin: 0 0 2px;
+    opacity: 0.8;
+  }
+
+  .ratings-ticker__stars {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  @keyframes ratings-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-25%);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ratings-ticker__item {
+      padding: 0 40px;
+    }
+
+    .ratings-ticker__name {
+      font-size: 22px;
+    }
+  }
+</style>
+
+<div class="ratings-ticker color-{{ section.settings.color_scheme }}" {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %}>
+  <div class="ratings-ticker__track">
+    {%- for i in (1..4) -%}
+      <div class="ratings-ticker__items">
+        {%- for block in section.blocks -%}
+          <div class="ratings-ticker__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.name != blank -%}
+              <p class="ratings-ticker__name">{{ block.settings.name }}</p>
+            {%- endif -%}
+            {%- if block.settings.rating != blank -%}
+              <p class="ratings-ticker__rating">Rated {{ block.settings.rating }}</p>
+            {%- endif -%}
+            <p class="ratings-ticker__stars">{{ block.settings.stars }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ratings Ticker",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Section ID",
+      "info": "Custom ID for anchor links (e.g. #ratings)"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "rating",
+      "name": "Rating",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Platform name",
+          "default": "Google"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating value",
+          "default": "4.5"
+        },
+        {
+          "type": "text",
+          "id": "stars",
+          "label": "Stars",
+          "default": "★★★★★"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ratings Ticker",
+      "blocks": [
+        { "type": "rating", "settings": { "name": "Google", "rating": "4.5", "stars": "★★★★★" } },
+        { "type": "rating", "settings": { "name": "Facebook", "rating": "4.0", "stars": "★★★★★" } },
+        { "type": "rating", "settings": { "name": "Trustpilot", "rating": "4.2", "stars": "★★★★★" } },
+        { "type": "rating", "settings": { "name": "Judge.me", "rating": "4.9", "stars": "★★★★★" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

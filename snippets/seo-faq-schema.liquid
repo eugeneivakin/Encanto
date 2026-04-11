@@ -1,0 +1,35 @@
+{% if template.name == 'page' and page.handle == 'faq' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What shipping methods does ENCANTO use?",
+      "acceptedAnswer": {"@type": "Answer", "text": "We ship across Europe using tracked courier services. Standard delivery takes 3-7 business days."}
+    },
+    {
+      "@type": "Question",
+      "name": "What is your return policy?",
+      "acceptedAnswer": {"@type": "Answer", "text": "We accept returns within 30 days of purchase for unused items in original packaging. Contact our team to initiate a return."}
+    },
+    {
+      "@type": "Question",
+      "name": "Are ENCANTO brushes suitable for professional makeup artists?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. All ENCANTO brushes are developed for professional makeup artists and tested in over 3,500 training centers across 30+ countries."}
+    },
+    {
+      "@type": "Question",
+      "name": "What materials are used in ENCANTO brushes?",
+      "acceptedAnswer": {"@type": "Answer", "text": "ENCANTO brushes use premium natural bristles (goat hair, fox hair, bull hair) and high-quality synthetic Taklon bristles, paired with aged wooden handles and metal ferrules."}
+    },
+    {
+      "@type": "Question",
+      "name": "Where are ENCANTO products manufactured?",
+      "acceptedAnswer": {"@type": "Answer", "text": "ENCANTO products are manufactured in Ukraine and South Korea with in-house production control, ensuring consistent quality and performance."}
+    }
+  ]
+}
+</script>
+{% endif %}

@@ -1,8 +1,16 @@
 @font-face {
   font-family: 'AttilaSansClassic';
-  src: url('https://cdn.shopify.com/s/files/1/0800/2361/7757/files/AttilaSansClassicTrial-Regular.otf?v=1768045975') format('opentype');
+  src: url('AttilaSansClassic-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 :root {
@@ -84,13 +92,23 @@
 /* base */
 
 .page-width {
-  max-width: var(--page-width);
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 16px;
 }
+@media screen and (min-width: 750px) {
+.dame-bestsellers-section .page-width {
+  max-width: 1456px;
+  padding-left: 90px !important;
+  padding-right: 82px !important;
+}
+
+}
+
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   max-width: 100%;
+
 }
 
 .page-width.drawer-menu {
@@ -103,15 +121,15 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 .utility-bar__grid.page-width {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 @media screen and (min-width: 750px) {
   .page-width {
     /* padding: 0 5rem; */
-    padding-left: 5rem !important;
-    padding-right: 5rem !important;
+    padding-left: 9rem !important;
+    padding-right: 9rem !important;
   }
 
   .header.page-width,
@@ -267,7 +285,7 @@ h5,
 .h3,
 .h4,
 .h5 {
-  font-family: 'AttilaSansClassic', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: var(--font-heading-style);
   font-weight: var(--font-heading-weight);
   letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
@@ -2839,7 +2857,7 @@ details[open] > .header__submenu {
 
 .header__menu-item span {
   transition: text-decoration var(--duration-short) ease;
-  color:   #624c63;
+  color: inherit;
 }
 
 .header__menu-item:hover span {
@@ -2875,14 +2893,41 @@ details[open] > .header__menu-item .icon-caret {
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
+
   }
+
 
   a.header__menu-item::after {
     content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
-    width: 0%;
+    width: 0;
+    height: 1px;
+    background-color: var(--dame-footer-link-hover-color);
+    transition: width 0.3s ease-out;
+  }
+
+  /* Move underline to text span to match text length */
+  .header__menu-item:hover .header__menu-item-text::after {
+    width: 100%;
+  }
+
+  .header__menu-item-text {
+    position: relative;
+    display: inline;
+    /* display: inline-block; */
+    width: max-content;
+    max-width: 100%; /* Prevents text from overflowing the container if it's very long */
+    white-space: normal; /* allows it to wrap if needed */
+  }
+
+  .header__menu-item-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
     height: 1px;
     background-color: var(--dame-footer-link-hover-color);
     transition: width 0.3s ease-out;
@@ -2892,9 +2937,9 @@ details[open] > .header__menu-item .icon-caret {
     color: var(--dame-footer-link-hover-color);
   }
 
-  a.header__menu-item:hover::after {
-    width: 100%;
-  }
+  /* a.header__menu-item:hover::after {
+    width: calc(100% - 120px);
+  } */
 
 
   .footer-block__details-content .list-menu__item--link:hover,
@@ -3675,4 +3720,8 @@ details-disclosure > details {
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
+}
+
+.announcement-bar__message span {
+  text-transform: capitalize;
 }

@@ -198,10 +198,50 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                {%- assign current_variant = product.selected_or_first_available_variant -%}
+                {%- assign variant_desc_meta = current_variant.metafields.custom.description -%}
+                {%- if variant_desc_meta != blank -%}
+                  {%- assign show_description = variant_desc_meta.value | default: variant_desc_meta -%}
+                {%- else -%}
+                  {%- assign show_description = product.description -%}
+                {%- endif -%}
+                {%- if show_description != blank -%}
+                  <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                    <details id="Description-{{ section.id }}" open>
+                      <summary>
+                        <div class="summary__title">
+                          <h2 class="h4 accordion__title">Description</h2>
+                        </div>
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </summary>
+                      <div class="accordion__content rte" id="DescriptionContent-{{ section.id }}">
+                        {{ show_description }}
+                      </div>
+                    </details>
                   </div>
+                  <script>
+                    (function () {
+                      var descriptionContentId = 'DescriptionContent-{{ section.id }}';
+                      function initDescriptionSubscription() {
+                        if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+                        subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+                          var html = event.data && event.data.html;
+                          if (!html) return;
+                          var sourceEl = html.getElementById(descriptionContentId);
+                          var destEl = document.getElementById(descriptionContentId);
+                          if (sourceEl && destEl) {
+                            destEl.innerHTML = sourceEl.innerHTML;
+                          }
+                        });
+                      }
+
+                      if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', initDescriptionSubscription, { once: true });
+                      } else {
+                        initDescriptionSubscription();
+                      }
+                    })();
+                  </script>
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
@@ -216,8 +256,9 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
+                {%- assign meta_key = block.settings.variant_metafield_key | strip -%}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
+                  <details id="Details-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
                     <summary>
                       <div class="summary__title">
                         {% render 'icon-accordion', icon: block.settings.icon %}
@@ -228,11 +269,52 @@
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                      {{ block.settings.content }}
-                      {{ block.settings.page.content }}
+                      {%- if meta_key != blank -%}
+                        {%- assign _meta_val = product.selected_or_first_available_variant.metafields.custom[meta_key] -%}
+                        {{- _meta_val.value | default: _meta_val -}}
+                      {%- else -%}
+                        {{ block.settings.content }}
+                        {{ block.settings.page.content }}
+                      {%- endif -%}
                     </div>
                   </details>
                 </div>
+                {%- if meta_key != blank -%}
+                  <script type="application/json" id="ProductAccordionData-{{ block.id }}-{{ section.id }}">
+                    {
+                      {%- for _v in product.variants -%}
+                        "{{ _v.id }}": {{ _v.metafields.custom[meta_key].value | json }}{%- unless forloop.last -%},{%- endunless -%}
+                      {%- endfor -%}
+                    }
+                  </script>
+                  <script>
+                    (function () {
+                      var destEl = document.getElementById('ProductAccordion-{{ block.id }}-{{ section.id }}');
+                      var jsonEl = document.getElementById('ProductAccordionData-{{ block.id }}-{{ section.id }}');
+                      if (!jsonEl || !destEl) return;
+                      try {
+                        var variantData = JSON.parse(jsonEl.textContent);
+                        function initAccordionSubscription() {
+                          if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+                          subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+                            var variant = event.data && event.data.variant;
+                            if (!variant) return;
+                            var content = variantData[String(variant.id)];
+                            if (content != null) destEl.innerHTML = content;
+                          });
+                        }
+
+                        if (document.readyState === 'loading') {
+                          document.addEventListener('DOMContentLoaded', initAccordionSubscription, { once: true });
+                        } else {
+                          initAccordionSubscription();
+                        }
+                      } catch(e) {}
+                    })();
+                  </script>
+                {%- endif -%}
+              {%- when 'faq' -%}
+                {%- comment -%}Rendered below product card{%- endcomment -%}
               {%- when 'custom_vrt_selector' -%}
                 {% render 'custom_vrt_selector_products', product: product, settings: block.settings, block: block %}
               {%- when 'quantity_selector' -%}
@@ -694,6 +776,33 @@
       </div>
     </div>
 
+    {%- comment -%}FAQ sections below product card{%- endcomment -%}
+    {%- assign _faq_items = product.metafields.custom.faq.value -%}
+    {%- if _faq_items != blank -%}
+    <div class="product-faq-section page-width" style="padding: 50px 0 60px;">
+      <h2 style="text-align: center; font-size: clamp(28px, 5vw, 48px); font-weight: 400; margin: 0 0 32px; letter-spacing: 0;">Frequently Asked Questions</h2>
+      <div style="max-width: 900px; margin: 0 auto;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' -%}
+          <div {{ block.shopify_attributes }}>
+            {%- for _fq in _faq_items -%}
+              <div style="border-radius: 8px; margin-bottom: 10px; overflow: hidden;">
+                <details id="Details-faq-below-{{ block.id }}-{{ section.id }}-{{ forloop.index }}">
+                  <summary style="display: flex; justify-content: space-between; align-items: center; background-color: #f8f8f8; padding: 21px 24px; cursor: pointer; font-size: 16px; font-weight: 400; color: #232323; line-height: 1.4; list-style: none;">
+                    <span>{{ _fq.question.value }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </summary>
+                  <div style="padding: 16px 24px 20px; background-color: #ffffff; font-size: 15px; line-height: 1.7; color: #000000;">{{ _fq.answer.value }}</div>
+                </details>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
+
     {% render 'product-media-modal', variant_images: variant_images %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
@@ -746,6 +855,9 @@
       {{ product | structured_data }}
     </script>
   </div>
+
+  {%- render 'product-sticky-form' -%}
+
 </product-info>
 
 {% schema %}
@@ -940,6 +1052,52 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "default": true,
+          "label": "Show payment icons"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_1",
+          "label": "Payment icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_2",
+          "label": "Payment icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_3",
+          "label": "Payment icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_4",
+          "label": "Payment icon 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_5",
+          "label": "Payment icon 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_6",
+          "label": "Payment icon 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_7",
+          "label": "Payment icon 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_8",
+          "label": "Payment icon 8"
         }
       ]
     },
@@ -972,6 +1130,11 @@
           "info": "t:sections.custom-liquid.settings.custom_liquid.info"
         }
       ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "limit": 1
     },
     {
       "type": "collapsible_tab",
@@ -1176,6 +1339,18 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        },
+        {
+          "type": "text",
+          "id": "variant_metafield_key",
+          "label": "Variant metafield key",
+          "info": "Enter a metafield key from the 'custom' namespace (e.g. 'description', 'advantages', 'how_to_use') to show variant-specific content that updates on variant change."
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
         }
       ]
     },
@@ -2141,9 +2316,27 @@
   "settings": [
     {
       "type": "checkbox",
+      "id": "show_collection_badges",
+      "default": true,
+      "label": "Show Bestseller / New Arrivals badge"
+    },
+    {
+      "type": "checkbox",
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_sticky_on_mobile",
+      "default": false,
+      "label": "Hide sticky ATC bar on mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_sticky_on_desk",
+      "default": false,
+      "label": "Hide sticky ATC bar on desktop"
     },
     {
       "type": "color_scheme",

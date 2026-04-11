@@ -53,6 +53,14 @@
   class="product-media-container media-type-{{ media.media_type }} media-fit-{{ media_fit }} global-media-settings gradient{% if constrain_to_viewport %} constrain-height{% endif %}"
   style="--ratio: {{ media.aspect_ratio | default: 1.0 }}; --preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};"
 >
+  {%- if show_gallery_badge -%}
+    {%- if is_bestseller or is_new_arrival -%}
+      <div class="product-gallery-badges">
+        {%- if is_bestseller -%}<span class="badge badge--bestseller">Bestseller</span>{%- endif -%}
+        {%- if is_new_arrival -%}<span class="badge badge--new-arrival">New</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
   <modal-opener
     class="product__modal-opener product__modal-opener--{{ media.media_type }}"
     data-modal="#ProductModal-{{ modal_id }}"

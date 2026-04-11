@@ -7,24 +7,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+  {%- if template == "collection" and collection.products_count == 0 -%}
+  <meta name="robots" content="noindex, follow">
+  {%- endif -%}
+  {%- if template == "blog" and blog.articles.size == 0 -%}
+  <meta name="robots" content="noindex, follow">
+  {%- endif -%}
+    <link rel="alternate" hreflang="es" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
+    {%- liquid
+      assign favicon_href = 'favicon.svg' | asset_url
+      assign favicon_type = 'image/svg+xml'
+      if settings.favicon != blank
+        assign favicon_href = settings.favicon | image_url: width: 32, height: 32
+        assign favicon_type = 'image/png'
+      endif
+    -%}
+    <link rel="icon" type="{{ favicon_type }}" href="{{ favicon_href }}">
+    <link rel="shortcut icon" href="{{ favicon_href }}">
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
     {%- liquid
       assign seo_title = page_title
       
       if request.page_type == 'index'
-        assign seo_title = shop.name
-        if shop.description != blank
-          assign shop_desc_short = shop.description | strip_html | truncatewords: 8
-          assign seo_title = shop.name | append: ' - ' | append: shop_desc_short
-        endif
+        assign seo_title = 'Professional Makeup Brushes & Eyebrow Tools | ' | append: shop.name
       elsif request.page_type == 'product'
         assign seo_title = product.title
         if product.vendor != blank
@@ -73,8 +85,14 @@
     -%}
     <title>{{ seo_title | strip }}</title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- liquid
+      assign meta_desc = page_description
+      if meta_desc == blank and template.name == "index"
+        assign meta_desc = "ENCANTO — Professional makeup brushes, eyebrow tools and beauty cosmetics. Premium quality for makeup artists. Shop online with fast delivery across Europe."
+      endif
+    -%}
+    {% if meta_desc %}
+      <meta name="description" content="{{ meta_desc | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
@@ -92,18 +110,11 @@
 
     {{ content_for_header }}
 
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-    %}
-
     {% style %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {%- unless settings.type_header_font.family == settings.type_body_font.family -%}
+        {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {%- endunless -%}
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -307,7 +318,6 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'base-custom.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -323,7 +333,7 @@
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
       {% comment %}theme-check-enable AssetPreload{% endcomment %}
     {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
+    {%- unless settings.type_header_font.system? or settings.type_header_font.family == settings.type_body_font.family -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
       {% comment %}theme-check-enable AssetPreload{% endcomment %}
@@ -348,11 +358,24 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  </head>
+    {{ 'after.css' | asset_url | stylesheet_tag }}
+{% render 'seo-faq-schema' %}
+  {%- if template.name == 'index' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type": "Organization", "@id": "{{ shop.url }}/#organization", "name": {{ shop.name | json }}, "url": {{ shop.url | json }}},
+      {"@type": "WebSite", "@id": "{{ shop.url }}/#website", "url": {{ shop.url | json }}, "name": {{ shop.name | json }}, "publisher": {"@id": "{{ shop.url }}/#organization"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"}, "query-input": "required name=search_term_string"}}
+    ]
+  }
+  </script>
+  {%- endif -%}
+{% render 'seo-breadcrumb-schema' %}
+</head>
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     
-  {% render 'age-gate' %}
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+  <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
@@ -425,5 +448,193 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Read More/Less — only on COLLECTION pages (description block), NOT on homepage review slider
+  // Read More/Less for Collection Description
+  (function() {
+    var descEl = document.querySelector('.collection-hero__description');
+    if (!descEl) return;
+
+    // Check if the content is actually overflowing the 3-line limit
+    if (descEl.scrollHeight > descEl.clientHeight) {
+      var btn = document.createElement('button');
+      btn.textContent = 'Read more';
+      btn.style.cssText = 'background:none;border:none;color:#888;font-size:12px;cursor:pointer;padding:6px 0 0;text-decoration:underline;font-family:inherit;display:block;';
+      
+      var expanded = false;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        expanded = !expanded;
+        if (expanded) {
+          descEl.style.webkitLineClamp = 'unset';
+          descEl.style.maxHeight = 'none';
+          btn.textContent = 'Read less';
+        } else {
+          descEl.style.webkitLineClamp = '3';
+          btn.textContent = 'Read more';
+        }
+      });
+      descEl.parentNode.insertBefore(btn, descEl.nextSibling);
+    }
+  })();
+  // GDPR Checkbox for newsletter
+  var forms = document.querySelectorAll('.dame-newsletter-section form, [class*="newsletter"] form');
+  forms.forEach(function(form) {
+    if (form.querySelector('.encanto-gdpr')) return;
+    var d = document.createElement('div');
+    d.className = 'encanto-gdpr';
+    d.style.cssText = 'margin-top:10px;font-size:12px;color:#666;display:flex;align-items:flex-start;gap:8px;text-align:left;';
+    var cb = document.createElement('input'); cb.type='checkbox'; cb.id='encanto-gdpr-cb';
+    cb.style.cssText = 'margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:#000;';
+    var lbl = document.createElement('label'); lbl.htmlFor='encanto-gdpr-cb';
+    lbl.style.cursor='pointer';
+    lbl.innerHTML = 'I have read and agree to the <a href="/policies/terms-of-service" style="color:inherit;text-decoration:underline;">Terms & Conditions</a> and <a href="/policies/privacy-policy" style="color:inherit;text-decoration:underline;">Privacy Policy</a>.';
+    d.appendChild(cb); d.appendChild(lbl); form.appendChild(d);
+    form.addEventListener('submit', function(e) {
+      if (!cb.checked) { e.preventDefault(); cb.style.outline='2px solid #e63535'; setTimeout(function(){cb.style.outline='';},2000); }
+    }, true);
+  });
+});
+</script>
+<script>
+  (function() {
+    var mobileBreakpoint = window.matchMedia('(max-width: 989px)');
+    var observer;
+
+    function buildGtCustomUI() {
+      var select = document.querySelector('.gt_selector');
+      if (!select || select.dataset.gtCustom) return;
+      select.dataset.gtCustom = '1';
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'gt-custom-switcher';
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gt-custom-trigger disclosure__button localization-selector link link--text caption-large';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-haspopup', 'listbox');
+
+      var list = document.createElement('ul');
+      list.className = 'gt-custom-dropdown list-unstyled';
+      list.setAttribute('role', 'listbox');
+
+      function getSelectedText() {
+        var opt = select.options[select.selectedIndex];
+        if (!opt || !opt.value || opt.text === 'Select Language') {
+          var lang = (document.documentElement.lang || 'en').toLowerCase();
+          for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value.toLowerCase() === lang) return select.options[i].text;
+          }
+          return 'Language';
+        }
+        return opt.text;
+      }
+
+      function updateTrigger() {
+        btn.innerHTML =
+          '<span>' + getSelectedText() + '</span>' +
+          '<svg class="icon icon-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"></path></svg>';
+      }
+
+      function buildOptions() {
+        list.innerHTML = '';
+        var currentText = getSelectedText();
+        Array.from(select.options).forEach(function(opt) {
+          if (!opt.value || opt.text === 'Select Language') return;
+          var isActive = opt.text === currentText;
+          var li = document.createElement('li');
+          li.className = 'gt-custom-item';
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
+          var itemBtn = document.createElement('button');
+          itemBtn.type = 'button';
+          itemBtn.className = 'gt-custom-option' + (isActive ? ' gt-custom-option--active' : '');
+          itemBtn.dataset.value = opt.value;
+          itemBtn.innerHTML = isActive
+            ? '<svg class="gt-custom-check" viewBox="0 0 13 9" width="13" height="9" aria-hidden="true"><path d="M1 4.5 5 8l7-7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>' + opt.text + '</span>'
+            : '<span>' + opt.text + '</span>';
+
+          itemBtn.addEventListener('click', function() {
+            select.value = opt.value;
+            select.dispatchEvent(new Event('change'));
+            closeDropdown();
+          });
+
+          li.appendChild(itemBtn);
+          list.appendChild(li);
+        });
+      }
+
+      function openDropdown() {
+        btn.setAttribute('aria-expanded', 'true');
+        buildOptions();
+        list.classList.add('gt-custom-dropdown--open');
+      }
+
+      function closeDropdown() {
+        btn.setAttribute('aria-expanded', 'false');
+        list.classList.remove('gt-custom-dropdown--open');
+      }
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        btn.getAttribute('aria-expanded') === 'true' ? closeDropdown() : openDropdown();
+      });
+
+      document.addEventListener('click', function() { closeDropdown(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDropdown(); });
+
+      updateTrigger();
+
+      select.parentElement.insertBefore(wrapper, select);
+      wrapper.appendChild(select);
+      wrapper.appendChild(btn);
+      wrapper.appendChild(list);
+    }
+
+    function relocateGTranslateSelector() {
+      var el = document.querySelector('.gt-custom-switcher') || document.querySelector('.gt_selector');
+      var headerIcons = document.querySelector('.header__icons');
+      var mobileSlot = document.querySelector('[data-mobile-language-switcher-slot]');
+
+      if (!el || !headerIcons) return;
+
+      var target = mobileBreakpoint.matches && mobileSlot ? mobileSlot : headerIcons;
+
+      if (el.parentElement !== target) {
+        target.appendChild(el);
+      }
+      buildGtCustomUI();
+    }
+
+    function ensureObserver() {
+      if (observer || !document.documentElement) return;
+
+      observer = new MutationObserver(function() {
+        relocateGTranslateSelector();
+      });
+
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      relocateGTranslateSelector();
+      ensureObserver();
+
+      if (mobileBreakpoint.addEventListener) {
+        mobileBreakpoint.addEventListener('change', relocateGTranslateSelector);
+      } else {
+        mobileBreakpoint.addListener(relocateGTranslateSelector);
+      }
+
+      document.addEventListener('shopify:section:load', relocateGTranslateSelector);
+      document.addEventListener('shopify:section:reorder', relocateGTranslateSelector);
+    });
+  })();
+</script>
+
   </body>
 </html>

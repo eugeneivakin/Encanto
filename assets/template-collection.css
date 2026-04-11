@@ -97,3 +97,11 @@
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
 }
+
+.facets-wrapper {
+  margin-top: 0;
+}
+
+.collection__description {
+  margin-bottom: 1.5rem;
+}

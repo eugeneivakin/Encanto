@@ -1,15 +1,10 @@
 <div class="rb-faq-shopify-section">
-    <h1 style="text-align: center; padding: 20px 20px 0px 20px;"> {{ section.settings.heading }} </h1>
+    <h2 style="text-align: center; padding: 20px 20px 0px 20px;"> {{ section.settings.heading }} </h2>
     <div class="rb-faq-container">
         {%for block in section.blocks %}
         <div class="rb-faq-container-item">
             <input style="display:none!important;" type="checkbox" id="tab{{forloop.index}}" class="tab-toggle">
-            <label for="tab{{forloop.index}}" class="rb-faq-question">
-                {{block.settings.question}}
-                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                </svg>
-            </label>
+            <label for="tab{{forloop.index}}" class="rb-faq-question">{{block.settings.question}}</label>
             <div class="rb-faq-answer">{{block.settings.answer}}</div>
         </div>
         {% endfor %}
@@ -132,14 +127,24 @@
     }
 
     .rb-faq-shopify-section {
-      padding-right:30px;
-      padding-left:30px;
+      padding-right:16px;
+      padding-left:16px;
       margin-bottom:50px
     }
 
+    .rb-faq-shopify-section h1 {
+        font-size: 56px;
+        color: #D1D1D;
+        font-weight: 400;
+        margin: 0;
+        letter-spacing: 0;
+    }
+
+
+
     .rb-faq-container {
         margin:auto;
-        max-width:1000px;
+        max-width:1046px;
         margin-top:20px;
     }
 
@@ -149,26 +154,23 @@
           overflow: hidden;
     }
 
-    /* .rb-faq-question:after{
-        content: '\276F';
-    } */
-    .rb-faq-question .icon{
-          color: {{section.settings.icon_color}};
+    .rb-faq-question::after{
+          color: #000000;
+          content: '\276F';
           transition: all 0.2s ease;
-          transform:rotate(-90deg);
-          height: auto;
-          width: 12px;
       }
 
     .rb-faq-question {
-        border-radius: 8px;
+        border-radius: 16px;
         display:flex !important;
         justify-content: space-between;
         background-color:{{section.settings.background_color}};
-        padding:15px 20px;
-        color: {{section.settings.question_color}};
-        font-size: {{section.settings.questions-font-size}}rem;
-        align-items: center;
+        padding:21px 24px;
+        font-weight: 400;
+        color: #232323;
+        font-size: 16px;
+        line-height: 1.1;
+        cursor: pointer;
     }
 
     .rb-faq-question:hover {
@@ -204,5 +206,18 @@
     }
     .tab-toggle{
           display:none;
+    }
+        @media (max-width: 767px) {
+      .rb-faq-shopify-section {
+        margin-bottom: 25px;
+      }
+      .rb-faq-shopify-section h1 {
+        font-size: 32px;
+      }
+          .rb-faq-question {
+
+        padding:11px 36px 11px 24px;
+
+    }
     }
   {% endstyle %}

@@ -1,0 +1,64 @@
+{%- style -%}
+  .custom-spacing-{{ section.id }} {
+    display: block;
+    height: {{ section.settings.height_desktop }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-spacing-{{ section.id }} {
+      height: {{ section.settings.height_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-spacing-{{ section.id }} color-{{ section.settings.color_scheme }}"
+  {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %}
+></div>
+
+{% schema %}
+{
+  "name": "Custom Spacing",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Section ID",
+      "info": "Custom ID for anchor links"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Desktop height (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Mobile height (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Spacing"
+    }
+  ]
+}
+{% endschema %}

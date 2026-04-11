@@ -42,17 +42,24 @@
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'link_column' %}
-                <div class="dame-footer-column" {{ block.shopify_attributes }}>
+                <div class="dame-footer-column dame-accordion-item" {{ block.shopify_attributes }}>
                   {% if block.settings.column_title != blank %}
-                    <h6 class="dame-column-title">{{ block.settings.column_title }}</h6>
+                    <button class="dame-column-title dame-accordion-trigger" aria-expanded="false">
+                      {{ block.settings.column_title }}
+                      <span class="dame-accordion-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3 10L8 5L13 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </button>
                   {% endif %}
 
                   {% if block.settings.links != blank %}
-                    <ul class="dame-column-links">
+                    <ul class="dame-column-links dame-accordion-content">
                       {% assign links_array = block.settings.links | split: '||' %}
                       {% for link_item in links_array %}
                         {% assign link_parts = link_item | split: '|' %}
-                        {% if link_parts.size == 2 %}
+                        {% if link_parts.size >= 2 and link_parts[0] != blank %}
                           <li>
                             <a href="{{ link_parts[1] | strip }}">{{ link_parts[0] | strip }}</a>
                           </li>
@@ -77,6 +84,23 @@
             {% endcase %}
           {% endfor %}
         </div>
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'payment_icons' and block.settings.show_payment_icons -%}
+              {%- unless shop.enabled_payment_types == empty -%}
+    <div class="dame-payment-icons-row" {{ block.shopify_attributes }}>
+      {% if block.settings.column_title != blank %}
+        <h6 class="dame-column-title dame-payment-icons-title">{{ block.settings.column_title }}</h6>
+      {% endif %}
+      <div class="dame-payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
       {% endif %}
     </div>
   </footer>
@@ -141,8 +165,8 @@
     .footer-dame-wrapper {
       padding-top: var(--dame-footer-padding-top-mobile);
       padding-bottom: var(--dame-footer-padding-bottom-mobile);
-      padding-left: var(--dame-footer-padding-left-mobile);
-      padding-right: var(--dame-footer-padding-right-mobile);
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 </style>
@@ -151,7 +175,7 @@
   #footer-{{ section.id }} .dame-footer {
     position: relative;
     z-index: 1;
-    max-width: var(--dame-footer-max-width);
+    max-width: 1490px;
     margin: 0 auto;
   }
 
@@ -164,22 +188,30 @@
 
   #footer-{{ section.id }} .dame-newsletter-section {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 471fr 789fr;
     align-items: baseline;
-    gap: 40px;
+    gap: 10px;
   }
 
   #footer-{{ section.id }} .dame-newsletter-title {
     font-size: var(--dame-footer-newsletter-title-size-desktop);
-    color: var(--dame-footer-newsletter-title-color);
-    font-weight: {{ section.settings.newsletter_title_font_weight }};
-    margin: 0;
-    letter-spacing: -0.5px;
+    color: #1D1D1D;
+    font-weight: 400;
+       margin-block-end: 0;
+    margin-block-start: 0;
+    letter-spacing: 0;
+  }
+
+  #footer-{{ section.id }} .dame-newsletter-title p {
+       margin-block-end: 0;
+    margin-block-start: 0;
   }
 
   #footer-{{ section.id }} .dame-newsletter-form {
     position: relative;
-    max-width: 800px;
+    max-width: 513px;
+    width: 100%;
+    margin-left: auto;
   }
 
   #footer-{{ section.id }} .dame-newsletter-input-group {
@@ -189,19 +221,19 @@
     background: {{ section.settings.input_background_color }};
     border: {{ section.settings.input_border_width }}px solid {{ section.settings.input_border_color }};
     border-radius: {{ section.settings.input_border_radius }}px;
-    padding: {{ section.settings.input_padding_vertical }}px {{ section.settings.input_padding_horizontal }}px;
+    padding: 16px {{ section.settings.input_padding_horizontal }}px;
     gap: 20px;
   }
 
   #footer-{{ section.id }} .dame-newsletter-input {
     flex: 1;
     border: none;
-    background: transparent;
-    font-size: {{ section.settings.input_font_size }}px;
-    color: var(--dame-footer-newsletter-title-color);
-    font-weight: 400;
+    background: #F5F5F5;
+    font-size: 16px;
+    color: #525252;
+    font-weight: 500;
     outline: none;
-    letter-spacing: -0.3px;
+    letter-spacing: 0;
   }
 
   #footer-{{ section.id }} .dame-newsletter-input:focus {
@@ -226,15 +258,14 @@
   #footer-{{ section.id }} .dame-newsletter-submit {
     background: none;
     border: none;
-    font-size: {{ section.settings.button_font_size }}px;
-    color: var(--dame-footer-newsletter-title-color);
+    font-size: 16px;
+    color: #525252;
     cursor: pointer;
     padding: 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
     transition: opacity 0.3s;
     text-transform: uppercase;
     white-space: nowrap;
-    opacity: 0.7;
   }
 
   #footer-{{ section.id }} .dame-newsletter-submit.has-input {
@@ -266,9 +297,10 @@
 
   #footer-{{ section.id }} .dame-footer-links {
     display: grid;
-    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
-    gap: {{ section.settings.columns_gap }}px;
-    padding-top: {{ section.settings.links_padding_top }}px;
+    grid-template-columns: repeat(4, 193px);
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 30px;
   }
 
   #footer-{{ section.id }} .dame-footer-column {
@@ -277,12 +309,30 @@
   }
 
   #footer-{{ section.id }} .dame-column-title {
-    font-size: var(--dame-footer-column-title-size);
-    color: var(--dame-footer-column-title-color);
+    font-size: 16px;
+    color: #232323;
     font-weight: {{ section.settings.column_title_font_weight }};
     margin: 0 0 {{ section.settings.column_title_margin_bottom }}px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+  }
+
+  #footer-{{ section.id }} button.dame-column-title {
+    background: none;
+    border: none;
+    cursor: default;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  #footer-{{ section.id }} .dame-accordion-icon {
+    display: none;
+  }
+
+  #footer-{{ section.id }} .dame-accordion-content {
+    max-height: none;
+    overflow: visible;
   }
 
   #footer-{{ section.id }} .dame-column-links {
@@ -298,8 +348,8 @@
   }
 
   #footer-{{ section.id }} .dame-column-links a {
-    font-size: var(--dame-footer-link-size);
-    color: var(--dame-footer-link-color);
+    font-size: 16px;
+    color: #232323;
     text-decoration: none;
     transition: color 0.3s;
     display: inline-block;
@@ -345,6 +395,33 @@
     display: inline-block;
   }
 
+  #footer-{{ section.id }} .dame-payment-icons-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 32px;
+  }
+
+  #footer-{{ section.id }} .dame-payment-icons-title {
+    margin: 0;
+  }
+
+  #footer-{{ section.id }} .dame-payment-icons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #footer-{{ section.id }} .dame-payment-icons img {
+    height: 24px;
+    width: auto;
+  }
+
   @media screen and (max-width: 989px) and (min-width: 750px) {
     #footer-{{ section.id }} .dame-footer-links {
       grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
@@ -367,7 +444,7 @@
     }
 
     #footer-{{ section.id }} .dame-newsletter-input-group {
-      padding: {{ section.settings.input_padding_vertical }}px {{ section.settings.input_padding_horizontal | divided_by: 2 }}px;
+      padding: 16px {{ section.settings.input_padding_horizontal | divided_by: 2 }}px;
       gap: 15px;
     }
 
@@ -384,8 +461,54 @@
     }
 
     #footer-{{ section.id }} .dame-footer-links {
-      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
-      gap: {{ section.settings.columns_gap_mobile }}px;
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-top: 20px;
+    }
+
+
+
+
+
+    #footer-{{ section.id }} .dame-column-title.dame-accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: {{ section.settings.column_title_font_weight }};
+      color: #232323;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+      margin: 0;
+    }
+
+    #footer-{{ section.id }} .dame-accordion-icon {
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+      color: #232323;
+    }
+
+    #footer-{{ section.id }} .dame-accordion-trigger[aria-expanded="true"] .dame-accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    #footer-{{ section.id }} .dame-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding-bottom: 0;
+    }
+
+    #footer-{{ section.id }} .dame-accordion-content.is-open {
+      max-height: 500px;
+      padding-bottom: 16px;
     }
   }
 </style>
@@ -407,6 +530,18 @@
       newsletterInput.addEventListener('input', updateButtonState);
       updateButtonState();
     }
+
+    // Accordion for mobile
+    const triggers = document.querySelectorAll('#footer-{{ section.id }} .dame-accordion-trigger');
+    triggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        if (window.innerWidth > 749) return;
+        const content = this.nextElementSibling;
+        const isOpen = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isOpen);
+        if (content) content.classList.toggle('is-open', !isOpen);
+      });
+    });
   });
 </script>
 
@@ -995,6 +1130,64 @@
           "id": "links",
           "label": "Links",
           "info": "Format: Text|URL||Text|URL||Text|URL (use || to separate links)"
+        }
+      ]
+    },
+    {
+      "type": "payment_icons",
+      "name": "Payment Icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "default": true,
+          "label": "Show payment icons"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_1",
+          "label": "Payment icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_2",
+          "label": "Payment icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_3",
+          "label": "Payment icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_4",
+          "label": "Payment icon 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_5",
+          "label": "Payment icon 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_6",
+          "label": "Payment icon 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_7",
+          "label": "Payment icon 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "payment_icon_8",
+          "label": "Payment icon 8"
         }
       ]
     },

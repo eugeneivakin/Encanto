@@ -1263,6 +1263,20 @@
         "id": "sold_out_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
         "default": "scheme-3"
+      },
+      {
+        "type": "text",
+        "id": "bestseller_collection",
+        "label": "Bestseller collection handle",
+        "default": "best-seller",
+        "info": "Leave blank to disable the Bestseller badge"
+      },
+      {
+        "type": "text",
+        "id": "new_arrivals_collection",
+        "label": "New Arrivals collection handle",
+        "default": "new-arrivals",
+        "info": "Leave blank to disable the New Arrivals badge"
       }
     ]
   },
@@ -1303,6 +1317,11 @@
   {
     "name": "t:settings_schema.social-media.name",
     "settings": [
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "t:settings_schema.social-media.settings.share_image.label"
+      },
       {
         "type": "text",
         "id": "social_facebook_link",
@@ -1396,6 +1415,49 @@
         "id": "currency_code_enabled",
         "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
         "default": true
+      }
+    ]
+  },
+  {
+    "name": "Free Shipping Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_free_shipping_bar",
+        "label": "Show free shipping bar",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "default": 150,
+        "info": "The amount required for free shipping (e.g., 150)"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_welcome",
+        "label": "Welcome message",
+        "default": "Add [amount] more to get FREE shipping!",
+        "info": "Use [amount] to show the remaining balance."
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_success",
+        "label": "Success message",
+        "default": "You've got FREE shipping!"
+      },
+      {
+        "type": "color",
+        "id": "free_shipping_bar_color",
+        "label": "Bar color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "free_shipping_bar_bg",
+        "label": "Bar background color",
+        "default": "#f3f3f3"
       }
     ]
   },

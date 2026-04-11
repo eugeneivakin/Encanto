@@ -1,0 +1,400 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .horizontal-scroll-section {
+    position: relative;
+    height: 300vh;
+  }
+
+  .horizontal-scroll-section__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+
+  .horizontal-scroll-section__track {
+    display: flex;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+  }
+
+  .horizontal-scroll-section__slide {
+    flex-shrink: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+  }
+
+  .horizontal-scroll-section__inner {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .horizontal-scroll-section__slide:nth-child(even) .horizontal-scroll-section__inner {
+    direction: rtl;
+  }
+
+  .horizontal-scroll-section__slide:nth-child(even) .horizontal-scroll-section__inner > * {
+    direction: ltr;
+  }
+
+  .horizontal-scroll-section__content {
+    padding: 40px 0;
+  }
+
+  .horizontal-scroll-section__heading {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    margin: 0 0 20px;
+    font-weight: 400;
+  }
+
+  .horizontal-scroll-section__text {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin: 0 0 28px;
+  }
+
+  .horizontal-scroll-section__image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .horizontal-scroll-section__image,
+  .horizontal-scroll-section__image-wrapper img,
+  .horizontal-scroll-section__image-wrapper .placeholder-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  /* Progress indicator */
+  .horizontal-scroll-section__progress {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .horizontal-scroll-section__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .horizontal-scroll-section__dot.active {
+    background: var(--color-foreground);
+    transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 990px) {
+    .horizontal-scroll-section__inner {
+      gap: 40px;
+    }
+
+    .horizontal-scroll-section__heading {
+      font-size: 28px;
+    }
+  }
+
+  /* Section header */
+  .horizontal-scroll-section__header {
+    text-align: center;
+    padding: 0 20px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .horizontal-scroll-section__main-heading {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    font-weight: 400;
+  }
+
+  .horizontal-scroll-section__subheading {
+    font-size: 17px;
+    line-height: 1.6;
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .horizontal-scroll-section {
+      height: auto;
+    }
+
+    .horizontal-scroll-section__header {
+      padding: 0 20px 20px;
+    }
+
+    .horizontal-scroll-section__main-heading {
+      font-size: 28px;
+    }
+
+    .horizontal-scroll-section__subheading {
+      font-size: 16px;
+    }
+
+    .horizontal-scroll-section__sticky {
+      position: relative;
+      height: auto;
+      padding-top: 40px;
+    }
+
+    .horizontal-scroll-section__track {
+      flex-direction: column;
+      transform: none !important;
+    }
+
+    .horizontal-scroll-section__slide {
+      width: 100%;
+      height: auto;
+      padding: 50px 20px;
+    }
+
+    .horizontal-scroll-section__inner {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .horizontal-scroll-section__slide:nth-child(even) .horizontal-scroll-section__inner {
+      direction: ltr;
+    }
+
+    .horizontal-scroll-section__image-wrapper {
+      order: -1;
+    }
+
+    .horizontal-scroll-section__content {
+      text-align: center;
+      padding: 0;
+    }
+
+    .horizontal-scroll-section__heading {
+      font-size: 24px;
+    }
+
+    .horizontal-scroll-section__text {
+      font-size: 15px;
+    }
+
+    .horizontal-scroll-section__progress {
+      display: none;
+    }
+  }
+</style>
+
+<div class="horizontal-scroll-section color-{{ section.settings.color_scheme }}" id="{{ section.settings.custom_id | default: 'horizontal-scroll' }}-{{ section.id }}">
+  <div class="horizontal-scroll-section__sticky">
+    {%- if section.settings.main_heading != blank or section.settings.subheading != blank -%}
+      <div class="horizontal-scroll-section__header">
+        {%- if section.settings.main_heading != blank -%}
+          <h2 class="horizontal-scroll-section__main-heading">{{ section.settings.main_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="horizontal-scroll-section__subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="horizontal-scroll-section__track" id="track-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <div class="horizontal-scroll-section__slide" {{ block.shopify_attributes }}>
+          <div class="horizontal-scroll-section__inner">
+            <div class="horizontal-scroll-section__content">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="horizontal-scroll-section__heading">{{ block.settings.heading }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="horizontal-scroll-section__text">{{ block.settings.text }}</p>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button button--primary"
+                  style="margin-top: 1rem;"
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+            <div class="horizontal-scroll-section__image-wrapper">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 1200 | image_tag:
+                  loading: 'lazy',
+                  class: 'horizontal-scroll-section__image',
+                  sizes: '(max-width: 749px) 100vw, 50vw'
+                }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg horizontal-scroll-section__image' }}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="horizontal-scroll-section__progress">
+      {%- for block in section.blocks -%}
+        <div class="horizontal-scroll-section__dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const section = document.getElementById('{{ section.settings.custom_id | default: 'horizontal-scroll' }}-{{ section.id }}');
+    const track = document.getElementById('track-{{ section.id }}');
+    const slides = track.querySelectorAll('.horizontal-scroll-section__slide');
+    const dots = section.querySelectorAll('.horizontal-scroll-section__dot');
+    const totalSlides = slides.length;
+
+    if (window.innerWidth <= 749) return;
+
+    function updateScroll() {
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      const scrollProgress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - viewportHeight)));
+      const translateX = scrollProgress * (totalSlides - 1) * -100;
+
+      track.style.transform = `translateX(${translateX}vw)`;
+
+      const currentSlide = Math.round(scrollProgress * (totalSlides - 1));
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    updateScroll();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Horizontal Scroll",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Section ID",
+      "info": "Custom ID for anchor links (e.g. #scroll-section)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_heading",
+      "label": "Heading",
+      "default": "Why Earthsleep?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover the benefits of grounding while you sleep"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Feature heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Pair text with an image to focus on your chosen product, collection, or blog post."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Horizontal Scroll",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

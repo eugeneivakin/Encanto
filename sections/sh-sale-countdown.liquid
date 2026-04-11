@@ -1,0 +1,531 @@
+{%- capture sp_sale_countdown_css -%}
+<style>
+  #sp-{{ section.id }}.sp-countdown-section {padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;background-color: {{section.settings.bg_color}};}
+  #sp-{{ section.id }} .sp-media-left {flex-direction: row-reverse;}
+  #sp-{{ section.id }} .sp-page-width {max-width: {{ section.settings.section_max_width }}px;width: 100%;margin: 0 auto;padding: 0 20px;}
+  #sp-{{ section.id }} .sp-main-countdown {display: flex;flex-wrap: wrap;gap: 20px;}
+  #sp-{{ section.id }} .sp-main-contant-countdown {width: calc(50% - 20px);display: flex;align-items: center;justify-content: center;padding: 0;}
+  #sp-{{ section.id }} .sp-countdown-contant h2 {margin: 0 0 20px;font-weight: 500;}
+  #sp-{{ section.id }} .sp-countdown-contant p {line-height: 1.5;margin: 0 0 25px 0;}
+  #sp-{{ section.id }} .sp-countdown-contant .sp-button {font-size: 16px; line-height: 1.65; padding: 6px 20px;min-width: 140px;display: inline-block;text-align: center;text-decoration: none;transition: .3s;}
+  #sp-{{ section.id }} .sp-main-countdown-timer {width: 50%;display: flex;flex-direction: column;justify-content: center;align-items: center;}
+  #sp-{{ section.id }} .sp-timer-countdown {width: 100%;}
+  #sp-{{ section.id }} .sp-timer-countdown .sp-countdown {display: flex;flex-wrap: nowrap;align-items: center;padding: 15px 0;}
+  #sp-{{ section.id }} .sp-countdown-item {width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;gap: 10px;padding: 15px;}
+  #sp-{{ section.id }} .sp-countdown-item:last-child {border-right: unset;}
+  #sp-{{ section.id }} .sp-countdown-item h3 {font-weight: 600;margin: 0;}
+  #sp-{{ section.id }} .sp-countdown-item p {line-height: 1.5;text-transform: uppercase;margin: 0;}
+  
+  @media only screen and (max-width: 767px) {
+    #sp-{{ section.id }}.sp-countdown-section {padding: {{ section.settings.mob_padding_top }}px 0 {{ section.settings.mob_padding_bottom }}px;}
+    #sp-{{ section.id }} .sp-countdown-contant h2 {margin: 0 0 12px;font-size: 22px !important;}
+    #sp-{{ section.id }} .sp-countdown-contant p {margin-bottom: 20px;font-size: 14px !important;}
+    #sp-{{ section.id }} .sp-main-countdown {justify-content: center;}
+    #sp-{{ section.id }} .sp-main-contant-countdown {width: 100%;}
+    #sp-{{ section.id }} .sp-main-countdown-timer {width: 100%;}
+    #sp-{{ section.id }} .sp-timer-countdown .sp-countdown {padding: 8px 0;}
+    #sp-{{ section.id }} .sp-countdown-item {gap: 5px;padding: 5px;}
+    #sp-{{ section.id }} .sp-countdown-item h3 {font-size: 22px !important;}
+    #sp-{{ section.id }} .sp-countdown-item p {font-size: 12px !important;}
+    #sp-{{ section.id }} .sp-countdown-contant .sp-button{font-size: 15px;} 
+  }
+</style>
+{%- endcapture -%}
+{{- sp_sale_countdown_css | strip_newlines -}}
+ 
+<div id="sp-{{ section.id }}" class="sp-countdown-section">
+  <div class="sp-page-width">
+    <div class="sp-main-countdown">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'text' -%}
+            <div id="sp-block-{{ block.id }}" class="sp-main-contant-countdown sp-title-align-{{ block.settings.alignment }}">
+              <div class="sp-countdown-contant">
+                {% if block.settings.countdown_title != blank %}
+                  <h2>{{ block.settings.countdown_title }}</h2>
+                {% endif %}
+                {{ block.settings.countdown_description }}
+                {% if block.settings.button_link != blank and block.settings.button_text != blank %}
+                  <a href="{{ block.settings.button_link }}" class="sp-button{% if block.settings.btn_outline %} sp-button-outline{% endif %}">{{- block.settings.button_text -}}</a>
+                {% endif %}
+              </div>
+              <style>
+                #sp-block-{{ block.id }} .sp-countdown-contant h2 {
+                  font-size: {{ block.settings.title_font_size }}px;
+                  color: {{block.settings.title_color}};
+                  font-weight: 500;
+                }
+                #sp-block-{{ block.id }} .sp-countdown-contant p {
+                  font-size: {{ block.settings.content_font_size }}px;
+                  color: {{block.settings.content_color}};
+                }
+                #sp-block-{{ block.id }} .sp-countdown-contant .sp-button {
+                  background: {{block.settings.btn_bg_color}};
+                  color: {{block.settings.btn_text_color}};
+                  border: 1px solid {{block.settings.btn_border_color}};
+                  border-radius: {{block.settings.border_radius}}px;
+                }
+                #sp-block-{{ block.id }} .sp-countdown-contant .sp-button:hover{
+                  background: {{block.settings.btn_hover_bg_color}};
+                  color: {{block.settings.btn_hover_text_color}};
+                  border: 1px solid {{block.settings.btn_hover_border_color}};
+                  box-shadow: 0 0 5px 0px {{block.settings.outline_btn_shadow_color}};
+                }
+                #sp-block-{{ block.id }} .sp-countdown-contant .sp-button.sp-button-outline {
+                  color: {{block.settings.outline_btn_text_color}};
+                  border-color: {{block.settings.outline_btn_text_color}};
+                  background: transparent;
+                }
+              </style>
+            </div>
+
+          {%- when 'timer' -%}
+            <div class="sp-main-countdown-timer" data-year="{{ block.settings.year }}" data-month="{{ block.settings.month }}" data-day="{{ block.settings.day }}" data-hour="{{ block.settings.hour }}" data-minute="{{ block.settings.minute }}">
+              <div class="sp-timer-countdown">
+                <div class="sp-countdown">
+                  <div class="sp-countdown-item">
+                    <h3 id="sp-countdown-days">0</h3>
+                    {% if block.settings.text_day != blank %}
+                      <p>{{ block.settings.text_day }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="sp-countdown-item">
+                    <h3 id="sp-countdown-hours">0</h3>
+                    {% if block.settings.text_hour != blank %}
+                      <p>{{ block.settings.text_hour }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="sp-countdown-item">
+                    <h3 id="sp-countdown-minutes">0</h3>
+                    {% if block.settings.text_minute != blank %}
+                      <p>{{ block.settings.text_minute }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="sp-countdown-item">
+                    <h3 id="sp-countdown-seconds">0</h3>
+                    {% if block.settings.text_second != blank %}
+                      <p>{{ block.settings.text_second }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <style>
+                #sp-{{ section.id }} .sp-countdown-item h3 {color: {{ block.settings.content_color }};font-size: {{block.settings.title_font_size}}px;}
+                #sp-{{ section.id }} .sp-countdown-item p {color: {{ block.settings.content_color }};font-size: {{block.settings.content_font_size}}px;}
+                #sp-{{ section.id }} .sp-countdown-item {border-right: 1px solid {{ block.settings.content_color }};}
+                #sp-{{ section.id }} .sp-timer-countdown {border: 1px solid {{ block.settings.content_color }};}
+              </style>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let countdownInitialized = false;
+    let interval;
+    function initializeCountdown() {
+      const spMainSection = document.querySelector("#shopify-section-{{ section.id }} .sp-main-countdown-timer");
+      if (countdownInitialized || !spMainSection) return;
+      var spYear = spMainSection.dataset.year;
+      var spMonth = spMainSection.dataset.month;
+      var spDay = spMainSection.dataset.day;
+      var spHour = spMainSection.dataset.hour;
+      var spMinut = spMainSection.dataset.minute;
+      var dateFormat = spYear + "-" + spMonth + "-" + spDay + "T" + spHour + ":" + spMinut + ":00";
+      const countdownDate = new Date(dateFormat).getTime();
+      if (countdownDate) {
+        const updateCountdown = () => {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          if (distance < 0) {
+            clearInterval(interval);
+          } else {
+            document.getElementById("sp-countdown-days").textContent = days;
+            document.getElementById("sp-countdown-hours").textContent = hours;
+            document.getElementById("sp-countdown-minutes").textContent = minutes;
+            document.getElementById("sp-countdown-seconds").textContent = seconds;
+          }
+        };
+        interval = setInterval(updateCountdown, 100);
+        countdownInitialized = true;
+      }
+    }
+    initializeCountdown();
+    if (Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function(event) {
+        clearInterval(interval);
+        countdownInitialized = false;
+        initializeCountdown();
+      });
+      document.addEventListener('shopify:section:unload', function(event) {
+        clearInterval(interval);
+        countdownInitialized = false;
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "SH: Sale countdown",
+  "tag": "section",
+  "class": "sh-section-hub-main",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mob_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mob_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Section width"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width",
+      "label": "Width (in px)",
+      "default": "1140"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "countdown_title",
+          "label": "Heading",
+          "default": "Black Friday Sale"
+        },
+        {
+          "type": "richtext",
+          "id": "countdown_description",
+          "label": "Content",
+          "default": "<p>Hurry up! get 30% off entire order when you buy a pair of leggings!</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link",
+          "default": "/"
+        },
+        {
+          "type": "checkbox",
+          "id":"btn_outline",
+          "label": "Use outline button",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "outline_btn_text_color",
+          "label": "Outline color",
+          "default": "#000000"
+        },
+        {
+          "type":"range",
+          "id":"border_radius",
+          "label": "Button border radius",
+          "min": 0,
+          "max": 22,
+          "default": 0,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+           "type": "text_alignment",
+           "id": "alignment",
+           "label": "Text alignment",
+           "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Font size"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "min": 5,
+          "max": 80,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "content_font_size",
+          "min": 5,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Content",
+          "default": 16
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Heading color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "content_color",
+          "label": "Content color",
+          "default": "#121212"
+        },
+        {
+          "type": "paragraph",
+          "content": "Button"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_color",
+          "label": "Background color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "btn_border_color",
+          "label": "Border color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_bg_color",
+          "label": "Hover background color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_text_color",
+          "label": "Hover text color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_border_color",
+          "label": "Hover border color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "outline_btn_shadow_color",
+          "label": "Shadow color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "timer",
+      "name": "Timer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "From now to what date?"
+        },
+        {
+          "type": "paragraph",
+          "content": "E.g. From now to 22:00 20/11/2024"
+        },
+        {
+          "type": "text",
+          "id": "minute",
+          "label": "Minute number",
+          "default": "00",
+          "info": "XX format"
+        },
+        {
+          "type": "text",
+          "id": "hour",
+          "label": "Hour number",
+          "default": "22",
+          "info": "XX format, 24-hour clock. E.g 10 PM = 22"
+        },
+        {
+          "type": "header",
+          "content": "Timer end date",
+          "info": "Specifies the date when the timer will end"
+        },
+        {
+          "type": "text",
+          "id": "day",
+          "label": "Day number",
+          "default": "19",
+          "info": "XX format"
+        },
+        {
+          "type": "text",
+          "id": "month",
+          "label": "Month number",
+          "default": "11",
+          "info": "XX format"
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year number",
+          "default": "2024",
+          "info": "XXXX format"
+        },
+        {
+          "type": "header",
+          "content": "Text config"
+        },
+        {
+          "type": "text",
+          "id": "text_day",
+          "label": "Day",
+          "default": "Days"
+        },
+        {
+          "type": "text",
+          "id": "text_hour",
+          "label": "Hour",
+          "default": "Hours"
+        },
+        {
+          "type": "text",
+          "id": "text_minute",
+          "label": "Minute",
+          "default": "Minutes"
+        },
+        {
+          "type": "text",
+          "id": "text_second",
+          "label": "Second",
+          "default": "Seconds"
+        },
+        {
+          "type": "header",
+          "content": "Font size"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "min": 5,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "label": "Timer number",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "content_font_size",
+          "min": 5,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "label": "Timer text",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "content_color",
+          "label": "Content color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SH: Sale countdown",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "timer"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer","header"]
+  }
+}
+{% endschema %}

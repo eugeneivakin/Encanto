@@ -307,13 +307,24 @@ a.product__text {
   padding: 0 1rem;
 }
 
-/* .product .price .badge {
-  margin-bottom: 0.5rem;
+.product__accordion.accordion {
+  margin-top: 0;
+  border-top: none;
+  border-bottom: none;
+}
+
+.product .price .badge,
+.product .price .dame-price-badge,
+.product .price .dame-discount-badge-overlay {
+  padding: 1rem 2rem !important;
+  border-radius: var(--variant-pills-radius) !important;
+  font-size: 1.4rem !important;
+  line-height: 1 !important;
 }
 
 .product .price__container {
   margin-bottom: 0.5rem;
-} */
+}
 
 .product .price dl {
   margin-top: 0.5rem;
@@ -1532,21 +1543,4 @@ a.product__text {
 
 .product .product-form-installment {
   margin: 0;
-}
-
-.product-payment-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(var(--color-foreground), 0.1);
-}
-
-.product-payment-icons .payment-icon {
-  width: auto;
-  height: 24px;
-  border-radius: 4px;
 }

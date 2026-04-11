@@ -1,0 +1,41 @@
+{{ 'product-sticky-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-sticky-form.js' | asset_url }}" defer="defer"></script>
+
+{%- assign sticky_product_form_id = 'product-form-' | append: section.id -%}
+
+<sticky-product-form
+  class="product--sticky-form product--sticky-form__inactive{% if section.settings.hide_sticky_on_mobile %} small-hide{% endif %}{% if section.settings.hide_sticky_on_desk %} large-up-hide{% endif %}"
+  data-section-id="{{ section.id }}"
+>
+  <product-form>
+    {%- form 'product', product, id: sticky_product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input
+        type="hidden"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id }}"
+        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+        class="product-variant-id"
+      >
+      <div class="product--sticky-form-info no-js-hidden" id="price-{{ section.id }}" role="status">
+        {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--end' -%}
+      </div>
+      <div class="product--sticky-form__buttons">
+        <button
+          type="submit"
+          name="add"
+          class="product-form__submit button button--full-width button--primary"
+          {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+        >
+          <span>
+            {%- if product.selected_or_first_available_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </span>
+          {%- render 'loading-spinner' -%}
+        </button>
+      </div>
+    {%- endform -%}
+  </product-form>
+</sticky-product-form>

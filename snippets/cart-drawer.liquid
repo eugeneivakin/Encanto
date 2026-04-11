@@ -74,6 +74,36 @@
           </span>
         </button>
       </div>
+      {%- if settings.show_free_shipping_bar -%}
+        {%- liquid
+          assign threshold = settings.free_shipping_threshold | default: 150 | times: 100
+          assign bar_bg = settings.free_shipping_bar_bg | default: '#f3f3f3'
+          assign bar_color = settings.free_shipping_bar_color | default: '#000000'
+          assign cart_total = cart.total_price
+          if threshold > 0
+            assign percentage = cart_total | times: 100 | divided_by: threshold
+          else
+            assign percentage = 100
+          endif
+          if percentage > 100
+            assign percentage = 100
+          endif
+          assign remaining = threshold | minus: cart_total
+          assign remaining_money = remaining | money
+        -%}
+        <div class="cart-drawer__free-shipping" data-threshold="{{ threshold }}">
+          <p class="cart-drawer__free-shipping-message caption-large">
+            {%- if remaining > 0 -%}
+              {{ settings.free_shipping_welcome | default: 'Add [amount] more to get FREE shipping!' | replace: '[amount]', remaining_money }}
+            {%- else -%}
+              {{ settings.free_shipping_success | default: "You've got FREE shipping!" }}
+            {%- endif -%}
+          </p>
+          <div class="cart-fsb__bar" style="background-color: {{ bar_bg }};">
+            <div class="cart-fsb__fill" style="width: {{ percentage }}%; background-color: {{ bar_color }};">&nbsp;</div>
+          </div>
+        </div>
+      {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"

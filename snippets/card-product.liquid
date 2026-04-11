@@ -27,6 +27,27 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  <style>
+    .card-discount-badge {
+      background-color: #FF4444 !important;
+      color: #ffffff !important;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .card__heading.h5 {
+      font-size: 1.4rem !important;
+      line-height: 1.35;
+    }
+    .card__heading.h5 > a {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -124,7 +145,33 @@
               </a>
             </h3>
           </div>
+          {%- liquid
+            assign is_bestseller = false
+            assign is_new_arrival = false
+            if settings.bestseller_collection != blank
+              for col in card_product.collections
+                if col.handle == settings.bestseller_collection
+                  assign is_bestseller = true
+                  break
+                endif
+              endfor
+            endif
+            if settings.new_arrivals_collection != blank
+              for col in card_product.collections
+                if col.handle == settings.new_arrivals_collection
+                  assign is_new_arrival = true
+                  break
+                endif
+              endfor
+            endif
+          -%}
           <div class="card__badge {{ settings.badge_position }}">
+            {%- if is_bestseller -%}
+              <span class="badge badge--bestseller">Bestseller</span>
+            {%- endif -%}
+            {%- if is_new_arrival -%}
+              <span class="badge badge--new-arrival">New</span>
+            {%- endif -%}
             {%- if card_product.available == false -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
@@ -133,11 +180,12 @@
                 {{- 'products.product.sold_out' | t -}}
               </span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+              {%- assign card_discount = card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge badge--bottom-left card-discount-badge"
               >
-                {{- 'products.product.on_sale' | t -}}
+                -{{ card_discount }}% OFF
               </span>
             {%- endif -%}
           </div>
@@ -548,7 +596,33 @@
             </div>
           {% endif %}
         {% endif %}
+        {%- liquid
+          assign is_bestseller = false
+          assign is_new_arrival = false
+          if settings.bestseller_collection != blank
+            for col in card_product.collections
+              if col.handle == settings.bestseller_collection
+                assign is_bestseller = true
+                break
+              endif
+            endfor
+          endif
+          if settings.new_arrivals_collection != blank
+            for col in card_product.collections
+              if col.handle == settings.new_arrivals_collection
+                assign is_new_arrival = true
+                break
+              endif
+            endfor
+          endif
+        -%}
         <div class="card__badge {{ settings.badge_position }}">
+          {%- if is_bestseller -%}
+            <span class="badge badge--bestseller">Bestseller</span>
+          {%- endif -%}
+          {%- if is_new_arrival -%}
+            <span class="badge badge--new-arrival">New</span>
+          {%- endif -%}
           {%- if card_product.available == false -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
@@ -557,11 +631,12 @@
               {{- 'products.product.sold_out' | t -}}
             </span>
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            {%- assign card_discount = card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+              class="badge badge--bottom-left card-discount-badge"
             >
-              {{- 'products.product.on_sale' | t -}}
+              -{{ card_discount }}% OFF
             </span>
           {%- endif -%}
         </div>

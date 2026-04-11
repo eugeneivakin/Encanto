@@ -111,10 +111,10 @@
 
   #reviews-{{ section.id }} .dame-reviews-title {
     font-size: var(--dame-reviews-title-size-desktop);
-    color: var(--dame-reviews-title-color);
-    font-weight: {{ section.settings.title_font_weight }};
+    color: #1D1D1D;
+    font-weight: 400;
     margin: 0 0 15px 0;
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
   }
 
   .dame-reviews-title p {
@@ -122,12 +122,11 @@
   }
 
   #reviews-{{ section.id }} .dame-reviews-subtitle p {
-    font-size: var(--dame-reviews-subtitle-size-desktop);
-    color: var(--dame-reviews-subtitle-color);
+    font-size: 16px;
+    color: #4A4A4A;
     margin: 0;
-    font-weight: {{ section.settings.subtitle_font_weight }};
-    letter-spacing: 0.2px;
-    opacity: 0.8;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   #reviews-{{ section.id }} .dame-reviews-slider-container {
@@ -139,59 +138,59 @@
     display: flex;
     gap: {{ section.settings.cards_gap }}px;
     padding: {{ section.settings.slider_padding_vertical }}px 0;
-    scroll-padding-left: {{ section.settings.slider_padding_horizontal }}px;
+    scroll-padding-left: max(calc((100vw - 1456px) / 2 + {{ section.settings.slider_padding_horizontal }}px), {{ section.settings.slider_padding_horizontal }}px);
   }
 
   #reviews-{{ section.id }} .dame-reviews-slider::after {
     content: '';
     width: 0;
-    padding-left: {{ section.settings.slider_padding_horizontal }}px;
+    padding-left: max(calc((100vw - 1456px) / 2 + {{ section.settings.slider_padding_horizontal }}px), {{ section.settings.slider_padding_horizontal }}px);
   }
 
   #reviews-{{ section.id }} .dame-review-card:first-child {
-    margin-left: {{ section.settings.slider_padding_horizontal }}px;
+    margin-left: max(calc((100vw - 1456px) / 2 + {{ section.settings.slider_padding_horizontal }}px), {{ section.settings.slider_padding_horizontal }}px);
   }
 
   #reviews-{{ section.id }} .dame-review-card {
     flex: 0 0 auto;
-    width: calc((100% - (2 * {{ section.settings.cards_gap }}px)) / 3);
+    width: calc((1260px - (2 * {{ section.settings.cards_gap }}px)) / 3);
     min-width: {{ section.settings.card_min_width }}px;
   }
 
   #reviews-{{ section.id }} .dame-review-content {
     background: {{ section.settings.card_bg_color }};
-    padding: {{ section.settings.card_padding }}px;
+    padding: 24px;
     border-radius: {{ section.settings.card_border_radius }}px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     height: 100%;
   }
 
   #reviews-{{ section.id }} .dame-review-stars {
     display: flex;
-    gap: {{ section.settings.stars_gap }}px;
+    gap: 10px;
     margin-bottom: {{ section.settings.stars_margin_bottom }}px;
   }
 
   #reviews-{{ section.id }} .dame-review-stars svg {
-    width: {{ section.settings.star_size }}px;
-    height: {{ section.settings.star_size }}px;
+    width: 22px;
+    height: 22px;
   }
 
   #reviews-{{ section.id }} .dame-review-text {
     font-size: var(--dame-reviews-text-size-desktop);
-    line-height: {{ section.settings.review_text_line_height }};
-    color: {{ section.settings.review_text_color }};
+    line-height: 1.5;
+    color: #4A4A4A;
     margin-bottom: {{ section.settings.text_margin_bottom }}px;
-    font-weight: {{ section.settings.review_text_font_weight }};
-    letter-spacing: -0.2px;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   #reviews-{{ section.id }} .dame-review-author {
-    font-size: {{ section.settings.author_size }}px;
-    color: {{ section.settings.author_color }};
+    font-size: 16px;
+    color: #1D1D1D;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 700;
+    letter-spacing: 0;
+    font-weight: 600;
     margin: 0;
   }
 
@@ -200,7 +199,7 @@
     justify-content: center;
     align-items: center;
     gap: {{ section.settings.navigation_gap }}px;
-    padding: 20px 60px;
+    padding: 0px 60px;
   }
 
   #reviews-{{ section.id }} .dame-nav-arrow {
@@ -238,23 +237,37 @@
     #reviews-{{ section.id }} .dame-reviews-header {
       padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
       padding-right: {{ section.settings.slider_padding_horizontal_mobile }}px;
+      margin-bottom: -14px;
     }
 
     #reviews-{{ section.id }} .dame-reviews-title {
-      font-size: var(--dame-reviews-title-size-mobile);
+      font-size: 32px;
     }
 
-    #reviews-{{ section.id }} .dame-reviews-subtitle {
-      font-size: var(--dame-reviews-subtitle-size-mobile);
+    #reviews-{{ section.id }} .dame-reviews-subtitle p {
+      font-size: 16px;
     }
 
     #reviews-{{ section.id }} .dame-reviews-slider {
-      padding: {{ section.settings.slider_padding_vertical_mobile }}px 0;
+      display: flex !important;
+      flex-direction: row;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding: 30px 0 15px;
       scroll-padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-slider::-webkit-scrollbar {
+      display: none;
     }
 
     #reviews-{{ section.id }} .dame-reviews-slider::after {
-      padding-left: {{ section.settings.slider_padding_horizontal_mobile }}px;
+      content: '';
+      flex-shrink: 0;
+      width: {{ section.settings.slider_padding_horizontal_mobile }}px;
     }
 
     #reviews-{{ section.id }} .dame-review-card:first-child {
@@ -263,15 +276,20 @@
 
     #reviews-{{ section.id }} .dame-review-card {
       flex: 0 0 calc(100vw - ({{ section.settings.slider_padding_horizontal_mobile }}px * 2));
-      max-width: {{ section.settings.card_width_mobile }}px;
+      min-width: 0;
+      scroll-snap-align: start;
     }
 
     #reviews-{{ section.id }} .dame-review-content {
-      padding: {{ section.settings.card_padding_mobile }}px;
+      padding: 24px;
     }
 
     #reviews-{{ section.id }} .dame-review-text {
-      font-size: var(--dame-reviews-text-size-mobile);
+      font-size: 16px;
+    }
+
+    #reviews-{{ section.id }} .dame-reviews-navigation {
+      display: flex;
     }
   }
 </style>

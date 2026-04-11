@@ -1,0 +1,723 @@
+<div id="section-{{ section.id }}" class="skin-eval-section {{ section.settings.custom_classes }}">
+  <div class="skin-eval-wrapper">
+    {% if section.settings.background_image != blank %}
+      <div class="skin-eval-image">
+        {{
+          section.settings.background_image
+          | image_url: width: 2000
+          | image_tag: loading: 'lazy', alt: section.settings.background_image.alt
+        }}
+      </div>
+    {% endif %}
+
+    <div class="skin-eval-overlay"></div>
+
+    <div class="skin-eval-content">
+      {% if section.settings.subtitle != blank %}
+        <p class="skin-eval-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="skin-eval-title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="skin-eval-description">{{ section.settings.description }}</div>
+      {% endif %}
+
+      {% if section.settings.secondary_text != blank %}
+        <p class="skin-eval-secondary">{{ section.settings.secondary_text }}</p>
+      {% endif %}
+
+      <div class="skin-eval-buttons">
+        {% if section.settings.button_1_text != blank %}
+          <a
+            href="{{ section.settings.button_1_link }}"
+            class="skin-eval-btn skin-eval-btn-primary"
+            {% if section.settings.button_1_link == blank %}
+              role="button"
+            {% endif %}
+          >
+            {{ section.settings.button_1_text }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.button_2_text != blank %}
+          <a
+            href="{{ section.settings.button_2_link }}"
+            class="skin-eval-btn skin-eval-btn-secondary"
+            {% if section.settings.button_2_link == blank %}
+              role="button"
+            {% endif %}
+          >
+            {{ section.settings.button_2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .skin-eval-section {
+    --overlay-opacity: 0.75;
+    --content-max-width: 700px;
+    --button-gap: 20px;
+  }
+
+  .skin-eval-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .skin-eval-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .skin-eval-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .skin-eval-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .skin-eval-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: var(--content-max-width);
+    width: 100%;
+  }
+
+  .skin-eval-subtitle {
+    margin: 0 0 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+  }
+
+  .skin-eval-title {
+    margin: 0 0 30px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .skin-eval-description {
+    margin: 0 0 30px;
+    line-height: 1.6;
+  }
+
+  .skin-eval-description p {
+    margin: 0 0 15px;
+  }
+
+  .skin-eval-description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .skin-eval-secondary {
+    margin: 0 0 40px;
+    line-height: 1.5;
+  }
+
+  .skin-eval-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--button-gap);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skin-eval-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .skin-eval-btn-primary,
+  .skin-eval-btn-secondary {
+    padding: 15px 35px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .skin-eval-wrapper {
+      min-height: 400px;
+    }
+
+    .skin-eval-overlay {
+      width: 100%;
+    }
+
+    .skin-eval-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .skin-eval-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .skin-eval-wrapper {
+      min-height: 350px;
+    }
+
+    .skin-eval-subtitle {
+      margin-bottom: 15px;
+    }
+
+    .skin-eval-title {
+      margin-bottom: 20px;
+    }
+
+    .skin-eval-description {
+      margin-bottom: 20px;
+    }
+
+    .skin-eval-secondary {
+      margin-bottom: 30px;
+    }
+  }
+</style>
+
+<style>
+  #section-{{ section.id }} {
+    background-color: {{ section.settings.section_background }};
+  }
+
+  #section-{{ section.id }} .skin-eval-wrapper {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_horizontal_desktop }}px;
+    padding-right: {{ section.settings.padding_horizontal_desktop }}px;
+    max-width: {{ section.settings.section_max_width }};
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #section-{{ section.id }} .skin-eval-overlay {
+    background-color: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  #section-{{ section.id }} .skin-eval-content {
+    padding-left: {{ section.settings.content_padding_horizontal }}px;
+    padding-right: {{ section.settings.content_padding_horizontal }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-subtitle {
+    color: {{ section.settings.subtitle_color }};
+    font-size: {{ section.settings.subtitle_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-secondary {
+    color: {{ section.settings.secondary_text_color }};
+    font-size: {{ section.settings.secondary_text_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-btn-primary {
+    background-color: {{ section.settings.button_1_bg_color }};
+    color: {{ section.settings.button_1_text_color }};
+    font-size: {{ section.settings.button_1_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-btn-primary:hover {
+    background-color: {{ section.settings.button_1_bg_hover_color }};
+    color: {{ section.settings.button_1_text_hover_color }};
+  }
+
+  #section-{{ section.id }} .skin-eval-btn-secondary {
+    background-color: {{ section.settings.button_2_bg_color }};
+    color: {{ section.settings.button_2_text_color }};
+    font-size: {{ section.settings.button_2_size_desktop }}px;
+  }
+
+  #section-{{ section.id }} .skin-eval-btn-secondary:hover {
+    background-color: {{ section.settings.button_2_bg_hover_color }};
+    color: {{ section.settings.button_2_text_hover_color }};
+  }
+
+  @media screen and (max-width: 768px) {
+    #section-{{ section.id }} .skin-eval-wrapper {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_horizontal_mobile }}px;
+      padding-right: {{ section.settings.padding_horizontal_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-subtitle {
+      font-size: {{ section.settings.subtitle_size_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-title {
+      font-size: {{ section.settings.title_size_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-description {
+      font-size: {{ section.settings.description_size_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-secondary {
+      font-size: {{ section.settings.secondary_text_size_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-btn-primary {
+      font-size: {{ section.settings.button_1_size_mobile }}px;
+    }
+
+    #section-{{ section.id }} .skin-eval-btn-secondary {
+      font-size: {{ section.settings.button_2_size_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Skin Care Evaluation",
+  "tag": "section",
+  "class": "section-skin-care-eval",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width",
+      "label": "Section Max Width",
+      "default": "100%",
+      "info": "Example: 1440px, 100%, 90vw"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS Classes"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Horizontal Desktop",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Horizontal Mobile",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Overlay Settings"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 75
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Content Horizontal Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Online Skin Care Evaluation"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size Mobile",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WHAT IS YOUR SKIN INSTANT"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Desktop",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size Mobile",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Discover your perfect skincare routine with just a click! Our quick and thorough quiz helps you understand your skin's needs and provides personalized product recommendations and self-care practices to enhance your skin health holistically.</p>"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size Desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size Mobile",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Secondary Text"
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Secondary Text",
+      "default": "If you prefer online consultation with our expert, book yours now!"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Secondary Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "secondary_text_size_desktop",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Secondary Text Size Desktop",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "secondary_text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Secondary Text Size Mobile",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Button 1 (Primary)"
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Button 1 Text",
+      "default": "TAKE YOUR QUIZ"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "color",
+      "id": "button_1_bg_color",
+      "label": "Button 1 Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_1_text_color",
+      "label": "Button 1 Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_1_bg_hover_color",
+      "label": "Button 1 Background Hover Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_1_text_hover_color",
+      "label": "Button 1 Text Hover Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_1_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button 1 Font Size Desktop",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_1_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button 1 Font Size Mobile",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Button 2 (Secondary)"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Button 2 Text",
+      "default": "BOOK YOUR CONSULTATION"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "color",
+      "id": "button_2_bg_color",
+      "label": "Button 2 Background Color",
+      "default": "#5a5a5a"
+    },
+    {
+      "type": "color",
+      "id": "button_2_text_color",
+      "label": "Button 2 Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_2_bg_hover_color",
+      "label": "Button 2 Background Hover Color",
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "color",
+      "id": "button_2_text_hover_color",
+      "label": "Button 2 Text Hover Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_2_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button 2 Font Size Desktop",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_2_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button 2 Font Size Mobile",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Skin Care Evaluation"
+    }
+  ]
+}
+{% endschema %}

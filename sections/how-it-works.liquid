@@ -1,0 +1,435 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .how-it-works {
+    padding: 80px 20px;
+  }
+
+  .how-it-works__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .how-it-works__images {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .how-it-works__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .how-it-works__image-wrapper.active {
+    opacity: 1;
+  }
+
+  .how-it-works__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .how-it-works__placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-it-works__placeholder svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  .how-it-works__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .how-it-works__heading {
+    font-size: clamp(38px, 6vw, 56px);
+    line-height: 1.1;
+    margin: 0 0 40px;
+    font-weight: 700;
+  }
+
+  .how-it-works__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .how-it-works__item {
+    border-top: 1px solid var(--color-foreground);
+  }
+
+  .how-it-works__item:last-child {
+    border-bottom: 1px solid var(--color-foreground);
+  }
+
+  .how-it-works__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-foreground);
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .how-it-works__button-left {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .how-it-works__number {
+    font-size: 12px;
+    font-weight: 400;
+    position: relative;
+    top: -8px;
+  }
+
+  .how-it-works__step-title {
+    font-size: clamp(20px, 3vw, 28px);
+    line-height: 1.25;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .how-it-works__icon {
+    font-size: 24px;
+    font-weight: 300;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .how-it-works__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .how-it-works__answer-inner {
+    padding: 0 0 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .how-it-works__item.active .how-it-works__answer {
+    max-height: 300px;
+  }
+
+  .how-it-works__cta {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .how-it-works {
+      padding: 50px 20px;
+    }
+
+    .how-it-works__container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .how-it-works__images {
+      order: -1;
+      aspect-ratio: 4/3;
+    }
+
+    .how-it-works__heading {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .how-it-works__step-title {
+      font-size: 18px;
+    }
+
+    .how-it-works__button {
+      padding: 16px 0;
+    }
+  }
+</style>
+
+<div class="how-it-works color-{{ section.settings.color_scheme }}" id="{{ section.settings.custom_id | default: 'how-it-works' }}-{{ section.id }}">
+  <div class="how-it-works__container">
+    <div class="how-it-works__images">
+      {%- if section.settings.step_1_image != blank -%}
+        <div class="how-it-works__image-wrapper active" data-index="0">
+          {{ section.settings.step_1_image | image_url: width: 800 | image_tag: class: 'how-it-works__image', loading: 'lazy' }}
+        </div>
+      {%- else -%}
+        <div class="how-it-works__image-wrapper active" data-index="0">
+          <div class="how-it-works__placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.step_2_image != blank -%}
+        <div class="how-it-works__image-wrapper" data-index="1">
+          {{ section.settings.step_2_image | image_url: width: 800 | image_tag: class: 'how-it-works__image', loading: 'lazy' }}
+        </div>
+      {%- else -%}
+        <div class="how-it-works__image-wrapper" data-index="1">
+          <div class="how-it-works__placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.step_3_image != blank -%}
+        <div class="how-it-works__image-wrapper" data-index="2">
+          {{ section.settings.step_3_image | image_url: width: 800 | image_tag: class: 'how-it-works__image', loading: 'lazy' }}
+        </div>
+      {%- else -%}
+        <div class="how-it-works__image-wrapper" data-index="2">
+          <div class="how-it-works__placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="how-it-works__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="how-it-works__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <div class="how-it-works__items">
+        <div class="how-it-works__item" data-index="0">
+          <button class="how-it-works__button" type="button">
+            <div class="how-it-works__button-left">
+              <span class="how-it-works__number">01</span>
+              <h3 class="how-it-works__step-title">{{ section.settings.step_1_title }}</h3>
+            </div>
+            <span class="how-it-works__icon">+</span>
+          </button>
+          <div class="how-it-works__answer">
+            <div class="how-it-works__answer-inner">
+              {{ section.settings.step_1_description }}
+            </div>
+          </div>
+        </div>
+
+        <div class="how-it-works__item" data-index="1">
+          <button class="how-it-works__button" type="button">
+            <div class="how-it-works__button-left">
+              <span class="how-it-works__number">02</span>
+              <h3 class="how-it-works__step-title">{{ section.settings.step_2_title }}</h3>
+            </div>
+            <span class="how-it-works__icon">+</span>
+          </button>
+          <div class="how-it-works__answer">
+            <div class="how-it-works__answer-inner">
+              {{ section.settings.step_2_description }}
+            </div>
+          </div>
+        </div>
+
+        <div class="how-it-works__item" data-index="2">
+          <button class="how-it-works__button" type="button">
+            <div class="how-it-works__button-left">
+              <span class="how-it-works__number">03</span>
+              <h3 class="how-it-works__step-title">{{ section.settings.step_3_title }}</h3>
+            </div>
+            <span class="how-it-works__icon">+</span>
+          </button>
+          <div class="how-it-works__answer">
+            <div class="how-it-works__answer-inner">
+              {{ section.settings.step_3_description }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="how-it-works__cta">
+          <a
+            {% if section.settings.button_link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.button_link }}"
+            {% endif %}
+            class="button button--primary"
+          >
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const section = document.getElementById('{{ section.settings.custom_id | default: 'how-it-works' }}-{{ section.id }}');
+    if (!section) return;
+
+    const items = section.querySelectorAll('.how-it-works__item');
+    const images = section.querySelectorAll('.how-it-works__image-wrapper');
+
+    items.forEach((item) => {
+      const btn = item.querySelector('.how-it-works__button');
+      btn.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        const index = parseInt(item.dataset.index);
+
+        items.forEach((el) => {
+          el.classList.remove('active');
+          el.querySelector('.how-it-works__icon').textContent = '+';
+        });
+
+        images.forEach((img) => {
+          img.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          item.querySelector('.how-it-works__icon').textContent = '\u00d7';
+          if (images[index]) {
+            images[index].classList.add('active');
+          }
+        } else {
+          if (images[0]) {
+            images[0].classList.add('active');
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Section ID",
+      "info": "Custom ID for anchor links (e.g. #how-it-works)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How it works"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Title",
+      "default": "Place the sheet on your bed"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Description",
+      "default": "Simply place the Earthsleep grounding sheet on top of your mattress. The conductive silver fibers are woven throughout the fabric."
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Title",
+      "default": "Connect to your outlet"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Description",
+      "default": "Plug the grounding cord into any standard electrical outlet. The cord connects only to the ground pin."
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Title",
+      "default": "Sleep grounded every night"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Description",
+      "default": "As you sleep, your body absorbs free electrons from the Earth through the conductive sheet."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}

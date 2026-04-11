@@ -11,7 +11,7 @@
               {{
                 section.settings.desktop_image
                 | image_url: width: 3840
-                | image_tag: loading: 'lazy', class: 'image-hero-img', alt: section.settings.desktop_image.alt
+                | image_tag: loading: 'eager', fetchpriority: 'high', class: 'image-hero-img', alt: section.settings.desktop_image.alt
                 | escape
               }}
             </div>
@@ -48,6 +48,20 @@
         </div>
       </div>
     </div>
+
+    <div class="image-hero-mobile-content">
+      {% if section.settings.title != blank %}
+        <h2 class="image-hero-heading">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <div class="image-hero-mobile-subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_url }}" class="button">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
   </div>
 </div>
 
@@ -59,8 +73,8 @@
 
   .image-hero-subtitle{
     color: white;
-    font-size: 20px;
-    padding-bottom: 20px;
+    font-size: 16px;
+    padding-bottom: 24px;
   }
 
   #image-hero-{{ section.id }} .image-hero-banner {
@@ -78,6 +92,11 @@
     height: 100%;
     z-index: 0;
   }
+
+  .image-hero-wrapper {
+  padding-bottom: 24px!important;
+
+}
 
   #image-hero-{{ section.id }} .image-hero-desktop,
   #image-hero-{{ section.id }} .image-hero-mobile {
@@ -200,14 +219,18 @@
     text-align: right;
   }
 
+  #image-hero-{{ section.id }} .image-hero-mobile-content {
+    display: none;
+  }
+
   #image-hero-{{ section.id }} .image-hero-heading {
     font-family: 'AttilaSansClassic', sans-serif;
-    font-size: {{ section.settings.title_size_desktop }}px;
+    font-size: 60px;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.2;
     color: {{ section.settings.text_color }};
     margin: 0 0 20px 0;
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
   }
 
   /* #image-hero-{{ section.id }} .image-hero-button {
@@ -231,7 +254,17 @@
     transform: translateY(-2px);
   } */
 
-  @media screen and (max-width: 749px) {
+  #image-hero-{{ section.id }} .button {
+    transition: transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+
+  #image-hero-{{ section.id }} .button:hover {
+    opacity: 0.85 !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28) !important;
+  }
+
+    @media screen and (max-width: 749px) {
     #image-hero-{{ section.id }} {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -264,11 +297,47 @@
 
     #image-hero-{{ section.id }} .image-hero-heading {
       font-size: {{ section.settings.title_size_mobile }}px;
+      line-height: 1.3;
     }
 
     #image-hero-{{ section.id }} .image-hero-button {
       padding: 10px 24px;
       font-size: 12px;
+    }
+
+    #image-hero-{{ section.id }} .image-hero-content {
+      display: none;
+    }
+
+    #image-hero-{{ section.id }} .image-hero-mobile-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    #image-hero-{{ section.id }} .button {
+      padding-right: 50px;
+      padding-left: 50px;
+      font-size: 16px;
+    }
+
+    #image-hero-{{ section.id }} .image-hero-mobile-content .image-hero-heading {
+      color: #232323;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    #image-hero-{{ section.id }} .image-hero-mobile-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: #6B6B6B;
+      margin: 0;
+      letter-spacing: 0;
+      line-height: 1;
+      margin-bottom: 8px;
     }
   }
 </style>
@@ -386,10 +455,10 @@
       "id": "min_height_mobile",
       "min": 300,
       "max": 800,
-      "step": 50,
+      "step": 5,
       "unit": "px",
       "label": "Min Height Mobile",
-      "default": 500
+      "default": 360
     },
     {
       "type": "header",
