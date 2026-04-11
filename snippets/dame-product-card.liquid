@@ -163,24 +163,12 @@
     </div>
 
     <div class="dame-atc-mobile-wrapper">
-      {% if product.variants_count > 1 %}
-        <modal-opener data-modal="#QuickAdd-{{ product.id }}">
-          <button class="button dame-atc-icon-btn" data-product-url="{{ product.url }}" aria-label="{{ atc_text }}">
-            {%- render 'icon-cart-atc' -%}
-            {%- render 'loading-spinner' -%}
-          </button>
-        </modal-opener>
-      {% else %}
-        <button
-          class="button dame-atc-icon-btn"
-          data-variant-id="{{ product.variants.first.id }}"
-          data-product-url="{{ product.url }}"
-          aria-label="{{ atc_text }}"
-          onclick="dameQuickAdd(this, event)"
-        >
+      <modal-opener data-modal="#QuickAdd-{{ product.id }}">
+        <button class="button dame-atc-icon-btn" data-product-url="{{ product.url }}" aria-label="{{ atc_text }}">
           {%- render 'icon-cart-atc' -%}
+          {%- render 'loading-spinner' -%}
         </button>
-      {% endif %}
+      </modal-opener>
     </div>
   </div>
 
