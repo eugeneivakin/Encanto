@@ -27,30 +27,47 @@
       btn.textContent = '...';
       fetch('/cart/add.js', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }], sections: ['cart-drawer'], sections_url: window.location.pathname })
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          items: [{ id: variantId, quantity: 1 }],
+          sections: ['cart-drawer'],
+          sections_url: window.location.pathname,
+        }),
       })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.status) {
-          window.location.href = productUrl;
-        } else {
-          btn.textContent = 'â';
-          var cartDrawer = document.querySelector('cart-drawer');
-          if (cartDrawer && data.sections) {
-            cartDrawer.renderContents({ id: variantId, sections: data.sections });
-            cartDrawer.open();
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (data) {
+          if (data.status) {
+            window.location.href = productUrl;
           } else {
-            var cartLink = document.querySelector('#cart-icon-bubble');
-            if (cartLink) cartLink.click();
+            btn.textContent = 'â';
+            var cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer && data.sections) {
+              cartDrawer.renderContents({ id: variantId, sections: data.sections });
+              cartDrawer.open();
+            } else {
+              var cartLink = document.querySelector('#cart-icon-bubble');
+              if (cartLink) cartLink.click();
+            }
+            fetch('/cart.js')
+              .then(function (r) {
+                return r.json();
+              })
+              .then(function (cart) {
+                document.querySelectorAll('[data-cart-count], .cart-count-bubble span').forEach(function (el) {
+                  el.textContent = cart.item_count;
+                });
+              });
+            setTimeout(function () {
+              btn.textContent = origText;
+              btn.disabled = false;
+            }, 2000);
           }
-          fetch('/cart.js').then(function(r) { return r.json(); }).then(function(cart) {
-            document.querySelectorAll('[data-cart-count], .cart-count-bubble span').forEach(function(el) { el.textContent = cart.item_count; });
-          });
-          setTimeout(function() { btn.textContent = origText; btn.disabled = false; }, 2000);
-        }
-      })
-      .catch(function() { window.location.href = productUrl; });
+        })
+        .catch(function () {
+          window.location.href = productUrl;
+        });
     }
   </script>
 {% endunless %}
@@ -58,7 +75,11 @@
 {% assign atc_text = add_to_cart_text | default: 'ADD TO CART' %}
 {% assign sold_out_label = sold_out_text | default: 'SOLD OUT' %}
 
-<div class="dame-product-card{% if product.images.size > 1 %} has-hover-image{% endif %}" data-product-type="{{ product.type | downcase }}" data-product-url="{{ product.url }}">
+<div
+  class="dame-product-card{% if product.images.size > 1 %} has-hover-image{% endif %}"
+  data-product-type="{{ product.type | downcase }}"
+  data-product-url="{{ product.url }}"
+>
   <div class="dame-product-image-wrapper">
     <a href="{{ product.url }}" class="dame-product-image-link">
       <div class="dame-product-image">
@@ -66,14 +87,20 @@
           {{
             product.featured_image
             | image_url: width: 600
-            | image_tag: loading: 'lazy', class: 'dame-product-img dame-product-img--primary', alt: product.featured_image.alt
+            | image_tag:
+              loading: 'lazy',
+              class: 'dame-product-img dame-product-img--primary',
+              alt: product.featured_image.alt
             | escape
           }}
           {% if product.images[1] %}
             {{
               product.images[1]
               | image_url: width: 600
-              | image_tag: loading: 'lazy', class: 'dame-product-img dame-product-img--hover', alt: product.images[1].alt
+              | image_tag:
+                loading: 'lazy',
+                class: 'dame-product-img dame-product-img--hover',
+                alt: product.images[1].alt
               | escape
             }}
           {% endif %}
@@ -114,30 +141,26 @@
       </div>
     {%- endif -%}
     {% if product.compare_at_price > product.price %}
-      {% assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+      {% assign discount = product.compare_at_price
+        | minus: product.price
+        | times: 100
+        | divided_by: product.compare_at_price
+      %}
       <span class="dame-discount-badge-overlay">-{{ discount }}%</span>
     {% endif %}
 
     <div class="dame-quick-buy-overlay">
-        {% if product.variants_count > 1 %}
-          <modal-opener data-modal="#QuickAdd-{{ product.id }}">
-            <button
-              class="dame-quick-buy-btn"
-              data-product-url="{{ product.url }}"
-              aria-haspopup="dialog"
-            >Quick Buy
-              {%- render 'loading-spinner' -%}
-            </button>
-          </modal-opener>
-        {% else %}
-          <button
-            class="dame-quick-buy-btn"
-            data-variant-id="{{ product.variants.first.id }}"
-            data-product-url="{{ product.url }}"
-            onclick="dameQuickAdd(this, event)"
-          >View product</button>
-        {% endif %}
-      </div>
+      <modal-opener data-modal="#QuickAdd-{{ product.id }}">
+        <button
+          class="dame-quick-buy-btn"
+          data-product-url="{{ product.url }}"
+          aria-haspopup="dialog"
+        >
+          Quick Buy
+          {%- render 'loading-spinner' -%}
+        </button>
+      </modal-opener>
+    </div>
 
     <div class="dame-atc-mobile-wrapper">
       {% if product.variants_count > 1 %}
@@ -154,41 +177,49 @@
           data-product-url="{{ product.url }}"
           aria-label="{{ atc_text }}"
           onclick="dameQuickAdd(this, event)"
-        >{%- render 'icon-cart-atc' -%}</button>
+        >
+          {%- render 'icon-cart-atc' -%}
+        </button>
       {% endif %}
     </div>
   </div>
 
-  {% if product.variants_count > 1 %}
-    <quick-add-modal id="QuickAdd-{{ product.id }}" class="quick-add-modal">
-      <div
-        role="dialog"
-        aria-label="{{ product.title | escape }}"
-        aria-modal="true"
-        class="quick-add-modal__content global-settings-popup"
-        tabindex="-1"
+  <quick-add-modal id="QuickAdd-{{ product.id }}" class="quick-add-modal">
+    <div
+      role="dialog"
+      aria-label="{{ product.title | escape }}"
+      aria-modal="true"
+      class="quick-add-modal__content global-settings-popup"
+      tabindex="-1"
+    >
+      <button
+        id="ModalClose-{{ product.id }}"
+        type="button"
+        class="quick-add-modal__toggle"
+        aria-label="{{ 'accessibility.close' | t }}"
       >
-        <button
-          id="ModalClose-{{ product.id }}"
-          type="button"
-          class="quick-add-modal__toggle"
-          aria-label="{{ 'accessibility.close' | t }}"
-        >
-          {%- render 'icon-close' -%}
-        </button>
-        <div id="QuickAddInfo-{{ product.id }}" class="quick-add-modal__content-info"></div>
-      </div>
-    </quick-add-modal>
-  {% endif %}
+        {%- render 'icon-close' -%}
+      </button>
+      <div id="QuickAddInfo-{{ product.id }}" class="quick-add-modal__content-info"></div>
+    </div>
+  </quick-add-modal>
 
   <div class="dame-product-info">
     {%- assign jm_count = product.metafields.reviews.rating_count -%}
     <div class="dame-product-rating{% unless jm_count and jm_count > 0 %} dame-product-rating--empty{% endunless %}">
       {% if jm_count and jm_count > 0 %}
-        <span class="dame-product-stars" style="--jm-r:{{ product.metafields.reviews.rating.value }};display:inline-block;position:relative;color:#ddd;font-size:20px;letter-spacing:2px;line-height:1;">
-          <span style="position:absolute;top:0;left:0;color:#e5c048;overflow:hidden;width:calc(var(--jm-r) / 5 * 100%);white-space:nowrap;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;
+        <span
+          class="dame-product-stars"
+          style="--jm-r:{{ product.metafields.reviews.rating.value }};display:inline-block;position:relative;color:#ddd;font-size:20px;letter-spacing:2px;line-height:1;"
+        >
+          <span style="position:absolute;top:0;left:0;color:#e5c048;overflow:hidden;width:calc(var(--jm-r) / 5 * 100%);white-space:nowrap;"
+            >&#9733;&#9733;&#9733;&#9733;&#9733;</span
+          >&#9733;&#9733;&#9733;&#9733;&#9733;
         </span>
-        <span class="dame-product-reviews">{{ jm_count }} {% if jm_count == 1 %}review{% else %}reviews{% endif %}</span>
+        <span class="dame-product-reviews">
+          {{- jm_count }}
+          {% if jm_count == 1 %}review{% else %}reviews{% endif -%}
+        </span>
       {% endif %}
     </div>
 
@@ -198,7 +229,11 @@
 
     <div class="dame-product-price">
       {% if product.compare_at_price > product.price %}
-        {% assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+        {% assign discount = product.compare_at_price
+          | minus: product.price
+          | times: 100
+          | divided_by: product.compare_at_price
+        %}
         <span class="dame-price-original">{{ product.compare_at_price | money }}</span>
         <span class="dame-price-sale">{{ product.price | money }}</span>
         <span class="dame-price-badge">-{{ discount }}%</span>
@@ -212,7 +247,7 @@
         {% for option in product.options_with_values %}
           {% if option.name == 'Color' or option.name == 'Цвет' %}
             <div class="dame-color-swatches">
-              {% assign title_color_value = nil %}
+              {% assign title_color_value = null %}
               {% for v in option.values %}
                 {% if product.title contains v %}
                   {% assign title_color_value = v %}
@@ -220,7 +255,7 @@
                 {% endif %}
               {% endfor %}
               {% for value in option.values %}
-                {% assign matching_variant = nil %}
+                {% assign matching_variant = null %}
                 {% for variant in product.variants %}
                   {% if variant.option1 == value or variant.option2 == value or variant.option3 == value %}
                     {% assign matching_variant = variant %}
@@ -233,7 +268,7 @@
                   {% assign variant_computed_title = product.title | append: ' ' | append: value %}
                 {% endif %}
                 {%- liquid
-                  assign swatch_background = nil
+                  assign swatch_background = null
                   if value.swatch.image
                     assign swatch_img_url = value.swatch.image | image_url: width: 60
                     assign swatch_background = 'url(' | append: swatch_img_url | append: ')'
@@ -255,9 +290,15 @@
                   title="{{ value }}"
                   data-variant-name="{{ value }}"
                   data-variant-title="{{ variant_computed_title }}"
-                  {% if matching_variant %}data-variant-url="{{ product.url }}?variant={{ matching_variant.id }}"{% endif %}
-                  {% if matching_variant %}data-variant-price="{{ matching_variant.price }}"{% endif %}
-                  {% if matching_variant and matching_variant.compare_at_price > matching_variant.price %}data-variant-compare-price="{{ matching_variant.compare_at_price }}"{% endif %}
+                  {% if matching_variant %}
+                    data-variant-url="{{ product.url }}?variant={{ matching_variant.id }}"
+                  {% endif %}
+                  {% if matching_variant %}
+                    data-variant-price="{{ matching_variant.price }}"
+                  {% endif %}
+                  {% if matching_variant and matching_variant.compare_at_price > matching_variant.price %}
+                    data-variant-compare-price="{{ matching_variant.compare_at_price }}"
+                  {% endif %}
                 ></span>
               {% endfor %}
             </div>
@@ -265,7 +306,6 @@
         {% endfor %}
       {% endif %}
     </div>
-
   </div>
   <div class="dame-card-row-spacer" aria-hidden="true"></div>
 </div>
