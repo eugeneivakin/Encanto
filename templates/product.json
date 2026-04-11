@@ -99,7 +99,7 @@
             "content": "{{ product.metafields.custom.highlights | metafield_tag }}",
             "page": "",
             "variant_metafield_key": "",
-            "open_by_default": true
+            "open_by_default": false
           }
         },
         "collapsible_tab_YGJxkm": {
@@ -170,7 +170,10 @@
         "faq_block"
       ],
       "settings": {
+        "show_collection_badges": true,
         "enable_sticky_info": true,
+        "hide_sticky_on_mobile": false,
+        "hide_sticky_on_desk": false,
         "color_scheme": "scheme-1",
         "media_size": "small",
         "constrain_to_viewport": true,
