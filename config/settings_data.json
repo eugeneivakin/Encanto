@@ -186,7 +186,7 @@
       },
       "10008203421340698720": {
         "type": "shopify://apps/g-translate-shop-translator/blocks/dropdown/408a74ac-f92d-43cf-a1b1-a044341e66bd",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "horizontal_position": "right",
           "vertical_position": "top",
