@@ -520,6 +520,14 @@
     "image_with_text_jY3CmK": {
       "type": "image-with-text",
       "blocks": {
+        "caption_cp4kVL": {
+          "type": "caption",
+          "settings": {
+            "caption": "Professional standard",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "heading_E3intD": {
           "type": "heading",
           "settings": {
@@ -530,14 +538,24 @@
         "text_gWdjLY": {
           "type": "text",
           "settings": {
-            "text": "<p>Trusted by professional makeup artists worldwide. Our premium products combine superior quality with innovative formulas — crafted for those who accept nothing less than perfect.</p>",
+            "text": "<p>Performance-led design backed by beauty expertise. Every CTR product is shaped around practical precision, durable construction, and the needs of artists who rely on consistency from first use to repeated daily wear.</p>",
             "text_style": "body"
+          }
+        },
+        "button_zNQFxY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the Collection",
+            "button_link": "shopify://collections",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
+        "caption_cp4kVL",
         "heading_E3intD",
-        "text_gWdjLY"
+        "text_gWdjLY",
+        "button_zNQFxY"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
