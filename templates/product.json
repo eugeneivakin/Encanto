@@ -91,6 +91,17 @@
           "type": "description",
           "settings": {}
         },
+        "collapsible_tab_np3xeb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What's in the box",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.in_the_box | metafield_tag }}",
+            "page": "",
+            "variant_metafield_key": "",
+            "open_by_default": false
+          }
+        },
         "collapsible_tab_Fx48Bf": {
           "type": "collapsible_tab",
           "settings": {
@@ -162,6 +173,7 @@
         "icon_with_text_YUnrKC",
         "upsell_EhWcpy",
         "description",
+        "collapsible_tab_np3xeb",
         "collapsible_tab_Fx48Bf",
         "collapsible_tab_YGJxkm",
         "collapsible_tab_nfHPQr",
