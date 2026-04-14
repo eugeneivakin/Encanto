@@ -925,68 +925,101 @@
     "ss_simple_faq_bmfLRg": {
       "type": "ss-simple-faq",
       "blocks": {
-        "text_EHrTqh": {
+        "text_rmRMFc": {
           "type": "text",
           "settings": {
-            "question": "Do you offer free shipping?",
-            "answer": "<p>Yes, we provide free standard shipping on all orders over $100. For orders under $100, a small shipping fee applies, which will be shown at checkout.</p>"
+            "heading": "Are CTR products suitable for professional makeup artists?",
+            "answer": "<p>Yes. CTR products are developed for precision, durability, and repeatable performance in professional artist workflows.<br/><br/></p>"
           }
         },
-        "text_8yDhxc": {
+        "text_H734cm": {
           "type": "text",
           "settings": {
-            "question": "What is your refund policy?",
-            "answer": "<p>If you're not completely satisfied with your purchase, you can return it within 14 for a full refund. Please ensure the item is unused and in its original packaging.</p>"
+            "heading": "Where are CTR products manufactured?",
+            "answer": "<p>CTR maintains in-house production oversight to support controlled craftsmanship, quality consistency, and professional-grade standards.</p>"
           }
         },
-        "text_JBEThg": {
+        "text_aUB4ch": {
           "type": "text",
           "settings": {
-            "question": "Can I exchange a product if it doesn't fit or match my expectations?",
-            "answer": "<p>Absolutely! If a product doesn't meet your expectations, you can exchange it for a different size, color, or item within 30 days of purchase. Simply contact our customer support team with your order number and photos of the item. We'll arrange a prepaid return label and send your replacement as soon as we receive the original item.</p>"
+            "heading": "Do you ship internationally?",
+            "answer": "<p>Yes. CTR serves customers and professional partners across more than 30 countries.</p>"
           }
         },
-        "text_hXfKYR": {
+        "text_NhaQPV": {
           "type": "text",
           "settings": {
-            "question": "How can I contact customer support?",
-            "answer": "<p>Our customer support team is here to help! You can reach us via email at support@encantoshop.es, through our contact form on the website, or via our social media channels. We typically respond within 24 hours during business days. For urgent matters, please include 'URGENT' in your subject line.</p>"
+            "heading": "How can I contact customer support?",
+            "answer": "<p>You can reach our support team directly through the contact form on the website for any product, order, or general inquiries.</p>"
           }
         },
-        "text_T7JA4x": {
+        "text_6A4dCy": {
           "type": "text",
           "settings": {
-            "question": "Are your products high quality?",
-            "answer": "<p>Yes, we're committed to offering only high-quality products. All items are carefully selected and tested before being added to our store. We work with trusted suppliers and manufacturers to ensure durability and customer satisfaction. If you're not satisfied with the quality, we offer a full refund.</p>"
+            "heading": "What types of bristles do CTR brushes use?",
+            "answer": "<p>CTR offers natural and synthetic options. Natural brushes use goat hair, squirrel hair, fox bristles, and bull hair. Synthetic brushes use Taklon and nylon fibers, ideal for cream and liquid products.<br/><br/></p>"
           }
         },
-        "text_JaeeCt": {
+        "text_QakdRm": {
           "type": "text",
           "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery. International orders may take 10-21 business days depending on the destination. You'll receive a tracking number via email once your order ships.</p>"
+            "heading": "How do I clean my makeup brushes?",
+            "answer": "<p>Rinse bristles under lukewarm water with a gentle cleanser. Work into a lather, rinse well, reshape, and lay flat to dry. Avoid soaking the ferrule as it can loosen the glue over time.<br/><br/></p>"
           }
         },
-        "text_wLhcae": {
+        "text_Xr7qQN": {
           "type": "text",
           "settings": {
-            "question": "What payment methods do you accept?",
-            "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and other digital payment methods. All transactions are secure and encrypted to protect your information.</p>"
+            "heading": "Are CTR products cruelty-free?",
+            "answer": "<p>All CTR products are certified and produced under controlled quality standards. For specific cruelty-free or vegan queries, please reach out through our contact page.<br/><br/></p>"
+          }
+        },
+        "text_RKfkXE": {
+          "type": "text",
+          "settings": {
+            "heading": "What is the delivery time to EU countries?",
+            "answer": "<p>Most EU orders arrive within 5 to 10 business days. Timelines vary by country and shipping method. Full details are available in our shipping policy at checkout.<br/><br/></p>"
+          }
+        },
+        "text_9xWkFH": {
+          "type": "text",
+          "settings": {
+            "heading": "What is your return policy?",
+            "answer": "<p>We accept returns on unused, unopened products. If you receive a damaged or incorrect item, please contact us through the website with your order details and we will resolve it promptly.<br/><br/></p>"
+          }
+        },
+        "text_n9HaTG": {
+          "type": "text",
+          "settings": {
+            "heading": "Do you offer professional or bulk orders?",
+            "answer": "<p>Yes. CTR supports professional artists and training centers with volume orders. For bulk pricing, please get in touch through our contact page.</p>"
+          }
+        },
+        "text_AhBqGT": {
+          "type": "text",
+          "settings": {
+            "heading": "What payment methods are accepted?",
+            "answer": "<p>We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, Shop Pay, Maestro, Bancontact, and Union Pay, all processed securely at checkout.</p>"
           }
         }
       },
       "block_order": [
-        "text_EHrTqh",
-        "text_8yDhxc",
-        "text_JBEThg",
-        "text_hXfKYR",
-        "text_T7JA4x",
-        "text_JaeeCt",
-        "text_wLhcae"
+        "text_rmRMFc",
+        "text_H734cm",
+        "text_aUB4ch",
+        "text_NhaQPV",
+        "text_6A4dCy",
+        "text_QakdRm",
+        "text_Xr7qQN",
+        "text_RKfkXE",
+        "text_9xWkFH",
+        "text_n9HaTG",
+        "text_AhBqGT"
       ],
       "name": "SS - FAQ #1",
       "settings": {
         "heading": "Frequently Asked Questions",
+        "subheading": "Helpful answers before you shop",
         "icon_color": "#121212",
         "hover_color": "#666666",
         "question_color": "#121212",
