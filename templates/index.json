@@ -27,11 +27,13 @@
         "overlay_color": "#000000",
         "overlay_opacity": 70,
         "title": "Premium Makeup Tools for Perfect Results",
-        "subtitle": "We love every product and our customers deserve the highest quality",
+        "subtitle": "Professional makeup tools and brushes built for precision, durability, and artist performance.",
         "title_size_desktop": 60,
         "title_size_mobile": 40,
         "button_text": "Shop Products",
         "button_url": "shopify://collections/all",
+        "button_text_2": "View Collections",
+        "button_url_2": "shopify://collections",
         "content_position": "bottom-left",
         "content_alignment": "left",
         "content_alignment_mobile": "center",
@@ -87,8 +89,41 @@
     "about_us_mission_Df84rG": {
       "type": "about-us-mission",
       "blocks": {
+        "value_p4DAxH": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Precision Engineering",
+            "text": "<p>Balanced shapes, exact cuts, and controlled density support clean lines, refined blending, and targeted application.</p>"
+          }
+        },
+        "value_Gid6YG": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Professional-Grade Materials",
+            "text": "<p>Selected woods, ferrules, fibers, and finishes are chosen to withstand repeated professional use without compromise.</p>"
+          }
+        },
+        "value_La6EdE": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Tested by Makeup Artists",
+            "text": "<p>Development is informed by real artist workflows so each tool feels intuitive, efficient, and dependable on set or in studio.</p>"
+          }
+        },
+        "value_zDeQrA": {
+          "type": "value",
+          "settings": {
+            "icon": "",
+            "title": "Built for Daily Professional Use",
+            "text": "<p>Reliable construction and quality control help products maintain their feel, shape, and performance over time.</p>"
+          }
+        },
         "value_aNdrjy": {
           "type": "value",
+          "disabled": true,
           "settings": {
             "icon": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?--><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->\n<svg width=\"800px\" height=\"800px\" viewbox=\"0 0 28 28\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M20.75 3C21.0557 3 21.3421 3.13962 21.5303 3.3746L21.6048 3.48102L25.8548 10.481C26.0556 10.8118 26.0459 11.2249 25.8395 11.5435L25.7634 11.6459L14.7634 24.6459C14.3906 25.0865 13.7317 25.1159 13.3207 24.7341L13.2366 24.6459L2.23662 11.6459C1.98663 11.3505 1.93182 10.941 2.08605 10.5941L2.14522 10.481L6.39522 3.48102C6.55388 3.21969 6.82182 3.04741 7.1204 3.00842L7.25001 3H20.75ZM17.515 12H10.484L13.999 20.672L17.515 12ZM22.844 12H19.673L16.756 19.195L22.844 12ZM8.326 12H5.155L11.242 19.193L8.326 12ZM9.674 5H7.81101L4.775 10H8.245L9.674 5ZM16.246 5H11.753L10.324 10H17.675L16.246 5ZM20.188 5H18.325L19.754 10H23.224L20.188 5Z\" fill=\"#212121\"></path>\n</svg>",
             "title": "Premium quality",
@@ -97,6 +132,7 @@
         },
         "value_xUNjXR": {
           "type": "value",
+          "disabled": true,
           "settings": {
             "icon": "<!--?xml version=\"1.0\" encoding=\"iso-8859-1\"?-->\n<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->\n<svg fill=\"#000000\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512.001 512.001\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<g>\n\t\t\t<path d=\"M270.159,142.633c4.283-36.264,13.803-72.967,28.384-109.268c2.176-5.416-0.451-11.571-5.868-13.747\n\t\t\t\tc-5.412-2.173-11.571,0.451-13.747,5.868c-4.037,10.051-7.696,20.136-10.992,30.239c-3.822-10.69-9.646-21.36-18.475-30.188\n\t\t\t\tC219.774-4.15,169.272,0.125,167.135,0.32c-5.071,0.466-9.089,4.484-9.556,9.556c-0.197,2.136-4.471,52.639,25.216,82.326\n\t\t\t\tc20.962,20.962,52.289,24.99,69.653,25.478c-1.427,8.202-2.606,16.394-3.529,24.567\n\t\t\t\tc-98.712,3.736-177.871,85.193-177.871,184.803c0,101.982,82.968,184.952,184.952,184.952s184.953-82.971,184.953-184.954\n\t\t\t\tC440.953,229.828,365.552,149.888,270.159,142.633z M214.198,71.884l23.267,23.267c-13.183-2.065-28.728-6.903-39.721-17.897\n\t\t\t\tc-16.095-16.095-18.98-42.215-19.293-56.09c13.854,0.286,39.89,3.143,56.066,19.318c10.925,10.925,15.76,26.466,17.84,39.665\n\t\t\t\tl-23.211-23.211c-4.127-4.127-10.819-4.127-14.947,0C210.071,61.063,210.071,67.756,214.198,71.884z M198.307,173.732\n\t\t\t\tc-5.851,7.22-11.313,15.601-16.293,25.102c-4.031,7.692-7.655,15.942-10.856,24.649c-9.182-4.858-17.868-10.533-25.939-16.998\n\t\t\t\tC160.525,192.41,178.507,181.208,198.307,173.732z M130.571,221.806c10.5,8.589,21.928,15.982,34.087,22.106\n\t\t\t\tc-6.101,22.379-9.68,46.993-10.453,72.566H92.538C94.836,280.565,108.754,247.766,130.571,221.806z M92.539,337.617h61.665\n\t\t\t\tv-0.001c0.774,25.571,4.352,50.184,10.453,72.562c-12.16,6.123-23.589,13.517-34.089,22.105\n\t\t\t\tC108.754,406.325,94.837,373.528,92.539,337.617z M145.215,447.605c8.071-6.465,16.759-12.14,25.942-16.998\n\t\t\t\tc3.202,8.71,6.825,16.961,10.857,24.654c4.979,9.5,10.441,17.882,16.293,25.101C178.505,472.885,160.522,461.681,145.215,447.605\n\t\t\t\tz M245.432,489.388c-22.287-6.204-42.025-31.659-54.862-67.542c17.189-6.509,35.676-10.4,54.862-11.445V489.388z\n\t\t\t\t M245.432,389.236c-21.309,1.045-41.885,5.249-61.073,12.362c-5.07-19.512-8.246-41.198-9.002-63.983h70.076V389.236z\n\t\t\t\t M245.432,316.478h-70.076c0.757-22.786,3.933-44.473,9.003-63.985c19.188,7.115,39.765,11.319,61.072,12.365V316.478z\n\t\t\t\t M245.432,243.694c-19.185-1.046-37.673-4.938-54.861-11.448c12.836-35.883,32.574-61.336,54.861-67.54V243.694z\n\t\t\t\t M419.465,316.478h-61.666c-0.775-25.572-4.352-50.185-10.455-72.564c12.159-6.126,23.587-13.519,34.085-22.109\n\t\t\t\tC403.247,247.765,417.167,280.565,419.465,316.478z M366.781,206.484c-8.069,6.466-16.755,12.141-25.937,17\n\t\t\t\tc-3.201-8.709-6.824-16.958-10.856-24.65c-4.979-9.5-10.441-17.881-16.293-25.101\n\t\t\t\tC333.494,181.208,351.475,192.41,366.781,206.484z M336.828,327.047c0,26.644-3.336,52.043-9.184,74.551\n\t\t\t\tc-19.186-7.113-39.762-11.316-61.073-12.361V264.858c21.31-1.046,41.887-5.25,61.073-12.364\n\t\t\t\tC333.491,275.003,336.828,300.402,336.828,327.047z M266.57,164.706c22.287,6.204,42.025,31.658,54.862,67.541\n\t\t\t\tc-17.188,6.509-35.673,10.401-54.862,11.447V164.706z M266.571,489.388v-78.987c19.187,1.046,37.674,4.937,54.862,11.444\n\t\t\t\tC308.597,457.729,288.858,483.183,266.571,489.388z M313.696,480.361c5.851-7.219,11.313-15.6,16.292-25.101\n\t\t\t\tc4.032-7.693,7.656-15.944,10.858-24.654c9.183,4.858,17.871,10.534,25.94,16.999\n\t\t\t\tC351.48,461.682,333.497,472.885,313.696,480.361z M381.434,432.285c-10.499-8.589-21.927-15.983-34.088-22.107\n\t\t\t\tc6.101-22.378,9.679-46.99,10.453-72.562h61.666C417.167,373.527,403.249,406.325,381.434,432.285z\"></path>\n\t\t\t<path d=\"M300.583,316.477h-1.057c-5.836,0-10.569,4.732-10.569,10.569c0,5.837,4.732,10.569,10.569,10.569h1.057\n\t\t\t\tc5.836,0,10.569-4.732,10.569-10.569C311.151,321.209,306.419,316.477,300.583,316.477z\"></path>\n\t\t</g>\n\t</g>\n</g>\n</svg>",
             "title": "Eco-materials",
@@ -105,6 +141,7 @@
         },
         "value_DbaPdH": {
           "type": "value",
+          "disabled": true,
           "settings": {
             "icon": "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->\n<svg fill=\"#000000\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 511.996 511.996\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M249.573,121.596c-84.83,0-153.6,68.77-153.6,153.6s68.77,153.6,153.6,153.6s153.6-68.77,153.6-153.6\n\t\t\tS334.403,121.596,249.573,121.596z M188.125,163.614c-6.289,10.18-11.699,21.871-16.068,34.782h-24.235\n\t\t\tC158.651,184.102,172.347,172.343,188.125,163.614z M132.428,223.996h32.759c-2.517,12.186-4.19,25.028-4.83,38.4h-37.487\n\t\t\tC124.236,248.913,127.188,235.925,132.428,223.996z M132.428,326.396c-5.24-11.93-8.192-24.917-9.557-38.4h37.487\n\t\t\tc0.64,13.372,2.313,26.214,4.83,38.4H132.428z M147.831,351.996h24.235c4.361,12.911,9.779,24.602,16.068,34.782\n\t\t\tC172.347,378.048,158.651,366.289,147.831,351.996z M236.773,399.953c-14.148-6.554-27.827-23.535-37.513-47.957h37.513V399.953z\n\t\t\t M236.773,326.396h-45.568c-2.705-11.716-4.207-24.747-4.924-38.4h50.492V326.396z M236.773,262.396h-50.492\n\t\t\tc0.725-13.653,2.219-26.684,4.924-38.4h45.568V262.396z M236.773,198.396h-37.513c9.685-24.422,23.364-41.395,37.513-47.957\n\t\t\tV198.396z M366.728,223.996c5.239,11.93,8.192,24.917,9.557,38.4h-37.487c-0.64-13.372-2.313-26.214-4.83-38.4H366.728z\n\t\t\t M351.325,198.396H327.09c-4.361-12.911-9.779-24.602-16.068-34.782C326.8,172.343,340.505,184.102,351.325,198.396z\n\t\t\t M262.373,150.438c14.157,6.554,27.827,23.535,37.513,47.957h-37.513V150.438z M262.373,223.996h45.568\n\t\t\tc2.705,11.716,4.207,24.747,4.924,38.4h-50.492V223.996z M262.373,399.953v-47.957h37.513\n\t\t\tC290.201,376.418,276.522,393.391,262.373,399.953z M262.374,326.396v-38.4h50.492c-0.725,13.653-2.219,26.684-4.924,38.4H262.374\n\t\t\tz M311.022,386.778c6.289-10.18,11.699-21.871,16.068-34.782h24.235C340.505,366.289,326.8,378.048,311.022,386.778z\n\t\t\t M333.968,326.396c2.517-12.186,4.19-25.028,4.83-38.4h37.487c-1.365,13.483-4.318,26.47-9.557,38.4H333.968z\"></path>\n\t</g>\n</g>\n<g>\n\t<g>\n\t\t<path d=\"M498.781,386.453c-1.826-6.827-8.849-10.88-15.676-9.054l-23.945,6.417c17.007-32.606,27.204-69.299,27.204-108.621\n\t\t\tc0-111.07-76.578-204.023-179.746-229.589c0.282,1.843,0.555,3.695,0.555,5.589c0,7.014-2.005,13.687-5.513,19.567\n\t\t\tc91.298,23.287,159.112,105.984,159.112,204.433c0,33.988-8.405,65.937-22.733,94.404l-5.768-21.538\n\t\t\tc-1.826-6.827-8.849-10.88-15.676-9.054c-3.413,0.913-6.135,3.123-7.774,5.965s-2.193,6.298-1.28,9.711l14.054,52.454\n\t\t\tc1.835,6.835,8.849,10.88,15.676,9.054l52.454-14.054C496.562,400.303,500.616,393.289,498.781,386.453z\"></path>\n\t</g>\n</g>\n<g>\n\t<g>\n\t\t<path d=\"M277.827,42.15l-38.4-38.4c-5.001-5-13.099-5-18.099,0c-5,5.001-5,13.099,0,18.099l17.109,17.109\n\t\t\tC112.861,44.813,12.773,148.177,12.773,275.196c0,22.724,3.388,44.621,9.361,65.425c6.63-5.282,14.925-8.448,23.842-8.448\n\t\t\tc0.145,0,0.29,0.06,0.444,0.06c-5.111-18.176-8.038-37.248-8.038-57.037c0-112.222,88.09-203.87,198.699-210.398L221.328,80.55\n\t\t\tc-5.001,5-5.001,13.099,0,18.099c2.5,2.5,5.768,3.746,9.045,3.746s6.554-1.246,9.054-3.746l38.4-38.4\n\t\t\tC282.828,55.249,282.828,47.151,277.827,42.15z\"></path>\n\t</g>\n</g>\n<g>\n\t<g>\n\t\t<path d=\"M400.784,422.336c-38.391,39.45-91.947,64.06-151.211,64.06c-73.438,0-137.745-38.025-175.582-95.078l21.137,5.666\n\t\t\tc6.827,1.835,13.841-2.219,15.676-9.054c0.913-3.413,0.358-6.878-1.28-9.711c-1.638-2.833-4.361-5.043-7.774-5.965l-52.454-14.054\n\t\t\tc-6.835-1.826-13.841,2.219-15.676,9.054l-14.054,52.454c-1.826,6.835,2.219,13.841,9.054,15.676\n\t\t\tc6.827,1.835,13.841-2.219,15.676-9.054l6.349-23.68c42.095,65.587,115.217,109.346,198.929,109.346\n\t\t\tc66.995,0,127.36-27.938,170.445-72.653C411.826,436.109,405.128,430.101,400.784,422.336z\"></path>\n\t</g>\n</g>\n</svg>",
             "title": "Worldwide delivery",
@@ -113,6 +150,10 @@
         }
       },
       "block_order": [
+        "value_p4DAxH",
+        "value_Gid6YG",
+        "value_La6EdE",
+        "value_zDeQrA",
         "value_aNdrjy",
         "value_xUNjXR",
         "value_DbaPdH"
@@ -121,7 +162,7 @@
       "settings": {
         "image_ratio": "square",
         "caption": "",
-        "heading": "",
+        "heading": "Why our make-up tools",
         "heading_size": "h2",
         "text": "",
         "color_scheme": "",
@@ -132,8 +173,129 @@
     "categories_grid_dame_6KPq43": {
       "type": "categories-grid-dame",
       "blocks": {
+        "category_izLrFa": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Eye Shadows</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
+        "category_giEeUK": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Eyebrow Enhancers</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
+        "category_yHfX8K": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Face Powder</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
+        "category_KLCwJc": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Makeup Brushes</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
+        "category_67B4zg": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Makeup Sponges</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
+        "category_wpNd3C": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#e8dcc8",
+            "badge_text": "",
+            "badge_bg_color": "#d8e8b8",
+            "badge_text_color": "#333333",
+            "category_title": "<p>Tweezers</p>",
+            "title_color": "#ffffff",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 30,
+            "overlay_color": "#000000",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#0000ff"
+          }
+        },
         "category_Ap8LYJ": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "card_bg_color": "#737373",
             "badge_text": "",
@@ -155,6 +317,7 @@
         },
         "category_N7amfj": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "card_bg_color": "#737373",
             "badge_text": "",
@@ -176,6 +339,7 @@
         },
         "category_VjCcE7": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "card_bg_color": "#737373",
             "badge_text": "",
@@ -197,6 +361,7 @@
         },
         "category_yFqkMn": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "card_bg_color": "#737373",
             "badge_text": "",
@@ -218,6 +383,12 @@
         }
       },
       "block_order": [
+        "category_izLrFa",
+        "category_giEeUK",
+        "category_yHfX8K",
+        "category_KLCwJc",
+        "category_67B4zg",
+        "category_wpNd3C",
         "category_Ap8LYJ",
         "category_N7amfj",
         "category_VjCcE7",
@@ -239,7 +410,7 @@
         "section_title_font_weight": "400",
         "section_title_alignment": "center",
         "section_title_margin_bottom": 40,
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "columns_tablet": 3,
         "columns_mobile": 2,
         "grid_gap_desktop": 20,
@@ -282,13 +453,13 @@
         "padding_right_mobile": 0,
         "collection": "best-seller",
         "products_to_show": 8,
-        "section_title": "<p>Our <strong>Bestsellers</strong></p>",
+        "section_title": "Our <strong>Bestsellers</strong>",
         "animate_bold_words": true,
         "title_size_desktop": 30,
         "title_size_mobile": 22,
         "title_color": "#000000",
         "title_font_weight": "300",
-        "section_subtitle": "",
+        "section_subtitle": "<h3>Our Top Products</h3><p>Our best-selling makeup brushes and tools, trusted by professional artists worldwide. Chosen for clean application, durable build, and results that hold up from first use to the final touch.</p>",
         "subtitle_size_desktop": 17,
         "subtitle_size_mobile": 15,
         "subtitle_color": "#000000",
@@ -349,6 +520,14 @@
     "image_with_text_jY3CmK": {
       "type": "image-with-text",
       "blocks": {
+        "caption_cp4kVL": {
+          "type": "caption",
+          "settings": {
+            "caption": "Professional standard",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "heading_E3intD": {
           "type": "heading",
           "settings": {
@@ -359,14 +538,24 @@
         "text_gWdjLY": {
           "type": "text",
           "settings": {
-            "text": "<p>Trusted by professional makeup artists worldwide. Our premium products combine superior quality with innovative formulas — crafted for those who accept nothing less than perfect.</p>",
+            "text": "<p>Performance-led design backed by beauty expertise. Every CTR product is shaped around practical precision, durable construction, and the needs of artists who rely on consistency from first use to repeated daily wear.</p>",
             "text_style": "body"
+          }
+        },
+        "button_zNQFxY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the Collection",
+            "button_link": "shopify://collections",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
+        "caption_cp4kVL",
         "heading_E3intD",
-        "text_gWdjLY"
+        "text_gWdjLY",
+        "button_zNQFxY"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -402,7 +591,7 @@
         "padding_right_mobile": 0,
         "collection": "beauty-and-makeup",
         "products_to_show": 8,
-        "section_title": "<p>New <strong>Arrivals</strong></p>",
+        "section_title": "New <strong>Arrivals</strong>",
         "animate_bold_words": true,
         "title_size_desktop": 30,
         "title_size_mobile": 22,
@@ -415,7 +604,7 @@
         "subtitle_font_weight": "400",
         "header_margin_bottom": 40,
         "show_view_all": true,
-        "button_text": "SEE ALL →",
+        "button_text": "View All New Arrivals →",
         "button_url": "shopify://collections/new-arrivals",
         "see_all_bg_color": "#ffffff",
         "see_all_text_color": "#000000",
@@ -596,78 +785,60 @@
         "dot_active_color": "#3e3b3b"
       }
     },
-    "ss_simple_faq_bmfLRg": {
-      "type": "ss-simple-faq",
+    "image_with_text_ecN3RH": {
+      "type": "image-with-text",
       "blocks": {
-        "text_EHrTqh": {
-          "type": "text",
+        "caption_wrrzAt": {
+          "type": "caption",
           "settings": {
-            "question": "Do you offer free shipping?",
-            "answer": "<p>Yes, we provide free standard shipping on all orders over $100. For orders under $100, a small shipping fee applies, which will be shown at checkout.</p>"
+            "caption": "How our products are made",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
           }
         },
-        "text_8yDhxc": {
-          "type": "text",
+        "heading_Qt6C9a": {
+          "type": "heading",
           "settings": {
-            "question": "What is your refund policy?",
-            "answer": "<p>If you're not completely satisfied with your purchase, you can return it within 14 for a full refund. Please ensure the item is unused and in its original packaging.</p>"
+            "heading": "Developed through testing, refinement, and controlled quality standards",
+            "heading_size": "h1"
           }
         },
-        "text_JBEThg": {
+        "text_QHVbCm": {
           "type": "text",
           "settings": {
-            "question": "Can I exchange a product if it doesn't fit or match my expectations?",
-            "answer": "<p>Absolutely! If a product doesn't meet your expectations, you can exchange it for a different size, color, or item within 30 days of purchase. Simply contact our customer support team with your order number and photos of the item. We'll arrange a prepaid return label and send your replacement as soon as we receive the original item.</p>"
+            "text": "<p>Every CTR makeup tool is developed with direct input from working makeup artists and refined through multiple stages at our own production facilities in South Korea and Ukraine. Bristle density, ferrule fit, handle balance, and finish behavior are each assessed before production begins.Each tool is tested, adjusted, and quality-checked to perform consistently from first application through repeated daily use — giving artists reliable results on set, in studio, and in training.</p>",
+            "text_style": "body"
           }
         },
-        "text_hXfKYR": {
-          "type": "text",
+        "button_VMHyHq": {
+          "type": "button",
           "settings": {
-            "question": "How can I contact customer support?",
-            "answer": "<p>Our customer support team is here to help! You can reach us via email at support@encantoshop.es, through our contact form on the website, or via our social media channels. We typically respond within 24 hours during business days. For urgent matters, please include 'URGENT' in your subject line.</p>"
-          }
-        },
-        "text_T7JA4x": {
-          "type": "text",
-          "settings": {
-            "question": "Are your products high quality?",
-            "answer": "<p>Yes, we're committed to offering only high-quality products. All items are carefully selected and tested before being added to our store. We work with trusted suppliers and manufacturers to ensure durability and customer satisfaction. If you're not satisfied with the quality, we offer a full refund.</p>"
-          }
-        },
-        "text_JaeeCt": {
-          "type": "text",
-          "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery. International orders may take 10-21 business days depending on the destination. You'll receive a tracking number via email once your order ships.</p>"
-          }
-        },
-        "text_wLhcae": {
-          "type": "text",
-          "settings": {
-            "question": "What payment methods do you accept?",
-            "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and other digital payment methods. All transactions are secure and encrypted to protect your information.</p>"
+            "button_label": "Discover Our Products",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "text_EHrTqh",
-        "text_8yDhxc",
-        "text_JBEThg",
-        "text_hXfKYR",
-        "text_T7JA4x",
-        "text_JaeeCt",
-        "text_wLhcae"
+        "caption_wrrzAt",
+        "heading_Qt6C9a",
+        "text_QHVbCm",
+        "button_VMHyHq"
       ],
-      "name": "SS - FAQ #1",
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "heading": "Frequently Asked Questions",
-        "icon_color": "#121212",
-        "hover_color": "#666666",
-        "question_color": "#121212",
-        "background_color": "#f8f8f8",
-        "answer_color": "#000000",
-        "answer_bg_color": "#ffffff",
-        "questions-font-size": 1.5
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 40,
+        "padding_bottom": 0
       }
     },
     "bestsellers_slider_dame_added": {
@@ -687,7 +858,7 @@
         "padding_right_mobile": 0,
         "collection": "ctr-beauty-boxes",
         "products_to_show": 8,
-        "section_title": "<p>Beauty <strong>Boxes</strong></p>",
+        "section_title": "Beauty <strong>Boxes</strong>",
         "animate_bold_words": true,
         "title_size_desktop": 30,
         "title_size_mobile": 22,
@@ -700,7 +871,7 @@
         "subtitle_font_weight": "400",
         "header_margin_bottom": 40,
         "show_view_all": true,
-        "button_text": "SEE ALL \u2192",
+        "button_text": "SEE ALL →",
         "button_url": "shopify://collections/ctr-beauty-boxes",
         "see_all_bg_color": "#ffffff",
         "see_all_text_color": "#000000",
@@ -750,6 +921,113 @@
         "discount_badge_bg": "#ff4444",
         "discount_badge_color": "#ffffff"
       }
+    },
+    "ss_simple_faq_bmfLRg": {
+      "type": "ss-simple-faq",
+      "blocks": {
+        "text_rmRMFc": {
+          "type": "text",
+          "settings": {
+            "heading": "Are CTR products suitable for professional makeup artists?",
+            "answer": "<p>Yes. CTR products are developed for precision, durability, and repeatable performance in professional artist workflows.<br/><br/></p>"
+          }
+        },
+        "text_H734cm": {
+          "type": "text",
+          "settings": {
+            "heading": "Where are CTR products manufactured?",
+            "answer": "<p>CTR maintains in-house production oversight to support controlled craftsmanship, quality consistency, and professional-grade standards.</p>"
+          }
+        },
+        "text_aUB4ch": {
+          "type": "text",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "answer": "<p>Yes. CTR serves customers and professional partners across more than 30 countries.</p>"
+          }
+        },
+        "text_NhaQPV": {
+          "type": "text",
+          "settings": {
+            "heading": "How can I contact customer support?",
+            "answer": "<p>You can reach our support team directly through the contact form on the website for any product, order, or general inquiries.</p>"
+          }
+        },
+        "text_6A4dCy": {
+          "type": "text",
+          "settings": {
+            "heading": "What types of bristles do CTR brushes use?",
+            "answer": "<p>CTR offers natural and synthetic options. Natural brushes use goat hair, squirrel hair, fox bristles, and bull hair. Synthetic brushes use Taklon and nylon fibers, ideal for cream and liquid products.<br/><br/></p>"
+          }
+        },
+        "text_QakdRm": {
+          "type": "text",
+          "settings": {
+            "heading": "How do I clean my makeup brushes?",
+            "answer": "<p>Rinse bristles under lukewarm water with a gentle cleanser. Work into a lather, rinse well, reshape, and lay flat to dry. Avoid soaking the ferrule as it can loosen the glue over time.<br/><br/></p>"
+          }
+        },
+        "text_Xr7qQN": {
+          "type": "text",
+          "settings": {
+            "heading": "Are CTR products cruelty-free?",
+            "answer": "<p>All CTR products are certified and produced under controlled quality standards. For specific cruelty-free or vegan queries, please reach out through our contact page.<br/><br/></p>"
+          }
+        },
+        "text_RKfkXE": {
+          "type": "text",
+          "settings": {
+            "heading": "What is the delivery time to EU countries?",
+            "answer": "<p>Most EU orders arrive within 5 to 10 business days. Timelines vary by country and shipping method. Full details are available in our shipping policy at checkout.<br/><br/></p>"
+          }
+        },
+        "text_9xWkFH": {
+          "type": "text",
+          "settings": {
+            "heading": "What is your return policy?",
+            "answer": "<p>We accept returns on unused, unopened products. If you receive a damaged or incorrect item, please contact us through the website with your order details and we will resolve it promptly.<br/><br/></p>"
+          }
+        },
+        "text_n9HaTG": {
+          "type": "text",
+          "settings": {
+            "heading": "Do you offer professional or bulk orders?",
+            "answer": "<p>Yes. CTR supports professional artists and training centers with volume orders. For bulk pricing, please get in touch through our contact page.</p>"
+          }
+        },
+        "text_AhBqGT": {
+          "type": "text",
+          "settings": {
+            "heading": "What payment methods are accepted?",
+            "answer": "<p>We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, Shop Pay, Maestro, Bancontact, and Union Pay, all processed securely at checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_rmRMFc",
+        "text_H734cm",
+        "text_aUB4ch",
+        "text_NhaQPV",
+        "text_6A4dCy",
+        "text_QakdRm",
+        "text_Xr7qQN",
+        "text_RKfkXE",
+        "text_9xWkFH",
+        "text_n9HaTG",
+        "text_AhBqGT"
+      ],
+      "name": "SS - FAQ #1",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Helpful answers before you shop",
+        "icon_color": "#121212",
+        "hover_color": "#666666",
+        "question_color": "#121212",
+        "background_color": "#f8f8f8",
+        "answer_color": "#000000",
+        "answer_bg_color": "#ffffff",
+        "questions-font-size": 1.5
+      }
     }
   },
   "order": [
@@ -761,6 +1039,7 @@
     "image_with_text_jY3CmK",
     "bestsellers_slider_dame_CWbQeY",
     "reviews_slider_dame_i4PDnN",
+    "image_with_text_ecN3RH",
     "bestsellers_slider_dame_added",
     "ss_simple_faq_bmfLRg"
   ]

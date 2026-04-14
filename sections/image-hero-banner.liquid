@@ -40,9 +40,16 @@
           {% if section.settings.subtitle != blank %}
             <div class="image-hero-subtitle">{{ section.settings.subtitle }}</div>
           {% endif %}
-          {% if section.settings.button_text != blank %}
+          
+          {% if section.settings.button_text != blank and section.settings.button_url != blank %}
             <a href="{{ section.settings.button_url }}" class="button">
               {{ section.settings.button_text }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.button_text_2 != blank and section.settings.button_url_2 != blank %}
+            <a href="{{ section.settings.button_url_2 }}" class="button">
+              {{ section.settings.button_text_2 }}
             </a>
           {% endif %}
         </div>
@@ -533,6 +540,16 @@
       "type": "url",
       "id": "button_url",
       "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button #2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url_2",
+      "label": "Button #2 URL"
     },
     {
       "type": "select",

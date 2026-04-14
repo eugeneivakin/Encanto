@@ -1,0 +1,23 @@
+.section-bestsellers-dame .dame-product-info {
+  flex-grow: 1;
+}
+.section-bestsellers-dame .dame-product-name + .button {
+  margin-top: auto;
+}
+.section-bestsellers-dame .dame-color-swatches .swatch-input__input {
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+.section-bestsellers-dame .dame-color-swatches .swatch-input__label {
+  pointer-events: none;
+  position: relative;
+}
+.section-bestsellers-dame .dame-color-swatches .swatch {
+  background: var(--swatch--background);
+  border-radius: 100%;
+  display: block;
+  height: 100%;
+  width: 100%;
+}

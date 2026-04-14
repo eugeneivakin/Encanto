@@ -43,7 +43,7 @@
       </div>
 
       {% if section.settings.section_subtitle != blank %}
-        <p class="dame-bestsellers-subtitle">{{ section.settings.section_subtitle }}</p>
+        <div class="dame-bestsellers-subtitle">{{ section.settings.section_subtitle }}</div>
       {% endif %}
     </div>
 
@@ -145,9 +145,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: -27px;
     flex-wrap: wrap;
     gap: 20px;
+  }
+  #bestsellers-{{ section.id }} .dame-bestsellers-header-content:only-child {
+    margin-bottom: -27px;
   }
 
   #bestsellers-{{ section.id }} .dame-bestsellers-title {
@@ -253,7 +255,7 @@
     #bestsellers-{{ section.id }} .dame-slider-container {
         padding-left: 0;
         padding-right: 0;
-    
+
   }
     #bestsellers-{{ section.id }} .dame-products-slider {
       padding-left: max(var(--dame-bestsellers-padding-left-mobile), 16px);
@@ -673,10 +675,10 @@
       "content": "Header"
     },
     {
-      "type": "richtext",
+      "type": "inline_richtext",
       "id": "section_title",
       "label": "Section Title",
-      "default": "<p>Our Bestsellers</p>"
+      "default": "Our Bestsellers"
     },
     {
       "type": "checkbox",
