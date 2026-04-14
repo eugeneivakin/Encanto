@@ -785,6 +785,62 @@
         "dot_active_color": "#3e3b3b"
       }
     },
+    "image_with_text_ecN3RH": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_wrrzAt": {
+          "type": "caption",
+          "settings": {
+            "caption": "How our products are made",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_Qt6C9a": {
+          "type": "heading",
+          "settings": {
+            "heading": "Developed through testing, refinement, and controlled quality standards",
+            "heading_size": "h1"
+          }
+        },
+        "text_QHVbCm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every CTR makeup tool is developed with direct input from working makeup artists and refined through multiple stages at our own production facilities in South Korea and Ukraine. Bristle density, ferrule fit, handle balance, and finish behavior are each assessed before production begins.Each tool is tested, adjusted, and quality-checked to perform consistently from first application through repeated daily use — giving artists reliable results on set, in studio, and in training.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_VMHyHq": {
+          "type": "button",
+          "settings": {
+            "button_label": "Discover Our Products",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_wrrzAt",
+        "heading_Qt6C9a",
+        "text_QHVbCm",
+        "button_VMHyHq"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
     "bestsellers_slider_dame_added": {
       "type": "bestsellers-slider-dame",
       "name": "Bestsellers Slider Duplicate",
@@ -950,6 +1006,7 @@
     "image_with_text_jY3CmK",
     "bestsellers_slider_dame_CWbQeY",
     "reviews_slider_dame_i4PDnN",
+    "image_with_text_ecN3RH",
     "bestsellers_slider_dame_added",
     "ss_simple_faq_bmfLRg"
   ]
