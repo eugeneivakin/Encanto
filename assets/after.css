@@ -305,6 +305,7 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
+  margin: 0;
 }
 .rb-faq-question::after {
   content: '\203A' !important;

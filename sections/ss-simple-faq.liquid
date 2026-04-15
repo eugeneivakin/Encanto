@@ -5,8 +5,8 @@
     {% for block in section.blocks %}
       <div class="rb-faq-container-item">
         <input style="display:none!important;" type="checkbox" id="tab{{forloop.index}}" class="tab-toggle">
-        <h3>
-          <label for="tab{{forloop.index}}" class="rb-faq-question">{{ block.settings.heading }}</label>
+        <h3 class="rb-faq-question">
+          <label for="tab{{forloop.index}}">{{ block.settings.heading }}</label>
         </h3>
         <div class="rb-faq-answer">{{ block.settings.answer }}</div>
       </div>
