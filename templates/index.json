@@ -32,7 +32,7 @@
         "title_size_mobile": 40,
         "button_text": "Shop Products",
         "button_url": "shopify://collections/all",
-        "button_text_2": "View Collections",
+        "button_text_2": "",
         "button_url_2": "shopify://collections",
         "content_position": "bottom-left",
         "content_alignment": "left",
