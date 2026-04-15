@@ -216,6 +216,142 @@
         "padding_bottom": 8
       }
     },
+    "categories_grid_dame_RGEJKr": {
+      "type": "categories-grid-dame",
+      "blocks": {
+        "category_6CHCxU": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#737373",
+            "badge_text": "",
+            "badge_bg_color": "#f8f8f8",
+            "badge_text_color": "#666666",
+            "category_title": "<p>Brushes</p>",
+            "title_color": "#ffffff",
+            "category_image": "shopify://shop_images/photo_5_2025-09-17_16-52-41.jpg",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 40,
+            "overlay_color": "#3e3b3b",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "shopify://collections/brushes",
+            "button_bg_color": "#f8f8f8",
+            "button_text_color": "#666666"
+          }
+        },
+        "category_eqz6x6": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#737373",
+            "badge_text": "",
+            "badge_bg_color": "#f8f8f8",
+            "badge_text_color": "#3e3b3b",
+            "category_title": "<p>Sponges</p>",
+            "title_color": "#ffffff",
+            "category_image": "shopify://shop_images/photo_25_2025-09-17_16-49-55_f00bc938-0d04-499f-baa3-4a3693056642.jpg",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 40,
+            "overlay_color": "#3e3b3b",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "shopify://collections/sponges",
+            "button_bg_color": "#f8f8f8",
+            "button_text_color": "#666666"
+          }
+        },
+        "category_6ecM9Y": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#737373",
+            "badge_text": "",
+            "badge_bg_color": "#f8f8f8",
+            "badge_text_color": "#3e3b3b",
+            "category_title": "<p>Eye Brow</p>",
+            "title_color": "#ffffff",
+            "category_image": "shopify://shop_images/SnapInsta.to_622049220_18088014299026719_8807335340939288482_n_1.jpg",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 40,
+            "overlay_color": "#3e3b3b",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "shopify://collections/eyebrow",
+            "button_bg_color": "#f8f8f8",
+            "button_text_color": "#666666"
+          }
+        },
+        "category_R88dkA": {
+          "type": "category",
+          "settings": {
+            "card_bg_color": "#737373",
+            "badge_text": "",
+            "badge_bg_color": "#f8f8f8",
+            "badge_text_color": "#3e3b3b",
+            "category_title": "<p>Shadows</p>",
+            "title_color": "#ffffff",
+            "category_image": "shopify://shop_images/IMG_8380_c8b5276a-abc1-4b88-9e69-fea0cb98f720.jpg",
+            "use_image_as_background": true,
+            "show_overlay": true,
+            "overlay_opacity": 40,
+            "overlay_color": "#3e3b3b",
+            "category_icon": "",
+            "button_text": "SHOP",
+            "button_url": "shopify://collections/shadows",
+            "button_bg_color": "#f8f8f8",
+            "button_text_color": "#666666"
+          }
+        }
+      },
+      "block_order": [
+        "category_6CHCxU",
+        "category_eqz6x6",
+        "category_6ecM9Y",
+        "category_R88dkA"
+      ],
+      "name": "Categories Grid Dame",
+      "settings": {
+        "section_background_color": "#ffffff",
+        "custom_classes": "",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 24,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 24,
+        "show_section_title": true,
+        "section_title": "<p>Shop by Category</p>",
+        "section_title_size_desktop": 30,
+        "section_title_size_mobile": 22,
+        "section_title_color": "#000000",
+        "section_title_font_weight": "400",
+        "section_title_alignment": "center",
+        "section_title_margin_bottom": 40,
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap_desktop": 20,
+        "grid_gap_mobile": 15,
+        "card_min_height": 480,
+        "card_min_height_mobile": 350,
+        "card_padding": 25,
+        "card_padding_mobile": 20,
+        "badge_font_size_desktop": 9,
+        "badge_font_size_mobile": 8,
+        "title_font_size_desktop": 24,
+        "title_font_size_mobile": 24,
+        "title_font_weight": "400",
+        "image_max_height": 180,
+        "image_max_height_mobile": 140,
+        "icon_max_width": 150,
+        "icon_max_height": 150,
+        "icon_max_width_mobile": 120,
+        "icon_max_height_mobile": 120,
+        "button_hover_show": true,
+        "button_font_size_desktop": 11,
+        "button_font_size_mobile": 10,
+        "button_border_radius": 8
+      }
+    },
     "categories_grid_dame_6KPq43": {
       "type": "categories-grid-dame",
       "blocks": {
@@ -440,6 +576,7 @@
         "category_VjCcE7",
         "category_yFqkMn"
       ],
+      "disabled": true,
       "name": "Categories Grid Dame",
       "settings": {
         "section_background_color": "#ffffff",
@@ -1081,6 +1218,7 @@
     "rich_text_jyYaki",
     "about_us_mission_WnTyGj",
     "about_us_mission_Df84rG",
+    "categories_grid_dame_RGEJKr",
     "categories_grid_dame_6KPq43",
     "bestsellers_slider_dame_N3BKD7",
     "image_with_text_jY3CmK",
