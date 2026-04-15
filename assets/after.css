@@ -1414,7 +1414,7 @@ quick-add-modal .quick-add-modal__toggle:hover {
   padding: 0.6rem 0;
   margin: 0;
   z-index: 101;
-  max-height: 90vh;
+  max-height: 70vh;
   overflow: auto;
 }
 
