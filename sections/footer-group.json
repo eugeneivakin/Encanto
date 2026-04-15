@@ -18,7 +18,7 @@
           "type": "link_column",
           "settings": {
             "column_title": "Collections",
-            "links": "All Products|/collections/all||New Arrivals|/collections/new-arrivals||Best Seller|/collections/best-seller||Beauty Boxes|/collections/ctr-beauty-boxes||Brushes|/collections/brushes||Eyebrow Care|/collections/eyebrow-care||Shadows & Powder|/collections/shadows-powder-1||Sale|/collections/sale||Perfume & Fragrances|/collections/perfume||Epilators & Massagers|/collections/epilators"
+            "links": "All Products|/collections/all||New Arrivals|/collections/new-arrivals||Best Seller|/collections/best-seller||Beauty Boxes|/collections/ctr-beauty-boxes||Brushes|/collections/brushes||Eyebrow Care|/collections/eyebrow-care||Shadows & Powder|/collections/shadows-powder-1||Sale|/collections/sale"
           }
         },
         "link_column_UW4yej": {
