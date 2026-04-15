@@ -1008,6 +1008,7 @@
         "text_QHVbCm",
         "button_VMHyHq"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "height": "adapt",
