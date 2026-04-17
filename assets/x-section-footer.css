@@ -1,0 +1,12 @@
+.footer__list-social.list-social {
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.footer__list-social .list-social__link {
+  padding: 0.5rem;
+}
+.footer__list-social .svg-wrapper {
+  aspect-ratio: 1;
+  height: auto;
+  width: 30px;
+}
