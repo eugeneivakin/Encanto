@@ -116,10 +116,12 @@
       {%- endif -%}
     </div>
     {%- if show_badges -%}
-      <span class="badge price__badge-percent color-{{ settings.sale_badge_color_scheme }}">
-        {% assign discount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price %}
-        {{ 'products.product.price.percent' | t: amount: discount }}
-      </span>
+      {% assign discount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price %}
+      {% if discount > 0 and discount != blank %}
+        <span class="badge price__badge-percent color-{{ settings.sale_badge_color_scheme }}">
+          {{ 'products.product.price.percent' | t: amount: discount }}
+        </span>
+      {% endif %}
 
       <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
         {{ 'products.product.sold_out' | t }}
