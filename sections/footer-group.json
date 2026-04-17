@@ -14,38 +14,44 @@
     "footer_dame_zfMTh4": {
       "type": "footer-dame",
       "blocks": {
+        "social_Knf3Ym": {
+          "type": "social",
+          "settings": {
+            "heading": "Social"
+          }
+        },
         "link_column_MVkb6M": {
           "type": "link_column",
           "settings": {
-            "column_title": "Collections",
+            "heading": "Collections",
             "links": "All Products|/collections/all||New Arrivals|/collections/new-arrivals||Best Seller|/collections/best-seller||Beauty Boxes|/collections/ctr-beauty-boxes||Brushes|/collections/brushes||Eyebrow Care|/collections/eyebrow-care||Shadows & Powder|/collections/shadows-powder-1||Sale|/collections/sale"
           }
         },
         "link_column_UW4yej": {
           "type": "link_column",
           "settings": {
-            "column_title": "About",
+            "heading": "About",
             "links": "About Us|/pages/about-us||Contact Us|/pages/contact||Makeup artist|/pages/contact||FAQ|/pages/faq"
           }
         },
         "link_column_PhqEHP": {
           "type": "link_column",
           "settings": {
-            "column_title": "Social",
+            "heading": "Social",
             "links": "Instagram|https://www.instagram.com/encanto.italy"
           }
         },
         "link_column_rxQxrM": {
           "type": "link_column",
           "settings": {
-            "column_title": "Terms",
+            "heading": "Terms",
             "links": "Terms & Conditions|/policies/terms-of-service||Privacy Policy|/policies/privacy-policy||Refund Policy|/policies/refund-policy||Shipping Policy|/policies/shipping-policy"
           }
         },
         "payment_icons_yj6UWr": {
           "type": "payment_icons",
           "settings": {
-            "column_title": "",
+            "heading": "",
             "show_payment_icons": true,
             "payment_icon_1": "shopify://shop_images/shopifypay.svg",
             "payment_icon_2": "shopify://shop_images/applepay.svg",
@@ -57,13 +63,7 @@
           }
         }
       },
-      "block_order": [
-        "link_column_MVkb6M",
-        "link_column_UW4yej",
-        "link_column_PhqEHP",
-        "link_column_rxQxrM",
-        "payment_icons_yj6UWr"
-      ],
+      "block_order": ["social_Knf3Ym", "link_column_MVkb6M", "link_column_UW4yej", "link_column_PhqEHP", "link_column_rxQxrM", "payment_icons_yj6UWr"],
       "name": "Footer Dame",
       "settings": {
         "max_width": "1400px",
@@ -161,12 +161,7 @@
           }
         }
       },
-      "block_order": [
-        "image_VFx4rE",
-        "text_8Gb9hK",
-        "text_86Bzeg",
-        "text_EbxbpM"
-      ],
+      "block_order": ["image_VFx4rE", "text_8Gb9hK", "text_86Bzeg", "text_EbxbpM"],
       "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
@@ -184,8 +179,5 @@
       }
     }
   },
-  "order": [
-    "footer_dame_zfMTh4",
-    "footer"
-  ]
+  "order": ["footer_dame_zfMTh4", "footer"]
 }
