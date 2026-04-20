@@ -94,13 +94,19 @@
         <div class="cart-drawer__free-shipping" data-threshold="{{ threshold }}">
           <p class="cart-drawer__free-shipping-message caption-large">
             {%- if remaining > 0 -%}
-              {{ settings.free_shipping_welcome | default: 'Add [amount] more to get FREE shipping!' | replace: '[amount]', remaining_money }}
+              {{
+                settings.free_shipping_welcome
+                | default: 'Add [amount] more to get FREE shipping!'
+                | replace: '[amount]', remaining_money
+              }}
             {%- else -%}
               {{ settings.free_shipping_success | default: "You've got FREE shipping!" }}
             {%- endif -%}
           </p>
           <div class="cart-fsb__bar" style="background-color: {{ bar_bg }};">
-            <div class="cart-fsb__fill" style="width: {{ percentage }}%; background-color: {{ bar_color }};">&nbsp;</div>
+            <div class="cart-fsb__fill" style="width: {{ percentage }}%; background-color: {{ bar_color }};">
+              &nbsp;
+            </div>
           </div>
         </div>
       {%- endif -%}
@@ -288,7 +294,10 @@
                             {%- endif -%}
 
                             {%- if item.variant.available and item.unit_price_measurement -%}
-                              {% render 'unit-price', price: item.unit_price, measurement: item.unit_price_measurement %}
+                              {% render 'unit-price',
+                                price: item.unit_price,
+                                measurement: item.unit_price_measurement
+                              %}
                             {%- endif -%}
                           </div>
                         </td>

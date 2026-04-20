@@ -420,8 +420,6 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 .cart-drawer__free-shipping-message {
   margin: 0 0 1rem;
-  text-align: center;
-  /* font-weight: 400; */
   color: rgb(var(--color-foreground));
 }
 
@@ -442,8 +440,3 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   display: block; /* Override global :empty { display: none } */
   transition: width var(--duration-default) ease;
 }
-
-
-
-
-
