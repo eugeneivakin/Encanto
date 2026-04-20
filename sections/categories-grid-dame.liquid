@@ -294,11 +294,13 @@
       transition: all 0.3s ease;
     }
 
-    #categories-{{ section.id }} .dame-category-card:hover .button {
-      {% if section.settings.button_hover_show %}
-        opacity: 1;
-        transform: translateY(0);
-      {% endif %}
+    @media screen and (min-width: 990px) {
+      #categories-{{ section.id }} .dame-category-card:hover .button {
+        {% if section.settings.button_hover_show %}
+          opacity: 1;
+          transform: translateY(0);
+        {% endif %}
+      }
     }
   {% comment %}
     #categories-{{ section.id }} .button:hover {

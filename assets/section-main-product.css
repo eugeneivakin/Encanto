@@ -318,10 +318,6 @@ a.product__text {
   line-height: 1 !important;
 }
 
-.product .price__container {
-  margin-bottom: 0.5rem;
-}
-
 .product .price dl {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;

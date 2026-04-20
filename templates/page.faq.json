@@ -23,49 +23,49 @@
         "text_EHrTqh": {
           "type": "text",
           "settings": {
-            "question": "Do you offer free shipping?",
+            "heading": "Do you offer free shipping?",
             "answer": "<p>Yes, we provide free standard shipping on all orders over $100. For orders under $100, a small shipping fee applies, which will be shown at checkout.</p>"
           }
         },
         "text_8yDhxc": {
           "type": "text",
           "settings": {
-            "question": "What is your refund policy?",
+            "heading": "What is your refund policy?",
             "answer": "<p>If you’re not completely satisfied with your purchase, you can return it within 14 for a full refund. Please ensure the item is unused and in its original packaging.</p>"
           }
         },
         "text_JBEThg": {
           "type": "text",
           "settings": {
-            "question": "Can I exchange a product if it doesn’t fit or match my expectations?",
+            "heading": "Can I exchange a product if it doesn’t fit or match my expectations?",
             "answer": "<p>Absolutely! If a product doesn’t meet your expectations, you can exchange it for a different size, color, or item within 30 days of purchase. Simply contact our customer support team with your order number and photos of the item. We’ll arrange a prepaid return label and send your replacement as soon as we receive the original item.</p>"
           }
         },
         "text_hXfKYR": {
           "type": "text",
           "settings": {
-            "question": "How can I contact customer support?",
+            "heading": "How can I contact customer support?",
             "answer": "<p>Our customer support team is here to help! You can reach us via email at support@encantoshop.es, through our contact form on the website, or via our social media channels. We typically respond within 24 hours during business days. For urgent matters, please include ‘URGENT’ in your subject line.</p>"
           }
         },
         "text_T7JA4x": {
           "type": "text",
           "settings": {
-            "question": "Are your products high quality?",
+            "heading": "Are your products high quality?",
             "answer": "<p>Yes, we’re committed to offering only high-quality products. All items are carefully selected and tested before being added to our store. We work with trusted suppliers and manufacturers to ensure durability and customer satisfaction. If you’re not satisfied with the quality, we offer a full refund.</p>"
           }
         },
         "text_JaeeCt": {
           "type": "text",
           "settings": {
-            "question": "How long does shipping take?",
+            "heading": "How long does shipping take?",
             "answer": "<p>Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout for faster delivery. International orders may take 10-21 business days depending on the destination. You’ll receive a tracking number via email once your order ships.</p>"
           }
         },
         "text_wLhcae": {
           "type": "text",
           "settings": {
-            "question": "What payment methods do you accept?",
+            "heading": "What payment methods do you accept?",
             "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and other digital payment methods. All transactions are secure and encrypted to protect your information.</p>"
           }
         }
