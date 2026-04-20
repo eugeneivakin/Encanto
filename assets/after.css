@@ -804,18 +804,6 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
     animation: qb-sheet-up 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Drag indicator on mobile */
-  .quick-add-modal__content::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 4px;
-    background: rgba(0,0,0,0.2);
-    border-radius: 2px;
-    margin: 12px auto 0;
-    flex-shrink: 0;
-  }
-
   /* Close button mobile position */
   .quick-add-modal__toggle {
     top: 1.2rem !important;
@@ -1257,6 +1245,7 @@ quick-add-modal .quick-add-modal__toggle:hover {
   z-index: 2;
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 4px;
   pointer-events: none;
 }
@@ -1289,7 +1278,7 @@ quick-add-modal .quick-add-modal__toggle:hover {
   border: 1px solid transparent;
 }
 .badge--new-arrival {
-  background-color: transparent;
+  background-color: #fff;
   color: #c8a96e;
   border: 1px solid #c8a96e;
 }
@@ -1300,6 +1289,7 @@ quick-add-modal .quick-add-modal__toggle:hover {
   padding-bottom: 1.5rem !important;
   position: relative !important;
   overflow: hidden !important;
+  margin: 0 !important;
 }
 
 .rez-stock-notification-button::before {
@@ -1320,6 +1310,12 @@ quick-add-modal .quick-add-modal__toggle:hover {
   left: 140% !important;
   opacity: 1 !important;
   transition: left 0.9s ease-out, opacity 0.08s ease !important;
+}
+
+.rez-notify-modal .rez-notify-variant-dropdown select,
+.rez-notify-modal .rez-notify-email-input {
+  border-color: var(--color-foreground);
+  border-radius: 0;
 }
 
 /* =============================================
