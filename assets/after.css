@@ -804,18 +804,6 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
     animation: qb-sheet-up 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Drag indicator on mobile */
-  .quick-add-modal__content::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 4px;
-    background: rgba(0,0,0,0.2);
-    border-radius: 2px;
-    margin: 12px auto 0;
-    flex-shrink: 0;
-  }
-
   /* Close button mobile position */
   .quick-add-modal__toggle {
     top: 1.2rem !important;
