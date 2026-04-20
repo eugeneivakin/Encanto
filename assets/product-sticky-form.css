@@ -15,7 +15,9 @@
 .product--sticky-form__inactive {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1.15s ease-out, opacity 1.15s ease-out;
+  transition:
+    visibility 1.15s ease-out,
+    opacity 1.15s ease-out;
 }
 
 .product--sticky-form__active {
@@ -90,4 +92,8 @@
 }
 .has-sticky-atc .shop-ai-chat-container {
   bottom: 80px !important;
+}
+
+.product--sticky-form-info .price .price__badge-sold-out {
+  display: none !important;
 }

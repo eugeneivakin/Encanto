@@ -1312,6 +1312,12 @@ quick-add-modal .quick-add-modal__toggle:hover {
   transition: left 0.9s ease-out, opacity 0.08s ease !important;
 }
 
+.rez-notify-modal .rez-notify-variant-dropdown select,
+.rez-notify-modal .rez-notify-email-input {
+  border-color: var(--color-foreground);
+  border-radius: 0;
+}
+
 /* =============================================
    G|Translate Language Selector — Custom UI
    ============================================= */
