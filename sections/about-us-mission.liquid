@@ -13,7 +13,6 @@
 {%- endstyle -%}
 
 <div class="about-us-mission color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-
   <div class="about-us-mission__particles">
     <div class="particle particle--1"></div>
     <div class="particle particle--2"></div>
@@ -32,7 +31,8 @@
             {{
               section.settings.mission_image
               | image_url: width: 1500
-              | image_tag: loading: 'lazy', class: 'about-us-mission__img', alt: section.settings.mission_image.alt | escape
+              | image_tag: loading: 'lazy', class: 'about-us-mission__img', alt: section.settings.mission_image.alt
+              | escape
             }}
             <div class="about-us-mission__image-overlay"></div>
           </div>
@@ -61,7 +61,11 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'value' -%}
-              <div class="about-us-mission__value-item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+              <div
+                class="about-us-mission__value-item"
+                data-index="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
                 <div class="value-item__wrapper">
                   {%- if block.settings.icon != blank -%}
                     <div class="about-us-mission__value-icon">
@@ -69,7 +73,7 @@
                     </div>
                   {%- endif -%}
                   {%- if block.settings.title != blank -%}
-                    <h3 class="about-us-mission__value-title">{{ block.settings.title }}</h3>
+                    <p class="h3 about-us-mission__value-title">{{ block.settings.title }}</p>
                   {%- endif -%}
                   {%- if block.settings.text != blank -%}
                     <div class="about-us-mission__value-text rte">{{ block.settings.text }}</div>
@@ -164,7 +168,8 @@
   }
 
   @keyframes particleFloat {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0) scale(1);
       opacity: 0.3;
     }
@@ -199,7 +204,6 @@
     position: relative;
     transform-style: preserve-3d;
   }
-
 
   .about-us-mission__img {
     width: 100%;
@@ -309,7 +313,8 @@
   }
 
   @keyframes gradientShift {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
@@ -342,7 +347,7 @@
       display: flex;
       flex-direction: row;
       overflow-x: auto;
-      margin-top: -20px!important;
+      margin-top: -20px !important;
       -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
       gap: 1.2rem;
@@ -409,7 +414,7 @@
 {% endstylesheet %}
 
 <script>
-  (function() {
+  (function () {
     const missionSection = document.querySelector('.about-us-mission');
     if (!missionSection) return;
 
@@ -423,27 +428,27 @@
     let mouseX = 0;
     let mouseY = 0;
 
-    missionSection.addEventListener('mousemove', function(e) {
+    missionSection.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      
-      particles.forEach(function(particle, index) {
+
+      particles.forEach(function (particle, index) {
         const speed = (index + 1) * 0.5;
         const rect = missionSection.getBoundingClientRect();
         const x = ((mouseX - rect.left) / rect.width - 0.5) * speed;
         const y = ((mouseY - rect.top) / rect.height - 0.5) * speed;
-        
+
         particle.style.transform = `translate(${x}px, ${y}px)`;
       });
     });
 
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -50px 0px',
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
@@ -452,20 +457,19 @@
       });
     }, observerOptions);
 
-    
     if (caption) {
       observer.observe(caption);
     }
-    
+
     if (heading) {
       observer.observe(heading);
     }
-    
+
     if (text) {
       observer.observe(text);
     }
 
-    valueItems.forEach(function(item) {
+    valueItems.forEach(function (item) {
       observer.observe(item);
     });
 
@@ -475,7 +479,7 @@
 
     function buildDots() {
       pagination.innerHTML = '';
-      valueItems.forEach(function(_, i) {
+      valueItems.forEach(function (_, i) {
         const dot = document.createElement('span');
         dot.className = 'about-us-mission__dot' + (i === 0 ? ' active' : '');
         dot.dataset.index = i;
@@ -488,7 +492,7 @@
       const scrollLeft = valuesContainer.scrollLeft;
       const itemWidth = valuesContainer.offsetWidth;
       const activeIndex = Math.round(scrollLeft / itemWidth);
-      pagination.querySelectorAll('.about-us-mission__dot').forEach(function(dot, i) {
+      pagination.querySelectorAll('.about-us-mission__dot').forEach(function (dot, i) {
         dot.classList.toggle('active', i === activeIndex);
       });
     }
@@ -496,7 +500,7 @@
     if (valuesContainer && pagination && valueItems.length > 1) {
       buildDots();
       valuesContainer.addEventListener('scroll', updateDots, { passive: true });
-      pagination.addEventListener('click', function(e) {
+      pagination.addEventListener('click', function (e) {
         const dot = e.target.closest('.about-us-mission__dot');
         if (!dot) return;
         const index = parseInt(dot.dataset.index, 10);
@@ -504,8 +508,8 @@
       });
     }
 
-    valueItems.forEach(function(item) {
-      item.addEventListener('click', function(e) {
+    valueItems.forEach(function (item) {
+      item.addEventListener('click', function (e) {
         const ripple = document.createElement('div');
         ripple.style.cssText = `
           position: absolute;
@@ -519,7 +523,7 @@
           pointer-events: none;
           animation: ripple 0.6s ease-out;
         `;
-        
+
         const style = document.createElement('style');
         style.textContent = `
           @keyframes ripple {
@@ -531,11 +535,11 @@
           }
         `;
         document.head.appendChild(style);
-        
+
         item.style.position = 'relative';
         item.appendChild(ripple);
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
           ripple.remove();
           style.remove();
         }, 600);
