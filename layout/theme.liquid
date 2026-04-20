@@ -480,19 +480,31 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
   // GDPR Checkbox for newsletter
   var forms = document.querySelectorAll('.dame-newsletter-section form, [class*="newsletter"] form');
-  forms.forEach(function(form) {
+  forms.forEach(function(form, idx) {
     if (form.querySelector('.encanto-gdpr')) return;
     var d = document.createElement('div');
     d.className = 'encanto-gdpr';
     d.style.cssText = 'margin-top:10px;font-size:12px;color:#666;display:flex;align-items:flex-start;gap:8px;text-align:left;';
-    var cb = document.createElement('input'); cb.type='checkbox'; cb.id='encanto-gdpr-cb';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    var cbId = 'encanto-gdpr-cb-' + Math.random().toString(36).slice(2) + '-' + idx;
+    cb.id = cbId;
+    cb.required = true;
     cb.style.cssText = 'margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:#000;';
-    var lbl = document.createElement('label'); lbl.htmlFor='encanto-gdpr-cb';
-    lbl.style.cursor='pointer';
+    var lbl = document.createElement('label');
+    lbl.htmlFor = cbId;
+    lbl.style.cursor = 'pointer';
     lbl.innerHTML = 'I have read and agree to the <a href="/policies/terms-of-service" style="color:inherit;text-decoration:underline;">Terms & Conditions</a> and <a href="/policies/privacy-policy" style="color:inherit;text-decoration:underline;">Privacy Policy</a>.';
     d.appendChild(cb); d.appendChild(lbl); form.appendChild(d);
     form.addEventListener('submit', function(e) {
-      if (!cb.checked) { e.preventDefault(); cb.style.outline='2px solid #e63535'; setTimeout(function(){cb.style.outline='';},2000); }
+      var gdpr = form.querySelector('.encanto-gdpr input[type="checkbox"]');
+      if (!gdpr || !gdpr.checked) {
+        e.preventDefault();
+        if (gdpr) {
+          gdpr.style.outline = '2px solid #e63535';
+          setTimeout(function(){gdpr.style.outline='';},2000);
+        }
+      }
     }, true);
   });
 });
