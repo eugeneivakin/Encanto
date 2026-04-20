@@ -423,6 +423,10 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   color: rgb(var(--color-foreground));
 }
 
+.cart-drawer__free-shipping-message img {
+  vertical-align: center;
+}
+
 .cart-fsb__bar {
   height: 0.8rem;
   width: 100%;

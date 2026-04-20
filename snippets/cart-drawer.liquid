@@ -99,6 +99,7 @@
                 | default: 'Add [amount] more to get FREE shipping!'
                 | replace: '[amount]', remaining_money
               }}
+              <img src="{{ 'icon-truck.svg' | asset_url }}" alt="Truck" width="20">
             {%- else -%}
               {{ settings.free_shipping_success | default: "You've got FREE shipping!" }}
             {%- endif -%}
