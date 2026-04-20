@@ -14,12 +14,6 @@
     "footer_dame_zfMTh4": {
       "type": "footer-dame",
       "blocks": {
-        "social_Knf3Ym": {
-          "type": "social",
-          "settings": {
-            "heading": "Social"
-          }
-        },
         "link_column_MVkb6M": {
           "type": "link_column",
           "settings": {
@@ -36,9 +30,16 @@
         },
         "link_column_PhqEHP": {
           "type": "link_column",
+          "disabled": true,
           "settings": {
             "heading": "Social",
             "links": "Instagram|https://www.instagram.com/encanto.italy"
+          }
+        },
+        "social_Knf3Ym": {
+          "type": "social",
+          "settings": {
+            "heading": "Social"
           }
         },
         "link_column_rxQxrM": {
@@ -63,7 +64,14 @@
           }
         }
       },
-      "block_order": ["social_Knf3Ym", "link_column_MVkb6M", "link_column_UW4yej", "link_column_PhqEHP", "link_column_rxQxrM", "payment_icons_yj6UWr"],
+      "block_order": [
+        "link_column_MVkb6M",
+        "link_column_UW4yej",
+        "link_column_PhqEHP",
+        "social_Knf3Ym",
+        "link_column_rxQxrM",
+        "payment_icons_yj6UWr"
+      ],
       "name": "Footer Dame",
       "settings": {
         "max_width": "1400px",
@@ -161,7 +169,12 @@
           }
         }
       },
-      "block_order": ["image_VFx4rE", "text_8Gb9hK", "text_86Bzeg", "text_EbxbpM"],
+      "block_order": [
+        "image_VFx4rE",
+        "text_8Gb9hK",
+        "text_86Bzeg",
+        "text_EbxbpM"
+      ],
       "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
@@ -179,5 +192,8 @@
       }
     }
   },
-  "order": ["footer_dame_zfMTh4", "footer"]
+  "order": [
+    "footer_dame_zfMTh4",
+    "footer"
+  ]
 }
