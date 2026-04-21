@@ -4,11 +4,11 @@
 {% assign metafield_products = product.metafields.custom.color_variant_products.value %}
 
 <div class="component-products-upsell" data-source="{{ block.settings.upsell_source }}">
-  {% unless block.settings.upsell_heading == blank %}
-    <h2 class="component-products-upsell__title">{{ block.settings.upsell_heading }}</h2>
-  {% endunless %}
-
   {% if metafield_products and metafield_products.size > 0 %}
+    {% unless block.settings.upsell_heading == blank %}
+      <h2 class="component-products-upsell__title">{{ block.settings.upsell_heading }}</h2>
+    {% endunless %}
+
     <div class="component-products-upsell__grid">
       {% for rec_product in metafield_products limit: products_to_show %}
         {% if rec_product.available %}
@@ -24,6 +24,10 @@
       data-product-id="{{ product.id }}"
     >
       {% if recommendations.performed and recommendations.products_count > 0 %}
+        {% unless block.settings.upsell_heading == blank %}
+          <h2 class="component-products-upsell__title">{{ block.settings.upsell_heading }}</h2>
+        {% endunless %}
+        
         {% for recommendation in recommendations.products %}
           {% if product.available %}
             {% render 'products-upsell-card', product: recommendation %}
