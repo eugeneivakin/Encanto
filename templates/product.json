@@ -237,7 +237,7 @@
         "padding_right_mobile": 0,
         "collection": "new-arrivals",
         "products_to_show": 8,
-        "section_title": "<p>You may also like</p>",
+        "section_title": "You may also like",
         "animate_bold_words": true,
         "title_size_desktop": 52,
         "title_size_mobile": 36,
