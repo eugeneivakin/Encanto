@@ -84,7 +84,7 @@
 
 .image-comparison__button::before,
 .image-comparison__button::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: rgb(var(--color-border));
   pointer-events: none;
@@ -110,7 +110,7 @@
   top: 0;
   margin-top: -2rem;
 }
-.image-comparison[data-layout="horizontal"]  .image-comparison__button::after {
+.image-comparison[data-layout="horizontal"] .image-comparison__button::after {
   bottom: 0;
   margin-bottom: -2rem;
 }
@@ -119,7 +119,7 @@
   left: 0;
   margin-left: -2rem;
 }
-.image-comparison[data-layout="vertical"]  .image-comparison__button::after {
+.image-comparison[data-layout="vertical"] .image-comparison__button::after {
   right: 0;
   margin-right: -2rem;
 }
@@ -139,7 +139,7 @@
 
 .image-comparison__button span::before,
 .image-comparison__button span::after {
-  content: '';
+  content: "";
   position: absolute;
   border: 0.6rem inset transparent;
 }
@@ -231,13 +231,17 @@
   opacity: 0;
 }
 
-
 /* ============================================================
    ENCANTO CUSTOM FIXES — 2026-03-15
    ============================================================ */
 
 /* --- Fonts: AttilaSansClassic for titles, Montserrat for body --- */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .dame-bestsellers-title,
 .dame-reviews-title,
 .dame-categories-section-title,
@@ -250,25 +254,36 @@ h1, h2, h3, h4, h5, h6,
 [class*="__title"],
 .au-story-title h2,
 .au-section-title {
-  font-family: 'AttilaSansClassic', sans-serif !important;
+  font-family: "AttilaSansClassic", sans-serif !important;
 }
-p, li,
+p,
+li,
 .product__description,
-.rte, .article__body,
+.rte,
+.article__body,
 .shopify-policy__body,
 [class*="description"],
 [class*="__body"] {
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 /* --- Font fix: p inside headings should use heading font, not body font --- */
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  font-family: 'AttilaSansClassic', sans-serif !important;
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  font-family: "AttilaSansClassic", sans-serif !important;
 }
 
-
 /* --- Pkt 1: Logo size reduction --- */
-.header__heading-logo-wrapper { max-width: 55px !important; }
-.header__heading-logo { max-width: 55px !important; width: 55px !important; }
+.header__heading-logo-wrapper {
+  max-width: 55px !important;
+}
+.header__heading-logo {
+  max-width: 55px !important;
+  width: 55px !important;
+}
 
 /* --- Pkt 2: Nav underline — handled by theme base.css ::after animation (left:0, width:100%) --- */
 /* --- Nav dropdown: underline handled by span in base.css --- */
@@ -291,14 +306,22 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 /* --- Pkt 6: Discount badge next to price, not over image --- */
-.dame-discount-badge-overlay { display: none !important; }
-.dame-price-badge { display: inline-flex !important; }
+.dame-discount-badge-overlay {
+  display: none !important;
+}
+.dame-price-badge {
+  display: inline-flex !important;
+}
 
 /* --- Pkt 10/14: Hide % sale badge and "Sold out" badge on product pages --- */
 .price__badge-percent,
-.badge.price__badge-percent { display: none !important; }
+.badge.price__badge-percent {
+  display: none !important;
+}
 .price__badge-sold-out,
-.badge.price__badge-sold-out { display: none !important; }
+.badge.price__badge-sold-out {
+  display: none !important;
+}
 
 /* --- Pkt 8: FAQ icon — beautiful chevron arrow (rotate trick) --- */
 .rb-faq-question {
@@ -308,7 +331,7 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   margin: 0;
 }
 .rb-faq-question::after {
-  content: '\203A' !important;
+  content: "\203A" !important;
   font-size: 22px !important;
   font-weight: 300 !important;
   color: #888 !important;
@@ -324,47 +347,79 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 /* --- Pkt 9/15: Padding between products and footer on collection pages --- */
-.main-collection-product-grid { padding-bottom: 80px !important; }
-.collection { padding-bottom: 80px !important; }
+.main-collection-product-grid {
+  padding-bottom: 80px !important;
+}
+.collection {
+  padding-bottom: 80px !important;
+}
 
 /* --- Pkt 11: Product description accordion — separators --- */
 .collapsible-content__heading,
-.product__accordion { border-bottom: 1px solid #e5e5e5 !important; }
-
-
+.product__accordion {
+  border-bottom: 1px solid #e5e5e5 !important;
+}
 
 /* Specific color fallbacks removed as requested */
 
 /* --- Pkt 16: About Us — remove bold, border-radius on grey blocks --- */
-.au-page h2 { font-weight: 400 !important; text-transform: none !important; letter-spacing: 0 !important; }
-.au-page h3 { font-weight: 400 !important; text-transform: none !important; }
-.au-page h4 { font-weight: 400 !important; }
-.au-section--gray { border-radius: 16px !important; overflow: hidden !important; }
-.shopify-section:first-of-type .au-section--gray { margin-top: 32px !important; }
+.au-page h2 {
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+.au-page h3 {
+  font-weight: 400 !important;
+  text-transform: none !important;
+}
+.au-page h4 {
+  font-weight: 400 !important;
+}
+.au-section--gray {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+.shopify-section:first-of-type .au-section--gray {
+  margin-top: 32px !important;
+}
 
 /* --- Pkt 17: Terms page — remove bold + spacing from footer --- */
 .shopify-policy__body strong,
 .shopify-policy__body b,
 .shopify-policy__body h1,
 .shopify-policy__body h2,
-.shopify-policy__body h3 { font-weight: 400 !important; }
+.shopify-policy__body h3 {
+  font-weight: 400 !important;
+}
 .main-policies,
 .policy,
-.shopify-policy { padding-bottom: 80px !important; }
+.shopify-policy {
+  padding-bottom: 80px !important;
+}
 
 /* --- Pkt 18: Spacing content → footer all pages --- */
-.main-page { padding-bottom: 80px !important; }
-.main-article { padding-bottom: 80px !important; }
-.main-blog { padding-bottom: 80px !important; }
+.main-page {
+  padding-bottom: 80px !important;
+}
+.main-article {
+  padding-bottom: 80px !important;
+}
+.main-blog {
+  padding-bottom: 80px !important;
+}
 
 /* --- Pkt 19: Reviews — remove bold fonts --- */
 .jdgm-review__title,
 .jdgm-reviewer,
 .jdgm-rev__title,
 .jdgm-rev__body,
-.jdgm-widget * { font-weight: 400 !important; }
+.jdgm-widget * {
+  font-weight: 400 !important;
+}
 [class*="reviews"] h2,
-[class*="reviews"] h3 { font-weight: 400 !important; }
+[class*="reviews"] h3 {
+  font-weight: 400 !important;
+}
 
 /* --- Pkt 4: Collection list page — bigger card titles (match homepage 32px) --- */
 .collection-list .card__heading,
@@ -376,10 +431,10 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   letter-spacing: 0 !important;
 }
 
-
 /* --- Pkt 17 EXTRA: Policy pages spacing --- */
-.shopify-policy__container { padding-bottom: 80px !important; }
-
+.shopify-policy__container {
+  padding-bottom: 80px !important;
+}
 
 /* ============================================================
    TESTIROVANIYE 2 — 2026-03-15
@@ -387,23 +442,37 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 
 /* T2-1: Mobile logo */
 @media screen and (max-width: 749px) {
-  .header__heading-logo-wrapper { max-width: 50px !important; }
-  .header__heading-logo { max-width: 50px !important; width: 50px !important; }
+  .header__heading-logo-wrapper {
+    max-width: 50px !important;
+  }
+  .header__heading-logo {
+    max-width: 50px !important;
+    width: 50px !important;
+  }
 }
 
 /* T2-2: Hero — hide subtitle, stronger heading */
 [class*="hero"] .subtitle,
-[class*="hero"] .subheading { display: none !important; }
-.image-hero-heading { font-weight: 400 !important; letter-spacing: -0.01em !important; }
+[class*="hero"] .subheading {
+  display: none !important;
+}
+.image-hero-heading {
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
 
 /* T2-4: Reviews subtitle — hide */
-.dame-reviews-subtitle { display: none !important; }
+.dame-reviews-subtitle {
+  display: none !important;
+}
 
 /* T2-7: Lighter sale price weight */
-.price-item--sale { font-weight: 400 !important; }
+.price-item--sale {
+  font-weight: 400 !important;
+}
 
 /* T2-9: Button hover shimmer — white sweep only, no black stripe */
-.button--primary, 
+.button--primary,
 .button:not(.quantity__button):not([class*="swatch"]):not([class*="filter"]),
 .dame-see-all-btn {
   position: relative !important;
@@ -413,17 +482,19 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 .button--primary::before,
 .button:not(.quantity__button):not([class*="swatch"]):not([class*="filter"])::before,
 .dame-see-all-btn::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
-  top: 0 !important; 
+  top: 0 !important;
   left: -100% !important;
-  width: 60% !important; 
+  width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .button--primary:hover::before,
@@ -434,12 +505,18 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 .dame-see-all-btn.is-shimmering::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* T2-11: Star rating tighter */
-.dame-product-stars { letter-spacing: 0px !important; }
-.dame-review-stars .dame-product-stars { letter-spacing: 0px !important; }
+.dame-product-stars {
+  letter-spacing: 0px !important;
+}
+.dame-review-stars .dame-product-stars {
+  letter-spacing: 0px !important;
+}
 
 /* T2-12: Discount badge RED — only when actual discount exists (.price--on-sale) */
 .price--on-sale .price__badge-percent,
@@ -457,10 +534,19 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 
 /* Skip to content — hide floating button */
 .skip-to-content-link,
-.visually-hidden.focusable:not(:focus) { display: none !important; }
+.visually-hidden.focusable:not(:focus) {
+  display: none !important;
+}
 
 /* GDPR checkbox — black accent */
-#encanto-gdpr-cb { accent-color: #000 !important; width: 18px; height: 18px; min-width: 18px; flex-shrink: 0; cursor: pointer; }
+#encanto-gdpr-cb {
+  accent-color: #000 !important;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
 
 /* Swatch active border — standardized in dame-product-card.css */
 
@@ -476,23 +562,27 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 .dame-slider-arrow::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .dame-slider-arrow:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Quick Buy button shimmer — desktop only */
@@ -503,23 +593,27 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   }
 
   .dame-quick-buy-btn::before {
-    content: '' !important;
+    content: "" !important;
     position: absolute !important;
     top: 0 !important;
     left: -100% !important;
     width: 60% !important;
     height: 100% !important;
-    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
     opacity: 0 !important;
     pointer-events: none !important;
     z-index: 2 !important;
-    transition: left 0s ease 0s, opacity 0s ease 0s !important;
+    transition:
+      left 0s ease 0s,
+      opacity 0s ease 0s !important;
   }
 
   .dame-quick-buy-btn:hover::before {
     left: 140% !important;
     opacity: 1 !important;
-    transition: left 0.9s ease-out, opacity 0.08s ease !important;
+    transition:
+      left 0.9s ease-out,
+      opacity 0.08s ease !important;
   }
 }
 
@@ -532,50 +626,58 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 
 .quick-add__submit::before,
 .product-form__submit::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .quick-add__submit:hover::before,
 .product-form__submit:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Variant pill labels shimmer */
-.product-form__input--pill input[type='radio'] + label {
+.product-form__input--pill input[type="radio"] + label {
   position: relative !important;
   overflow: hidden !important;
 }
 
-.product-form__input--pill input[type='radio'] + label::before {
-  content: '' !important;
+.product-form__input--pill input[type="radio"] + label::before {
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
-.product-form__input--pill input[type='radio'] + label:hover::before {
+.product-form__input--pill input[type="radio"] + label:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Quick-add modal close button shimmer */
@@ -584,23 +686,27 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 .quick-add-modal__toggle::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .quick-add-modal__toggle:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Color swatch shimmer — product cards */
@@ -610,23 +716,27 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 .dame-color-swatch::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .dame-color-swatch:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Color swatch shimmer */
@@ -636,23 +746,27 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 .swatch-input__input + .swatch-input__label::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .swatch-input__input + .swatch-input__label:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 /* Fix product page Add to Cart button */
@@ -673,11 +787,16 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   display: none !important;
 }
 
-
 /* --- FAQ nested accordion --- */
-.faq-accordion { padding: 0; }
-.faq-item { border-bottom: 1px solid #e5e5e5; }
-.faq-item:first-child { border-top: 1px solid #e5e5e5; }
+.faq-accordion {
+  padding: 0;
+}
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+.faq-item:first-child {
+  border-top: 1px solid #e5e5e5;
+}
 .faq-question {
   display: flex;
   justify-content: space-between;
@@ -689,27 +808,37 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   list-style: none;
   color: #111;
 }
-.faq-question::-webkit-details-marker { display: none; }
+.faq-question::-webkit-details-marker {
+  display: none;
+}
 .faq-question::after {
-  content: '+';
+  content: "+";
   font-size: 18px;
   font-weight: 300;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
-.faq-item[open] > .faq-question::after { content: '−'; }
+.faq-item[open] > .faq-question::after {
+  content: "−";
+}
 .faq-answer {
   padding: 0 0 12px 0;
   font-size: 13px;
   color: #555;
   line-height: 1.6;
 }
-.faq-answer p { margin: 0; }
+.faq-answer p {
+  margin: 0;
+}
 /* Category card titles — remove bold */
-.dame-category-title { font-weight: 400 !important; }
+.dame-category-title {
+  font-weight: 400 !important;
+}
 
 /* Hide FAQ section inside Quick Buy popup */
-.quick-add-modal .product-faq-section { display: none !important; }
+.quick-add-modal .product-faq-section {
+  display: none !important;
+}
 
 /* ================================================
    Quick Buy Modal â Enhanced UX
@@ -717,12 +846,16 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 
 /* --- Backdrop --- */
 @keyframes qb-overlay-in {
-  from { background-color: rgba(0,0,0,0); }
-  to   { background-color: rgba(0,0,0,0.5); }
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .quick-add-modal[open] {
-  background: rgba(0,0,0,0.5) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
   animation: qb-overlay-in 0.3s ease forwards;
 }
 
@@ -741,7 +874,7 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 .quick-add-modal[open] .quick-add-modal__content {
   animation: qb-panel-in 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   border-radius: 16px;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
 }
 
 /* --- Desktop: sticky left image + scrollable right side --- */
@@ -805,9 +938,10 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   }
 
   /* Close button mobile position */
-  .quick-add-modal__toggle {
-    top: 1.2rem !important;
-    right: 1.2rem !important;
+  quick-add-modal .product-media-container > .product-gallery-badges {
+    align-items: flex-start;
+    right: auto;
+    left: 0;
   }
 }
 
@@ -939,10 +1073,13 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
 }
 
 /* Vertically center sale badge in Quick Buy modal */
-.quick-add-modal .price__sale { align-items: center !important; }
+.quick-add-modal .price__sale {
+  align-items: center !important;
+}
 .quick-add-modal .price__badge-sale,
-.quick-add-modal .price__badge-percent { align-self: center !important; }
-
+.quick-add-modal .price__badge-percent {
+  align-self: center !important;
+}
 
 /* Badge â flex alignment */
 .quick-add-modal .price--show-badge {
@@ -1003,7 +1140,6 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
   line-height: 1.3 !important;
 }
 
-
 /* Quick Buy modal — hide main image slider arrows; show thumbnail strip arrows */
 quick-add-modal .slider-buttons {
   display: none !important;
@@ -1020,15 +1156,17 @@ quick-add-modal .thumbnail-slider > .slider-button {
   border-radius: 50% !important;
   background: #fff !important;
   border: 1px solid #ddd !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
   flex-shrink: 0 !important;
   padding: 0 !important;
   cursor: pointer !important;
-  transition: border-color 0.2s, box-shadow 0.2s !important;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s !important;
 }
 quick-add-modal .thumbnail-slider > .slider-button:not(:disabled):hover {
   border-color: #111 !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
 }
 quick-add-modal .thumbnail-slider > .slider-button:disabled {
   opacity: 0.3 !important;
@@ -1064,7 +1202,9 @@ quick-add-modal .thumbnail-list {
   display: flex !important;
   gap: 6px !important;
 }
-quick-add-modal .thumbnail-list::-webkit-scrollbar { display: none !important; }
+quick-add-modal .thumbnail-list::-webkit-scrollbar {
+  display: none !important;
+}
 /* ================================================
    Quick Buy Modal — show active media item
    Dawn injects: quick-add-modal .product__media-item:not(:first-child) { display: none !important }
@@ -1162,7 +1302,9 @@ quick-add-modal .quick-add-modal__toggle:hover {
     border: 0.1rem solid rgba(255, 255, 255, 0.35);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255,255,255,0.5);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
     /* Hidden by default: shifted inward + invisible */
     opacity: 0;
     pointer-events: none;
@@ -1199,7 +1341,9 @@ quick-add-modal .quick-add-modal__toggle:hover {
 
   .gallery-viewer-nav:hover {
     background: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.7);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   .gallery-viewer-nav:disabled {
@@ -1283,6 +1427,10 @@ quick-add-modal .quick-add-modal__toggle:hover {
   border: 1px solid #c8a96e;
 }
 
+body .rez-notify-modal {
+  font-family: var(--font-body-family);
+}
+
 .rez-stock-notification-button {
   min-height: calc(4.8rem + var(--buttons-border-width, 0px) * 2) !important;
   padding-top: 1.5rem !important;
@@ -1293,23 +1441,27 @@ quick-add-modal .quick-add-modal__toggle:hover {
 }
 
 .rez-stock-notification-button::before {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 0 !important;
   left: -100% !important;
   width: 60% !important;
   height: 100% !important;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%) !important;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   z-index: 2 !important;
-  transition: left 0s ease 0s, opacity 0s ease 0s !important;
+  transition:
+    left 0s ease 0s,
+    opacity 0s ease 0s !important;
 }
 
 .rez-stock-notification-button:hover::before {
   left: 140% !important;
   opacity: 1 !important;
-  transition: left 0.9s ease-out, opacity 0.08s ease !important;
+  transition:
+    left 0.9s ease-out,
+    opacity 0.08s ease !important;
 }
 
 .rez-notify-modal .rez-notify-variant-dropdown select,

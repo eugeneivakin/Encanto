@@ -424,7 +424,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 }
 
 .cart-drawer__free-shipping-message img {
-  vertical-align: center;
+  vertical-align: middle;
 }
 
 .cart-fsb__bar {
