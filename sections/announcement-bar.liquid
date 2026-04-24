@@ -33,14 +33,14 @@
         {{ section.blocks.first.shopify_attributes }}
       >
         {%- if section.blocks.first.settings.text != blank -%}
-          {%- if section.blocks.first.settings.link != blank -%}
+        {%- if section.blocks.first.settings.link != blank -%}
             <a
               href="{{ section.blocks.first.settings.link }}"
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | escape | replace: '[threshold]', settings.free_shipping_threshold }}</span>
+            <span>{{ section.blocks.first.settings.text | escape | replace: '[threshold]', '<free-shipping-threshold></free-shipping-threshold>' }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             {%- endif -%}

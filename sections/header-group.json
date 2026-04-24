@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free Shipping Over [threshold]$! Returns are always on us.",
+            "text": "Free Shipping Over [threshold]! Returns are always on us.",
             "link": ""
           }
         }

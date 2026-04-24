@@ -58,7 +58,7 @@
         >
       {%- endif -%}
       <span class="h4 inline-richtext">
-        {{- block.settings.heading_1 -}}
+        {{- block.settings.heading_1 | replace: '[threshold]', '<free-shipping-threshold></free-shipping-threshold>' -}}
       </span>
     </li>
   {%- endunless -%}
@@ -80,7 +80,7 @@
         >
       {%- endif -%}
       <span class="h4 inline-richtext">
-        {{- block.settings.heading_2 -}}
+        {{- block.settings.heading_2 | replace: '[threshold]', '<free-shipping-threshold></free-shipping-threshold>' -}}
       </span>
     </li>
   {%- endunless -%}
@@ -102,7 +102,7 @@
         >
       {%- endif -%}
       <span class="h4 inline-richtext">
-        {{- block.settings.heading_3 -}}
+        {{- block.settings.heading_3 | replace: '[threshold]', '<free-shipping-threshold></free-shipping-threshold>' -}}
       </span>
     </li>
   {%- endunless -%}
