@@ -1,0 +1,64 @@
+<script>
+  // Global object with amounts for different zones
+  window.FREE_SHIPPING = {
+    eu: {{ shop.metafields.custom.free_shipping_eu.value | money_without_trailing_zeros | json  }},
+    qatar: {{ shop.metafields.custom.free_shipping_qatar.value | money_without_trailing_zeros | json }},
+    uae: {{ shop.metafields.custom.free_shipping_uae.value | money_without_trailing_zeros | json }}
+  };
+</script>
+
+<script>
+  // An array of ISO codes for European countries (example, can be expanded)
+  var EU_COUNTRIES = [
+    'AT',
+    'BE',
+    'BG',
+    'HR',
+    'CY',
+    'CZ',
+    'DK',
+    'EE',
+    'FI',
+    'FR',
+    'DE',
+    'GR',
+    'HU',
+    'IE',
+    'IT',
+    'LV',
+    'LT',
+    'LU',
+    'MT',
+    'NL',
+    'PL',
+    'PT',
+    'RO',
+    'SK',
+    'SI',
+    'ES',
+    'SE',
+    'UA',
+  ];
+
+  fetch('https://ipinfo.io/json?token=fb3065e38e9080')
+    .then((response) => response.json())
+    .then((data) => {
+      var sum = null;
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> data', data.country);
+      if (EU_COUNTRIES.includes(data.country)) {
+        sum = window.FREE_SHIPPING.eu;
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum eu', sum);
+      } else if (data.country === 'AE') {
+        sum = window.FREE_SHIPPING.uae;
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum ae', sum);
+      } else if (data.country === 'QA') {
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum qa', sum);
+        sum = window.FREE_SHIPPING.qatar;
+      }
+      if (sum !== null) {
+        document.querySelectorAll('free-shipping-threshold').forEach(function (el) {
+          el.textContent = sum;
+        });
+      }
+    });
+</script>

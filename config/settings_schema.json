@@ -1425,14 +1425,8 @@
         "type": "checkbox",
         "id": "show_free_shipping_bar",
         "label": "Show free shipping bar",
-        "default": true
-      },
-      {
-        "type": "number",
-        "id": "free_shipping_threshold",
-        "label": "Free shipping threshold",
-        "default": 150,
-        "info": "The amount required for free shipping (e.g., 150)"
+        "default": true,
+        "info": "The amount defined in [shop metafields](https://admin.shopify.com/store/drmtdf-we/settings/general/metafields)"
       },
       {
         "type": "text",
