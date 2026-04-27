@@ -1108,6 +1108,26 @@
     },
     "ss_instafeed_UDbgfq": {
       "type": "ss-instafeed",
+      "blocks": {
+        "image_4JMRiY": {
+          "type": "image",
+          "settings": {
+            "gallery_photo": "shopify://shop_images/671017945_18081743174187962_2758610207644514698_n.jpg",
+            "gallery_url": ""
+          }
+        },
+        "image_bicygi": {
+          "type": "image",
+          "settings": {
+            "gallery_photo": "shopify://shop_images/660450537_18077639171187962_5447354215346292112_n.jpg",
+            "gallery_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_4JMRiY",
+        "image_bicygi"
+      ],
       "name": "SS - Instafeed",
       "settings": {
         "background-color": "#002F30",
