@@ -1106,6 +1106,85 @@
         "discount_badge_color": "#ffffff"
       }
     },
+    "ss_instafeed_UDbgfq": {
+      "type": "ss-instafeed",
+      "blocks": {
+        "image_3LXQm8": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_g9GFmr": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_L9LYBx": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_bkdfrE": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_gcVkJM": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_n7U7ri": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_RptMca": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        },
+        "image_3zqFky": {
+          "type": "image",
+          "settings": {
+            "gallery_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3LXQm8",
+        "image_g9GFmr",
+        "image_L9LYBx",
+        "image_bkdfrE",
+        "image_gcVkJM",
+        "image_n7U7ri",
+        "image_RptMca",
+        "image_3zqFky"
+      ],
+      "name": "SS - Instafeed",
+      "settings": {
+        "background-color": "#002F30",
+        "text-color": "#FFFFFF",
+        "hide_image_mobile": 0,
+        "insta_url": "https://www.instagram.com/encanto.italy",
+        "instafeed_title": "Join the movement",
+        "hashtag_title": "#BrandHashtag",
+        "insta_handle": "@yourhandle",
+        "header_size": 18,
+        "hashtag_size": 36,
+        "handle_size": 12,
+        "padding_image": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "ss_simple_faq_bmfLRg": {
       "type": "ss-simple-faq",
       "blocks": {
@@ -1227,6 +1306,7 @@
     "reviews_slider_dame_i4PDnN",
     "image_with_text_ecN3RH",
     "bestsellers_slider_dame_added",
+    "ss_instafeed_UDbgfq",
     "ss_simple_faq_bmfLRg"
   ]
 }
