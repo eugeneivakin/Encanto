@@ -82,6 +82,8 @@
       "name": "SS - FAQ #1",
       "settings": {
         "heading": "Frequently Asked Questions",
+        "heading_tag": "h1",
+        "subheading": "",
         "icon_color": "#000000",
         "hover_color": "#000000",
         "question_color": "#000000",

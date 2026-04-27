@@ -1,6 +1,9 @@
 <div class="rb-faq-shopify-section">
-  <h2 style="text-align: center; padding: 20px 20px 0px 20px;">{{ section.settings.heading }}</h2>
-  <h3 style="text-align: center;">{{ section.settings.subheading }}</h3>
+  {%- assign heading_tag = section.settings.heading_tag -%}
+  <{{ heading_tag }} class="h2" style="text-align: center; padding: 20px 20px 0px 20px;">
+    {{- section.settings.heading -}}
+  </{{ heading_tag }}>
+  <h2 class="h3" style="text-align: center;">{{ section.settings.subheading }}</h2>
   <div class="rb-faq-container">
     {% for block in section.blocks %}
       <div class="rb-faq-container-item">
@@ -51,6 +54,22 @@
       "label": "Heading",
       "id": "heading",
       "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        }
+      ],
+      "default": "h2"
     },
     {
       "type": "text",
