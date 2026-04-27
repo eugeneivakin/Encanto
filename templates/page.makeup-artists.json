@@ -24,7 +24,8 @@
           "type": "heading",
           "settings": {
             "heading": "Makeup Artists",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_tag": "h1"
           }
         },
         "text": {
@@ -34,7 +35,10 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -56,5 +60,9 @@
       }
     }
   },
-  "order": ["main", "rich_text", "form"]
+  "order": [
+    "main",
+    "rich_text",
+    "form"
+  ]
 }
