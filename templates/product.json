@@ -72,7 +72,7 @@
           "settings": {
             "layout": "vertical",
             "icon_1": "truck",
-            "heading_1": "Free Shipping on US orders over [threshold]",
+            "heading_1": "Free Shipping on orders over [threshold]",
             "icon_2": "return",
             "heading_2": "30-Day Returns",
             "icon_3": "heart",
