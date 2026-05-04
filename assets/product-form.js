@@ -42,8 +42,6 @@ if (!customElements.get('product-form')) {
           });
         }
 
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> formData', formData)
-        
         if (this.cart) {
           formData.append(
             'sections',

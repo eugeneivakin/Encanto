@@ -44,15 +44,11 @@
     .then((response) => response.json())
     .then((data) => {
       var sum = null;
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> data', data.country);
       if (EU_COUNTRIES.includes(data.country)) {
         sum = window.FREE_SHIPPING.eu;
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum eu', sum);
       } else if (data.country === 'AE') {
         sum = window.FREE_SHIPPING.uae;
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum ae', sum);
       } else if (data.country === 'QA') {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> sum qa', sum);
         sum = window.FREE_SHIPPING.qatar;
       }
       if (sum !== null) {
