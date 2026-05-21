@@ -42,6 +42,49 @@
         "text_color": "#f8f8f8"
       }
     },
+    "x_countdown_MGfyfh": {
+      "type": "x-countdown",
+      "blocks": {
+        "heading_w7MUDd": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "timer_yf9CJH": {
+          "type": "timer",
+          "settings": {
+            "date": "2026-06-01",
+            "number_size": "medium",
+            "head_font": false,
+            "timer_color": "#ffffff",
+            "timer_color_bg": "#ffffff",
+            "tm_bg_opacity": 0.3,
+            "message": "<p>Sale is end!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_w7MUDd",
+        "timer_yf9CJH"
+      ],
+      "name": "t:sections.x_countdown.presets.name",
+      "settings": {
+        "image_mobile": "shopify://shop_images/755053_IMG_5601.jpg",
+        "image_desktop": "shopify://shop_images/755053_IMG_5601.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "rich_text_jyYaki": {
       "type": "rich-text",
       "blocks": {
@@ -1258,6 +1301,7 @@
   },
   "order": [
     "image_hero_banner_xNWNbc",
+    "x_countdown_MGfyfh",
     "rich_text_jyYaki",
     "about_us_mission_WnTyGj",
     "about_us_mission_Df84rG",
