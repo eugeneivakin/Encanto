@@ -2,6 +2,8 @@
 
 .section--countdown {
   .media {
+    border-radius: var(--media-radius);
+    
     > picture img {
       display: block;
       max-width: 100%;
