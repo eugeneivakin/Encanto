@@ -53,6 +53,13 @@
             "heading_size": "h1"
           }
         },
+        "text_zXFwiB": {
+          "type": "text",
+          "settings": {
+            "text": "Come to the marathon now and get a pair of shadows of your choice – choose your color! Your must-have for the wedding season",
+            "text_style": "body"
+          }
+        },
         "timer_yf9CJH": {
           "type": "timer",
           "settings": {
@@ -68,6 +75,7 @@
       },
       "block_order": [
         "heading_w7MUDd",
+        "text_zXFwiB",
         "timer_yf9CJH"
       ],
       "name": "t:sections.x_countdown.presets.name",
