@@ -84,7 +84,7 @@
   >
     {% if section.settings.banner_link != blank %}
       {%- capture banner_link -%}
-        <a href="{{ section.settings.banner_link }}" class="banner__link"></a>
+        <a href="{{ section.settings.banner_link }}" target="_blank" class="banner__link"></a>
       {%- endcapture -%}
     {% endif %}
     {%- if section.settings.video_mobile != blank -%}
@@ -219,6 +219,8 @@
                   <a
                     {% if block.settings.button_link_1 == blank %}
                       role="link" aria-disabled="true"
+                    {% elsif block.settings.button_link_1 contains 'https://' %}
+                      target="_blank"
                     {% else %}
                       href="{{ block.settings.button_link_1 }}"
                     {% endif %}
@@ -231,6 +233,8 @@
                   <a
                     {% if block.settings.button_link_2 == blank %}
                       role="link" aria-disabled="true"
+                    {% elsif block.settings.button_link_2 contains 'https://' %}
+                      target="_blank"
                     {% else %}
                       href="{{ block.settings.button_link_2 }}"
                     {% endif %}
