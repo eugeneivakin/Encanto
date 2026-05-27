@@ -1,0 +1,13 @@
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var discount = params.get('discount');
+    if (discount) {
+      window.location.href =
+        '/discount/' +
+        encodeURIComponent(discount) +
+        '?redirect=' +
+        encodeURIComponent(window.location.pathname + window.location.search);
+    }
+  })();
+</script>
