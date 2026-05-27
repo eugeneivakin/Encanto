@@ -176,8 +176,7 @@
         "regular_price": "Regular price",
         "sale_price": "Sale price",
         "unit_price": "Unit price",
-        "percent": "{{ amount }}% off",
-        "amount": "Add to cart and get €10 off"
+        "percent": "{{ amount }}% off"
       },
       "share": "Share this product",
       "sold_out": "Sold out",
