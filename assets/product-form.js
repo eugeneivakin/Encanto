@@ -145,7 +145,7 @@ if (!customElements.get("product-form")) {
 
       // Collects selected products from the upsell component if present
       getUpsellProducts() {
-        // Сначала ищем в текущем контейнере
+        // First we search in the current container
         const productInfoContainer = this.closest(".product__info-container");
         let selectedCheckboxes = [];
         if (productInfoContainer) {
@@ -154,7 +154,7 @@ if (!customElements.get("product-form")) {
             selectedCheckboxes = upsellBlock.querySelectorAll('input[type="checkbox"]:checked');
           }
         }
-        // Если не нашли — ищем глобально
+        // If you haven’t found it, look globally
         if (!selectedCheckboxes || selectedCheckboxes.length === 0) {
           selectedCheckboxes = document.querySelectorAll('.component-products-upsell input[type="checkbox"]:checked');
         }
