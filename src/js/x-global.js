@@ -17,7 +17,7 @@
 
   function updateBodyClass() {
     const banner = document.body.querySelector(`:scope > #${BANNER_ID}`);
-    if (banner) {
+    if (banner && getComputedStyle(banner).display !== "none" && getComputedStyle(banner).visibility !== "hidden") {
       document.body.classList.add(BODY_CLASS);
     } else {
       document.body.classList.remove(BODY_CLASS);
@@ -54,13 +54,14 @@
     const save = document.getElementById(PREFS_SAVE_ID);
     const close = document.getElementById(PREFS_CLOSE_ID);
     // Accept all /Decline all /Save -close the banner
-    [acceptAll, declineAll, save].forEach(btn => {
-      if (btn) btn.addEventListener('click', removeBannerClass);
+    [acceptAll, declineAll, save].forEach((btn) => {
+      if (btn) btn.addEventListener("click", removeBannerClass);
     });
     // Close -only closes the settings, does not touch the class on the body
-    if (close) close.addEventListener('click', () => {
-      // we don't do anything with the class
-    });
+    if (close)
+      close.addEventListener("click", () => {
+        // we don't do anything with the class
+      });
   }
 
   // Monitor the appearance of the banner and prefs to attach handlers
