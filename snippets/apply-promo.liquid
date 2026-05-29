@@ -1,13 +1,19 @@
 <script>
-(function() {
-  var params = new URLSearchParams(window.location.search);
-  var discount = params.get('discount');
-  if (discount) {
-    // Сохраняем промокод в sessionStorage
-    sessionStorage.setItem('promo_code', discount);
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var discount = params.get('discount');
+    if (discount) {
+      // Removing discount from redirect parameters
+      params.delete('discount');
+      var cleanUrl = window.location.pathname;
+      var rest = params.toString();
+      if (rest) cleanUrl += '?' + rest;
 
-    // Редирект на страницу применения промокода
-    window.location.href = '/discount/' + encodeURIComponent(discount) + '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
-  }
-})();
+      // Save the promotional code
+      sessionStorage.setItem('promo_code', discount);
+
+      // Redirect to the promo code application page
+      window.location.href = '/discount/' + encodeURIComponent(discount) + '?redirect=' + encodeURIComponent(cleanUrl);
+    }
+  })();
 </script>
