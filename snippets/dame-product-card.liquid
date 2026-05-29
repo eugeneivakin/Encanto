@@ -130,6 +130,7 @@
         endfor
       endif
     -%}
+
     {%- if is_bestseller or is_new_arrival -%}
       <div class="dame-collection-badges">
         {%- if is_bestseller -%}
@@ -156,10 +157,7 @@
           data-product-url="{{ product.url }}"
           aria-haspopup="dialog"
         >
-          <span class="dame-quick-buy-btn__inner">
-            Quick Buy
-            {%- render 'icon-cart-atc' -%}
-          </span>
+          Quick Buy
           {%- render 'loading-spinner' -%}
         </button>
       </modal-opener>
