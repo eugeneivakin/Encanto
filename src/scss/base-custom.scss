@@ -34,3 +34,14 @@ body.shopify-cookie-banner-open {
     z-index: 1000090;
   }
 }
+
+.collection-hero {
+  .collection-hero__badge-promo {
+    display: inline-block !important;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: bold;
+    padding-inline: 16px;
+    position: static;
+  }
+}

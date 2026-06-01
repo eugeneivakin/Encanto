@@ -64,7 +64,9 @@
       "next_slide": "Slide right",
       "previous_slide": "Slide left",
       "name": "Slider"
-    }
+    },
+    "read_more": "Read more",
+    "read_less": "Read less"
   },
   "newsletter": {
     "label": "Email",
