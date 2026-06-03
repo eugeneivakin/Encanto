@@ -1,0 +1,8 @@
+<script>
+  window.FREE_SHIPPING = {
+    euCents: {{ shop.metafields.custom.free_shipping_eu.value | json | default: 15000 }},
+    qatarCents: {{ shop.metafields.custom.free_shipping_qatar.value | json | default: 20000 }},
+    uaeCents: {{ shop.metafields.custom.free_shipping_uae.value | json | default: 20000 }}
+  };
+</script>
+<script src="{{ 'free-shipping-init.js' | asset_url }}" defer></script>

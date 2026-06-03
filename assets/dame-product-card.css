@@ -52,10 +52,10 @@
   max-width: none !important;
 }
 
-/* Grid item: participate in subgrid across 6 rows (5 content + 1 spacer) */
+/* Grid item: participate in subgrid across 7 rows (6 content + 1 spacer) */
 .grid__item:has(.dame-product-card) {
   display: grid;
-  grid-row: span 6;
+  grid-row: span 7;
   grid-template-rows: subgrid;
   padding-top: 10px; /* reserve space for hover translateY(-5px) lift */
   padding-bottom: 0 !important; /* spacing now handled by .dame-card-row-spacer */
@@ -66,13 +66,13 @@
 }
 
 /* ----------------------------------------------------------------
-   Card base — subgrid across 6 rows
+   Card base — subgrid across 7 rows
    ---------------------------------------------------------------- */
 .dame-product-card {
   position: relative;
   transition: transform 0.3s;
   display: grid;
-  grid-row: span 6;
+  grid-row: span 7;
   grid-template-rows: subgrid;
 }
 
@@ -457,6 +457,18 @@
   line-height: 1;
 }
 
+.dame-quick-buy-btn__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dame-quick-buy-btn__inner svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
 .dame-quick-buy-btn:hover {
   background: #111;
   color: #fff;
@@ -534,17 +546,38 @@
 /* ----------------------------------------------------------------
    Subgrid row assignments for info elements
    ---------------------------------------------------------------- */
-.dame-product-rating  { grid-row: 2; padding-bottom: 4px; align-self: start; }
-.dame-product-name    { grid-row: 3; padding-bottom: 6px; align-self: start; }
-.dame-product-price   { grid-row: 4; padding-bottom: 6px; align-self: start; }
-.dame-product-options { grid-row: 5; align-self: start; }
+.dame-product-rating    { grid-row: 2; padding-bottom: 4px; align-self: start; }
+.dame-product-name      { grid-row: 3; padding-bottom: 2px; align-self: start; }
+.dame-product-subtitle  { grid-row: 4; align-self: start; }
+.dame-product-price     { grid-row: 5; padding-bottom: 6px; align-self: start; }
+.dame-product-options   { grid-row: 6; align-self: start; }
 
 /* Hidden placeholder keeps review row height consistent */
 .dame-product-rating--empty { visibility: hidden; }
 
+/* Subtitle styles */
+.dame-product-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-foreground, #6d6d6d);
+  opacity: 0.65;
+  line-height: 1.4;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dame-product-subtitle--empty {
+  visibility: hidden;
+  height: 0;
+  margin-bottom: 0;
+}
+
 /* Spacer row creates between-card-group gap (collection grids only) */
 .dame-card-row-spacer {
-  grid-row: 6;
+  grid-row: 7;
   height: var(--grid-desktop-vertical-spacing, 20px);
 }
 

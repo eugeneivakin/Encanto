@@ -138,6 +138,10 @@
           value="{{ section.settings.source_label }}"
         >
       {%- endif -%}
+      <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+        <label for="contact_url">Website</label>
+        <input type="text" id="contact_url" name="contact[url]" autocomplete="off" tabindex="-1" value="">
+      </div>
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
@@ -146,6 +150,18 @@
     {%- endform -%}
   </div>
 </div>
+
+<script>
+  (function() {
+    var form = document.getElementById('ContactForm');
+    if (!form) return;
+    var honey = function() { return document.getElementById('contact_url'); };
+    var isFilled = function() { return honey() && honey().value !== ''; };
+    var orig = form.submit.bind(form);
+    form.submit = function() { if (!isFilled()) orig(); };
+    form.addEventListener('submit', function(e) { if (isFilled()) e.preventDefault(); });
+  })();
+</script>
 
 {% schema %}
 {

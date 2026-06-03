@@ -49,16 +49,14 @@
 {%- endif -%}
 <div class="video-text video-text-content-mobile--{{ section.settings.mobile_content_position }} video-text-content--{{ section.settings.desktop_content_position }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div class="video-text-content video-text-content--{{ section.settings.desktop_content_alignment }} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_text_box == false %} video-text-content-desktop-transparent{% endif %}">
-    <h2 class="video-text-heading inline-richtext {{ section.settings.heading_size }}"
-              {{ block.shopify_attributes }}>
+    <h2 class="video-text-heading inline-richtext {{ section.settings.heading_size }}">
               {{ section.settings.heading }}
             </h2>
-        <div class="video-text-text rte {{ section.settings.text_style }}" {{ block.shopify_attributes }}>
+        <div class="video-text-text rte {{ section.settings.text_style }}">
               <p>{{ section.settings.text }}</p>
             </div>
     <div
               class="video-text-buttons"
-              {{ block.shopify_attributes }}
             >
               {%- if section.settings.button_label_1 != blank -%}
                 <a

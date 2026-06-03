@@ -64,9 +64,7 @@
       "next_slide": "Slide right",
       "previous_slide": "Slide left",
       "name": "Slider"
-    },
-    "read_more": "Read more",
-    "read_less": "Read less"
+    }
   },
   "newsletter": {
     "label": "Email",
@@ -803,5 +801,11 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "seo": {
+    "index_title": "Professional Makeup Brushes & Eyebrow Tools | ENCANTO ",
+    "index_description": "Professional makeup brushes, eyebrow tools & CTR cosmetics. Trusted by makeup artists in 38+ countries. Shop online with fast delivery across Europe.",
+    "index_og_title": "ENCANTO | Professional CTR Makeup Brushes & Beauty Tools",
+    "index_og_description": "Shop professional CTR cosmetics — brushes, eyeshadows, brow tools and sets. Trusted by 3000+ training centers worldwide. Fast delivery to Europe."
   }
 }

@@ -2061,6 +2061,15 @@
             }
           }
         },
+        "who_is_this_for": {
+          "name": "Who Is This Set For?",
+          "settings": {
+            "heading": {
+              "label": "Heading",
+              "default": "Who Is This Set For?"
+            }
+          }
+        },
         "collapsible_tab": {
           "name": "Collapsible row",
           "settings": {

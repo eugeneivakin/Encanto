@@ -16,7 +16,7 @@
       {% assign apply_p = block.settings.apply_p %}
       {% assign apply_custom = block.settings.apply_custom %}
       {% if url != blank and url != "" %}
-        {% capture _font_type %}
+        {% capture font_type_raw %}
         {% if url contains ".otf" %}
         opentype
         {% elsif url contains ".ttf" %}
@@ -29,7 +29,7 @@
         woff
         {% endif %}
         {% endcapture %}
-        {% assign font_type = _font_type | strip %}
+        {% assign font_type = font_type_raw | strip %}
           @font-face {
             font-family: '{{ name }}';
             src: url({{ url }}) format('{{ font_type }}');

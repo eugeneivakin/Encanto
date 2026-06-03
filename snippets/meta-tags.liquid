@@ -1,16 +1,64 @@
 {%- liquid
-  assign og_title = page_title | default: shop.name
+  assign seo_title = page_title
 
-  unless og_title contains shop.name
-    if request.page_type != 'index'
-      assign og_title = og_title | append: ' - ' | append: shop.name
+  if request.page_type == 'product'
+    assign seo_title = product.title
+    if product.vendor != blank
+      assign seo_title = product.title | append: ' by ' | append: product.vendor
     endif
+  elsif request.page_type == 'collection'
+    assign seo_title = collection.title
+  elsif request.page_type == 'article'
+    assign seo_title = article.title
+    if blog.title != blank
+      assign seo_title = article.title | append: ' - ' | append: blog.title
+    endif
+  elsif request.page_type == 'blog'
+    assign seo_title = blog.title
+  elsif request.page_type == 'page'
+    assign seo_title = page.title
+  elsif request.page_type == 'search'
+    assign seo_title = 'Search'
+    if search.terms != blank
+      assign seo_title = 'Search: ' | append: search.terms
+    endif
+  elsif request.page_type == 'list-collections'
+    assign seo_title = 'Collections'
+  elsif request.page_type == 'cart'
+    assign seo_title = 'Shopping Cart'
+  endif
+
+  if current_tags.size > 0
+    assign tags_text = current_tags | join: ', '
+    assign seo_title = seo_title | append: ' - Tagged: ' | append: tags_text
+  endif
+
+  if current_page > 1
+    assign seo_title = seo_title | append: ' - Page ' | append: current_page
+  endif
+
+  unless request.page_type == 'index' or seo_title contains shop.name
+    assign seo_title = seo_title | append: ' - ' | append: shop.name
   endunless
 
-  assign og_title = og_title | truncate: 70
+  assign seo_title = seo_title | truncate: 70
+
+  assign meta_desc = page_description
+  if meta_desc == blank and request.page_type == 'index'
+    assign meta_desc = 'seo.index_description' | t
+  endif
+
+  assign og_title = seo_title
+  if request.page_type == 'index'
+    assign og_title = 'seo.index_og_title' | t | truncate: 70
+  endif
+
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_description = meta_desc | default: shop.description | default: shop.name
+  if request.page_type == 'index'
+    assign og_description = 'seo.index_og_description' | t
+  endif
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -19,7 +67,14 @@
   elsif request.page_type == 'password'
     assign og_url = request.origin
   endif
-%}
+
+  assign og_image = page_image | default: settings.share_image
+-%}
+
+<title>{{ seo_title | strip }}</title>
+{%- if meta_desc -%}
+  <meta name="description" content="{{ meta_desc | escape }}">
+{%- endif -%}
 
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
@@ -27,9 +82,6 @@
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- liquid
-  assign og_image = page_image | default: settings.share_image
--%}
 {%- if og_image -%}
   <meta property="og:image" content="https:{{ og_image | image_url }}">
   <meta property="og:image:secure_url" content="https:{{ og_image | image_url }}">
@@ -41,10 +93,6 @@
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
   <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
-  <meta
-    name="description"
-    content="{{ page_description | escape }}"
-  >
 {%- endif -%}
 
 {%- if settings.social_twitter_link != blank -%}

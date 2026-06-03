@@ -188,7 +188,11 @@ if (!customElements.get('product-info')) {
 
           updateSourceFromDestination('price');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
+          updateSourceFromDestination('Inventory', (source) => {
+            if (source.innerText === '') return true;
+            const sourceButton = html.getElementById(`ProductSubmitButton-${this.sectionId}`);
+            return sourceButton?.hasAttribute('disabled') ?? false;
+          });
           updateSourceFromDestination('Volume');
           updateSourceFromDestination('Price-Per-Item', ({ classList }) => classList.contains('hidden'));
 

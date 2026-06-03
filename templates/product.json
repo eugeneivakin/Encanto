@@ -102,6 +102,13 @@
             "open_by_default": false
           }
         },
+        "who_is_this_for_block": {
+          "type": "who_is_this_for",
+          "settings": {
+            "heading": "Who Is This Set For?",
+            "open_by_default": false
+          }
+        },
         "collapsible_tab_Fx48Bf": {
           "type": "collapsible_tab",
           "settings": {
@@ -174,6 +181,7 @@
         "upsell_EhWcpy",
         "description",
         "collapsible_tab_np3xeb",
+        "who_is_this_for_block",
         "collapsible_tab_Fx48Bf",
         "collapsible_tab_YGJxkm",
         "collapsible_tab_nfHPQr",
@@ -213,9 +221,7 @@
           }
         }
       },
-      "block_order": [
-        "judge_me_reviews_review_widget_6hTTyT"
-      ],
+      "block_order": ["judge_me_reviews_review_widget_6hTTyT"],
       "settings": {
         "include_margins": true
       }
@@ -333,13 +339,5 @@
       }
     }
   },
-  "order": [
-    "seo-breadcrumb",
-    "main",
-    "1772540675c52dda7e",
-    "bestsellers_slider_dame_zGwe6z",
-    "17691767675e5f3705",
-    "1772540661569a9262",
-    "related-products"
-  ]
+  "order": ["seo-breadcrumb", "main", "1772540675c52dda7e", "bestsellers_slider_dame_zGwe6z", "17691767675e5f3705", "1772540661569a9262", "related-products"]
 }

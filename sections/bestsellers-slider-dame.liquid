@@ -1,9 +1,9 @@
 {%- assign shown_count = 0 -%}
 {%- if section.settings.collection != blank -%}
-  {%- assign _bs_collection = collections[section.settings.collection] -%}
+  {%- assign bs_collection = collections[section.settings.collection] -%}
   {%- assign shown_count = section.settings.products_to_show -%}
-  {%- if _bs_collection.products.size < shown_count -%}
-    {%- assign shown_count = _bs_collection.products.size -%}
+  {%- if bs_collection.products.size < shown_count -%}
+    {%- assign shown_count = bs_collection.products.size -%}
   {%- endif -%}
 {%- endif -%}
 

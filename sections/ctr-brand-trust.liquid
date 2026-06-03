@@ -1,0 +1,349 @@
+{%- style -%}
+  #ctr-brand-trust-{{ section.id }} {
+    background-color: {{ section.settings.section_background_color }};
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    --stat-number-color: {{ section.settings.stat_number_color }};
+    --stat-card-bg: {{ section.settings.stat_card_bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    #ctr-brand-trust-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #ctr-brand-trust-{{ section.id }} .ctr-brand-trust__stat-card-inner {
+    background-color: {{ section.settings.stat_card_bg_color }};
+  }
+
+  #ctr-brand-trust-{{ section.id }} .ctr-brand-trust__stat-number {
+    color: {{ section.settings.stat_number_color }};
+    font-family: AttilaSansClassic, sans-serif !important;
+  }
+
+  #ctr-brand-trust-{{ section.id }} .ctr-brand-trust__stat-label {
+    font-family: AttilaSansClassic, sans-serif !important;
+  }
+{%- endstyle -%}
+
+<div id="ctr-brand-trust-{{ section.id }}" class="ctr-brand-trust">
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank -%}
+      <div class="ctr-brand-trust__header">
+        <h2 class="ctr-brand-trust__heading">{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="ctr-brand-trust__stats">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'stat' -%}
+              <div class="ctr-brand-trust__stat-card" {{ block.shopify_attributes }}>
+                <div class="ctr-brand-trust__stat-card-inner">
+                  {%- if block.settings.icon != blank -%}
+                    <div class="ctr-brand-trust__icon" translate="no">
+                      {{ block.settings.icon }}
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.stat != blank -%}
+                    <p class="ctr-brand-trust__stat-number">{{ block.settings.stat }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.label != blank -%}
+                    <p class="ctr-brand-trust__stat-label">{{ block.settings.label }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <p class="ctr-brand-trust__stat-desc">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.subtext != blank -%}
+      <div class="ctr-brand-trust__subtext rte">{{ section.settings.subtext }}</div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .ctr-brand-trust__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .ctr-brand-trust__heading {
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0;
+    color: #1d1d1d;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  .ctr-brand-trust__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+
+  .ctr-brand-trust__stat-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ctr-brand-trust__stat-card-inner {
+    position: relative;
+    text-align: center;
+    padding: 2.4rem 1.6rem;
+    border-radius: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  .ctr-brand-trust__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+    color: #121212;
+  }
+
+  .ctr-brand-trust__icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ctr-brand-trust__stat-number {
+    font-family: AttilaSansClassic, sans-serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.6px;
+    margin: 0 0 0.4rem;
+  }
+
+  .ctr-brand-trust__stat-label {
+    font-family: AttilaSansClassic, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0 0 0.4rem;
+    letter-spacing: 0.6px;
+    color: #121212;
+  }
+
+  .ctr-brand-trust__stat-desc {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(18, 18, 18, 0.75);
+    line-height: 1.6;
+    letter-spacing: 0.6px;
+  }
+
+  .ctr-brand-trust__subtext {
+    text-align: center;
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #3e3b3b;
+    max-width: 600px;
+  }
+
+  .ctr-brand-trust__subtext p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ctr-brand-trust__stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ctr-brand-trust__heading {
+      font-size: 2.6rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ctr-brand-trust__heading {
+      font-size: 2.2rem;
+    }
+
+    .ctr-brand-trust__header {
+      margin-bottom: 3rem;
+    }
+
+    .ctr-brand-trust__stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .ctr-brand-trust__stat-card-inner {
+      padding: 1.6rem 1.2rem;
+    }
+
+    .ctr-brand-trust__stat-number {
+      font-size: 2.8rem;
+    }
+
+    .ctr-brand-trust__subtext {
+      margin-top: 3rem;
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "CTR Brand Trust",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Professionals Choose CTR"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Text below stats",
+      "default": "<p>CTR is a professional brand trusted by makeup artists worldwide. Now available to everyone.<\/p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "stat_card_bg_color",
+      "label": "Stat card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Stat number accent color",
+      "default": "#a98c58"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon SVG",
+          "info": "Paste SVG code here"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat number",
+          "default": "38+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Countries"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Global presence"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTR Brand Trust",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "stat": "38+",
+            "label": "Countries",
+            "description": "Global presence"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat": "3,000+",
+            "label": "Training Centers",
+            "description": "Professional recognition"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat": "2017",
+            "label": "Since",
+            "description": "Experience & stability"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat": "100%",
+            "label": "Certified",
+            "description": "Safety & quality"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

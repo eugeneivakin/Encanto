@@ -76,12 +76,12 @@
         </div>
         {%- if settings.show_free_shipping_bar -%}
           {%- liquid
-            if localization.country.iso_code == 'QAR'
-              assign threshold = shop.metafields.custom.free_shipping_qatar.value | default: 200
-            elsif localization.country.iso_code == 'AED'
-              assign threshold = shop.metafields.custom.free_shipping_uae.value | default: 200
+            if localization.country.iso_code == 'QA'
+              assign threshold = shop.metafields.custom.free_shipping_qatar.value | default: 20000
+            elsif localization.country.iso_code == 'AE'
+              assign threshold = shop.metafields.custom.free_shipping_uae.value | default: 20000
             else
-              assign threshold = shop.metafields.custom.free_shipping_eu.value | default: 150
+              assign threshold = shop.metafields.custom.free_shipping_eu.value | default: 15000
             endif
             assign bar_bg = settings.free_shipping_bar_bg | default: '#f3f3f3'
             assign bar_color = settings.free_shipping_bar_color | default: '#000000'
@@ -105,7 +105,7 @@
                   | default: 'Add [amount] more to get FREE shipping!'
                   | replace: '[amount]', remaining_money
                 }}
-                <img src="{{ 'icon-truck.svg' | asset_url }}" alt="Truck" width="20">
+                <img src="{{ 'icon-truck.svg' | asset_url }}" alt="Truck" width="20" height="20">
               {%- else -%}
                 {{ settings.free_shipping_success | default: "You've got FREE shipping!" }}
               {%- endif -%}

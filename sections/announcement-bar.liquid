@@ -2,6 +2,16 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
+  if localization.country.iso_code == 'QA'
+    assign _fst_cents = shop.metafields.custom.free_shipping_qatar.value | default: 20000
+  elsif localization.country.iso_code == 'AE'
+    assign _fst_cents = shop.metafields.custom.free_shipping_uae.value | default: 20000
+  else
+    assign _fst_cents = shop.metafields.custom.free_shipping_eu.value | default: 15000
+  endif
+  assign _fst_money = _fst_cents | money
+-%}
+{%- liquid
   assign social_icons = true
   if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
     assign social_icons = false
@@ -40,7 +50,7 @@
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | escape | replace: '[threshold]', '<free-shipping-threshold></free-shipping-threshold>' }}</span>
+            <span>{{ section.blocks.first.settings.text | escape | replace: '[threshold]', _fst_money }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             {%- endif -%}
@@ -100,7 +110,7 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape | replace: '[threshold]', settings.free_shipping_threshold }}</span>
+                      <span>{{ block.settings.text | escape | replace: '[threshold]', _fst_money }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}

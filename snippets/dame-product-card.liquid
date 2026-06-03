@@ -216,6 +216,11 @@
       <a href="{{ product.url }}">{{ product.title }}</a>
     </h3>
 
+    {%- assign subtitle = product.metafields.custom.subtitle.value -%}
+    <div class="dame-product-subtitle{% unless subtitle and subtitle != blank %} dame-product-subtitle--empty{% endunless %}">
+      {{- subtitle -}}
+    </div>
+
     <div class="dame-product-price">
       {% if product.compare_at_price > product.price %}
         {% assign discount = product.compare_at_price

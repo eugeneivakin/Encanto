@@ -4,10 +4,13 @@
     {% render 'apply-promo' %}
     {% render 'iplogger' %}
     {% render 'google-tag' %}
+    {% render 'free-shipping-init' %}
+    {% render 'clarity' %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+    <meta name="facebook-domain-verification" content="l2wszws2ip1ot0fjnfxuukott9hhi0">
     <link rel="canonical" href="{{ canonical_url }}">
     {%- if template == 'collection' and collection.products_count == 0 -%}
       <meta name="robots" content="noindex, follow">
@@ -119,6 +122,7 @@
         {{ settings.type_header_font | font_face: font_display: 'swap' }}
       {%- endunless -%}
 
+      {%- assign scheme_classes = '' -%}
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
@@ -366,17 +370,7 @@
     </script>
     {{ 'after.css' | asset_url | stylesheet_tag }}
     {% render 'seo-faq-schema' %}
-    {%- if template.name == 'index' -%}
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {"@type": "Organization", "@id": "{{ shop.url }}/#organization", "name": {{ shop.name | json }}, "url": {{ shop.url | json }}},
-            {"@type": "WebSite", "@id": "{{ shop.url }}/#website", "url": {{ shop.url | json }}, "name": {{ shop.name | json }}, "publisher": {"@id": "{{ shop.url }}/#organization"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"}, "query-input": "required name=search_term_string"}}
-          ]
-        }
-      </script>
-    {%- endif -%}
+    {% render 'seo-organization-schema' %}
     {% render 'seo-breadcrumb-schema' %}
   </head>
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -453,6 +447,7 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         // Read More/Less — only on COLLECTION pages (description block), NOT on homepage review slider

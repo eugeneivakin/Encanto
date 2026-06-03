@@ -200,6 +200,12 @@
       font-size: 16px;
       line-height: 1.1;
       cursor: pointer;
+      transition: border-radius 0.3s ease;
+  }
+
+  .tab-toggle:checked ~ h3 .rb-faq-question {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
   }
 
   .rb-faq-question:hover {
