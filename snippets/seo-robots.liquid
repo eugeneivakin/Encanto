@@ -1,0 +1,38 @@
+{%- liquid
+  assign should_noindex = false
+  assign is_primary_index_page = false
+
+  if request.page_type == 'index'
+    assign is_primary_index_page = true
+  elsif request.page_type == 'product'
+    assign is_primary_index_page = true
+  elsif request.page_type == 'collection'
+    assign is_primary_index_page = true
+  elsif request.page_type == 'page'
+    assign is_primary_index_page = true
+  elsif request.page_type == 'article'
+    assign is_primary_index_page = true
+  elsif request.page_type == 'blog'
+    assign is_primary_index_page = true
+  endif
+
+  if request.page_type == 'search'
+    assign should_noindex = true
+  elsif current_tags.size > 0
+    assign should_noindex = true
+  elsif current_page > 1
+    assign should_noindex = true
+  elsif request.page_type == 'collection' and collection.products_count == 0
+    assign should_noindex = true
+  elsif request.page_type == 'blog' and blog.articles.size == 0
+    assign should_noindex = true
+  elsif is_primary_index_page == false
+    assign should_noindex = true
+  endif
+-%}
+
+{%- if should_noindex -%}
+  <meta name="robots" content="noindex, follow">
+{%- else -%}
+  <meta name="robots" content="index, follow">
+{%- endif -%}
