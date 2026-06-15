@@ -6,33 +6,66 @@
     <div class="image-hero-banner">
       {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
         <div class="image-hero-media">
-          {% if section.settings.desktop_image != blank %}
-            <div class="image-hero-desktop">
-              {%- assign image_alt_text = section.settings.desktop_image.alt | default: section.settings.title -%}
+          {%- liquid
+            assign hero_loading = 'lazy'
+            assign hero_fetchpriority = 'auto'
+            if section.index == 1
+              assign hero_loading = 'eager'
+              assign hero_fetchpriority = 'high'
+            endif
+
+            assign hero_desktop_image = section.settings.desktop_image
+            assign hero_mobile_image = section.settings.mobile_image | default: section.settings.desktop_image
+            assign hero_fallback_image = hero_mobile_image | default: hero_desktop_image
+            assign image_alt_text = hero_fallback_image.alt | default: hero_desktop_image.alt | default: section.settings.title
+          -%}
+
+          <div class="image-hero-picture-wrap">
+            <picture>
+              {%- if hero_mobile_image != blank -%}
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ hero_mobile_image | image_url: width: 375 }} 375w,
+                    {{ hero_mobile_image | image_url: width: 550 }} 550w,
+                    {{ hero_mobile_image | image_url: width: 750 }} 750w,
+                    {{ hero_mobile_image | image_url: width: 1100 }} 1100w,
+                    {{ hero_mobile_image | image_url: width: 1500 }} 1500w
+                  "
+                  sizes="100vw"
+                >
+              {%- endif -%}
+
+              {%- if hero_desktop_image != blank -%}
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ hero_desktop_image | image_url: width: 750 }} 750w,
+                    {{ hero_desktop_image | image_url: width: 1100 }} 1100w,
+                    {{ hero_desktop_image | image_url: width: 1500 }} 1500w,
+                    {{ hero_desktop_image | image_url: width: 1780 }} 1780w,
+                    {{ hero_desktop_image | image_url: width: 2000 }} 2000w,
+                    {{ hero_desktop_image | image_url: width: 3000 }} 3000w,
+                    {{ hero_desktop_image | image_url: width: 3840 }} 3840w
+                  "
+                  sizes="100vw"
+                >
+              {%- endif -%}
+
               {{
-                section.settings.desktop_image
+                hero_fallback_image
                 | image_url: width: 3840
                 | image_tag:
-                  loading: 'eager',
-                  fetchpriority: 'high',
                   class: 'image-hero-img',
+                  loading: hero_loading,
+                  fetchpriority: hero_fetchpriority,
+                  decoding: 'async',
+                  widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                  sizes: '100vw',
                   alt: image_alt_text
-                | escape
               }}
-            </div>
-          {% endif %}
-
-          {% if section.settings.mobile_image != blank %}
-            <div class="image-hero-mobile">
-              {%- assign image_alt_text = section.settings.mobile_image.alt | default: section.settings.title -%}
-              {{
-                section.settings.mobile_image
-                | image_url: width: 1500
-                | image_tag: loading: 'lazy', class: 'image-hero-img', alt: image_alt_text
-                | escape
-              }}
-            </div>
-          {% endif %}
+            </picture>
+          </div>
 
           <div class="image-hero-overlay"></div>
         </div>
@@ -111,8 +144,7 @@
 
   }
 
-    #image-hero-{{ section.id }} .image-hero-desktop,
-    #image-hero-{{ section.id }} .image-hero-mobile {
+    #image-hero-{{ section.id }} .image-hero-picture-wrap {
       position: absolute;
       top: 0;
       left: 0;
@@ -126,10 +158,6 @@
       object-fit: cover;
       object-position: center;
       display: block;
-    }
-
-    #image-hero-{{ section.id }} .image-hero-mobile {
-      display: none;
     }
 
     #image-hero-{{ section.id }} .image-hero-overlay {
@@ -285,14 +313,6 @@
 
       #image-hero-{{ section.id }} .image-hero-banner {
         min-height: {{ section.settings.min_height_mobile }}px;
-      }
-
-      #image-hero-{{ section.id }} .image-hero-desktop {
-        display: none;
-      }
-
-      #image-hero-{{ section.id }} .image-hero-mobile {
-        display: block;
       }
 
       #image-hero-{{ section.id }} .image-hero-img {
