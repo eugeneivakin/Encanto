@@ -14,6 +14,11 @@
     assign refund_policy_url = shop.refund_policy.url | prepend: request.origin
   endif
   assign destination_country = localization.country.iso_code | default: shop.address.country_code
+  assign review_rating_value = product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value
+  assign review_best_rating = product.metafields.reviews.rating.value.scale_max | default: 5
+  assign review_count = product.metafields.reviews.rating_count
+
+  assign reviews_data = product.metafields.reviews.reviews.value
 -%}
 <script type="application/ld+json">
   {
@@ -187,14 +192,45 @@
           }
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
-    ]{%- if product.metafields.reviews.rating.value != blank -%},
+    ]{%- if review_rating_value != blank and review_count != blank and review_count > 0 -%},
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": {{ product.metafields.reviews.rating.value.rating | json }},
-      "bestRating": {{ product.metafields.reviews.rating.value.scale_max | json }},
+      "ratingValue": {{ review_rating_value | json }},
+      "bestRating": {{ review_best_rating | json }},
       "worstRating": "1",
-      "ratingCount": {{ product.metafields.reviews.rating_count | json }}
+      "ratingCount": {{ review_count | json }}
     }
+    {%- endif -%}
+    {%- if reviews_data != blank -%},
+    "review": [
+      {%- for review in reviews_data limit: 10 -%}
+        {%- assign review_author = review.author | default: review.reviewer_name | default: review.name -%}
+        {%- assign review_body = review.body | default: review.content | default: review.review -%}
+        {%- assign review_value = review.rating | default: review.score -%}
+        {
+          "@type": "Review",
+          {%- if review_author != blank -%}
+          "author": {
+            "@type": "Person",
+            "name": {{ review_author | json }}
+          },
+          {%- endif -%}
+          {%- if review_body != blank -%}
+          "reviewBody": {{ review_body | strip_html | strip_newlines | json }},
+          {%- endif -%}
+          {%- if review_value != blank -%}
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": {{ review_value | json }},
+            "bestRating": {{ review_best_rating | json }},
+            "worstRating": "1"
+          }
+          {%- else -%}
+          "name": {{ product.title | append: ' review' | json }}
+          {%- endif -%}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
     {%- endif -%}
   }
 </script>

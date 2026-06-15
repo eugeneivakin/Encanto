@@ -30,6 +30,7 @@
     {%- endunless -%}
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
+    {%- comment -%}
     {%- liquid
       assign seo_title = page_title
 
@@ -92,6 +93,7 @@
     {% if meta_desc %}
       <meta name="description" content="{{ meta_desc | escape }}">
     {% endif %}
+    {%- endcomment -%}
 
     {% render 'meta-tags' %}
 

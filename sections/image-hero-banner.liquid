@@ -8,6 +8,7 @@
         <div class="image-hero-media">
           {% if section.settings.desktop_image != blank %}
             <div class="image-hero-desktop">
+              {%- assign image_alt_text = section.settings.desktop_image.alt | default: section.settings.title -%}
               {{
                 section.settings.desktop_image
                 | image_url: width: 3840
@@ -15,7 +16,7 @@
                   loading: 'eager',
                   fetchpriority: 'high',
                   class: 'image-hero-img',
-                  alt: section.settings.desktop_image.alt
+                  alt: image_alt_text
                 | escape
               }}
             </div>
@@ -23,10 +24,11 @@
 
           {% if section.settings.mobile_image != blank %}
             <div class="image-hero-mobile">
+              {%- assign image_alt_text = section.settings.mobile_image.alt | default: section.settings.title -%}
               {{
                 section.settings.mobile_image
                 | image_url: width: 1500
-                | image_tag: loading: 'lazy', class: 'image-hero-img', alt: section.settings.mobile_image.alt
+                | image_tag: loading: 'lazy', class: 'image-hero-img', alt: image_alt_text
                 | escape
               }}
             </div>
