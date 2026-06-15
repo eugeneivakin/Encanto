@@ -37,7 +37,7 @@
       {{
         value
         | image_url: width: 300
-        | image_tag: class: 'visual-display__child visual-display__image', alt: value.alt
+         | image_tag: loading: 'lazy', class: 'visual-display__child visual-display__image', alt: value.alt
       }}
     {%- else -%}
       <div class="visual-display__child"></div>

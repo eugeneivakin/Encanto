@@ -177,6 +177,7 @@
         {%- endif -%}
       </div>
     </div>
+    {%- render 'seo-collection-itemlist-schema', collection: collection, paginate: paginate -%}
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}

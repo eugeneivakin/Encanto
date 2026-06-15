@@ -19,7 +19,7 @@
     {% endif %}
 
     <a href="{{ product.url }}">
-      {{ product_image | image_url: width: 200 | image_tag: class: 'card-product__media' }}
+      {{ product_image | image_url: width: 200  | image_tag: loading: 'lazy', class: 'card-product__media' }}
     </a>
   </div>
   <div>

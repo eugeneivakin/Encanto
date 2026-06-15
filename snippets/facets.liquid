@@ -262,7 +262,7 @@
                                         {{
                                           value.image
                                           | image_url: width: 300
-                                          | image_tag: class: 'facets__image', alt: value.alt
+                                           | image_tag: loading: 'lazy', class: 'facets__image', alt: value.alt
                                         }}
                                       {%- endif -%}
                                     </div>
@@ -636,7 +636,7 @@
                                           {{
                                             value.image
                                             | image_url: width: 300
-                                            | image_tag: class: 'facets__image', alt: value.alt
+                                             | image_tag: loading: 'lazy', class: 'facets__image', alt: value.alt
                                           }}
                                         {%- endif -%}
                                       </div>
