@@ -139,7 +139,8 @@
         "regular_price": "Normal fiyat",
         "sale_price": "İndirimli fiyat",
         "unit_price": "Birim fiyat",
-        "percent": "%{{ amount }} indirim"
+        "percent": "%{{ amount }} indirim",
+        "amount": "Sepete ekle ve 10 € ek indirim elde edin"
       },
       "share": "Bu ürünü paylaş",
       "sold_out": "Tükendi",
@@ -385,6 +386,240 @@
       "min_error": "Bu ürün için minimum değer: {{ min }}",
       "max_error": "Bu ürün için maksimum değer: {{ max }}",
       "step_error": "Bu öğeyi yalnızca {{ step }} değerinde artışlarla ekleyebilirsiniz"
+    },
+    "about-us-hero": {
+      "name": "Hakkımızda Hero",
+      "presets": {
+        "name": "Hakkımızda Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Arka plan resmi"
+        },
+        "caption": {
+          "label": "Altyazı"
+        },
+        "heading": {
+          "label": "Başlık"
+        },
+        "text": {
+          "label": "Metin"
+        },
+        "button_label": {
+          "label": "Düğme etiketi"
+        },
+        "button_link": {
+          "label": "Düğme bağlantısı"
+        },
+        "button_style_secondary": {
+          "label": "Konturlu buton stili kullanın"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Hakkımızda Misyon",
+      "presets": {
+        "name": "Hakkımızda Misyon"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Resim"
+        },
+        "image_ratio": {
+          "label": "Görsel oran",
+          "options__1": {
+            "label": "Görsele uyum sağla"
+          },
+          "options__2": {
+            "label": "Portre"
+          },
+          "options__3": {
+            "label": "Kare"
+          }
+        },
+        "caption": {
+          "label": "Altyazı"
+        },
+        "heading": {
+          "label": "Başlık"
+        },
+        "text": {
+          "label": "Metin"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Değer",
+          "settings": {
+            "icon": {
+              "label": "Simge",
+              "info": "Emoji veya ikon metni girin"
+            },
+            "title": {
+              "label": "Başlık"
+            },
+            "text": {
+              "label": "Metin"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Hakkımızda Takımı",
+      "presets": {
+        "name": "Hakkımızda Ekibi"
+      },
+      "settings": {
+        "heading": {
+          "label": "Başlık"
+        },
+        "text": {
+          "label": "Metin"
+        },
+        "image_ratio": {
+          "label": "Görsel oranı",
+          "options__1": {
+            "label": "Görsele uyum sağla"
+          },
+          "options__2": {
+            "label": "Portre"
+          },
+          "options__3": {
+            "label": "Kare"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Ekip Üyesi",
+          "settings": {
+            "image": {
+              "label": "Resim"
+            },
+            "name": {
+              "label": "Ad"
+            },
+            "role": {
+              "label": "Rol"
+            },
+            "bio": {
+              "label": "Biyografi"
+            },
+            "email": {
+              "label": "E-posta"
+            },
+            "linkedin": {
+              "label": "LinkedIn Bağlantı Adresi"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Hakkımızda Değerleri",
+      "presets": {
+        "name": "Hakkımızda Değerleri"
+      },
+      "settings": {
+        "heading": {
+          "label": "Başlık"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Değer",
+          "settings": {
+            "icon": {
+              "label": "Simge",
+              "info": "Emoji veya simge metni girin"
+            },
+            "title": {
+              "label": "Başlık"
+            },
+            "text": {
+              "label": "Metin"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Hakkımızda İstatistikler",
+      "presets": {
+        "name": "Hakkımızda İstatistikleri"
+      },
+      "settings": {
+        "heading": {
+          "label": "Başlık"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "İstatistik",
+          "settings": {
+            "number": {
+              "label": "Sayı",
+              "info": "Bir sayı girin (kaydırma sırasında animasyonlu olacaktır)"
+            },
+            "suffix": {
+              "label": "Sonek",
+              "info": "İsteğe bağlı ek, +, %, K vb. gibi"
+            },
+            "label": {
+              "label": "Etiket"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Hakkımızda Zaman Çizelgesi",
+      "presets": {
+        "name": "Hakkımızda Zaman Çizelgesi"
+      },
+      "settings": {
+        "heading": {
+          "label": "Başlık"
+        },
+        "text": {
+          "label": "Metin"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Dönüm noktası",
+          "settings": {
+            "year": {
+              "label": "Yıl"
+            },
+            "title": {
+              "label": "Başlık"
+            },
+            "text": {
+              "label": "Açıklama"
+            },
+            "image": {
+              "label": "Resim"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -538,5 +773,11 @@
       "expanded": "Hediye kartı alıcısı formu genişletildi",
       "collapsed": "Hediye kartı alıcısı formu daraltıldı"
     }
+  },
+  "seo": {
+    "index_title": "Profesyonel Makyaj Fırçaları ve Kaş Aletleri | ENCANTO ",
+    "index_description": "Profesyonel makyaj fırçaları, kaş araçları ve CTR kozmetik. 38'den fazla ülkede makyaj sanatçıları tarafından güvenilir. Avrupa genelinde hızlı teslimat ile çevrimiçi alışveriş yapın.",
+    "index_og_title": "ENCANTO | Profesyonel CTR Makyaj Fırçaları & Güzellik Aletleri",
+    "index_og_description": "Profesyonel CTR kozmetikleri satın alın: fırçalar, göz farları, kaş araçları ve setler. Dünya genelinde 3000+ eğitim merkezi tarafından güvenilir. Avrupa'ya hızlı teslimat."
   }
 }

@@ -139,7 +139,8 @@
         "regular_price": "Normaalihinta",
         "sale_price": "Alennushinta",
         "unit_price": "Yksikköhinta",
-        "percent": "{{ amount }}% alennus"
+        "percent": "{{ amount }}% alennus",
+        "amount": "Lisää ostoskoriin ja saa 10 € lisäalennusta"
       },
       "share": "Jaa tämä tuote",
       "sold_out": "Loppuunmyyty",
@@ -385,6 +386,243 @@
       "min_error": "Tämän tuotteen vähimmäisarvo on {{ min }}",
       "max_error": "Tämän tuotteen enimmäisarvo on {{ max }}",
       "step_error": "Voit lisätä tätä tuotetta vain {{ step }}:n lisäyksinä"
+    },
+    "about-us-hero": {
+      "name": "Meistä Herojuuttu",
+      "presets": {
+        "name": "Meistä – Pääkuvaosa"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Taustakuva"
+        },
+        "caption": {
+          "label": "Kuvateksti"
+        },
+        "heading": {
+          "label": "Otsikko"
+        },
+        "text": {
+          "label": "Teksti"
+        },
+        "button_label": {
+          "label": "Painikkeen tunniste"
+        },
+        "button_link": {
+          "label": "Painike-linkki"
+        },
+        "button_style_secondary": {
+          "label": "Käytä ulkoin muotoista painiketyyliä"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Tietoa meistä – Missionsuunnitelma",
+      "presets": {
+        "name": "Meistä Misiio"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Kuva"
+        },
+        "image_ratio": {
+          "label": "Kuvasuhde",
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Muotokuva"
+          },
+          "options__3": {
+            "label": "neliö"
+          }
+        },
+        "caption": {
+          "label": "Kuvateksti"
+        },
+        "heading": {
+          "label": "Otsikko"
+        },
+        "text": {
+          "label": "Teksti"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Arvo",
+          "settings": {
+            "icon": {
+              "label": "Kuvake",
+              "info": "Syötä emojia tai kuvakkeen teksti"
+            },
+            "title": {
+              "label": "Otsikko"
+            },
+            "text": {
+              "label": "Teksti"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Tietoa meistä: Tiimi",
+      "presets": {
+        "name": "Meistä Tiimi"
+      },
+      "settings": {
+        "heading": {
+          "label": "Otsikko"
+        },
+        "text": {
+          "label": "Teksti"
+        },
+        "image_ratio": {
+          "label": "Kuvasuhde",
+          "options__1": {
+            "label": "Sovita kuvaan"
+          },
+          "options__2": {
+            "label": "muotokuva"
+          },
+          "options__3": {
+            "label": "Neliö"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Tiiminjäsen",
+          "settings": {
+            "image": {
+              "label": "Kuva"
+            },
+            "name": {
+              "label": "Nimi"
+            },
+            "role": {
+              "label": "Rooli"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "Sähköposti"
+            },
+            "linkedin": {
+              "label": "LinkedInin URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Meistä ja arvojemme",
+      "presets": {
+        "name": "Tietoa meistä: Arvot"
+      },
+      "settings": {
+        "heading": {
+          "label": "Otsikko"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Arvo",
+          "settings": {
+            "icon": {
+              "label": "Kuvake",
+              "info": "Syötä emojia tai kuvakkeen teksti"
+            },
+            "title": {
+              "label": "Otsikko"
+            },
+            "text": {
+              "label": "Teksti"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Tietoa meistä Tilastot",
+      "presets": {
+        "name": "Tietoa meistä Tilastot"
+      },
+      "settings": {
+        "heading": {
+          "label": "Otsikko"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Tilastoluku",
+          "settings": {
+            "number": {
+              "label": "Numero",
+              "info": "Syötä numero (animoidaan vierityksen aikana)"
+            },
+            "suffix": {
+              "label": "loppuliite",
+              "info": "Valinnainen loppuliite kuten +, %, K jne."
+            },
+            "label": {
+              "label": "Etiketti"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Meistä Aikajana",
+      "presets": {
+        "name": "Meistä Aikajana"
+      },
+      "settings": {
+        "heading": {
+          "label": "Otsikko"
+        },
+        "text": {
+          "label": "Teksti"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Kilometerviiva",
+          "settings": {
+            "year": {
+              "label": "Vuosi"
+            },
+            "title": {
+              "label": "Otsikko"
+            },
+            "text": {
+              "label": "Kuvaus"
+            },
+            "image": {
+              "label": "Kuva"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -538,5 +776,11 @@
       "expanded": "Lahjakortin saajalomake laajennettuna",
       "collapsed": "Lahjakortin saajalomake pienennettynä"
     }
+  },
+  "seo": {
+    "index_title": "Ammattilliset meikkiveitset & kulmakalan työkaluja | ENCANTO ",
+    "index_description": "Ammattilliset meikkiveitset, kulmakarvatyökalut ja CTR kosmetiikka. Meikkitaiteilijöiltä luottamatta yli 38 maassa. Osta verkosta nopealla toimituksella koko Euroopassa.",
+    "index_og_title": "ENCANTO | Ammattilliset CTR-meikkikiristimet ja kauneusvälineet",
+    "index_og_description": "Osta ammattilaisten CTR kosmetiikkaa — harsoja, silmämeikkejä, kulhotyökaluja ja kokoelmia. Luotettuna yli 3000 opetusaseman toimittajana ympäri maailmaa. Nopea toimitus Eurooppaan."
   }
 }

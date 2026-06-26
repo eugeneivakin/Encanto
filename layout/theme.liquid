@@ -1,6 +1,19 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NZJKVS8W');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZJKVS8W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     {% render 'apply-promo' %}
     {% render 'iplogger' %}
     {% render 'google-tag' %}
@@ -30,7 +43,7 @@
     {%- endunless -%}
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    {%- comment -%}
+    {% comment %}
     {%- liquid
       assign seo_title = page_title
 
@@ -93,7 +106,7 @@
     {% if meta_desc %}
       <meta name="description" content="{{ meta_desc | escape }}">
     {% endif %}
-    {%- endcomment -%}
+    {% endcomment %}
 
     {% render 'meta-tags' %}
 
@@ -108,6 +121,47 @@
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+      (function () {
+        function moveHtLangToHeader() {
+          if (window.innerWidth >= 990) return;
+          var widget = document.querySelector('nav.menu-drawer__navigation .ht-tms-single-dropdown__container--language');
+          if (!widget) return;
+          var search = document.querySelector('.header__icons .header__search');
+          var cart = document.getElementById('cart-icon-bubble');
+          var anchor = search || cart;
+          if (!anchor) return;
+          anchor.parentNode.insertBefore(widget, anchor);
+          widget.style.visibility = '';
+          widget.style.opacity = '';
+        }
+
+        function observeDrawerNav() {
+          var nav = document.querySelector('nav.menu-drawer__navigation');
+          if (!nav) return;
+          var obs = new MutationObserver(function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+              var nodes = mutations[i].addedNodes;
+              for (var j = 0; j < nodes.length; j++) {
+                if (nodes[j].classList && nodes[j].classList.contains('ht-tms-single-dropdown__container--language')) {
+                  obs.disconnect();
+                  moveHtLangToHeader();
+                  return;
+                }
+              }
+            }
+          });
+          obs.observe(nav, { childList: true, subtree: true });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', observeDrawerNav);
+        } else {
+          observeDrawerNav();
+        }
+      })();
+    </script>
 
     {{ content_for_header }}
 

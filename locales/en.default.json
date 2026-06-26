@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -7,11 +16,15 @@
       "login_form_password_placeholder": "Your password",
       "login_form_error": "Wrong password!",
       "login_form_submit": "Enter",
-      "admin_link_html": "Are you the store owner? <a href=\"\/admin\" class=\"link underlined-link\">Log in here<\/a>",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"link underlined-link\">Log in here</a>",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
     "social": {
-      "alt_text": { "share_on_facebook": "Share on Facebook", "share_on_twitter": "Share on X", "share_on_pinterest": "Pin on Pinterest" },
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Share on X",
+        "share_on_pinterest": "Pin on Pinterest"
+      },
       "links": {
         "twitter": "X (Twitter)",
         "facebook": "Facebook",
@@ -25,13 +38,39 @@
       }
     },
     "continue_shopping": "Continue shopping",
-    "pagination": { "label": "Pagination", "page": "Page {{ number }}", "next": "Next page", "previous": "Previous page" },
-    "search": { "search": "Search", "reset": "Clear search term" },
-    "cart": { "view": "View cart ({{ count }})", "view_empty_cart": "View cart", "item_added": "Item added to your cart" },
-    "share": { "close": "Close share", "copy_to_clipboard": "Copy link", "share_url": "Link", "success_message": "Link copied to clipboard" },
-    "slider": { "of": "of", "next_slide": "Slide right", "previous_slide": "Slide left", "name": "Slider" }
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
+    "search": {
+      "search": "Search",
+      "reset": "Clear search term"
+    },
+    "cart": {
+      "view": "View cart ({{ count }})",
+      "view_empty_cart": "View cart",
+      "item_added": "Item added to your cart"
+    },
+    "share": {
+      "close": "Close share",
+      "copy_to_clipboard": "Copy link",
+      "share_url": "Link",
+      "success_message": "Link copied to clipboard"
+    },
+    "slider": {
+      "of": "of",
+      "next_slide": "Slide right",
+      "previous_slide": "Slide left",
+      "name": "Slider"
+    }
   },
-  "newsletter": { "label": "Email", "success": "Thanks for subscribing", "button_label": "Subscribe" },
+  "newsletter": {
+    "label": "Email",
+    "success": "Thanks for subscribing",
+    "button_label": "Subscribe"
+  },
   "accessibility": {
     "skip_to_text": "Skip to content",
     "skip_to_product_info": "Skip to product information",
@@ -40,7 +79,10 @@
     "vendor": "Vendor:",
     "error": "Error",
     "refresh_page": "Choosing a selection results in a full page refresh.",
-    "link_messages": { "new_window": "Opens in a new window.", "external": "Opens external website." },
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
     "loading": "Loading...",
     "total_reviews": "total reviews",
     "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
@@ -51,7 +93,10 @@
     "article": {
       "blog": "Blog",
       "read_more_title": "Read more: {{ title }}",
-      "comments": { "one": "{{ count }} comment", "other": "{{ count }} comments" },
+      "comments": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
       "moderated": "Please note, comments need to be approved before they are published.",
       "comment_form_title": "Leave a comment",
       "name": "Name",
@@ -64,7 +109,10 @@
       "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated."
     }
   },
-  "onboarding": { "product_title": "Example product title", "collection_title": "Your collection's name" },
+  "onboarding": {
+    "product_title": "Example product title",
+    "collection_title": "Your collection's name"
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
@@ -101,7 +149,7 @@
         "multiples_of": "Increments of {{ quantity }}",
         "min_of": "Min {{ quantity }}",
         "max_of": "Max {{ quantity }}",
-        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}<\/span> in cart",
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> in cart",
         "in_cart_aria_label": "Quantity ({{ quantity }} in cart)",
         "note": "View quantity rules"
       },
@@ -109,15 +157,15 @@
         "title": "Volume Pricing",
         "note": "Volume pricing available",
         "minimum": "{{ quantity }}+",
-        "price_at_each_html": "at {{ price }}\/ea",
+        "price_at_each_html": "at {{ price }}/ea",
         "price_range": "{{ minimum }} - {{ maximum }}"
       },
       "pickup_availability": {
         "view_store_info": "View store information",
         "check_other_stores": "Check availability at other stores",
         "pick_up_available": "Pickup available",
-        "pick_up_available_at_html": "Pickup available at <span class=\"color-foreground\">{{ location_name }}<\/span>",
-        "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_available_at_html": "Pickup available at <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Couldn't load pickup availability",
         "refresh": "Refresh"
       },
@@ -142,9 +190,11 @@
       "taxes_included": "Taxes included.",
       "duties_included": "Duties included.",
       "duties_and_taxes_included": "Duties and taxes included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
     },
-    "modal": { "label": "Media gallery" },
+    "modal": {
+      "label": "Media gallery"
+    },
     "facets": {
       "filter_and_operator_subtitle": "Match all",
       "apply": "Apply",
@@ -154,13 +204,22 @@
       "filter_and_sort": "Filter and sort",
       "filter_by_label": "Filter:",
       "filter_button": "Filter",
-      "filters_selected": { "one": "{{ count }} selected", "other": "{{ count }} selected" },
+      "filters_selected": {
+        "one": "{{ count }} selected",
+        "other": "{{ count }} selected"
+      },
       "filter_selected_accessibility": "{{ type }} ({{ count }} filters selected)",
       "show_more": "Show more",
       "show_less": "Show less",
       "max_price": "The highest price is {{ price }}",
-      "product_count": { "one": "{{ product_count }} of {{ count }} product", "other": "{{ product_count }} of {{ count }} products" },
-      "product_count_simple": { "one": "{{ count }} product", "other": "{{ count }} products" },
+      "product_count": {
+        "one": "{{ product_count }} of {{ count }} product",
+        "other": "{{ product_count }} of {{ count }} products"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
       "reset": "Reset",
       "sort_button": "Sort",
       "sort_by_label": "Sort by:",
@@ -173,17 +232,34 @@
       "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
       "page": "Page",
       "products": "Products",
-      "results_pages_with_count": { "one": "{{ count }} page", "other": "{{ count }} pages" },
-      "results_suggestions_with_count": { "one": "{{ count }} suggestion", "other": "{{ count }} suggestions" },
-      "results_products_with_count": { "one": "{{ count }} product", "other": "{{ count }} products" },
-      "results_with_count": { "one": "{{ count }} result", "other": "{{ count }} results" },
-      "results_with_count_and_term": { "one": "{{ count }} result found for “{{ terms }}”", "other": "{{ count }} results found for “{{ terms }}”" },
+      "results_pages_with_count": {
+        "one": "{{ count }} page",
+        "other": "{{ count }} pages"
+      },
+      "results_suggestions_with_count": {
+        "one": "{{ count }} suggestion",
+        "other": "{{ count }} suggestions"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "results_with_count_and_term": {
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
       "title": "Search results",
       "search_for": "Search for “{{ terms }}”",
       "suggestions": "Suggestions",
       "pages": "Pages"
     },
-    "cart": { "cart": "Cart" },
+    "cart": {
+      "cart": "Cart"
+    },
     "contact": {
       "form": {
         "title": "Contact form",
@@ -196,7 +272,10 @@
         "error_heading": "Please adjust the following:"
       }
     },
-    "404": { "title": "Page not found", "subtext": "404" }
+    "404": {
+      "title": "Page not found",
+      "subtext": "404"
+    }
   },
   "sections": {
     "announcements": {
@@ -206,7 +285,14 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-    "header": { "announcement": "Announcement", "menu": "Menu", "cart_count": { "one": "{{ count }} item", "other": "{{ count }} items" } },
+    "header": {
+      "announcement": "Announcement",
+      "menu": "Menu",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
     "cart": {
       "title": "Your cart",
       "caption": "Cart items",
@@ -218,28 +304,50 @@
       "empty": "Your cart is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Duties and taxes included. Discounts and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout.",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Duties and taxes included. Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "Duties and taxes included. Discounts and shipping calculated at checkout.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes included. Discounts and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes included. Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
       "taxes_included_shipping_at_checkout_without_policy": "Taxes included. Discounts and shipping calculated at checkout.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Duties included. Taxes, discounts and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Duties included. Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
       "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Duties included. Taxes, discounts and shipping calculated at checkout.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, discounts and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, discounts and shipping calculated at checkout.",
-      "headings": { "product": "Product", "price": "Price", "total": "Total", "quantity": "Quantity", "image": "Product image" },
+      "headings": {
+        "product": "Product",
+        "price": "Price",
+        "total": "Total",
+        "quantity": "Quantity",
+        "image": "Product image"
+      },
       "update": "Update",
-      "login": { "title": "Have an account?", "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in<\/a> to check out faster." }
+      "login": {
+        "title": "Have an account?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> to check out faster."
+      }
     },
-    "footer": { "payment": "Payment methods" },
-    "featured_blog": { "view_all": "View all", "onboarding_title": "Blog post", "onboarding_content": "Give your customers a summary of your blog post" },
-    "featured_collection": { "view_all": "View all", "view_all_label": "View all products in the {{ collection_name }} collection" },
-    "collection_list": { "view_all": "View all" },
+    "footer": {
+      "payment": "Payment methods"
+    },
+    "featured_blog": {
+      "view_all": "View all",
+      "onboarding_title": "Blog post",
+      "onboarding_content": "Give your customers a summary of your blog post"
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "view_all_label": "View all products in the {{ collection_name }} collection"
+    },
+    "collection_list": {
+      "view_all": "View all"
+    },
     "collection_template": {
       "empty": "No products found",
       "title": "Collection",
-      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all<\/a>"
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all</a>"
     },
-    "video": { "load_video": "Load video: {{ description }}" },
+    "video": {
+      "load_video": "Load video: {{ description }}"
+    },
     "slideshow": {
       "load_slide": "Load slide",
       "previous_slideshow": "Previous slide",
@@ -249,16 +357,24 @@
       "carousel": "Carousel",
       "slide": "Slide"
     },
-    "page": { "title": "Page title" },
+    "page": {
+      "title": "Page title"
+    },
     "quick_order_list": {
       "product_total": "Product subtotal",
       "view_cart": "View cart",
-      "each": "{{ money }}\/ea",
+      "each": "{{ money }}/ea",
       "product": "Product",
       "variant": "Variant",
       "variant_total": "Variant total",
-      "items_added": { "one": "{{ quantity }} item added", "other": "{{ quantity }} items added" },
-      "items_removed": { "one": "{{ quantity }} item removed", "other": "{{ quantity }} items removed" },
+      "items_added": {
+        "one": "{{ quantity }} item added",
+        "other": "{{ quantity }} items added"
+      },
+      "items_removed": {
+        "one": "{{ quantity }} item removed",
+        "other": "{{ quantity }} items removed"
+      },
       "product_variants": "Product variants",
       "total_items": "Total items",
       "remove_all_single_item_confirmation": "Remove 1 item from your cart?",
@@ -271,128 +387,285 @@
     },
     "about-us-hero": {
       "name": "About Us Hero",
-      "presets": { "name": "About Us Hero" },
+      "presets": {
+        "name": "About Us Hero"
+      },
       "settings": {
-        "background_image": { "label": "Background image" },
-        "caption": { "label": "Caption" },
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" },
-        "button_label": { "label": "Button label" },
-        "button_link": { "label": "Button link" },
-        "button_style_secondary": { "label": "Use outline button style" }
+        "background_image": {
+          "label": "Background image"
+        },
+        "caption": {
+          "label": "Caption"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Button label"
+        },
+        "button_link": {
+          "label": "Button link"
+        },
+        "button_style_secondary": {
+          "label": "Use outline button style"
+        }
       }
     },
     "about-us-mission": {
       "name": "About Us Mission",
-      "presets": { "name": "About Us Mission" },
+      "presets": {
+        "name": "About Us Mission"
+      },
       "settings": {
-        "mission_image": { "label": "Image" },
+        "mission_image": {
+          "label": "Image"
+        },
         "image_ratio": {
           "label": "Image ratio",
-          "options__1": { "label": "Adapt to image" },
-          "options__2": { "label": "Portrait" },
-          "options__3": { "label": "Square" }
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          }
         },
-        "caption": { "label": "Caption" },
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" }
+        "caption": {
+          "label": "Caption"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        }
       },
       "blocks": {
         "value": {
           "name": "Value",
-          "settings": { "icon": { "label": "Icon", "info": "Enter emoji or icon text" }, "title": { "label": "Title" }, "text": { "label": "Text" } }
+          "settings": {
+            "icon": {
+              "label": "Icon",
+              "info": "Enter emoji or icon text"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
         }
       }
     },
     "about-us-team": {
       "name": "About Us Team",
-      "presets": { "name": "About Us Team" },
+      "presets": {
+        "name": "About Us Team"
+      },
       "settings": {
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" },
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
         "image_ratio": {
           "label": "Image ratio",
-          "options__1": { "label": "Adapt to image" },
-          "options__2": { "label": "Portrait" },
-          "options__3": { "label": "Square" },
-          "options__4": { "label": "Circle" }
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "options__4": {
+            "label": "Circle"
+          }
         },
-        "columns_desktop": { "label": "Number of columns on desktop" },
-        "columns_mobile": { "label": "Number of columns on mobile", "options__1": { "label": "1" }, "options__2": { "label": "2" } }
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
       },
       "blocks": {
         "member": {
           "name": "Team Member",
           "settings": {
-            "image": { "label": "Image" },
-            "name": { "label": "Name" },
-            "role": { "label": "Role" },
-            "bio": { "label": "Bio" },
-            "email": { "label": "Email" },
-            "linkedin": { "label": "LinkedIn URL" }
+            "image": {
+              "label": "Image"
+            },
+            "name": {
+              "label": "Name"
+            },
+            "role": {
+              "label": "Role"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "Email"
+            },
+            "linkedin": {
+              "label": "LinkedIn URL"
+            }
           }
         }
       }
     },
     "about-us-values": {
       "name": "About Us Values",
-      "presets": { "name": "About Us Values" },
+      "presets": {
+        "name": "About Us Values"
+      },
       "settings": {
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" },
-        "columns_desktop": { "label": "Number of columns on desktop" },
-        "columns_mobile": { "label": "Number of columns on mobile", "options__1": { "label": "1" }, "options__2": { "label": "2" } }
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
       },
       "blocks": {
         "value": {
           "name": "Value",
-          "settings": { "icon": { "label": "Icon", "info": "Enter emoji or icon text" }, "title": { "label": "Title" }, "text": { "label": "Text" } }
+          "settings": {
+            "icon": {
+              "label": "Icon",
+              "info": "Enter emoji or icon text"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
         }
       }
     },
     "about-us-stats": {
       "name": "About Us Stats",
-      "presets": { "name": "About Us Stats" },
+      "presets": {
+        "name": "About Us Stats"
+      },
       "settings": {
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" },
-        "columns_desktop": { "label": "Number of columns on desktop" },
-        "columns_mobile": { "label": "Number of columns on mobile", "options__1": { "label": "1" }, "options__2": { "label": "2" } }
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
       },
       "blocks": {
         "stat": {
           "name": "Statistic",
           "settings": {
-            "number": { "label": "Number", "info": "Enter a number (will animate on scroll)" },
-            "suffix": { "label": "Suffix", "info": "Optional suffix like +, %, K, etc." },
-            "label": { "label": "Label" }
+            "number": {
+              "label": "Number",
+              "info": "Enter a number (will animate on scroll)"
+            },
+            "suffix": {
+              "label": "Suffix",
+              "info": "Optional suffix like +, %, K, etc."
+            },
+            "label": {
+              "label": "Label"
+            }
           }
         }
       }
     },
     "about-us-timeline": {
       "name": "About Us Timeline",
-      "presets": { "name": "About Us Timeline" },
-      "settings": { "heading": { "label": "Heading" }, "text": { "label": "Text" } },
+      "presets": {
+        "name": "About Us Timeline"
+      },
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
       "blocks": {
         "milestone": {
           "name": "Milestone",
-          "settings": { "year": { "label": "Year" }, "title": { "label": "Title" }, "text": { "label": "Description" }, "image": { "label": "Image" } }
+          "settings": {
+            "year": {
+              "label": "Year"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Description"
+            },
+            "image": {
+              "label": "Image"
+            }
+          }
         }
       }
     }
   },
   "localization": {
-    "country_label": "Country\/region",
+    "country_label": "Country/region",
     "language_label": "Language",
     "update_language": "Update language",
-    "update_country": "Update country\/region",
+    "update_country": "Update country/region",
     "search": "Search",
-    "popular_countries_regions": "Popular countries\/regions",
-    "country_results_count": "{{ count }} countries\/regions found"
+    "popular_countries_regions": "Popular countries/regions",
+    "country_results_count": "{{ count }} countries/regions found"
   },
   "customer": {
-    "account": { "title": "Account", "details": "Account details", "view_addresses": "View addresses", "return": "Return to Account details" },
+    "account": {
+      "title": "Account",
+      "details": "Account details",
+      "view_addresses": "View addresses",
+      "return": "Return to Account details"
+    },
     "account_fallback": "Account",
     "activate_account": {
       "title": "Activate account",
@@ -413,9 +686,9 @@
       "address1": "Address 1",
       "address2": "Address 2",
       "city": "City",
-      "country": "Country\/region",
+      "country": "Country/region",
       "province": "Province",
-      "zip": "Postal\/ZIP code",
+      "zip": "Postal/ZIP code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add address",

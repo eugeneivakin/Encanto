@@ -141,7 +141,8 @@
         "regular_price": "Preço normal",
         "sale_price": "Preço de saldo",
         "unit_price": "Preço unitário",
-        "percent": "{{ amount }}% de desconto"
+        "percent": "{{ amount }}% de desconto",
+        "amount": "Adicionar ao carrinho e ganhe um desconto adicional de €10"
       },
       "share": "Partilhar este produto",
       "sold_out": "Esgotado",
@@ -397,6 +398,243 @@
       "min_error": "Este item tem um mínimo de {{ min }}",
       "max_error": "Este item tem um máximo de {{ max }}",
       "step_error": "Só pode adicionar este item em incrementos de {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Sobre Nós Hero",
+      "presets": {
+        "name": "Sobre Nós Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Imagem de fundo"
+        },
+        "caption": {
+          "label": "Legenda"
+        },
+        "heading": {
+          "label": "Título"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "button_label": {
+          "label": "rótulo do botão"
+        },
+        "button_link": {
+          "label": "Botão link"
+        },
+        "button_style_secondary": {
+          "label": "Utilize o estilo de botão contornado"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Sobre Nós Missão",
+      "presets": {
+        "name": "Sobre Nós Missão"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Imagem"
+        },
+        "image_ratio": {
+          "label": "Proporção da imagem",
+          "options__1": {
+            "label": "Adaptar à imagem"
+          },
+          "options__2": {
+            "label": "Retrato"
+          },
+          "options__3": {
+            "label": "Quadrado"
+          }
+        },
+        "caption": {
+          "label": "Legenda"
+        },
+        "heading": {
+          "label": "Cabeçalho"
+        },
+        "text": {
+          "label": "Texto"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valor",
+          "settings": {
+            "icon": {
+              "label": "Ícone",
+              "info": "Insira texto de emoji ou ícone"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Texto"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Sobre Nós Equipa",
+      "presets": {
+        "name": "Sobre Nós Equipa"
+      },
+      "settings": {
+        "heading": {
+          "label": "Título"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "image_ratio": {
+          "label": "razão de imagem",
+          "options__1": {
+            "label": "Adaptar-se à imagem"
+          },
+          "options__2": {
+            "label": "Retrato"
+          },
+          "options__3": {
+            "label": "Quadrado"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Membro da equipa",
+          "settings": {
+            "image": {
+              "label": "Imagem"
+            },
+            "name": {
+              "label": "Nome"
+            },
+            "role": {
+              "label": "Papel"
+            },
+            "bio": {
+              "label": "Biografia"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "URL do LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Sobre Nós Valores",
+      "presets": {
+        "name": "Valores de Sobre Nós"
+      },
+      "settings": {
+        "heading": {
+          "label": "Título"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valor",
+          "settings": {
+            "icon": {
+              "label": "Ícone",
+              "info": "Insira texto de emoji ou ícone"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Texto"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Sobre Nós Estatísticas",
+      "presets": {
+        "name": "Sobre Nós e Estatísticas"
+      },
+      "settings": {
+        "heading": {
+          "label": "Cabeçalho"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Estatística",
+          "settings": {
+            "number": {
+              "label": "Número",
+              "info": "Insira um número (irá animar ao fazer scroll)"
+            },
+            "suffix": {
+              "label": "Sufixo",
+              "info": "Sufixo opcional como +, %, K, etc."
+            },
+            "label": {
+              "label": "Etiqueta"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Linha do Tempo da Quem Somos",
+      "presets": {
+        "name": "Linha do Tempo da Sobre Nós"
+      },
+      "settings": {
+        "heading": {
+          "label": "Título"
+        },
+        "text": {
+          "label": "Texto"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Marco",
+          "settings": {
+            "year": {
+              "label": "Ano"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Descrição"
+            },
+            "image": {
+              "label": "Imagem"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -550,5 +788,11 @@
       "expanded": "Formulário de destinatário do cartão de oferta expandido",
       "collapsed": "Formulário de destinatário do cartão de oferta fechado"
     }
+  },
+  "seo": {
+    "index_title": "Pincéis de Maquilhagem Profissionais & Ferramentas para Sobrancelhas | ENCANTO ",
+    "index_description": "Pincéis de maquilhagem profissionais, ferramentas de sobrancelhas e cosméticos CTR. Confiados por artistas de maquilhagem em mais de 38 países. Compre online com entrega rápida por toda a Europa.",
+    "index_og_title": "ENCANTO | Pincéis de Maquilhagem Profissionais CTR e Ferramentas de Beleza",
+    "index_og_description": "Compre cosméticos profissionais CTR — pincéis, sombras de olho, ferramentas para sobrancelhas e conjuntos. Confiado por mais de 3000 centros de formação em todo o mundo. Entrega rápida para a Europa."
   }
 }

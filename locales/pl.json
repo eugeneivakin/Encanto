@@ -148,7 +148,8 @@
         "regular_price": "Cena regularna",
         "sale_price": "Cena promocyjna",
         "unit_price": "Cena jednostkowa",
-        "percent": "{{ amount }}% zniżki"
+        "percent": "{{ amount }}% zniżki",
+        "amount": "Dodaj do koszyka i otrzymaj dodatkowe €10 zniżki"
       },
       "pickup_availability": {
         "view_store_info": "Wyświetl informacje o sklepie",
@@ -202,7 +203,7 @@
       "apply": "Zastosuj",
       "clear": "Wyczyść",
       "clear_all": "Usuń wszystko",
-      "from": "Od",
+      "from": "<span class=\"notranslate\">Od</span>",
       "filter_and_sort": "Filtrowanie i sortowanie",
       "filter_by_label": "Filtr:",
       "filter_button": "Filtr",
@@ -409,6 +410,216 @@
       "min_error": "Pozycja ma minimalny limit {{ min }}",
       "max_error": "Pozycja ma maksymalny limit {{ max }}",
       "step_error": "Możesz dodać tę pozycję tylko z przyrostem o {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "O Nas Hero",
+      "presets": {
+        "name": "Nagłówek O Nas"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Obraz tła"
+        },
+        "caption": {
+          "label": "Podpis"
+        },
+        "heading": {
+          "label": "Nagłówek"
+        },
+        "button_label": {
+          "label": "Etykieta przycisku"
+        },
+        "button_link": {
+          "label": "Przycisk linkujący"
+        },
+        "button_style_secondary": {
+          "label": "Użyj stylu przycisku z obramowaniem"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "O nas Misja",
+      "presets": {
+        "name": "O nas Misja"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Obraz"
+        },
+        "image_ratio": {
+          "label": "Współczynnik proporcji obrazu",
+          "options__1": {
+            "label": "Dopasuj do obrazu"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Kwadrat"
+          }
+        },
+        "caption": {
+          "label": "Podpis"
+        },
+        "heading": {
+          "label": "Nagłówek"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Wartość",
+          "settings": {
+            "icon": {
+              "label": "Ikona"
+            },
+            "title": {
+              "label": "Tytuł"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "O nas Zespół",
+      "presets": {
+        "name": "Zespół O nas"
+      },
+      "settings": {
+        "text": {
+          "label": "Tekst"
+        },
+        "image_ratio": {
+          "label": "Proporcje obrazu",
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Kwadrat"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Członek zespołu",
+          "settings": {
+            "image": {
+              "label": "Obraz"
+            },
+            "role": {
+              "label": "Rola"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "Adres URL LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Wartości o nas",
+      "presets": {
+        "name": "O nas – Wartości"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nagłówek"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "settings": {
+            "icon": {
+              "label": "Ikona"
+            },
+            "title": {
+              "label": "Tytuł"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "O nas Statystyki",
+      "presets": {
+        "name": "O nas Statystyki"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nagłówek"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statystyka",
+          "settings": {
+            "number": {
+              "label": "Liczba",
+              "info": "Wprowadź liczbę (zostanie zaanimowane podczas przewijania)"
+            },
+            "suffix": {
+              "label": "Przyrostek",
+              "info": "Opcjonalny sufiks, np. +, %, K itd."
+            },
+            "label": {
+              "label": "Etykieta"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Oś Czasu O nas",
+      "presets": {
+        "name": "O Nas – Oś Czasu"
+      },
+      "settings": {
+        "text": {
+          "label": "Tekst"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Kamień milowy",
+          "settings": {
+            "title": {
+              "label": "Tytuł"
+            },
+            "text": {
+              "label": "Opis"
+            },
+            "image": {
+              "label": "Obraz"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -562,5 +773,11 @@
       "expanded": "Rozwinięty formularz odbiorcy karty prezentowej",
       "collapsed": "Zwinięty formularz odbiorcy karty prezentowej"
     }
+  },
+  "seo": {
+    "index_title": "Profesjonalne pędzle do makijażu i narzędzia do brwi | ENCANTO ",
+    "index_description": "Professionalne pędzle do makijażu, narzędzia do brwi oraz kosmetyki CTR. Zaufane przez makijażystów w 38+ krajach. Kupuj online z szybką dostawą w całej Europie.",
+    "index_og_title": "ENCANTO | profesjonalne pędzle do makijażu CTR i narzędzia do urody",
+    "index_og_description": "Sklep z profesjonalnymi kosmetykami CTR – pędzle, cienie do powiek, narzędzia do brwi i zestawy. Zaufane przez ponad 3000 ośrodków szkolnych na całym świecie. Szybka dostawa do Europy."
   }
 }

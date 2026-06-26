@@ -139,7 +139,8 @@
         "regular_price": "Ordinarie pris",
         "sale_price": "Reapris",
         "unit_price": "Enhetspris",
-        "percent": "{{ amount }}% rabatt"
+        "percent": "{{ amount }}% rabatt",
+        "amount": "Lägg i kundvagn och få ytterligare €10 av"
       },
       "share": "Dela den här produkten",
       "sold_out": "Slutsåld",
@@ -385,6 +386,240 @@
       "min_error": "Den här artikeln har minst {{ min }}",
       "max_error": "Denna vara har ett maximum på {{ max }}",
       "step_error": "Du kan endast lägga till den här artikeln med ökningar om {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Om Oss Hero",
+      "presets": {
+        "name": "Om oss Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Bakgrundsbild"
+        },
+        "caption": {
+          "label": "Bildtext"
+        },
+        "heading": {
+          "label": "Rubrik"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Knappetikett"
+        },
+        "button_link": {
+          "label": "Knapplänk"
+        },
+        "button_style_secondary": {
+          "label": "Använd konturknappstil"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Om Oss Mission",
+      "presets": {
+        "name": "Om Oss: Vår Mission"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Bild"
+        },
+        "image_ratio": {
+          "label": "Bildförhållande",
+          "options__1": {
+            "label": "Anpassa till bild"
+          },
+          "options__2": {
+            "label": "Porträtt"
+          },
+          "options__3": {
+            "label": "Kvadrat"
+          }
+        },
+        "heading": {
+          "label": "Rubrik"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Värde",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Ange emoji eller ikontext"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Om oss-team",
+      "presets": {
+        "name": "Om oss Team"
+      },
+      "settings": {
+        "heading": {
+          "label": "Rubrik"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image_ratio": {
+          "label": "Bildförhållande",
+          "options__1": {
+            "label": "Anpassa till bild"
+          },
+          "options__2": {
+            "label": "Porträtt"
+          },
+          "options__3": {
+            "label": "Kvadrat"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Teammedlem",
+          "settings": {
+            "image": {
+              "label": "Bild"
+            },
+            "name": {
+              "label": "Namn"
+            },
+            "role": {
+              "label": "Roll"
+            },
+            "bio": {
+              "label": "Biografi"
+            },
+            "email": {
+              "label": "E-post"
+            },
+            "linkedin": {
+              "label": "LinkedIn-URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Om oss Värderingar",
+      "presets": {
+        "name": "Om oss Värderingar"
+      },
+      "settings": {
+        "heading": {
+          "label": "Rubrik"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Värde",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Ange emoji- eller ikontext"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Om oss Statistik",
+      "presets": {
+        "name": "Om oss Statistik"
+      },
+      "settings": {
+        "heading": {
+          "label": "Rubrik"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistik",
+          "settings": {
+            "number": {
+              "label": "Nummer",
+              "info": "Ange ett nummer (kommer att animera vid scrollning)"
+            },
+            "suffix": {
+              "label": "suffix",
+              "info": "Valfri suffix som t.ex. +, %, K osv."
+            },
+            "label": {
+              "label": "Etikett"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Om oss Tidslinje",
+      "presets": {
+        "name": "Om oss Tidslinje"
+      },
+      "settings": {
+        "heading": {
+          "label": "Rubrik"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Milstolpe",
+          "settings": {
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Beskrivning"
+            },
+            "image": {
+              "label": "Bild"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -3025,5 +3260,11 @@
         }
       }
     }
+  },
+  "seo": {
+    "index_title": "Professionella makeupborstar och ögonbrynssverktyg | ENCANTO ",
+    "index_description": "Professionella sminkborstar, ögonbrynssverktyg & CTR cosmetics. Förtroende hos sminkartister i 38+ länder. Handla online med snabb leverans över hela Europa.",
+    "index_og_title": "ENCANTO | Professionella CTR-sminkborst och skönhetsverktyg",
+    "index_og_description": "Handla professionella CTR-cosmetik — borstar, ögonskuggor, ögonbrynverktyg och set. Förtroende hos 3000+ utbildningscenter över hela världen. Snabb leverans till Europa."
   }
 }

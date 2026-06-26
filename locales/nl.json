@@ -139,7 +139,8 @@
         "regular_price": "Normale prijs",
         "sale_price": "Aanbiedingsprijs",
         "unit_price": "Eenheidsprijs",
-        "percent": "{{ amount }}% korting"
+        "percent": "{{ amount }}% korting",
+        "amount": "Voeg toe aan winkelwagen en krijg extra €10 korting"
       },
       "share": "Dit product delen",
       "sold_out": "Uitverkocht",
@@ -385,6 +386,246 @@
       "min_error": "Voor dit artikel geldt een minimum van {{ min }}.",
       "max_error": "Voor dit artikel geldt een maximum van {{ max }}.",
       "step_error": "Je kunt dit artikel alleen toevoegen in stappen van {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Over Ons Hero",
+      "presets": {
+        "name": "Over Ons Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Achtergrondafbeelding"
+        },
+        "caption": {
+          "label": "Onderschrift"
+        },
+        "heading": {
+          "label": "Kop"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "button_label": {
+          "label": "Knoplabel"
+        },
+        "button_link": {
+          "label": "Linkknop"
+        },
+        "button_style_secondary": {
+          "label": "Gebruik de stijl van de omlijnde knop"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Over Ons Missie",
+      "presets": {
+        "name": "Over Ons Missie"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Afbeelding"
+        },
+        "image_ratio": {
+          "label": "beeldverhouding",
+          "options__1": {
+            "label": "Aanpassen aan afbeelding"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Vierkant"
+          }
+        },
+        "caption": {
+          "label": "Onderschrift"
+        },
+        "heading": {
+          "label": "Kop"
+        },
+        "text": {
+          "label": "Tekst"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Waarde",
+          "settings": {
+            "icon": {
+              "label": "Icoon",
+              "info": "Voer emoji- of icoontekst in"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Over Ons Team",
+      "presets": {
+        "name": "Over Ons Team"
+      },
+      "settings": {
+        "heading": {
+          "label": "Kop"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "image_ratio": {
+          "label": "beeldverhouding",
+          "options__1": {
+            "label": "Aanpassen aan afbeelding"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Vierkant"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Teamlid",
+          "settings": {
+            "image": {
+              "label": "Afbeelding"
+            },
+            "name": {
+              "label": "Naam"
+            },
+            "role": {
+              "label": "Rol"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "e-mail"
+            },
+            "linkedin": {
+              "label": "LinkedIn URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Over Ons Waarden",
+      "presets": {
+        "name": "Over Ons Waardes"
+      },
+      "settings": {
+        "heading": {
+          "label": "Kop"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Waarde",
+          "settings": {
+            "icon": {
+              "label": "Icoon",
+              "info": "Voer emoji- of pictogramtekst in"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Over Ons Statistieken",
+      "presets": {
+        "name": "Over Ons Statistieken"
+      },
+      "settings": {
+        "text": {
+          "label": "Tekst"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistiek",
+          "settings": {
+            "number": {
+              "label": "Nummer",
+              "info": "Voer een getal in (wordt geanimeerd bij scrollen)"
+            },
+            "suffix": {
+              "label": "achtervoegsel",
+              "info": "Optionele achtervoegsel zoals +, %, K, enz."
+            },
+            "label": {
+              "label": "Etiket"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Over Ons Tijdlijn",
+      "presets": {
+        "name": "Over Ons Tijdlijn"
+      },
+      "settings": {
+        "heading": {
+          "label": "Kop"
+        },
+        "text": {
+          "label": "Tekst"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Mijlpaal",
+          "settings": {
+            "year": {
+              "label": "Jaar"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Omschrijving"
+            },
+            "image": {
+              "label": "Afbeelding"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -538,5 +779,11 @@
       "expanded": "Formulier voor ontvanger cadeaubon uitgevouwen",
       "collapsed": "Formulier voor ontvanger cadeaubon ingeklapt"
     }
+  },
+  "seo": {
+    "index_title": "Professionele make-upkwasten & wenkbrauwtools | ENCANTO ",
+    "index_description": "Professionele make-upkwasten, wenkbrauwtools en CTR-cosmetica. Vertrouwd door make-upartsen in 38+ landen. Winkel online met snelle levering door heel Europa.",
+    "index_og_title": "ENCANTO | Professionele CTR Make-upkwasten en Beautyhulpmiddelen",
+    "index_og_description": "Koop professionele CTR-cosmetica — borstels, oogschaduw, wenkbrauwtools en sets. Vertrouwd door 3000+ opleidingscentra over de hele wereld. Snelle levering naar Europa."
   }
 }

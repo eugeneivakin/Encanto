@@ -140,7 +140,8 @@
         "regular_price": "Precio habitual",
         "sale_price": "Precio de oferta",
         "unit_price": "Precio unitario",
-        "percent": "{{ amount }}% de descuento"
+        "percent": "{{ amount }}% de descuento",
+        "amount": "Añadir al carrito y obtén un descuento adicional de €10"
       },
       "share": "Compartir este producto",
       "sold_out": "Agotado",
@@ -397,6 +398,249 @@
       "min_error": "Este artículo tiene un mínimo de {{ min }}.",
       "max_error": "Este artículo tiene un máximo de {{ max }}",
       "step_error": "Solo puedes agregar este artículo en incrementos de {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Héroe de Sobre Nosotros",
+      "presets": {
+        "name": "Hero de Quiénes Somos"
+      },
+      "settings": {
+        "background_image": {
+          "label": "imagen de fondo"
+        },
+        "caption": {
+          "label": "Leyenda"
+        },
+        "heading": {
+          "label": "Encabezado"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "button_label": {
+          "label": "Etiqueta de botón"
+        },
+        "button_link": {
+          "label": "Enlace de botón"
+        },
+        "button_style_secondary": {
+          "label": "Usar el estilo de botón de contorno"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Sobre Nosotros Misión",
+      "presets": {
+        "name": "Sobre Nosotros Misión"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Imagen"
+        },
+        "image_ratio": {
+          "label": "Relación de aspecto de la imagen",
+          "options__1": {
+            "label": "Adaptarse a la imagen"
+          },
+          "options__2": {
+            "label": "Retrato"
+          },
+          "options__3": {
+            "label": "Cuadrado"
+          }
+        },
+        "caption": {
+          "label": "Pie de foto"
+        },
+        "heading": {
+          "label": "Encabezado"
+        },
+        "text": {
+          "label": "Texto"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valor",
+          "settings": {
+            "icon": {
+              "label": "Icono",
+              "info": "Ingrese texto de emoji o ícono"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Texto"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Equipo de Sobre Nosotros",
+      "presets": {
+        "name": "Equipo de Sobre Nosotros"
+      },
+      "settings": {
+        "heading": {
+          "label": "Encabezado"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "image_ratio": {
+          "label": "Relación de aspecto de la imagen",
+          "options__1": {
+            "label": "Adaptarse a la imagen"
+          },
+          "options__2": {
+            "label": "Retrato"
+          },
+          "options__3": {
+            "label": "Cuadrado"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Miembro del equipo",
+          "settings": {
+            "image": {
+              "label": "Imagen"
+            },
+            "name": {
+              "label": "Nombre"
+            },
+            "role": {
+              "label": "Rol"
+            },
+            "bio": {
+              "label": "Biografía"
+            },
+            "email": {
+              "label": "Correo electrónico"
+            },
+            "linkedin": {
+              "label": "URL de LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Valores de Sobre Nosotros",
+      "presets": {
+        "name": "Valores de Sobre Nosotros"
+      },
+      "settings": {
+        "heading": {
+          "label": "Encabezado"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valor",
+          "settings": {
+            "icon": {
+              "label": "Icono",
+              "info": "Ingrese texto de emoji o icono"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Texto"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Estadísticas de Sobre Nosotros",
+      "presets": {
+        "name": "Sobre Nosotros Estadísticas"
+      },
+      "settings": {
+        "heading": {
+          "label": "Encabezado"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Estadística",
+          "settings": {
+            "number": {
+              "label": "Número",
+              "info": "Ingrese un número (se animará al hacer scroll)"
+            },
+            "suffix": {
+              "label": "Sufijo",
+              "info": "Sufijo opcional como +, %, K, etc."
+            },
+            "label": {
+              "label": "Etiqueta"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Sobre Nosotros: Línea del tiempo",
+      "presets": {
+        "name": "Sobre Nosotros: Línea del tiempo"
+      },
+      "settings": {
+        "heading": {
+          "label": "Encabezado"
+        },
+        "text": {
+          "label": "Texto"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Hito",
+          "settings": {
+            "year": {
+              "label": "Año"
+            },
+            "title": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Descripción"
+            },
+            "image": {
+              "label": "Imagen"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -2645,5 +2889,11 @@
         }
       }
     }
+  },
+  "seo": {
+    "index_title": "Pinceles de Maquillaje Profesionales y Herramientas para Cejas | ENCANTO ",
+    "index_description": "Pinceles de maquillaje profesionales, herramientas para cejas y cosméticos CTR. Confiados por maquillistas en más de 38 países. Compra online con envío rápido por toda Europa.",
+    "index_og_title": "ENCANTO | Pinceles de Maquillaje Profesionales CTR y Herramientas de Belleza",
+    "index_og_description": "Compra cosméticos profesionales CTR: pinceles, sombras de ojos, herramientas para cejas y sets. Confiado por más de 3000 centros de formación en todo el mundo. Entrega rápida en Europa."
   }
 }

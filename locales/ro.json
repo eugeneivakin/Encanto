@@ -148,7 +148,8 @@
         "regular_price": "Preț obișnuit",
         "sale_price": "Preț redus",
         "unit_price": "Preț unitar",
-        "percent": "{{ amount }}% reducere"
+        "percent": "{{ amount }}% reducere",
+        "amount": "Adaugă în coș și primești o reducere suplimentară de 10 €"
       },
       "pickup_availability": {
         "view_store_info": "Vizualizați informațiile despre magazin",
@@ -397,6 +398,249 @@
       "min_error": "Pentru acest articol, valoarea minimă este de {{ min }}",
       "max_error": "Pentru acest articol, valoarea maximă este de {{ max }}",
       "step_error": "Poți introduce acest articol numai în incrementuri de {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Despre Noi Hero",
+      "presets": {
+        "name": "Secțiunea eroasă Despre noi"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Imagine de fundal"
+        },
+        "caption": {
+          "label": "Legenda"
+        },
+        "heading": {
+          "label": "Antet"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Etichetă buton"
+        },
+        "button_link": {
+          "label": "Buton link"
+        },
+        "button_style_secondary": {
+          "label": "Utilizați stilul de buton cu contur"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Despre Noi Misiune",
+      "presets": {
+        "name": "Despre Noi Misțiune"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Imagine"
+        },
+        "image_ratio": {
+          "label": "Raport imaginii",
+          "options__1": {
+            "label": "Se adaptează la imagine"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Pătrat"
+          }
+        },
+        "caption": {
+          "label": "Legenda"
+        },
+        "heading": {
+          "label": "Antet"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valoare",
+          "settings": {
+            "icon": {
+              "label": "Iconă",
+              "info": "Introduceți text de emoji sau icoană"
+            },
+            "title": {
+              "label": "Titlu"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Echipa Noastră",
+      "presets": {
+        "name": "Despre noi Echipă"
+      },
+      "settings": {
+        "heading": {
+          "label": "Antet"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image_ratio": {
+          "label": "Raport de aspect al imaginii",
+          "options__1": {
+            "label": "Adaptă la imagine"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Pătrat"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Membru al echipei",
+          "settings": {
+            "image": {
+              "label": "Imagine"
+            },
+            "name": {
+              "label": "Nume"
+            },
+            "role": {
+              "label": "Rol"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "Email"
+            },
+            "linkedin": {
+              "label": "URL LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Valori despre noi",
+      "presets": {
+        "name": "Despre Noi: Valori"
+      },
+      "settings": {
+        "heading": {
+          "label": "Titlu"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valoare",
+          "settings": {
+            "icon": {
+              "label": "Iconă",
+              "info": "Introduceți text cu emoji-uri sau icoane"
+            },
+            "title": {
+              "label": "Titlu"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Despre noi Statistici",
+      "presets": {
+        "name": "Despre noi Statistici"
+      },
+      "settings": {
+        "heading": {
+          "label": "Antet"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistică",
+          "settings": {
+            "number": {
+              "label": "Număr",
+              "info": "Introduceți un număr (va anima la derulare)"
+            },
+            "suffix": {
+              "label": "sufix",
+              "info": "Sufix opțional, precum +, %, K, etc."
+            },
+            "label": {
+              "label": "Etichetă"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Despre noi Cronologie",
+      "presets": {
+        "name": "Despre Noi Cronologie"
+      },
+      "settings": {
+        "heading": {
+          "label": "Antet"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Etapă cheie",
+          "settings": {
+            "year": {
+              "label": "An"
+            },
+            "title": {
+              "label": "Titlu"
+            },
+            "text": {
+              "label": "Descriere"
+            },
+            "image": {
+              "label": "Imagine"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -550,5 +794,11 @@
       "expanded": "Formularul pentru destinatarul cardului cadou este extins",
       "collapsed": "Formularul pentru destinatarul cardului cadou este restrâns"
     }
+  },
+  "seo": {
+    "index_title": "Pensule de machiaj profesional și unelte pentru sprânțe | ENCANTO ",
+    "index_description": "Pensule de machiaj profesionale, unelte pentru sprâncene și cosmetice CTR. De încredere pentru artiștii de machiaj din peste 38 de țări. Cumpărați online cu livrare rapidă în toată Europa.",
+    "index_og_title": "ENCANTO | Pensule de machiaj profesionale CTR și unelte de frumusețe",
+    "index_og_description": "Cumpără cosmetice profesionale CTR — pensule, farduri de pleoape, unelte pentru sprâncene și seturi. Recomandat de peste 3000 de centre de formare din întreaga lume. Livrare rapidă în Europa."
   }
 }

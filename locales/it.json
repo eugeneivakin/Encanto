@@ -140,7 +140,8 @@
         "regular_price": "Prezzo di listino",
         "sale_price": "Prezzo scontato",
         "unit_price": "Prezzo unitario",
-        "percent": "{{ amount }}% di sconto"
+        "percent": "{{ amount }}% di sconto",
+        "amount": "Aggiungi al carrello e ottieni un ulteriore sconto di €10"
       },
       "share": "Condividi questo prodotto",
       "sold_out": "Esaurito",
@@ -397,6 +398,240 @@
       "min_error": "Questo articolo ha un minimo di {{ min }}",
       "max_error": "Questo articolo ha un massimo di {{ max }}",
       "step_error": "Puoi aggiungere questo articolo solo in incrementi di {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Hero Chi Siamo",
+      "presets": {
+        "name": "Chi Siamo Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Immagine di sfondo"
+        },
+        "caption": {
+          "label": "Didascalia"
+        },
+        "heading": {
+          "label": "Intestazione"
+        },
+        "text": {
+          "label": "Testo"
+        },
+        "button_label": {
+          "label": "Etichetta del pulsante"
+        },
+        "button_link": {
+          "label": "Pulsante di collegamento"
+        },
+        "button_style_secondary": {
+          "label": "Usa lo stile del pulsante contornato"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Chi Siamo Missione",
+      "presets": {
+        "name": "Chi Siamo Missione"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Immagine"
+        },
+        "image_ratio": {
+          "label": "Rapporto di aspetto dell'immagine",
+          "options__1": {
+            "label": "Adatta all'immagine"
+          },
+          "options__2": {
+            "label": "Ritratto"
+          },
+          "options__3": {
+            "label": "quadrato"
+          }
+        },
+        "caption": {
+          "label": "Didascalia"
+        },
+        "heading": {
+          "label": "Intestazione"
+        },
+        "text": {
+          "label": "Testo"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valore",
+          "settings": {
+            "icon": {
+              "label": "Icona",
+              "info": "Inserisci testo emoji o icona"
+            },
+            "title": {
+              "label": "Titolo"
+            },
+            "text": {
+              "label": "Testo"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Team di Chi Siamo",
+      "presets": {
+        "name": "Team di Chi Siamo"
+      },
+      "settings": {
+        "heading": {
+          "label": "Intestazione"
+        },
+        "text": {
+          "label": "Testo"
+        },
+        "image_ratio": {
+          "label": "Rapporto immagine",
+          "options__1": {
+            "label": "Adatta all'immagine"
+          },
+          "options__2": {
+            "label": "Ritratto"
+          },
+          "options__4": {
+            "label": "Cerchio"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Membro del team",
+          "settings": {
+            "name": {
+              "label": "Nome"
+            },
+            "role": {
+              "label": "Ruolo"
+            },
+            "bio": {
+              "label": "Biografia"
+            },
+            "email": {
+              "label": "Email"
+            },
+            "linkedin": {
+              "label": "URL di LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "I Valori di Chi Siamo",
+      "presets": {
+        "name": "Valori di Chi Siamo"
+      },
+      "settings": {
+        "heading": {
+          "label": "Intestazione"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Valore",
+          "settings": {
+            "icon": {
+              "label": "Icona",
+              "info": "Inserisci testo di emoji o icona"
+            },
+            "title": {
+              "label": "Titolo"
+            },
+            "text": {
+              "label": "Testo"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Statistiche di Chi Siamo",
+      "presets": {
+        "name": "Chi Siamo Statistiche"
+      },
+      "settings": {
+        "heading": {
+          "label": "Intestazione"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistica",
+          "settings": {
+            "number": {
+              "label": "Numero",
+              "info": "Inserisci un numero (si animizzerà durante lo scroll)"
+            },
+            "suffix": {
+              "label": "Suffisso",
+              "info": "Suffisso facoltativo come +, %, K, ecc."
+            },
+            "label": {
+              "label": "Etichetta"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Chi Siamo Linea del Tempo",
+      "presets": {
+        "name": "Linea del tempo di Chi Siamo"
+      },
+      "settings": {
+        "heading": {
+          "label": "Intestazione"
+        },
+        "text": {
+          "label": "Testo"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Traguardo",
+          "settings": {
+            "year": {
+              "label": "Anno"
+            },
+            "title": {
+              "label": "Titolo"
+            },
+            "text": {
+              "label": "Descrizione"
+            },
+            "image": {
+              "label": "Immagine"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -2786,5 +3021,11 @@
         }
       }
     }
+  },
+  "seo": {
+    "index_title": "Pennelli per Trucco Professionali e Strumenti per Sopracciglia | ENCANTO ",
+    "index_description": "Pennelli per trucco professionali, strumenti per le sopracciglia e cosmetici CTR. Preferiti dai truccatori professionisti in oltre 38 paesi. Acquista online con consegna veloce in tutta Europa.",
+    "index_og_title": "ENCANTO | Professionale CTR Pennelli per Trucco e Strumenti di Bellezza",
+    "index_og_description": "Acquista cosmetici professionali CTR — pennelli, ombretti, strumenti per le sopracciglia e set. Apprezzati da oltre 3000 centri di formazione in tutto il mondo. Consegna veloce in Europa."
   }
 }

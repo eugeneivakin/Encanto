@@ -149,7 +149,8 @@
         "regular_price": "Bežná cena",
         "sale_price": "Cena po zľave",
         "unit_price": "Jednotková cena",
-        "percent": "Zľava {{ amount }}%"
+        "percent": "Zľava {{ amount }}%",
+        "amount": "Pridať do košíka a získať dodatočnu zľavu vo výške €10"
       },
       "pickup_availability": {
         "view_store_info": "Zobraziť informácie o obchode",
@@ -409,6 +410,240 @@
       "min_error": "Táto položka má minimum {{ min }}",
       "max_error": "Táto položka má maximum {{ max }}",
       "step_error": "Túto položku môžete pridať iba v krokoch po {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Herojová sekcia O nás",
+      "presets": {
+        "name": "O Nás Heroj"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Obrázok pozadia"
+        },
+        "caption": {
+          "label": "Popis"
+        },
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Štítok tlačidla"
+        },
+        "button_link": {
+          "label": "Tlačidlový odkaz"
+        },
+        "button_style_secondary": {
+          "label": "Použite štýl obrysového tlačidla"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "O nás Misia",
+      "presets": {
+        "name": "O nás Misia"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Obrázok"
+        },
+        "image_ratio": {
+          "label": "Pomer obrázku",
+          "options__1": {
+            "label": "Prispôsobiť sa k obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Štvorec"
+          }
+        },
+        "caption": {
+          "label": "Popis"
+        },
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Hodnota",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Zadajte text pre emodži alebo ikonu"
+            },
+            "title": {
+              "label": "Názov"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "O nás Tím",
+      "presets": {
+        "name": "O nás Tím"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image_ratio": {
+          "label": "Poměr stran obrázku",
+          "options__1": {
+            "label": "Prispôsobiť k obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Štvorec"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Člen tímu",
+          "settings": {
+            "image": {
+              "label": "Obrázok"
+            },
+            "name": {
+              "label": "Meno"
+            },
+            "role": {
+              "label": "Rola"
+            },
+            "bio": {
+              "label": "Biografia"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "URL adresa LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "O Nás Hodnoty",
+      "presets": {
+        "name": "Hodnoty O nás"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Hodnota",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Zadajte text emodži alebo ikony"
+            },
+            "title": {
+              "label": "Názov"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "O nás Štatistiky",
+      "presets": {
+        "name": "O nás Štatistiky"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Štatistický údaj",
+          "settings": {
+            "number": {
+              "label": "číslo",
+              "info": "Zadajte číslo (bude sa animovať pri posúvaní)"
+            },
+            "suffix": {
+              "label": "Prípona",
+              "info": "Nepovinná prípona ako +, %, K atď."
+            },
+            "label": {
+              "label": "Štítok"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Časová Os O Nás",
+      "presets": {
+        "name": "Časová os o nás"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Preponka",
+          "settings": {
+            "year": {
+              "label": "Rok"
+            },
+            "title": {
+              "label": "Názov"
+            },
+            "text": {
+              "label": "Popis"
+            },
+            "image": {
+              "label": "Obrázok"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -3124,5 +3359,11 @@
         "input_field_label": "6-miestny kód"
       }
     }
+  },
+  "seo": {
+    "index_title": "Profesionálne make-upové štetce a nástroje na obočie | ENCANTO ",
+    "index_description": "Profesionálne make-upové štetce, nástroje na obočie a CTR cosmetics. Dôveryaní umelkyne make-upu v 38+ krajinách. Nakupujte online s rýchlou dodávkou po celej Európe.",
+    "index_og_title": "ENCANTO | Profesionálne CTR makeupové štetce a krasobatské nástroje",
+    "index_og_description": "Obchodujte s profesionálnou kozmetikou CTR – štětce, stíny na oči, nástroje na obočí a sady. Je důvěřována 3000+ školících center po celém světě. Rychlá doručka do Evropy."
   }
 }

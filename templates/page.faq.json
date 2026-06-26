@@ -68,9 +68,30 @@
             "heading": "What payment methods do you accept?",
             "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and other digital payment methods. All transactions are secure and encrypted to protect your information.</p>"
           }
+        },
+        "text_Q4brushCare": {
+          "type": "text",
+          "settings": {
+            "heading": "How should I care for my CTR brushes?",
+            "answer": "<p>CTR brush care falls into two categories: <strong>express cleaning between clients</strong> and <strong>deep washing</strong>.</p><p><strong>Express cleaning (daily):</strong> For natural bristle (squirrel, goat), use alcohol-free brush wipes. For synthetic bristle (taklon, nylon), alcohol-based express cleaners are safe. Never use medical-grade alcohol antiseptic on natural bristle — it dries out the hair cuticle, making it brittle.</p><p><strong>Deep washing (every 1–2 weeks):</strong> Use gentle sulfate-free shampoo or professional brush soap for natural bristle. Once a month, apply a drop of hair conditioner for 1 minute after washing and rinse — this restores softness to squirrel and goat hair.</p><p><strong>Drying — the golden rule:</strong> Always dry brushes flat or bristle-side down, never upright in a cup. Water draining into the ferrule can weaken the adhesive over time. Dry at room temperature — no radiators or hair dryers.</p>"
+          }
+        },
+        "text_Q5washing": {
+          "type": "text",
+          "settings": {
+            "heading": "What is the proper technique for washing brushes?",
+            "answer": "<p>Washing premium brushes correctly protects both bristle structure and the adhesive bond. Follow this Golden Standard:</p><p><strong>1. Choose the right cleanser.</strong> Gentle sulfate-free shampoo for natural bristle (squirrel, goat). For dense synthetic brushes used with creams, pre-treat with a drop of cleansing oil, then follow with soap.</p><p><strong>2. Always point bristle downward.</strong> Use cool or barely lukewarm water — hot water weakens the adhesive. Water must not enter the metal ferrule.</p><p><strong>3. Gentle circular lathering.</strong> Work bristle in soft circular strokes on your palm or a silicone mat. Never press hard or scrub in random directions — this damages the internal silicone cushion inside CTR's ferrule.</p><p><strong>4. Rinse until water runs clear,</strong> bristle pointing down throughout.</p><p><strong>5. Reshape the bristle</strong> by blotting with a soft towel (never wring) and reshaping the bundle by hand.</p><p><strong>6. Dry flat</strong> on a towel with bristle slightly overhanging the table edge. Never dry vertically bristle-up, and never near a radiator or hairdryer.</p>"
+          }
+        },
+        "text_Q12shedding": {
+          "type": "text",
+          "settings": {
+            "heading": "A few hairs fell out during the first wash — is my brush defective?",
+            "answer": "<p>No — losing <strong>2–5 hairs during the very first wash</strong> is completely normal with any natural-bristle brush.</p><p>During hand-assembly, artisans build the bristle bundle hair by hair. Occasionally a very short hair near the bundle's centre doesn't quite reach the adhesive base — it simply sits loose inside the brush. The first wash flushes these out. <strong>This stops completely after the first wash.</strong></p><p><strong>A defect would be:</strong> continued shedding on the 2nd, 3rd, and subsequent washes, or a visibly thinning bundle. This indicates poor adhesive, insufficient ferrule crimp, or machine-cut bristle — none of which apply to CTR brushes.</p><p><strong>For the first wash:</strong> hold bristle pointing down, use gentle circular motions on your palm, and dry flat at room temperature.</p>"
+          }
         }
       },
-      "block_order": ["text_EHrTqh", "text_8yDhxc", "text_JBEThg", "text_hXfKYR", "text_T7JA4x", "text_JaeeCt", "text_wLhcae"],
+      "block_order": ["text_EHrTqh", "text_8yDhxc", "text_JBEThg", "text_hXfKYR", "text_T7JA4x", "text_JaeeCt", "text_wLhcae", "text_Q4brushCare", "text_Q5washing", "text_Q12shedding"],
       "name": "SS - FAQ #1",
       "settings": {
         "heading": "Frequently Asked Questions",

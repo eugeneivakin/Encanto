@@ -139,7 +139,8 @@
         "regular_price": "Normalpris",
         "sale_price": "Udsalgspris",
         "unit_price": "Stykpris",
-        "percent": "{{ amount }}% rabat"
+        "percent": "{{ amount }}% rabat",
+        "amount": "Føj til kurv og få yderligere €10 rabat"
       },
       "share": "Del dette produkt",
       "sold_out": "Udsolgt",
@@ -385,6 +386,252 @@
       "min_error": "Denne vare har en minimumsgrænse på {{ min }}",
       "max_error": "Denne vare har en maksimumgrænse på {{ max }}",
       "step_error": "Du kan kun tilføje denne vare i intervaller på {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Om os Hero",
+      "presets": {
+        "name": "Om os Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Baggrundsbillede"
+        },
+        "caption": {
+          "label": "Billedtekst"
+        },
+        "heading": {
+          "label": "Overskrift"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "button_label": {
+          "label": "Knappetekst"
+        },
+        "button_link": {
+          "label": "Knaplink"
+        },
+        "button_style_secondary": {
+          "label": "Brug kontur-knapstil"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Om Os Mission",
+      "presets": {
+        "name": "Om Os Mission"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Billede"
+        },
+        "image_ratio": {
+          "label": "Billedforhold",
+          "options__1": {
+            "label": "Tilpas til billede"
+          },
+          "options__2": {
+            "label": "Portræt"
+          },
+          "options__3": {
+            "label": "Kvadrat"
+          }
+        },
+        "caption": {
+          "label": "Billedtekst"
+        },
+        "heading": {
+          "label": "Overskrift"
+        },
+        "text": {
+          "label": "Tekst"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Værdi",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Indtast emoji- eller ikontekst"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Om Os Hold",
+      "presets": {
+        "name": "Om Os Team"
+      },
+      "settings": {
+        "heading": {
+          "label": "Overskrift"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "image_ratio": {
+          "label": "Billedforhold",
+          "options__1": {
+            "label": "Tilpas til billede"
+          },
+          "options__2": {
+            "label": "Portræt"
+          },
+          "options__3": {
+            "label": "Firkant"
+          },
+          "options__4": {
+            "label": "Cirkel"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Teammedlem",
+          "settings": {
+            "image": {
+              "label": "Billede"
+            },
+            "name": {
+              "label": "Navn"
+            },
+            "role": {
+              "label": "Rolle"
+            },
+            "bio": {
+              "label": "Biografi"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "LinkedIn URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Om Os Værdier",
+      "presets": {
+        "name": "Om os Værdier"
+      },
+      "settings": {
+        "heading": {
+          "label": "Overskrift"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Værdi",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Indtast emoji- eller ikontekst"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Om os Statistikker",
+      "presets": {
+        "name": "Om Os Statistik"
+      },
+      "settings": {
+        "heading": {
+          "label": "Overskrift"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistik",
+          "settings": {
+            "number": {
+              "label": "Nummer",
+              "info": "Indtast et tal (vil animere ved scroll)"
+            },
+            "suffix": {
+              "label": "suffiks",
+              "info": "Valgfrit suffiks som +, %, K osv."
+            },
+            "label": {
+              "label": "Etiket"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Om os Tidslinje",
+      "presets": {
+        "name": "Om os Tidslinje"
+      },
+      "settings": {
+        "heading": {
+          "label": "Overskrift"
+        },
+        "text": {
+          "label": "Tekst"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Milepæl",
+          "settings": {
+            "year": {
+              "label": "År"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Beskrivelse"
+            },
+            "image": {
+              "label": "Billede"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -538,5 +785,11 @@
       "expanded": "Formularen til modtager af gavekort er vist",
       "collapsed": "Formularen til modtager af gavekort er skjult"
     }
+  },
+  "seo": {
+    "index_title": "Professionelle sminkepensler & øjebrynværktøjer | ENCANTO ",
+    "index_description": "Professionelle sminkepensler, øjebrynværktøjer og CTR cosmetics. Anerkendt af sminkekunstnere i over 38 lande. Køb online med hurtig levering over hele Europa.",
+    "index_og_title": "ENCANTO | Professionelle CTR Sminkepensler og Skønhedsværktøjer",
+    "index_og_description": "Køb professionelle CTR kosmetik — pensler, øjenskygger, brynsværktøjer og sæt. Betroet af over 3000 uddannelsescentre verden over. Hurtig levering til Europa."
   }
 }

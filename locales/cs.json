@@ -148,7 +148,8 @@
         "regular_price": "Běžná cena",
         "sale_price": "Výprodejová cena",
         "unit_price": "Jednotková cena",
-        "percent": "{{ amount }}% sleva"
+        "percent": "{{ amount }}% sleva",
+        "amount": "Přidejte do košíku a získejte dodatečnou slevu €10"
       },
       "pickup_availability": {
         "view_store_info": "Zobrazit informace o obchodě",
@@ -409,6 +410,245 @@
       "min_error": "Tato položka vyžaduje minimum: {{ min }}",
       "max_error": "Tato položka vyžaduje maximum: {{ max }}",
       "step_error": "Tuto položku můžete přidat jen v přírůstcích hodnoty: {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "O nás Hero",
+      "presets": {
+        "name": "Hlavní Sekce O Nás"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Pozadní obrázek"
+        },
+        "caption": {
+          "label": "Popisek"
+        },
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Štítek tlačítka"
+        },
+        "button_link": {
+          "label": "Tlačítkový odkaz"
+        },
+        "button_style_secondary": {
+          "label": "Použijte styl obrysového tlačítka"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "O nás Misíe",
+      "presets": {
+        "name": "O nás – Mise"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Obrázek"
+        },
+        "image_ratio": {
+          "label": "Poměr obrázku",
+          "options__1": {
+            "label": "Přizpůsobit se obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Čtverec"
+          }
+        },
+        "caption": {
+          "label": "Popisek"
+        },
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Hodnota",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Zadejte emoji nebo text ikony"
+            },
+            "title": {
+              "label": "Nadpis"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "O nás Tým",
+      "presets": {
+        "name": "O nás Tým"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image_ratio": {
+          "label": "Poměr stran obrázku",
+          "options__1": {
+            "label": "Přizpůsobit se obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Čtverec"
+          },
+          "options__4": {
+            "label": "Kruh"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Člen týmu",
+          "settings": {
+            "image": {
+              "label": "Obrázek"
+            },
+            "name": {
+              "label": "Jméno"
+            },
+            "role": {
+              "label": "Role"
+            },
+            "bio": {
+              "label": "Bio"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "URL na LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "O nás Hodnoty",
+      "presets": {
+        "name": "Hodnoty O nás"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Hodnota",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Zadejte emoji nebo textový symbol"
+            },
+            "title": {
+              "label": "Název"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "O nás Statistiky",
+      "presets": {
+        "name": "Statistiky o nás"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistika",
+          "settings": {
+            "number": {
+              "label": "Číslo",
+              "info": "Zadejte číslo (bude animováno při rolování)"
+            },
+            "suffix": {
+              "info": "Volitelná přípona jako +, %, K atd."
+            },
+            "label": {
+              "label": "Štítek"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "O nás – Časová os",
+      "presets": {
+        "name": "O nás Časová osa"
+      },
+      "settings": {
+        "heading": {
+          "label": "Nadpis"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Milník",
+          "settings": {
+            "year": {
+              "label": "Rok"
+            },
+            "title": {
+              "label": "Název"
+            },
+            "text": {
+              "label": "Popis"
+            },
+            "image": {
+              "label": "Obrázek"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -562,5 +802,11 @@
       "expanded": "Formulář pro příjemce dárkové karty se rozbalil.",
       "collapsed": "Formulář pro příjemce dárkové karty se sbalil."
     }
+  },
+  "seo": {
+    "index_title": "Profesionální make-upové štětce a nástroje na obočí | ENCANTO ",
+    "index_description": "Profesionální make-up kartáče, nástroje na obočí a kosmetika CTR. Jsou důvěřovány profesionálním umělcům make-upu ve více než 38 zemích. Nakupujte online s rychlou doručením po celé Evropě.",
+    "index_og_title": "ENCANTO | Profesionální štětce do make-upu CTR a kosmetické nástroje",
+    "index_og_description": "Kupte profesionální kosmetiku CTR – kartáče, oční stíny, nástroje na obočí a sady. Více než 3000 tréninkových center po celém světě jim důvěřuje. Rychlá dodávka do Evropy."
   }
 }

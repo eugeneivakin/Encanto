@@ -139,7 +139,8 @@
         "regular_price": "Normalpreis",
         "sale_price": "Verkaufspreis",
         "unit_price": "Stückpreis",
-        "percent": "{{ amount }}% Rabatt"
+        "percent": "{{ amount }}% Rabatt",
+        "amount": "Zum Warenkorb hinzufügen und zusätzlich €10 sparen"
       },
       "share": "Dieses Produkt teilen",
       "sold_out": "Ausverkauft",
@@ -385,6 +386,255 @@
       "min_error": "Dieser Artikel hat ein Minimum von {{ min }}",
       "max_error": "Dieser Artikel hat ein Maximum von {{ max }}",
       "step_error": "Sie können diesen Artikel nur in Schritten von {{ step }} hinzufügen"
+    },
+    "about-us-hero": {
+      "name": "Über uns Hero",
+      "presets": {
+        "name": "Über uns Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Hintergrundbild"
+        },
+        "caption": {
+          "label": "Bildunterschrift"
+        },
+        "heading": {
+          "label": "Überschrift"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Schaltflächenbeschriftung"
+        },
+        "button_link": {
+          "label": "Link-Schaltfläche"
+        },
+        "button_style_secondary": {
+          "label": "Verwenden Sie den Kontur-Button-Stil"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Über Uns Mission",
+      "presets": {
+        "name": "Über Uns Mission"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Bild"
+        },
+        "image_ratio": {
+          "label": "Bildverhältnis",
+          "options__1": {
+            "label": "An das Bild anpassen"
+          },
+          "options__2": {
+            "label": "Porträt"
+          },
+          "options__3": {
+            "label": "Quadrat"
+          }
+        },
+        "caption": {
+          "label": "Bildunterschrift"
+        },
+        "heading": {
+          "label": "Überschrift"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Wert",
+          "settings": {
+            "icon": {
+              "label": "Symbol",
+              "info": "Geben Sie Emoji- oder Icon-Text ein"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Über uns Team",
+      "presets": {
+        "name": "Team Über Uns"
+      },
+      "settings": {
+        "heading": {
+          "label": "Überschrift"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image_ratio": {
+          "label": "Bildverhältnis",
+          "options__1": {
+            "label": "An das Bild anpassen"
+          },
+          "options__2": {
+            "label": "Porträt"
+          },
+          "options__3": {
+            "label": "Quadrat"
+          },
+          "options__4": {
+            "label": "Kreis"
+          }
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Teammitglied",
+          "settings": {
+            "image": {
+              "label": "Bild"
+            },
+            "name": {
+              "label": "Name"
+            },
+            "role": {
+              "label": "Rolle"
+            },
+            "bio": {
+              "label": "Biografie"
+            },
+            "email": {
+              "label": "E-Mail"
+            },
+            "linkedin": {
+              "label": "LinkedIn-URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Über uns: Werte",
+      "presets": {
+        "name": "Über uns Werte"
+      },
+      "settings": {
+        "heading": {
+          "label": "Überschrift"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Wert",
+          "settings": {
+            "icon": {
+              "label": "Symbol",
+              "info": "Geben Sie Emoji- oder Symboltext ein"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Über uns Statistiken",
+      "presets": {
+        "name": "Über Uns Statistiken"
+      },
+      "settings": {
+        "heading": {
+          "label": "Überschrift"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistik",
+          "settings": {
+            "number": {
+              "label": "Nummer",
+              "info": "Geben Sie eine Zahl ein (wird beim Scrollen animiert)"
+            },
+            "suffix": {
+              "label": "Suffix",
+              "info": "Optionales Suffix wie +, %, K usw."
+            },
+            "label": {
+              "label": "Etikett"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Über Uns Zeitleiste",
+      "presets": {
+        "name": "Über Uns: Zeitleiste"
+      },
+      "settings": {
+        "heading": {
+          "label": "Überschrift"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Meilenstein",
+          "settings": {
+            "year": {
+              "label": "Jahr"
+            },
+            "title": {
+              "label": "Titel"
+            },
+            "text": {
+              "label": "Beschreibung"
+            },
+            "image": {
+              "label": "Bild"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -3119,5 +3369,11 @@
         }
       }
     }
+  },
+  "seo": {
+    "index_title": "Professionelle Make-up-Pinsel & Augenbrauenwerkzeuge | ENCANTO ",
+    "index_description": "Professionelle Make-up-Pinsel, Augenbrauenwerkzeuge & CTR Kosmetik. Von Make-up-Künstlern in über 38 Ländern vertraut. Online bestellen mit schneller Lieferung in ganz Europa.",
+    "index_og_title": "ENCANTO | Professionelle CTR Make-up-Pinsel & Beauty-Tools",
+    "index_og_description": "Kaufen Sie professionelle CTR-Kosmetik – Pinsel, Lidschatten, Augenbrauenwerkzeuge und Sets. Vertraut von über 3000 Ausbildungsstätten weltweit. Schnelle Lieferung nach Europa."
   }
 }

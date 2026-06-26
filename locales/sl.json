@@ -149,7 +149,8 @@
         "regular_price": "Redna cena",
         "sale_price": "Cena akcije",
         "unit_price": "Cena na enoto",
-        "percent": "{{ amount }}% popust"
+        "percent": "{{ amount }}% popust",
+        "amount": "Dodaj v košarico in pridobi dodatnih €10 popusta"
       },
       "pickup_availability": {
         "view_store_info": "Ogled informacij o trgovini",
@@ -409,6 +410,243 @@
       "min_error": "Ta artikel ima minimum {{ min }}",
       "max_error": "Ta artikel ima maksimum {{ max }}",
       "step_error": "Ta artikel lahko dodate samo v korakih po {{ step }}"
+    },
+    "about-us-hero": {
+      "name": "Herojska sekcija o nas",
+      "presets": {
+        "name": "O Nas Hero"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Ozadna slika"
+        },
+        "caption": {
+          "label": "Podpis"
+        },
+        "heading": {
+          "label": "Naslov"
+        },
+        "text": {
+          "label": "Besedilo"
+        },
+        "button_label": {
+          "label": "Gumbova oznaka"
+        },
+        "button_link": {
+          "label": "Povezovalni gumb"
+        },
+        "button_style_secondary": {
+          "label": "Uporabi stil orisnega gumba"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "O nama Misija",
+      "presets": {
+        "name": "O nas Misija"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Slika"
+        },
+        "image_ratio": {
+          "label": "Razmerje slike",
+          "options__1": {
+            "label": "Prilagodi se sliki"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Kvadrat"
+          }
+        },
+        "caption": {
+          "label": "Podnapis"
+        },
+        "heading": {
+          "label": "Naslov"
+        },
+        "text": {
+          "label": "Besedilo"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Vrednost",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Vnesite besedilo za emoji ali ikone"
+            },
+            "title": {
+              "label": "Naslov"
+            },
+            "text": {
+              "label": "Besedilo"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "O nas Ekipa",
+      "presets": {
+        "name": "O nas Ekipa"
+      },
+      "settings": {
+        "heading": {
+          "label": "Naslov"
+        },
+        "text": {
+          "label": "Besedilo"
+        },
+        "image_ratio": {
+          "label": "razmerje slike",
+          "options__1": {
+            "label": "Prilagodi se sliki"
+          },
+          "options__2": {
+            "label": "Portret"
+          },
+          "options__3": {
+            "label": "Kvadrat"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Član ekipe",
+          "settings": {
+            "image": {
+              "label": "Slika"
+            },
+            "name": {
+              "label": "Ime"
+            },
+            "role": {
+              "label": "Vloga"
+            },
+            "bio": {
+              "label": "Biografija"
+            },
+            "email": {
+              "label": "E-pošta"
+            },
+            "linkedin": {
+              "label": "URL LinkedIn"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "O nas Vrednote",
+      "presets": {
+        "name": "Vrednote O nas"
+      },
+      "settings": {
+        "heading": {
+          "label": "Naslov"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Vrednost",
+          "settings": {
+            "icon": {
+              "label": "Ikona",
+              "info": "Vnesite besedilo za emojije ali ikone"
+            },
+            "title": {
+              "label": "Naslov"
+            },
+            "text": {
+              "label": "Besedilo"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "O nas Statistika",
+      "presets": {
+        "name": "O nas Statistika"
+      },
+      "settings": {
+        "heading": {
+          "label": "Naslov"
+        },
+        "columns_mobile": {
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statistika",
+          "settings": {
+            "number": {
+              "label": "Številka",
+              "info": "Vnesite število (se bo animiralo pri pomiku po strani)"
+            },
+            "suffix": {
+              "label": "priponka",
+              "info": "Izbirne priponke kot +, %, K itd."
+            },
+            "label": {
+              "label": "Etiketa"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "O nas Časovnica",
+      "presets": {
+        "name": "O nas Časovnica"
+      },
+      "settings": {
+        "heading": {
+          "label": "Naslov"
+        },
+        "text": {
+          "label": "Besedilo"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "name": "Prebojno točka",
+          "settings": {
+            "year": {
+              "label": "Leto"
+            },
+            "title": {
+              "label": "Naslov"
+            },
+            "text": {
+              "label": "Opis"
+            },
+            "image": {
+              "label": "Slika"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -4552,5 +4790,11 @@
         "restart_link": "Prijavi se z drugo e-pošto"
       }
     }
+  },
+  "seo": {
+    "index_title": "Profesionalni šeširji za makijaz in orodja za obrvi | ENCANTO ",
+    "index_description": "Profesionalne makeupske čopice, orodja za obrvi in CTR cosmetics. Zaupajo jih make-up umetniki v 38+ državah. Nakupujte spletno z hitro dostavo po Evropi.",
+    "index_og_title": "ENCANTO | Profesionalni kisti za make-up CTR in lepotni orodja",
+    "index_og_description": "Nakupujte profesionalno kozmetiko CTR — četke, senke za oči, orodja za obrvi in seti. Zaupajo jim 3000+ usposabljalnih centrov po vsem svetu. Hitra dostava v Evropo."
   }
 }

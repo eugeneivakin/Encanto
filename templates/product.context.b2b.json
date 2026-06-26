@@ -1,1 +1,1 @@
-{ "parent": "product.json", "context": { "b2b": true }, "sections": {} }
+{"parent":"product.json","context":{"b2b":true},"sections":{}}

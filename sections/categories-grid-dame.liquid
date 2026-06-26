@@ -18,16 +18,17 @@
                 href="{{ block.settings.button_url }}"
                 class="dame-category-card {% if block.settings.use_image_as_background %}dame-card-bg-image{% endif %}"
                 {{ block.shopify_attributes }}
+                {% unless block.settings.use_image_as_background %}
+                  style="background-color: {{ block.settings.card_bg_color }};"
+                {% endunless %}
+              >
                 {% if block.settings.use_image_as_background %}
                   {% if block.settings.category_image != blank %}
-                    style="background-image: url('{{ block.settings.category_image | image_url: width: 800 }}');"
-                  {% else %}
-                    style="background-image: url('{{ block.settings.button_url.featured_image | image_url: width: 800 }}');"
+                    <img src="{{ block.settings.category_image | image_url: width: 800 }}" class="dame-card-bg-img" alt="" loading="lazy" aria-hidden="true" width="{{ block.settings.category_image.width }}" height="{{ block.settings.category_image.height }}">
+                  {% elsif block.settings.button_url.featured_image != blank %}
+                    <img src="{{ block.settings.button_url.featured_image | image_url: width: 800 }}" class="dame-card-bg-img" alt="" loading="lazy" aria-hidden="true" width="{{ block.settings.button_url.featured_image.width }}" height="{{ block.settings.button_url.featured_image.height }}">
                   {% endif %}
-                {% else %}
-                  style="background-color: {{ block.settings.card_bg_color }};"
                 {% endif %}
-              >
                 {% if block.settings.use_image_as_background and block.settings.show_overlay %}
                   <div
                     class="dame-category-overlay"
@@ -162,6 +163,15 @@
       display: grid;
       grid-template-columns: repeat(var(--dame-categories-columns-desktop), 1fr);
       gap: var(--dame-categories-grid-gap-desktop);
+    }
+
+    #categories-{{ section.id }} .dame-card-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
     }
 
     #categories-{{ section.id }} .dame-category-card {
@@ -415,7 +425,6 @@
 
     if (!cards.length) return;
 
-    // IntersectionObserver to detect when cards enter viewport
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px',
@@ -425,12 +434,11 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
-          observer.unobserve(entry.target); // Stop observing once animated
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Observe all cards
     cards.forEach((card) => {
       observer.observe(card);
     });

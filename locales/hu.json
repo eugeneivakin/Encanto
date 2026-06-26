@@ -140,7 +140,8 @@
         "regular_price": "Normál ár",
         "sale_price": "Akciós ár",
         "unit_price": "Egységár",
-        "percent": "{{ amount }}% kedvezmény"
+        "percent": "{{ amount }}% kedvezmény",
+        "amount": "Kosárba helyez és kapj további 10 € kedvezményt"
       },
       "share": "A termék megosztása",
       "sold_out": "Elfogyott",
@@ -385,6 +386,236 @@
       "min_error": "A termék minimális mennyisége {{ min }}",
       "max_error": "A termék maximális mennyisége {{ max }}",
       "step_error": "A termék mennyisége csak {{ step }} darabos lépésekben növelhető"
+    },
+    "about-us-hero": {
+      "name": "Rólunk főbemutató",
+      "presets": {
+        "name": "Rólunk Főszekció"
+      },
+      "settings": {
+        "background_image": {
+          "label": "Háttérkép"
+        },
+        "caption": {
+          "label": "Felirat"
+        },
+        "heading": {
+          "label": "Cím"
+        },
+        "text": {
+          "label": "Szöveg"
+        },
+        "button_label": {
+          "label": "Gomb felirat"
+        },
+        "button_link": {
+          "label": "Gombos Hivatkozás"
+        },
+        "button_style_secondary": {
+          "label": "Használjon keretes gomb stílust"
+        }
+      }
+    },
+    "about-us-mission": {
+      "name": "Rólunk Misszió",
+      "presets": {
+        "name": "Rólunk: A küldetés"
+      },
+      "settings": {
+        "mission_image": {
+          "label": "Kép"
+        },
+        "image_ratio": {
+          "label": "Képarány",
+          "options__2": {
+            "label": "Portré"
+          },
+          "options__3": {
+            "label": "Négyzet"
+          }
+        },
+        "caption": {
+          "label": "Felirat"
+        },
+        "heading": {
+          "label": "Cím"
+        },
+        "text": {
+          "label": "Szöveg"
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Érték",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Írja be az emoji vagy ikon szövegét"
+            },
+            "title": {
+              "label": "Cím"
+            },
+            "text": {
+              "label": "Szöveg"
+            }
+          }
+        }
+      }
+    },
+    "about-us-team": {
+      "name": "Rólunk Csapat",
+      "presets": {
+        "name": "Rólunk Csapat"
+      },
+      "settings": {
+        "heading": {
+          "label": "Cím"
+        },
+        "text": {
+          "label": "Szöveg"
+        },
+        "image_ratio": {
+          "label": "Képarány",
+          "options__1": {
+            "label": "Illeszkedik a képhez"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Négyzet"
+          }
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "member": {
+          "name": "Csapattag",
+          "settings": {
+            "image": {
+              "label": "Kép"
+            },
+            "name": {
+              "label": "Név"
+            },
+            "role": {
+              "label": "Szerep"
+            },
+            "bio": {
+              "label": "Önéletrajz"
+            },
+            "email": {
+              "label": "E-mail"
+            },
+            "linkedin": {
+              "label": "LinkedIn URL"
+            }
+          }
+        }
+      }
+    },
+    "about-us-values": {
+      "name": "Rólunk: Az értékek",
+      "presets": {
+        "name": "Rólunk: Értékek"
+      },
+      "settings": {
+        "heading": {
+          "label": "Cím"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "value": {
+          "name": "Érték",
+          "settings": {
+            "icon": {
+              "label": "Ikon",
+              "info": "Írjon be emojit vagy ikon szöveget"
+            },
+            "title": {
+              "label": "Cím"
+            },
+            "text": {
+              "label": "Szöveg"
+            }
+          }
+        }
+      }
+    },
+    "about-us-stats": {
+      "name": "Rólunk Statisztikák",
+      "presets": {
+        "name": "Rólunk: Statisztika"
+      },
+      "settings": {
+        "heading": {
+          "label": "Cím"
+        },
+        "columns_mobile": {
+          "options__2": {
+            "label": "2"
+          }
+        }
+      },
+      "blocks": {
+        "stat": {
+          "name": "Statisztika",
+          "settings": {
+            "number": {
+              "label": "Szám",
+              "info": "Adjon meg egy számot (a görgetés során animálódik)"
+            },
+            "suffix": {
+              "label": "Utótag",
+              "info": "Nem kötelező utótag, mint a +, %, K stb."
+            },
+            "label": {
+              "label": "Címke"
+            }
+          }
+        }
+      }
+    },
+    "about-us-timeline": {
+      "name": "Rólunk Idővonal",
+      "presets": {
+        "name": "Rólunk Idővonal"
+      },
+      "settings": {
+        "heading": {
+          "label": "Cím"
+        },
+        "text": {
+          "label": "Szöveg"
+        }
+      },
+      "blocks": {
+        "milestone": {
+          "settings": {
+            "year": {
+              "label": "Év"
+            },
+            "title": {
+              "label": "Cím"
+            },
+            "text": {
+              "label": "Leírás"
+            },
+            "image": {
+              "label": "Kép"
+            }
+          }
+        }
+      }
     }
   },
   "localization": {
@@ -538,5 +769,11 @@
       "expanded": "Ajándékkártya címzettjének űrlapja kibontva",
       "collapsed": "Ajándékkártya címzettjének űrlapja összecsukva"
     }
+  },
+  "seo": {
+    "index_title": "Profeszionális sminkecskek és szempillatartozékok | ENCANTO ",
+    "index_description": "Szakmai sminkecskék, szemszemöldög eszközök és CTR kozmetika. A sminkművészek bizalmát nyerik 38+ országban. Vásároljon online gyors szállítással egész Európában.",
+    "index_og_title": "ENCANTO | Profesionalis CTR sminkecsetek és szépségi eszközök",
+    "index_og_description": "Vásároljon profi CTR kozmetikát – ecseteket, szemfényesítőket, szemöldök eszközöket és szetteket. 3000+ képzőpont által megbízott világszerte. Gyors szállítás Európába."
   }
 }

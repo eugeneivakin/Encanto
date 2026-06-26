@@ -6,10 +6,9 @@
     var active = currency.active;
     var rawCents;
 
-    if (active === 'AED') {
-      rawCents = window.FREE_SHIPPING.uaeCents;
-    } else if (active === 'QAR') {
-      rawCents = window.FREE_SHIPPING.qatarCents;
+    var arabCurrencies = ['AED', 'QAR', 'SAR', 'KWD', 'BHD', 'OMR', 'JOD', 'EGP', 'IQD', 'LBP', 'LYD', 'MAD', 'DZD', 'TND', 'YER', 'SDG', 'SYP'];
+    if (arabCurrencies.indexOf(active) !== -1) {
+      rawCents = window.FREE_SHIPPING.arabCents;
     } else {
       rawCents = window.FREE_SHIPPING.euCents;
     }
