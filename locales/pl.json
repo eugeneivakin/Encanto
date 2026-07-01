@@ -618,9 +618,6 @@
       "settings": {
         "text": {
           "label": "Tekst"
-        },
-        "heading": {
-          "label": "Nagłówek"
         }
       },
       "blocks": {
